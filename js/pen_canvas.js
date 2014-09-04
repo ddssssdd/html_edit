@@ -15,6 +15,8 @@ var Canvas = function (div)
     this.cmd_current = null;
     this.command = null;
     this.isaction = false;
+    this.selecting = false;
+    this.select_command = null;
     this.initCavnas = function ()
     {
         var div = $(this.divName);
@@ -69,7 +71,21 @@ var Canvas = function (div)
     }
     this.do = function (cmd)
     {
-        this.command = cmd;
+        if (!this.command) {//first time just do the command
+            this.command = cmd;
+            this.selecting = false;
+        } else {//
+            if (this.selecting) {
+                this.selecting = false;
+            } else {
+                if (this.command.samecommand(cmd)) {
+                    this.selecting = true;
+                }
+            }
+            this.command = cmd;
+            
+        }
+        
         //execute command;
     }
     this.settings_change = function (pencolor, brushcolor, penwidth, opacity)
@@ -92,22 +108,59 @@ var Canvas = function (div)
             //not set current command, so exit;
             return;
         }
+        if (this.selecting)
+        {
+            //selecting status, judge which is click on
+            var found = false;
+            for (var i = 0; i < this.command_list.length; i++)
+            {
+                this.command_list[i].is_select = false;
+                if (found) {
+                    continue;
+                }
+                if (this.command_list[i].contains(e.offsetX, e.offsetY))
+                {
+                    found = true;
+                    this.select_command = this.command_list[i];
+                    
+                    this.select_command.move_begin(e.offsetX, e.offsetY);
+                }
+            }
+            this.draw();
+            return;
+        }
         //this.debug("MouseDown:x=" + e.offsetX + ",y=" + e.offsetY);
-        this.cmd_current = this.command.clone();
+        if (this.cmd_current && this.cmd_current.isseries(this.command)) {
+
+        } else {
+            this.cmd_current = this.command.clone();
+        }
+        
         if (this.cmd_current == "action") {
 
         } else {
 
             this.cmd_current.begin_draw(this.context_top, e.offsetX, e.offsetY);
             this.isaction = true;
+            this.selecting = false;
+           
         }
+        this.select_command = null;
         
     }
     this.mousemove = function (e) {
+        if (this.selecting) {
+            if (this.select_command && this.select_command.moving) {
+                this.select_command.move_to(e.offsetX, e.offsetY);
+                this.draw();
+            }
+            return;
+        }
         if (!this.isaction)
         {
             return;
         }
+        
         //this.debug("MouseMove:x=" + e.offsetX + ",y=" + e.offsetY);
         if (this.cmd_current == "action") {
 
@@ -119,6 +172,13 @@ var Canvas = function (div)
     }
     this.mouseup = function (e)
     {
+        if (this.selecting) {
+            if (this.select_command && this.select_command.moving) {
+                this.select_command.move_end(e.offsetX, e.offsetY);
+                this.draw();
+            }
+            return;
+        }
         if (!this.isaction) {
             return;
         }
@@ -130,13 +190,29 @@ var Canvas = function (div)
             this.cmd_current.end_draw(e.offsetX, e.offsetY);
         }
         this.isaction = false;
+        if (this.command_list.indexOf(this.cmd_current)<0){
+            this.command_list.push(this.cmd_current);
+        }
+        this.clear_context();
+        this.cmd_current.draw(this.context);
         
-        this.command_list.push(this.cmd_current);
     }
     
     this.mouseout = function (e) {
         //this.debug("MouseOut:x=" + e.offsetX + ",y=" + e.offsetY);
     }
     
-    
+    this.draw = function ()
+    {
+        this.clear_context(1);
+        for (var i = 0; i < this.command_list.length; i++)
+        {
+            if (this.command_list[i].is_select) {
+                this.command_list[i].draw(this.context_top);
+                this.command_list[i].draw_select(this.context_top);
+            } else {
+                this.command_list[i].draw(this.context);
+            }
+        }
+    }
 }

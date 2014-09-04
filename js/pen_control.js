@@ -264,16 +264,9 @@ function do_command(a,tool_type, current)
        function (s) {
            $(this).attr("class", $(this).attr("last"));
        }
-   );
-    if (tool_type == "action") {
-
-    } else {
-        var li = $(a).parent();
-        li.attr("class", current + "SelectBtn");
-        li.attr("last", current + "Btn");
-    }
+    );
     var command = new Command(tool_type, current);
-
+   
     //color setup
     if ($(a).attr("colorset")) {
         var pencolor = $(a).attr("pencolor");
@@ -301,6 +294,32 @@ function do_command(a,tool_type, current)
     } 
     console.log("Type:" + tool_type + ",command:" + current);
     graphic.do(command);
+    if (tool_type == "action" || tool_type == "text") {
+        //no select status;
+    } else {
+        if (graphic.selecting) {
+
+        } else {
+            var li = $(a).parent();
+            li.attr("class", current + "SelectBtn");
+            li.attr("last", current + "Btn");
+        }
+
+    }
+    //move tool bar left or right
+    if (tool_type == "action" && current == "move") {
+        var pos = $(a).attr("position");
+        if (pos == "left") {
+            $(a).attr("position", "right");
+            $(".leftNavBar").css("left", (graphic.width - 20-44) + "px");
+        } else {
+            $(a).attr("position", "left");
+            $(".leftNavBar").css("left", "20px");
+        }
+    } else if (tool_type == "action" && current == "stop") {
+        $(".leftNavBar").hide();
+        isEdit = false;
+    }
 
 }
 
