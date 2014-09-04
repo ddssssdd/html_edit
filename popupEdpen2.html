@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>edZone-HOME</title>
+<link href="css/edPenCss.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="js/jquery.dd.js" type="text/javascript"></script>
+<script src="js/checkbox.js" type="text/javascript"></script>
+<script src="js/iphone-style-checkboxes.js" type="text/javascript"></script>
+<script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="blackWrap">
+ <div class="mainWrap">
+
+   <div class="edpenPopup">
+    <div class="edpenHeader">
+     <div class="btnLeftPosition"><a href="#">Cancel</a></div>
+     <div class="edpenNavBar">
+      <ul>
+       <li class="size"><a href="javascript:void(0);" onclick="popup('size');">size</a></li>
+       <li class="image"><a href="javascript:void(0);" onclick="popup('image');">image</a></li>
+       <li class="papers1"><a href="javascript:void(0);" onclick="popup('paper');">papers</a></li>
+       <li class="fontColor"><a href="javascript:void(0);" onclick="popup('fontColor');">fontColor</a></li>
+       <li class="brush1" id="tool_brush"><a href="javascript:void(0);" onclick="popup('brush');">brush</a></li>
+       <li class="revocation disable" id="tool_undo"><a href="javascript:void(0);" onclick="action('undo',null);">revocation</a></li>
+       <li class="recover disable" id="tool_redo"><a href="javascript:void(0);" onclick="action('redo',null);">recover</a></li>
+       <li class="clearBtn"><a href="javascript:void(0);" onclick="popup('clearBtn');">clear</a></li>
+        
+       <li class="clear"></li>
+      </ul>
+     </div>     
+        
+     <div class="editBtn"><a href="javascript:void(0);" onclick="save_to_server();">Share</a></div>
+     <div class="clear"></div>
+    </div>
+    <span id="debug" style="display:none;">info</span>
+    <div class="sizeTooltip tool">
+     <div class="arrow"><img src="images/selectArrow4.png" width="15" height="12" /></div>
+     <div class="tooltipBody">
+      <div class="titleBar">
+       <div class="title">Canvas Size</div>
+       <div class="rightBtn"><a href="#">Done</a></div>
+      </div>
+      <div class="rangeBody">
+       <input type="range" max="100" min="0" step="50" id="txtCanvasSize" />
+       <label id="lblCanvasSize">Medium</label>
+      </div>
+     </div>
+    </div>
+    
+    <div class="imageTooltip tool">
+     <div class="arrow"><img src="images/selectArrow4.png" width="15" height="12" /></div>
+     <div class="tooltipBody">
+      <div class="imagePosition">
+       <ul>
+        <li class="select" position="1"><a href="javascript:void(0);" onclick="set_position(this,0);">Expand</a></li>
+        <li position="1"><a href="javascript:void(0);" onclick="set_position(this,1);">Top</a></li>
+        <li position="1"><a href="javascript:void(0);" onclick="set_position(this,2);">Bottom</a></li>
+        <li position="1"><a href="javascript:void(0);" onclick="set_position(this,3);">Left</a></li>
+        <li position="1"><a href="javascript:void(0);" onclick="set_position(this,4);">Right</a></li>
+        <li position="1"><a href="javascript:void(0);" onclick="set_position(this,5);">Center</a></li>
+        <li position="1"><a href="javascript:void(0);" onclick="set_position(this,6);">Top Left</a></li>
+        <li position="1"><a href="javascript:void(0);" onclick="set_position(this,7);">Top Right</a></li>
+        <li position="1"><a href="javascript:void(0);" onclick="set_position(this,8);">Bottom Left</a></li>
+        <li position="1"><a href="javascript:void(0);" onclick="set_position(this,9);">Bottom Right</a></li>
+        <li class="clear"></li>
+       </ul>
+      </div>
+      <div class="imageLibrary">
+       <div class="title">Image Sources</div>
+       <div class="selectBtn">
+        <input type="file" />
+        <div class="btn">
+            <a href="javascript:void(0);"onclick="click_file();">Picture Library</a>
+            <input type="file" id="upload_file" style="display:none;" onchange="upload_change(this);"/>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    
+    <div class="paperTooltip tool">
+     <div class="arrow"><img src="images/selectArrow4.png" width="15" height="12" /></div>
+     <div class="tooltipBody">
+      <div class="colorList">
+       <ul id="bg_colorlist">
+        <li><a href="#"></a></li>
+        <li  class="select"><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li class="clear"></li>
+       </ul>
+      </div>
+      <div class="papersList">
+       <div class="title">Papers</div>
+       <div class="list">
+        <ul>
+         <li canvas_style="1"><a href="javascript:void(0);" onclick="set_canvas_style(this,'lined');">Lined Paper</a></li>
+         <li  canvas_style="1"><a href="javascript:void(0);" onclick="set_canvas_style(this,'graph');">Graph Paper</a></li>
+         <li class="select"   canvas_style="1"><a href="javascript:void(0);" onclick="set_canvas_style(this,'plain');">Plain Paper</a></li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+    
+    <div class="fontColorTooltip tool">
+     <div class="arrow"><img src="images/selectArrow4.png" width="15" height="12" /></div>
+     <div class="tooltipBody">
+      <div class="colorList">
+       <ul id="colorlist">
+        <li class="select"><a href="#" bcolor="rgba(0,0,0,0.05)"></a></li>
+        <li><a href="#" bcolor="rgba(255,255,255,0.05)"></a></li>
+        <li><a href="#" bcolor="rgba(187,0,0,0.05)"></a></li>
+        <li><a href="#" bcolor="rgba(255,0,0,0.05)"></a></li>
+        <li><a href="#" bcolor="rgba(255,153,0,0.05)"></a></li>
+        <li><a href="#" bcolor="rgba(255,255,0,0.05)"></a></li>
+        <li><a href="#" bcolor="rgba(0,255,0,0.05)"></a></li>
+        <li><a href="#" bcolor="rgba(0,255,255,0.05)"></a></li>
+        <li><a href="#" bcolor="rgba(77,140,242,0.05)"></a></li>
+        <li><a href="#" bcolor="rgba(0,0,255,0.05)"></a></li>
+        <li><a href="#" bcolor="rgba(153,0,255,0.05)"></a></li>
+        <li><a href="#" bcolor="rgba(255,0,255,0.05)"></a></li>
+        <li class="clear"></li>
+       </ul>
+      </div>
+     </div>
+    </div>
+    
+    <div class="brushTooltip tool">
+     <div class="arrow"><img src="images/selectArrow4.png" width="15" height="12" /></div>
+     <div class="tooltipBody">
+      <div class="titleBar">
+       <div class="rightBtn"><a href="javascript:void(0);" onclick="popup('brush');">Done</a></div>
+      </div>
+      <div class="rangeBody">
+       <input type="range" max="16" min="3" step="1" id="txtPenWidth" value="3"/>
+       <label id="lblPenWidth">3px</label>
+      </div>
+      <div class="brushList">
+       <ul>
+        <li class="select" tools="0"><a href="javascript:void(0);" onclick="choose(this,'pen',1);" >Pen</a></li>
+        <li tools="0"><a href="javascript:void(0);" onclick="choose(this,'highlight',2);">Highlight</a></li>
+        <li tools="0"><a href="javascript:void(0);" onclick="choose(this,'eraser',3);">Eraser</a></li>
+        <li class="clear"></li>
+       </ul>
+       <ul>
+        <li tools="0"><a href="javascript:void(0);" onclick="choose(this,'line',4);">Line</a></li>
+        <li tools="0"><a href="javascript:void(0);" onclick="choose(this,'rect',5);">Rect Stroke</a></li>
+        <li tools="0"><a href="javascript:void(0);" onclick="choose(this,'rect_fill',6);">Rect Fill</a></li>
+        <li class="clear"></li>
+       </ul>
+       <ul>
+        <li tools="0"><a href="javascript:void(0);" onclick="choose(this,'ellipse',7);">Ellipse Stroke</a></li>
+        <li tools="0"><a href="javascript:void(0);" onclick="choose(this,'ellipse_fill',8);">Ellipse Fill</a></li>
+        <li class="clear"></li>
+       </ul>
+      </div>
+     </div>
+    </div>
+    
+    <div class="clearBtnTooltip tool">
+     <div class="arrow"><img src="images/selectArrow4.png" width="15" height="12" /></div>
+     <div class="tooltipBody">
+      <div class="btn"><a href="javascript:void(0);" onclick="clear_page();">Clear Page</a></div>
+     </div>
+    </div>
+    
+    
+    
+    
+    
+    <div class="edpenBody">
+
+        <canvas id="canvas" ></canvas>
+        <canvas id="canvas_back"></canvas>
+   
+   </div>
+    </div>
+    
+  </div>
+     <div id ="history_div" style="background-color:white;">
+        
+          
+    </div>
+    <div id="image_list" style="display:none;">
+
+       
+    </div>
+    
+</div>
+   
+<script src="js/scrollbar.js" type="text/javascript"></script> 
+<script src="js/jquery.select.js" type="text/javascript"></script>
+
+<script src="js/edpen_action.js" type="text/javascript"></script>
+<script src="js/edpen2.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    function save_to_server() {
+        window.location = canvas_back.toDataURL("image/png");
+    }
+    init_screen();
+</script>
+
+
+</body>
+</html>

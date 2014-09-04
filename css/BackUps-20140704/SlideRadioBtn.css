@@ -1,0 +1,26 @@
+/* CSS Document */
+.slide_button{
+    width: 60px;
+    height: 27px;
+    background: url("../images/button_bg.png") no-repeat;
+    position: relative;
+}
+.slide_button span{
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 27px;
+    background: url("../images/slide.png") no-repeat;
+}
+.slide_button span.on{
+    left: 30px;
+}
+.slide_button span.off{
+    left: 0;
+}
+.slide_left{
+    float: left;
+}
+.slide_right{
+    float: right;
+}

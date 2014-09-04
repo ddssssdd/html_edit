@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>edZone-HOME</title>
+</head>
+
+
+<style type="text/css">
+html, body{padding:0px;margin:0px;}
+.BrowserHeader{ position:fixed;top:0px;z-index:9999999;}
+.InternalHeader{background-color:#000;color:#fff;height:40px; text-align:center; position:relative;}
+.InternalHeader .btnLeft{float:left;}
+.InternalHeader .btnLeftPosition{position:absolute;left:0px;}
+.InternalHeader .btnLeftPosition a{font:16px/40px Arial, Helvetica, sans-serif;color:#fff;text-decoration:none;display:block;padding:0px 10px;}
+.InternalHeader .btnLeftPosition a:hover{color:#97d5ff;}
+.InternalHeader .btnLeftBackPosition{position:absolute;left:10px;}
+.InternalHeader .btnLeftBackPosition a{font:16px/40px Arial, Helvetica, sans-serif;color:#fff;text-decoration:none;display:block;background:url(images/other-ico/bookshelf-arrow.png)   left 9px no-repeat;padding:0px 0px 0px 20px;}
+.InternalHeader .btnLeftBackPosition a:hover{color:#97d5ff;background:url(images/other-ico/bookshelf-arrow.png) left -130px no-repeat;}
+.InternalHeader .btnRightPosition{position:absolute;right:0px;top:0px;}
+.InternalHeader .btnRightPosition a{font:16px/40px Arial, Helvetica, sans-serif;color:#fff;text-decoration:none;display:block;padding:0px 10px;}
+.InternalHeader .btnRightPosition a:hover{color:#97d5ff;}
+.InternalHeader .btnRightPosition2{position:absolute;right:50px;top:0px;}
+.InternalHeader .btnRightPosition2 a{font:16px/40px Arial, Helvetica, sans-serif;color:#fff;text-decoration:none;display:block;padding:0px 10px;}
+.InternalHeader .btnRightPosition2 a:hover{color:#97d5ff;}
+.InternalHeader .btnRight{float:right;}
+.InternalHeader .btnLeft a{font:16px/40px Arial, Helvetica, sans-serif;color:#fff;text-decoration:none;display:block;padding:0px 10px;}
+.InternalHeader .btnLeft a:hover{color:#97d5ff;}
+.InternalHeader .btnRight a{font:16px/40px Arial, Helvetica, sans-serif;color:#fff;text-decoration:none;display:block;padding:0px 10px;}
+.InternalHeader .btnRight a:hover{color:#97d5ff;}
+.InternalHeader .btnRight input{border:0px;border-radius:4px;padding:4px 10px;font:15px Arial, Helvetica, sans-serif;width:100%;margin-top:7px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.InternalHeader .btnClose{float:right;margin:11px 5px;}
+.InternalHeader .btnClose a{ background:url(images/other-ico/close-ico.png) no-repeat;width:17px;height:17px; display:block; text-indent:-9999px;}
+.InternalHeader .btnClose a:hover{color:#97d5ff;}
+.InternalHeader .title{font:16px/40px Arial, Helvetica, sans-serif;padding:0px 30px;}
+.InternalHeader .titleFloat{ display:inline-block;font:16px/40px Arial, Helvetica, sans-serif;padding:0px 30px;}
+
+
+
+.BrowserFooter{ position:fixed;bottom:0px;z-index:9999999;}
+.InternalFooter{ background:#7d8b9a;height:45px;}
+.InternalFooter .deleteBtn{float:right;margin:10px 10px;}
+.InternalFooter .deleteBtn a{ background:url(images/other-ico/InternalFooterDelete-ico.png) no-repeat;width:18px;height:25px; display:block; text-indent:-9999px;}
+.InternalFooter .refresh{float:right;margin:11px 10px;}
+.InternalFooter .refresh a{ background:url(images/other-ico/refresh-ico.png) no-repeat;width:18px;height:22px; display:block; text-indent:-9999px;}
+.InternalFooter .previous{float:left;margin:13px 10px;}
+.InternalFooter .previous a{ background:url(images/other-ico/browserLeftArrow.png) 0px -19px no-repeat;width:15px;height:18px; display:block; text-indent:-9999px;}
+.InternalFooter .next{float:left;margin:12px 10px;}
+.InternalFooter .next a{ background:url(images/other-ico/browserRightArrow.png) 0px -19px no-repeat;width:15px;height:18px; display:block; text-indent:-9999px;}
+.InternalFooter .previousInactive{float:left;margin:13px 10px;}
+.InternalFooter .previousInactive a{ background:url(images/other-ico/browserLeftArrow.png) no-repeat;width:15px;height:18px; display:block; text-indent:-9999px;}
+.InternalFooter .nextInactive{float:left;margin:13px 10px;}
+.InternalFooter .nextInactive a{ background:url(images/other-ico/browserRightArrow.png) no-repeat;width:15px;height:18px; display:block; text-indent:-9999px;}
+.InternalFooter .assignFooter{padding:0px 15px;}
+.InternalFooter .assignFooter .leftBtn{float:left;}
+.InternalFooter .assignFooter .leftBtn a{font:17px/46px Arial, Helvetica, sans-serif;color:#fff; text-decoration:none;}
+.InternalFooter .assignFooter .leftBtn a:hover{color:#97d5ff;}
+.InternalFooter .assignFooter .nextBtn{float:right;margin:7px 0px 0px 10px;}
+.InternalFooter .assignFooter .nextBtn a{background:url(images/other-ico/assign-rightArrow.png) no-repeat; text-decoration:none; text-indent:-9999px;width:31px;height:29px; display:block}
+.InternalFooter .assignFooter .previousBtn{float:right;margin:7px 0px 0px 0px;}
+.InternalFooter .assignFooter .previousBtn a{background:url(images/other-ico/assign-leftArrow.png) no-repeat; text-decoration:none; text-indent:-9999px;width:31px;height:29px; display:block;}
+.InternalFooter .assignFooter .noSelect a{ background-position: center -132px;}
+.InternalFooter .deleteBtn{float:right;margin:10px 10px;}
+.InternalFooter .deleteBtn a{ background:url(images/other-ico/InternalFooterDelete-ico.png) no-repeat;width:18px;height:25px; display:block; text-indent:-9999px;}
+.InternalFooter .assignFooter{padding:0px 15px; text-align:center;}
+.InternalFooter .assignFooter .Loading{ display:inline-block;margin:15px 0px 0px 80px;}
+.InternalFooter .assignFooter .Loading ul li{ background:url(images/other-ico/point-ico.png) center -7px no-repeat;width:7px;height:7px; text-indent:-9999px;float:left;margin:4px;}
+.InternalFooter .assignFooter .Loading ul li.select{ background:url(images/other-ico/point-ico.png) no-repeat;width:7px;height:7px; text-indent:-9999px;float:left;margin:4px;}
+.InternalFooter .assignFooter .leftBtn{float:left;}
+.InternalFooter .assignFooter .leftBtn a{font:17px/46px Arial, Helvetica, sans-serif;color:#fff; text-decoration:none;}
+.InternalFooter .assignFooter .leftBtn a:hover{color:#97d5ff;}
+.InternalFooter .assignFooter .nextBtn{float:right;margin:7px 0px 0px 10px;}
+.InternalFooter .assignFooter .nextBtn a{background:url(images/other-ico/assign-rightArrow.png) no-repeat; text-decoration:none; text-indent:-9999px;width:31px;height:29px; display:block}
+.InternalFooter .assignFooter .previousBtn{float:right;margin:7px 0px 0px 0px;}
+.InternalFooter .assignFooter .previousBtn a{background:url(images/other-ico/assign-leftArrow.png) no-repeat; text-decoration:none; text-indent:-9999px;width:31px;height:29px; display:block;}
+.InternalFooter .assignFooter .select a{ background-position: center -132px;}
+
+
+</style>
+
+
+
+<body>
+
+<div class="BrowserHeader">
+ <div class="InternalHeader">
+  <div class="btnLeft"><a href="#">Cancel</a></div>
+  <div class="btnRight"><a href="#">Add</a></div>
+  <div class="btnClose"><a href="#">close</a></div>
+  <div class="btnRight"><a href="#">Go</a></div>
+  <div class="btnRight"><input type="text" name="textfield" id="textfield" /></div>
+  <div class="clear"></div>
+ </div>
+</div>
+
+<div class="BrowserFooter">
+ <div class="InternalFooter">
+  <div class="previous"><a href="javascript:void(0);">delete</a></div>
+  <div class="nextInactive"><a href="javascript:void(0);">delete</a></div>
+  <div class="refresh"><a href="javascript:void(0);">delete</a></div>
+  <div class="clear"></div>
+ </div>
+</div>
+
+
+</body>
+</html>

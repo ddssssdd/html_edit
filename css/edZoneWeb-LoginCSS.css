@@ -1,0 +1,68 @@
+/* CSS Document */
+
+html{background:url(../images/login-bg.jpg) top center no-repeat #a3a4d0;}
+.loginHeader{height:70px;background:#fff; box-shadow:0px 0px 14px rgba(0,0,0,0.3); overflow:hidden;}
+.loginHeader .logo{margin:18px 0px 0px 30px;float:left;}
+.loginHeader .logo a{background:url(../images/logo.png) no-repeat;width:236px;height:60px; display:block; text-indent:-9999px;}
+.loginHeader .btnBar{float:right;margin:25px 30px 0px 0px;}
+.loginHeader .btnBar ul li{float:left;font: 14px SourceSansProSemibold, Helvetica, sans-serif;margin:0px 8px 0px 0px;}
+.loginHeader .btnBar ul li a{padding:3px 20px;border-radius:4px; text-decoration:none;}
+.loginHeader .btnBar ul li:nth-child(1) a{background:#Fff;border:1px solid #d8d8d8;color:#787878;-moz-box-sizing:border-box;box-sizing:border-box;}
+.loginHeader .btnBar ul li:nth-child(2) a{background:#6666cd;border:1px solid #6666cd;color:#fff;}
+.loginBody{ text-align:center;}
+.loginBody .ico{margin:50px 0px 0px;}
+.loginBody .title{ text-align:center;color:#fff;font: 34px SourceSansProSemibold, Helvetica, sans-serif;margin:20px auto 0px; text-shadow: 0px -1px 3px rgba(0,0,0,0.5);}
+.loginBody .content{ text-align:center;color:#fff;font:23px SourceSansProRegular, Arial, Helvetica, sans-serif;width:625px;margin:20px auto 0px;text-shadow: 0px -1px 3px rgba(0,0,0,0.5);}
+
+.tooltipBody{ position:absolute;width:100%;height:100%;top:0px;background:rgba(0,0,0,0.5);}
+.tooltipBody .loginTooltip{ position:absolute;background:#f0f0f0;width:540px;height:620px;margin:-310px 0px 0px -270px;top:50%;left:50%;}
+.tooltipBody .loginTooltip .statusBar{ text-align:center; position:relative;background:#fff;height:50px;}
+.tooltipBody .loginTooltip .statusBar .title{font:19px/50px SourceSansProSemibold, Helvetica, sans-serif;color:#6d6dce;}
+.tooltipBody .loginTooltip .statusBar .leftBtn{ position:absolute;left:10px;top:0px;font:19px/50px SourceSansProRegular, Helvetica, sans-serif;}
+.tooltipBody .loginTooltip .statusBar .leftBtn a{ text-decoration:none;color:#6d6dce;}
+.tooltipBody .loginTooltip .statusBar .rightBtn{ position:absolute;right:10px;top:0px;font:19px/50px SourceSansProSemibold, Helvetica, sans-serif;}
+.tooltipBody .loginTooltip .statusBar .rightBtn a{ text-decoration:none;color:#787878;}
+.tooltipBody .loginTooltip .statusBar .BackBtn {position:absolute;left:10px;top:0px;}
+.tooltipBody .loginTooltip .statusBar .BackBtn a{ background:url(../images/other-ico/backBtn-ico.png) 0px 15px no-repeat;height:50px; display:block;font:19px/50px SourceSansProRegular, Helvetica, sans-serif; text-indent:18px;color:#6d6dce; text-decoration:none;}
+
+.tooltipBody .loginTooltip .SignUpBody{background:#fff;border:1px solid #dcdcdc;border-radius:3px;width:340px;height:183px;margin:50px auto 0px;}
+.tooltipBody .loginTooltip .SignUpBody ul li{border-bottom:1px solid #dcdcdc;height:45px;}
+.tooltipBody .loginTooltip .SignUpBody ul li:last-child{border-bottom:none;}
+.tooltipBody .loginTooltip .SignUpBody ul li div{float:left;}
+.tooltipBody .loginTooltip .SignUpBody ul li input{border:0px;width:340px;height:45px;font:15px Arial, Helvetica, sans-serif;padding:10px 6px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.tooltipBody .loginTooltip .SignUpBody ul li div input{border:0px;width:170px;height:45px;}
+.tooltipBody .loginTooltip .SignUpBody ul li:first-child input{border:0px;width:170px;height:45px;border-top-right-radius:4px;border-top-left-radius:4px;}
+.tooltipBody .loginTooltip .SignUpBody ul li:first-child div:nth-child(2) input{border-left:1px solid #dcdcdc;border-top-left-radius:0px;}
+
+.tooltipBody .loginTooltip .SignUpBody ul li:last-child{ position:relative}
+.tooltipBody .loginTooltip .SignUpBody ul li:last-child input{border-bottom-right-radius:4px;border-bottom-left-radius:4px;padding-right:25px;}
+.tooltipBody .loginTooltip .SignUpBody ul li:last-child .password-right{ position:absolute;top:16px;right:10px;}
+.tooltipBody .loginTooltip .SignUpBody ul li:last-child .password-wrong{ position:absolute;top:19px;right:13px;}
+
+
+.tooltipBody .loginTooltip .LoginBody{width:340px;margin:40px auto 0px; text-align:center;}
+.tooltipBody .loginTooltip .LoginBody ul li{margin:8px 0px;}
+.tooltipBody .loginTooltip .LoginBody ul li:nth-child(1){}
+.tooltipBody .loginTooltip .LoginBody ul li:nth-child(1) a{background:#e1422e;width:340px;height:40px;color:#fff;text-decoration:none;display:block;font:16px/40px SourceSansProSemibold, Arial, Helvetica, sans-serif;border-radius:6px;}
+.tooltipBody .loginTooltip .LoginBody ul li:nth-child(2){background:url(../images/loginLine.jpg) center center repeat-x;}
+.tooltipBody .loginTooltip .LoginBody ul li:nth-child(2) .or{background:#f0f0f0;color:#555555;width:50px;margin:0px auto;font:17px SourceSansProRegular, Arial, Helvetica, sans-serif;}
+.tooltipBody .loginTooltip .LoginBody ul li:nth-child(3){border:1px solid #dcdcdc;background:#fff;border-radius:5px;}
+.tooltipBody .loginTooltip .LoginBody ul li:nth-child(3) ul li{margin:0px;border-bottom:1px solid #dcdcdc;}
+.tooltipBody .loginTooltip .LoginBody ul li:nth-child(3) ul li:last-child{margin:0px;border-bottom:none;}
+.tooltipBody .loginTooltip .LoginBody ul li:nth-child(3) ul li input{border:0px;width:338px;height:45px;font:15px Arial, Helvetica, sans-serif;padding:10px 6px;-moz-box-sizing:border-box;box-sizing:border-box;background:#fff;border-radius:10px; outline:none;}
+.tooltipBody .loginTooltip .LoginBody ul li:nth-child(4) a{width:340px;height:45px;font:17px/45px SourceSansProSemibold, Arial, Helvetica, sans-serif;-moz-box-sizing:border-box;box-sizing:border-box;background:#fff;border-radius:5px; display:block; text-decoration:none;color:#c8c8c8;border:1px solid #dcdcdc;}
+.tooltipBody .loginTooltip .LoginBody ul li.select a{width:340px;height:45px;font:17px/45px SourceSansProSemibold, Arial, Helvetica, sans-serif;-moz-box-sizing:border-box;box-sizing:border-box;background:#fff;border-radius:5px; display:block; text-decoration:none;color:#555555;border:1px solid #dcdcdc;}
+.tooltipBody .loginTooltip .LoginBody ul li:nth-child(5) a{color:#6666cc;font:17px/30px SourceSansProRegular, Arial, Helvetica, sans-serif; text-decoration:none;}
+
+.tooltipBody .loginTooltip .PasswordBody{margin:30px auto;width:480px;}
+.tooltipBody .loginTooltip .PasswordBody input{border:0px;width:480px;height:45px;font:15px Arial, Helvetica, sans-serif;padding:10px 6px;-moz-box-sizing:border-box;box-sizing:border-box;border:1px solid #dcdcdc;background:#fff;border-radius:5px;}
+
+
+
+
+
+
+
+
+
+

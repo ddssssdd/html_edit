@@ -1,0 +1,533 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>edZone-HOME</title>
+<link href="css/edZoneWeb-CSS.css" rel="stylesheet" type="text/css" />
+<link href="css/edZoneWeb-popupCSS.css" rel="stylesheet" type="text/css" />
+<link href="css/edZoneWeb-Dropdown.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="js/jquery.dd.js" type="text/javascript"></script>
+<script src="js/checkbox.js" type="text/javascript"></script>
+<script src="js/radioBtn.js" type="text/javascript"></script>
+<script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<div class="blackWrap">
+ <div class="mainWrap">
+  <div class="popupWrapStyle2">
+   <div class="popupHeader">
+    <div class="btnLeft"><a href="#">Back</a></div>
+    <div class="clear"></div>
+   </div>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+    <div class="statusBar1">
+     <div class="searchBar"><input type="text" name="textfield" id="textfield" value="Search" /></div>
+     <div class="details"><a href="#">Show Details</a></div>
+     <div class="sortDropdown"><a href="#">SearchSort</a>
+     
+      <div class="sortOptionsTooltip">
+       <div class="arrow"><img src="images/selectArrow4.png" width="15" height="12" /></div>
+       <div class="body">
+        <ul>
+         <li>
+          <input type="radio" name="radio" id="radio" value="radio" />
+          <label for="radio" class="radioNoselect" id="sortOption1" onclick="sortOptionRadio(1)">Title, A-Z</label></li>
+         <li>
+          <input type="radio" name="radio" id="radio" value="radio" />
+          <label for="radio" class="radioNoselect" id="sortOption2" onclick="sortOptionRadio(2)">Title, Z-A</label></li>
+         <li>
+          <input type="radio" name="radio" id="radio" value="radio" />
+          <label for="radio" class="radioNoselect" id="sortOption3" onclick="sortOptionRadio(3)">Type</label></li>
+         <li>
+          <input type="radio" name="radio" id="radio" value="radio" />
+          <label for="radio" class="radioNoselect" id="sortOption4" onclick="sortOptionRadio(4)">Color</label></li>
+         <li>
+          <input type="radio" name="radio" id="radio" value="radio" />
+          <label for="radio" class="radioNoselect" id="sortOption5" onclick="sortOptionRadio(5)">Tag</label></li>
+        </ul>
+       </div>
+      </div>
+     
+     </div>
+     <div class="clear"></div>
+    </div>
+    
+    
+    
+    
+    <div class="infoModifyTooltip">
+     <div class="modifyColorTooltip">
+      <ul>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li class="clear"></li>
+      </ul>
+      <ul>
+       <img src="images/selectArrow5.png" width="12" height="15" />
+      </ul>
+      <ul class="clear">
+      </ul>
+     </div>
+     <div class="body ScrollBAR">
+      <div class="menuBar">
+       <div class="rightLink">Tyu</div>
+       <div class="clear"></div>
+      </div>
+      <div class="titleName">OPTIONS</div>
+      <div class="optionsList">
+       <ul>
+        <li><a href="#">Edit</a></li>
+        <li><a href="#">Share</a></li>
+        <li><a href="#">Move to</a></li>
+        <li><a href="#">Delete</a></li>
+       </ul>
+      </div>
+      <div class="titleName">DETAILS</div>
+      <div class="detailsList">
+       <ul>
+        <li>
+         <div class="title">Title</div>
+         <div class="content">Rty</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="title">Type</div>
+         <div class="content">Folder</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="title">Common Core</div>
+         <div class="content"></div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="title">Tags</div>
+         <div class="content">tyugh, yui, rty</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="title">Color</div>
+         <div class="content"><a href="javascript:void(0);">Change Arrow Color</a></div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="title">Shared EdZone Community</div>
+         <div class="content">No</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="title">Owner</div>
+         <div class="content">song tom</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="title">Pub date</div>
+         <div class="content">01-27-14 23:51:44</div>
+         <div class="clear"></div>
+        </li>
+       </ul>
+      </div>
+     </div>
+     <div class="arrow"><img src="images/selectArrow5.png" width="12" height="15" /></div>
+     <div class="clear"></div>
+    </div>
+    
+    
+    
+    
+    <!--div class="bookshelfShareTooltip">
+     <div class="body">
+      <div class="topBar">
+       <div class="backBtn"><a href="#">Back</a></div>
+       <div class="rightBtn"><a href="#">Done</a></div>
+       <div class="textTitle">Share</div>
+      </div>
+      <div class="ShareList ScrollBAR">
+       <ul>
+        <li><a href="#">Classes</a></li>
+        <li><a href="#">Students</a></li>
+        <li><a href="#">Flags</a></li>
+       </ul>
+      </div>
+      <div class="ShareListClass ScrollBAR">
+       <ul>
+        <li>
+         <input type="checkbox" name="checkbox1" id="checkbox1" />
+         <label for="checkbox1" class="CBnoselect" id="checkBox21" onclick="checkBOX2(1)">Ratty I</label>
+        </li>
+        <li>
+         <input type="checkbox" name="checkbox2" id="checkbox2" />
+         <label for="checkbox2" class="CBnoselect" id="checkBox22" onclick="checkBOX2(2)">Computer</label>
+        </li>
+        <li>
+         <input type="checkbox" name="checkbox3" id="checkbox3" />
+         <label for="checkbox3" class="CBnoselect" id="checkBox23" onclick="checkBOX2(3)">Violin</label>
+        </li>
+       </ul>
+      </div>
+      <div class="ShareListStudent ScrollBAR">
+       <ul>
+        <li>
+         <div class="userFace"><img src="images/face-ico-ss.png" width="33" height="33" /></div>
+         <div class="checkbox">
+          <input type="checkbox" name="checkbox1" id="checkbox1" />
+          <label for="checkbox1" class="CBnoselect" id="checkBox21" onclick="checkBOX2(1)"><span class="name">Lei Zhang</span><br />
+           <span class="email">zhanglei5945@gmail.com</span></label>
+         </div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="userFace"><img src="images/face-ico-ss.png" width="33" height="33" /></div>
+         <div class="checkbox">
+          <input type="checkbox" name="checkbox2" id="checkbox2" />
+          <label for="checkbox2" class="CBnoselect" id="checkBox22" onclick="checkBOX2(2)"><span class="name">Lei Zhang</span><br />
+           <span class="email">zhanglei5945@gmail.com</span></label>
+         </div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="userFace"><img src="images/face-ico-ss.png" width="33" height="33" /></div>
+         <div class="checkbox">
+          <input type="checkbox" name="checkbox3" id="checkbox3" />
+          <label for="checkbox3" class="CBnoselect" id="checkBox23" onclick="checkBOX2(3)"><span class="name">Lei Zhang</span><br />
+           <span class="email">zhanglei5945@gmail.com</span></label>
+         </div>
+         <div class="clear"></div>
+        </li>
+       </ul>
+      </div>
+      <div class="ShareListFlag ScrollBAR">
+       <ul>
+        <li>
+         <div class="userFace"><img src="images/temporary/flag-3.png" width="33" height="33" /></div>
+         <div class="checkbox">
+          <input type="checkbox" name="checkbox1" id="checkbox1" />
+          <label for="checkbox1" class="CBnoselect" id="checkBox21" onclick="checkBOX2(1)">Qew</label>
+         </div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="userFace"><img src="images/temporary/flag-3.png" width="33" height="33" /></div>
+         <div class="checkbox">
+          <input type="checkbox" name="checkbox2" id="checkbox2" />
+          <label for="checkbox2" class="CBnoselect" id="checkBox22" onclick="checkBOX2(2)">Qew</label>
+         </div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="userFace"><img src="images/temporary/flag-3.png" width="33" height="33" /></div>
+         <div class="checkbox">
+          <input type="checkbox" name="checkbox3" id="checkbox3" />
+          <label for="checkbox3" class="CBnoselect" id="checkBox23" onclick="checkBOX2(3)">Qew</label>
+         </div>
+         <div class="clear"></div>
+        </li>
+       </ul>
+      </div>
+     </div>
+     <div class="arrow"><img src="images/selectArrow5.png" width="12" height="15" /></div>
+     <div class="clear"></div>
+    </div-->
+    
+    
+    
+    
+    <!--div class="bookshelfMoveTooltip">
+     <div class="body">
+      <div class="topBar">
+       <div class="backBtn"><a href="#">Back</a></div>
+       <div class="rightTextBtn"><a href="#">Select</a></div>
+       <div class="textTitle">Root</div>
+      </div>
+      <div class="folderList ScrollBAR">
+       <ul>
+        <li><a href="#">Classes</a></li>
+        <li><a href="#">Students</a></li>
+        <li><a href="#">Flags</a></li>
+       </ul>
+      </div>
+     </div>
+     <div class="arrow"><img src="images/selectArrow5.png" width="12" height="15" /></div>
+     <div class="clear"></div>
+    </div-->
+    
+    
+    
+    
+    
+    
+    
+    <div class="bookshelfContentList ScrollBAR">
+     <ul>
+      <li class="tags">
+       <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+       <div class="tagsName">Rty</div>
+       <div class="tagsNum">3</div>
+       <div class="clear"></div>
+       
+       <ul>
+        <li>
+         <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+         <div class="folderIco"><img src="images/other-ico/folder-ico.png" width="30" height="26" /><div class="bookshelfNum">123</div></div>
+         <div class="folderTitle">
+          <h1>Rty</h1>
+          <h2>Tyui</h2>
+         </div>
+         <div class="clear"></div>
+         <div class="infoBtn"><a href="#">information</a></div>
+         
+        </li>
+                
+        <li>
+         <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+         <div class="folderIco"><img src="images/other-ico/webLink-ico.png" width="32" height="30" /><div class="bookshelfNum">123</div></div>
+         <div class="folderTitle">
+          <h1>Google</h1>
+          <h2>http://www.google.com.hk/</h2>
+         </div>
+         <div class="clear"></div>
+         <div class="infoBtn"><a href="#">information</a></div>
+        </li>
+        
+        <li>
+         <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+         <div class="folderIco"><img src="images/other-ico/book-ico.png" width="30" height="29" /><div class="bookshelfNum">123</div></div>
+         <div class="folderTitle">
+          <h1>Google</h1>
+          <h2>http://www.google.com.hk/</h2>
+         </div>
+         <div class="clear"></div>
+         <div class="infoBtn"><a href="#">information</a></div>
+        </li>
+        
+       </ul>
+      </li>
+      
+      <li class="folder">
+       <span>
+       <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+       <div class="folderIco"><img src="images/other-ico/folder-ico.png" width="30" height="26" /><div class="bookshelfNum">123</div></div>
+       <div class="folderTitle">
+        <h1>Google</h1>
+        <h2>http://www.google.com.hk/</h2>
+       </div>
+       <div class="clear"></div>
+       <div class="infoBtn"><a href="#">information</a></div>
+       </span>
+       
+        
+       <ul>
+        <li class="folder">
+         
+         <span>
+         <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+         <div class="folderIco"><img src="images/other-ico/folder-ico.png" width="30" height="26" /><div class="bookshelfNum">123</div></div>
+         <div class="folderTitle">
+          <h1>Google</h1>
+          <h2>http://www.google.com.hk/</h2>
+         </div>
+         <div class="clear"></div>
+         <div class="infoBtn"><a href="#">information</a></div>
+         </span>
+         
+         <ul>
+          <li class="folder">
+           
+           <span>
+           <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+           <div class="folderIco"><img src="images/other-ico/folder-ico.png" width="30" height="26" /><div class="bookshelfNum">123</div></div>
+           <div class="folderTitle">
+            <h1>Google</h1>
+            <h2>http://www.google.com.hk/</h2>
+           </div>
+           <div class="clear"></div>
+           <div class="infoBtn"><a href="#">information</a></div>
+           </span>
+           
+          </li>
+          
+          <li class="folder">
+           
+           <span>
+           <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+           <div class="folderIco"><img src="images/other-ico/folder-ico.png" width="30" height="26" /><div class="bookshelfNum">123</div></div>
+           <div class="folderTitle">
+            <h1>Google</h1>
+            <h2>http://www.google.com.hk/</h2>
+           </div>
+           <div class="clear"></div>
+           <div class="infoBtn"><a href="#">information</a></div>
+           </span>
+           
+          </li>
+          
+         </ul>
+         
+        </li>
+       </ul>
+       
+      </li>
+      
+      <li class="folder">
+       <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+        <div class="folderIco"><img src="images/other-ico/webLink-ico.png" width="32" height="30" /><div class="bookshelfNum">123</div></div>
+        <div class="folderTitle">
+         <h1>Google</h1>
+         <h2>http://www.google.com.hk/</h2>
+        </div>
+        <div class="clear"></div>
+        <div class="infoBtn"><a href="#">information</a></div>
+       </li>
+       
+       <li class="folder">
+       <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+        <div class="folderIco"><img src="images/other-ico/mp3-ico.png" width="30" height="22" /><div class="bookshelfNum">123</div></div>
+        <div class="folderTitle">
+         <h1>Google</h1>
+         <h2>http://www.google.com.hk/</h2>
+        </div>
+        <div class="clear"></div>
+        <div class="infoBtn"><a href="#">information</a></div>
+       </li>
+       
+      <li class="folder">
+       <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+        <div class="folderIco"><img src="images/other-ico/folder2-ico.png" width="30" height="27" /><div class="bookshelfNum">123</div></div>
+        <div class="folderTitle">
+         <h1>Google</h1>
+         <h2>http://www.google.com.hk/</h2>
+        </div>
+        <div class="clear"></div>
+        <div class="infoBtn"><a href="#">information</a></div>
+      </li>
+      
+      <li class="folder details">
+       <div class="folderIco"><img src="images/other-ico/folder2-ico.png" width="30" height="27" /><div class="bookshelfNum">123</div></div>
+       <div class="folderTitle">
+        <h1>Google</h1>
+        <h2>http://www.google.com.hk/</h2>
+       </div>
+       <div class="clear"></div>
+       
+       <div class="detailsList">
+        <ul>
+         <li>By song tom on 02-10-14 18:36:48</li>
+         <li>Readability:K - K Low</li>
+         <li>Common Core: L. 1.1</li>
+        </ul>
+       </div>
+       
+       <div class="infoBtn"><a href="#">information</a></div>
+       
+       <ul>
+        <li class="folder details">
+         <div class="folderIco"><img src="images/other-ico/folder2-ico.png" width="30" height="27" /><div class="bookshelfNum">123</div></div>
+         <div class="folderTitle">
+          <h1>Google</h1>
+          <h2>http://www.google.com.hk/</h2>
+         </div>
+         <div class="clear"></div>
+       
+         <div class="detailsList">
+          <ul>
+           <li>By song tom on 02-10-14 18:36:48</li>
+           <li>Readability:K - K Low</li>
+           <li>Common Core: L. 1.1</li>
+          </ul>
+         </div>
+         <div class="infoBtn"><a href="#">information</a></div>
+        </li>
+        
+        
+        <li class="folder details">
+         <div class="folderIco"><img src="images/other-ico/folder2-ico.png" width="30" height="27" /><div class="bookshelfNum">123</div></div>
+         <div class="folderTitle">
+          <h1>Google</h1>
+          <h2>http://www.google.com.hk/</h2>
+         </div>
+         <div class="clear"></div>
+       
+         <div class="detailsList">
+          <ul>
+           <li>By song tom on 02-10-14 18:36:48</li>
+           <li>Readability:K - K Low</li>
+           <li>Common Core: L. 1.1</li>
+          </ul>
+         </div>
+         <div class="infoBtn"><a href="#">information</a></div>
+        </li>
+        
+        
+        <li class="folder details">
+         <div class="folderIco"><img src="images/other-ico/folder2-ico.png" width="30" height="27" /><div class="bookshelfNum">123</div></div>
+         <div class="folderTitle">
+          <h1>Google</h1>
+          <h2>http://www.google.com.hk/</h2>
+         </div>
+         <div class="clear"></div>
+       
+         <div class="detailsList">
+          <ul>
+           <li>By song tom on 02-10-14 18:36:48</li>
+           <li>Readability:K - K Low</li>
+           <li>Common Core: L. 1.1</li>
+          </ul>
+         </div>
+         <div class="infoBtn"><a href="#">information</a></div>
+        </li>
+        
+        
+        
+       </ul>
+       
+      </li>
+      
+     </ul>
+    </div> 
+      
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+  </div>
+ </div>
+</div>
+
+<script src="js/scrollbar.js" type="text/javascript"></script>
+<script src="js/jquery.select.js" type="text/javascript"></script>
+</body>
+</html>

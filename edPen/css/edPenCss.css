@@ -1,0 +1,546 @@
+/* CSS Document */
+
+@font-face {
+    font-family: 'ChollaSansBoldBold';
+    src: url('font/chollsanbol-071211005EmigreWebOnly.eot');
+    src: url('font/chollsanbol-071211005EmigreWebOnly.eot?#iefix') format('embedded-opentype'),
+         url('font/chollsanbol-071211005EmigreWebOnly.woff') format('woff');
+    font-weight: normal; te
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'ChollaSansRegularMedium';
+    src: url('font/chollsanreg-071211005EmigreWebOnly.eot');
+    src: url('font/chollsanreg-071211005EmigreWebOnly.eot?#iefix') format('embedded-opentype'),
+url('font/chollsanreg-071211005EmigreWebOnly.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: SourceSansProRegular;
+    src: url('font/SourceSansPro-Regular.eot');
+    src: url('font/SourceSansPro-Regular.eot?#iefix') format('embedded-opentype'),
+         url('font/SourceSansPro-Regular.woff') format('woff'),
+         url('font/SourceSansPro-Regular.ttf') format('truetype'),
+         url('font/SourceSansPro-Regular.svg#NeuesBauenDemo') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: SourceSansProSemibold;
+    src: url('font/SourceSansPro-Semibold.eot');
+    src: url('font/SourceSansPro-Semibold.eot?#iefix') format('embedded-opentype'),
+         url('font/SourceSansPro-Semibold.woff') format('woff'),
+         url('font/SourceSansPro-Semibold.ttf') format('truetype'),
+         url('font/SourceSansPro-Semibold.svg#NeuesBauenDemo') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+html, body, div, p, ul, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, form, input, select, button, textarea, iframe, table, th, td { margin: 0; padding: 0; }
+img { border: 0 none; vertical-align: top; }
+ul, li { list-style-type: none; }
+
+html{background:#FFF;height:100%;-webkit-text-size-adjust: none;}
+body, input, select, button, textarea { font-size: 12px; font-family: SourceSansProRegular, Tahoma, Geneva, sans-serif; }
+body{-webkit-text-size-adjust:none;height:inherit!important;height:100%;}
+button { cursor: pointer; }
+i, em, cite { font-style: normal; }
+body {color: #333;}
+a, a:link { text-decoration: none; }
+a:visited {}
+p{}
+a:active, a:hover {text-decoration: underline; }
+a:focus { outline: none; }
+.clear { diplay: block!important; float: none!important; clear: both; overflow: hidden; width: auto!important; height: 0!important; margin: 0 auto!important; padding: 0!important; font-size: 0; line-height: 0;border:0px!important;}
+.Reserved { height:50px;}
+
+header{height:44px;background:#f5f5f5;border-bottom:1px solid #b2b2b2; position:relative; text-align:center;z-index:9997;}
+header .leftBtn{ position:absolute;left:15px;}
+header .leftBtn a{color:#6666cc;font:17px/44px SourceSansProRegular, Arial, Helvetica, sans-serif; text-decoration:none;}
+header .leftBtn a:hover{color:#09F;}
+header .rightBtn{ position:absolute;right:15px;top:7px;}
+header .rightBtn a{ background:url(../images/edPen/headerNav/export.png) no-repeat;width:19px;height:27px;display:block;text-indent:-9999px;}
+header .exportTooltipBtn{ position:absolute;right:7px;top:37px;}
+header .exportTooltipBtn .arrow{ text-align:right;margin:0px 10px 0px 0px;}
+header .exportTooltipBtn .body{background:#fff; box-shadow:0px 0px 3px rgba(0,0,0,0.3);width:120px; text-align:center;border-radius:6px;}
+header .exportTooltipBtn .body a{color:#09F;font:17px/30px SourceSansProRegular, Arial, Helvetica, sans-serif; text-decoration:none;}
+header .exportTooltipBtn .body a:hover{color:#333;}
+
+header .navBar{ display:inline-block;}
+header .navBar ul li{ float:left;margin:0px 12px; po}
+header .navBar ul li.help a{color:#6666cc;font:17px/44px SourceSansProRegular, Arial, Helvetica, sans-serif; text-decoration:none;}
+header .navBar ul li.help a:hover{color:#09F;}
+header .navBar ul li.edit a{margin-top:7px;background:url(../images/edPen/headerNav/edit.png) center center no-repeat;width:30px;height:30px;display:block;text-indent:-9999px;}
+header .navBar ul li.annotations{ position:relative;}
+header .navBar ul li.annotations a{margin-top:7px;background:url(../images/edPen/headerNav/Annotations.png) center center no-repeat;width:30px;height:30px;display:block;text-indent:-9999px;}
+header .navBar ul li.bright a{margin-top:7px;background:url(../images/edPen/headerNav/Bright.png) center center no-repeat;width:30px;height:30px;display:block;text-indent:-9999px;}
+header .navBar ul li.empty a{margin-top:7px;display:block;text-indent:-9999px; background:url(../images/edPen/headerNav/clear.png) center center no-repeat;width:30px;height:30px;}
+
+header .navBar ul li.editSelect a{border-radius:4px;margin-top:7px;background:url(../images/edPen/headerNav/editSelect.png) center center no-repeat #6666cc;width:31px;height:30px;display:block;text-indent:-9999px;}
+header .navBar ul li.annotationsSelect a{border-radius:4px;margin-top:7px;background:url(../images/edPen/headerNav/AnnotationsSelect.png) center center no-repeat;width:30px;height:30px;display:block;text-indent:-9999px;}
+header .navBar ul li.brightSelect a{border-radius:4px;margin-top:7px;background:url(../images/edPen/headerNav/BrightSelect.png) center center no-repeat;width:30px;height:30px;display:block;text-indent:-9999px;}
+header .navBar ul li.emptySelect a{border-radius:4px;margin-top:7px;display:block;text-indent:-9999px; background:url(../images/edPen/headerNav/clearSelect.png) center center no-repeat;width:30px;height:30px;}
+
+header .annotationsTooltip{position:absolute;left:-144px;top:32px;}
+header .annotationsTooltip .arrow{z-index:100; position:relative;}
+header .annotationsTooltip .annotationsBody{box-shadow:0px 0px 3px rgba(0,0,0,0.3);width:320px;border-radius:8px;height:360px;overflow:hidden; position:relative;z-index:90;}
+header .annotationsTooltip .annotationsBody header{background:#fff;border-bottom:1px solid #eee;text-align:center;font:20px/45px SourceSansProSemibold, Arial, Helvetica, sans-serif;}
+header .annotationsTooltip .annotationsBody footer{ position:absolute;bottom:0px;background:#fff;border-top:1px solid #eee;text-align:center;font:15px/45px SourceSansProRegular, Arial, Helvetica, sans-serif;width:100%;}
+header .annotationsTooltip .annotationsBody footer a{background:none!important;width:inherit!important;height:inherit!important; text-indent:0px!important; display:inherit!important;margin:0px!important;color:#6666cc; text-decoration:none;}
+header .annotationsTooltip .annotationsBody footer a:hover{color:#09F;}
+
+header .annotationsTooltip .annotationsBody .body{height:269px;}
+header .annotationsTooltip .annotationsBody .body .pageTitle{padding:5px 8px;text-align:left;font:bold 14px Arial, Helvetica, sans-serif;-moz-box-sizing:border-box;box-sizing:border-box;}
+header .annotationsTooltip .annotationsBody .body .list{height:243px; overflow:hidden;}
+header .annotationsTooltip .annotationsBody .body .list ul li{float:none!important;margin:0px 7px; position:relative;}
+header .annotationsTooltip .annotationsBody .body .annotationsIco{float:left;}
+header .annotationsTooltip .annotationsBody .body .annotationsIco img{width:34px;margin:6px 3px;}
+header .annotationsTooltip .annotationsBody .body .annotationsContent{float:left;text-align:left;border-bottom:1px solid #d8d8e0;padding:6px 0px;width:266px;}
+header .annotationsTooltip .annotationsBody .body .annotationsTitle{color:#000000;font:16px Arial, Helvetica, sans-serif;}
+header .annotationsTooltip .annotationsBody .body .annotationsRecord{color:#555555;font:13px/15px Arial, Helvetica, sans-serif;}
+header .annotationsTooltip .annotationsBody .body .deleteBtn{ position:absolute;right:10px;top:5px;}
+header .annotationsTooltip .annotationsBody .body .deleteBtn a{background:url(../images/other-ico/folderDelete.png) no-repeat;width:22px;height:22px;}
+
+
+.leftNavBar{ position:absolute;width:44px;background:#f8f8f8;border:1px solid #d1d1d1;top:100px;left:20px; box-shadow:0px 0px 4px rgba(0,0,0,0.1);z-index:9997;}
+.leftNavBar ul li{margin:9px 5px; position:relative;}
+.leftNavBar ul li a{ text-indent:-9999px;width:34px;height:34px; display:block;background-size:100%!important;}
+.leftNavBar ul li.freeTextBtn a{ background:url(../images/edPen/leftNavBar/textBtn.png) no-repeat;}
+.leftNavBar ul li.freeTextSelectBtn a{ background:url(../images/edPen/leftNavBar/textSelectBtn.png) no-repeat;}
+.leftNavBar ul li.SignatureBtn a{ background:url(../images/edPen/leftNavBar/SignatureBtn.png) no-repeat;}
+.leftNavBar ul li.SignatureSelectBtn a{ background:url(../images/edPen/leftNavBar/SignatureSelectBtn.png) no-repeat;}
+
+.leftNavBar ul li.pencilBtn a{ background:url(../images/edPen/leftNavBar/pencalBtn.png) no-repeat;}
+.leftNavBar ul li.pencilSelectBtn a{ background:url(../images/edPen/leftNavBar/pencalSelectBtn.png) no-repeat;}
+.leftNavBar ul li.brushBtn a{ background:url(../images/edPen/leftNavBar/brushBtn.png) no-repeat;}
+.leftNavBar ul li.brushSelectBtn a{ background:url(../images/edPen/leftNavBar/brushSelectBtn.png) no-repeat;}
+
+.leftNavBar ul li.SquareBtn a{ background:url(../images/edPen/leftNavBar/SquareBtn.png) no-repeat;}
+.leftNavBar ul li.SquareSelectBtn a{ background:url(../images/edPen/leftNavBar/SquareSelectBtn.png) no-repeat;}
+.leftNavBar ul li.CircleBtn a{ background:url(../images/edPen/leftNavBar/CircleBtn.png) no-repeat;}
+.leftNavBar ul li.CircleSelectBtn a{ background:url(../images/edPen/leftNavBar/CircleSelectBtn.png) no-repeat;}
+.leftNavBar ul li.LiceBtn a{ background:url(../images/edPen/leftNavBar/LiceBtn.png) no-repeat;}
+.leftNavBar ul li.LiceSelectBtn a{ background:url(../images/edPen/leftNavBar/LiceSelectBtn.png) no-repeat;}
+.leftNavBar ul li.PolygonBtn a{ background:url(../images/edPen/leftNavBar/PolygonBtn.png) no-repeat;}
+.leftNavBar ul li.PolygonSelectBtn a{ background:url(../images/edPen/leftNavBar/PolygonSelectBtn.png) no-repeat;}
+.leftNavBar ul li.PolyLineBtn a{ background:url(../images/edPen/leftNavBar/PolyLineBtn.png) no-repeat;}
+.leftNavBar ul li.PolyLineSelectBtn a{ background:url(../images/edPen/leftNavBar/PolyLineSelectBtn.png) no-repeat;}
+
+.leftNavBar ul li.importImageBtn a{ background:url(../images/edPen/leftNavBar/ImportImageBtn.png) no-repeat;}
+.leftNavBar ul li.importImageSelectBtn a{ background:url(../images/edPen/leftNavBar/ImportImageSelectBtn.png) no-repeat;}
+.leftNavBar ul li.stampsBtn a{ background:url(../images/edPen/leftNavBar/StampsBtn.png) no-repeat;}
+.leftNavBar ul li.stampsSelectBtn a{ background:url(../images/edPen/leftNavBar/StampsSelectBtn.png) no-repeat;}
+
+.leftNavBar ul li.eraserBtn a{ background:url(../images/edPen/leftNavBar/eraserBtn.png) no-repeat;}
+.leftNavBar ul li.eraserSelectBtn a{ background:url(../images/edPen/leftNavBar/eraserSelectBtn.png) no-repeat;}
+.leftNavBar ul li.selectionBtn a{ background:url(../images/edPen/leftNavBar/shapeBtn.png) no-repeat;}
+.leftNavBar ul li.selectionSelectBtn a{ background:url(../images/edPen/leftNavBar/shapeSelectBtn.png) no-repeat;}
+.leftNavBar ul li.colorSelect{width:34px;height:34px;}
+.leftNavBar ul li.colorSelect a{ background:url(../images/edPen/leftNavBar/colorSelect.png) no-repeat;}
+.leftNavBar ul li.undoBtn a{ background:url(../images/edPen/leftNavBar/forwardBtn.png) no-repeat;}
+.leftNavBar ul li.undoDisableBtn a{ background:url(../images/edPen/leftNavBar/forwardBtnDisable.png) no-repeat;}
+.leftNavBar ul li.redoBtn a{ background:url(../images/edPen/leftNavBar/backwardBtn.png) no-repeat;}
+.leftNavBar ul li.redoDisableBtn a{ background:url(../images/edPen/leftNavBar/backwardBtnDisable.png) no-repeat;}
+.leftNavBar ul li.closeBtn a{ background:url(../images/edPen/leftNavBar/stopEditBtn.png) no-repeat;}
+.leftNavBar ul li.moveBtn{margin:0px;}
+.leftNavBar ul li.moveBtn a{ background:url(../images/edPen/leftNavBar/moveBtn.png) no-repeat;width:44px;height:30px;}
+.leftNavBar ul li.moveBtn a:active{ background:url(../images/edPen/leftNavBar/moveClickBtn.png) no-repeat;width:44px;height:30px;}
+
+.leftNavBar ul li div{position:absolute;top:0px;left:50px;}
+.leftNavBar ul li div ul li{float:left;margin:0px; position:inherit!important;background:#2a2a2a;border-right:1px solid #999;}
+.leftNavBar ul li div ul li a{width:36px;height:36px;display:block;text-indent:-9999px;}
+.leftNavBar ul li div ul li:nth-child(1){ background:url(../images/edPen/menuTooltip/arrow.png) no-repeat;height:36px;width:21px; background-size:100%;border:0px;}
+.leftNavBar ul li div ul li:nth-last-child(2){padding:0px 5px 0px 0px;border-top-right-radius:6px;border-bottom-right-radius:8px;border:0px;}
+
+.leftNavBar ul li .textMenuTooltip{width:100px; z-index:10;}
+.leftNavBar ul li .textMenuTooltip ul li:nth-child(2) a{ background:url(../images/edPen/menuTooltip/textBtn.png) no-repeat;}
+.leftNavBar ul li .textMenuTooltip ul li:nth-child(2) a:hover{ background:url(../images/edPen/menuTooltip/textBtnHover.png) no-repeat;}
+.leftNavBar ul li .textMenuTooltip ul li:nth-child(3) a{ background:url(../images/edPen/menuTooltip/SignatureBtn.png) no-repeat;}
+.leftNavBar ul li .textMenuTooltip ul li:nth-child(3) a:hover{ background:url(../images/edPen/menuTooltip/SignatureBtnHover.png) no-repeat;}
+.leftNavBar ul li .shapeMenuTooltip{width:210px;}
+.leftNavBar ul li .shapeMenuTooltip ul li:nth-child(2) a{ background:url(../images/edPen/menuTooltip/SquareBtn.png) no-repeat;}
+.leftNavBar ul li .shapeMenuTooltip ul li:nth-child(2) a:hover{ background:url(../images/edPen/menuTooltip/SquareBtnHover.png) no-repeat;}
+.leftNavBar ul li .shapeMenuTooltip ul li:nth-child(3) a{ background:url(../images/edPen/menuTooltip/CircleBtn.png) no-repeat;}
+.leftNavBar ul li .shapeMenuTooltip ul li:nth-child(3) a:hover{ background:url(../images/edPen/menuTooltip/CircleBtnHover.png) no-repeat;}
+.leftNavBar ul li .shapeMenuTooltip ul li:nth-child(4) a{ background:url(../images/edPen/menuTooltip/LiceBtn.png) no-repeat;}
+.leftNavBar ul li .shapeMenuTooltip ul li:nth-child(4) a:hover{ background:url(../images/edPen/menuTooltip/LiceBtnHover.png) no-repeat;}
+.leftNavBar ul li .shapeMenuTooltip ul li:nth-child(5) a{ background:url(../images/edPen/menuTooltip/PolygonBtn.png) no-repeat;}
+.leftNavBar ul li .shapeMenuTooltip ul li:nth-child(5) a:hover{ background:url(../images/edPen/menuTooltip/PolygonBtnHover.png) no-repeat;}
+.leftNavBar ul li .shapeMenuTooltip ul li:nth-child(6) a{ background:url(../images/edPen/menuTooltip/PolyLineBtn.png) no-repeat;}
+.leftNavBar ul li .shapeMenuTooltip ul li:nth-child(6) a:hover{ background:url(../images/edPen/menuTooltip/PolyLineBtnHover.png) no-repeat;}
+.leftNavBar ul li .imageMenuTooltip{width:100px;}
+.leftNavBar ul li .imageMenuTooltip ul li:nth-child(2) a{ background:url(../images/edPen/menuTooltip/ImportImageBtn.png) no-repeat;}
+.leftNavBar ul li .imageMenuTooltip ul li:nth-child(2) a:hover{ background:url(../images/edPen/menuTooltip/ImportImageBtnHover.png) no-repeat;}
+.leftNavBar ul li .imageMenuTooltip ul li:nth-child(3) a{ background:url(../images/edPen/menuTooltip/StampsBtn.png) no-repeat;}
+.leftNavBar ul li .imageMenuTooltip ul li:nth-child(3) a:hover{ background:url(../images/edPen/menuTooltip/StampsBtnHover.png) no-repeat;}
+
+.leftNavBar ul li .menuListTooltip{ position:absolute;width:221px;left:40px;top:-15px}
+.leftNavBar ul li .menuListTooltip ul li{background:none!important;border:none;}
+.leftNavBar ul li .menuListTooltip ul li a{ background:none!important;}
+.leftNavBar ul li .menuListTooltip ul li:nth-child(1){ background:none!important;}
+.leftNavBar ul li .menuListTooltip ul li:nth-last-child(2){ background:none!important;}
+.leftNavBar ul li .menuListTooltip div{ position:relative;top:0px;left:0px;}
+.leftNavBar ul li .menuListTooltip .arrow{background:url(../images/edPen/menListTooltip/arrow.png) left center no-repeat;float:right;width:21px;height:64px;}
+.leftNavBar ul li .menuListTooltip .body{float:right;background:#fff; box-shadow:0px 0px 5px rgba(0,0,0,0.2);width:200px;min-height:40px;border-radius:6px;}
+.leftNavBar ul li .menuListTooltip .body ul li{width:200px;height:32px;float:inherit;padding:0px; text-align:center;border-bottom:1px solid #eee;border-radius:0px;}
+.leftNavBar ul li .menuListTooltip .body ul li:last-child{border:0px;}
+.leftNavBar ul li .menuListTooltip .body ul li a{width:200px;height:inherit;display:inherit;text-indent:0px;color:#09F;font:17px/32px SourceSansProRegular, Arial, Helvetica, sans-serif; text-decoration:none;}
+.leftNavBar ul li .menuListTooltip .body ul li a:hover{color:#000;}
+
+.leftNavBar ul li .styleSettingTooltip{ position:absolute;width:341px;left:40px;top:-143px; z-index:10;}
+.leftNavBar ul li .styleSettingTooltip ul li{background:none!important;border:none;}
+.leftNavBar ul li .styleSettingTooltip ul li:nth-child(1){ background:none!important;}
+.leftNavBar ul li .styleSettingTooltip ul li:nth-last-child(2){ background:none!important;}
+.leftNavBar ul li .styleSettingTooltip div{ position:relative;top:0px;left:0px;}
+.leftNavBar ul li .styleSettingTooltip .arrow{background:url(../images/edPen/menListTooltip/arrow.png) left center no-repeat;float:right;width:21px;height:320px;}
+.leftNavBar ul li .styleSettingTooltip .body{float:right;background:#fff; box-shadow:0px 0px 5px rgba(0,0,0,0.2);width:320px;min-height:320px;border-radius:6px; overflow:hidden;}
+.leftNavBar ul li .styleSettingTooltip .body header{background:#fff;border-bottom:1px solid #eee;}
+.leftNavBar ul li .styleSettingTooltip .body header .title{ text-align:center; display:inline-block;font:20px/45px SourceSansProSemibold, Arial, Helvetica, sans-serif;}
+.leftNavBar ul li .styleSettingTooltip .body header .leftBtn{ position:absolute;left:8px;top:0px;}
+.leftNavBar ul li .styleSettingTooltip .body header .leftBtn a{background:url(../images/other-ico/backBtn-ico.png) left 11px no-repeat; display:block; text-indent:0px; background-size:auto!important;font:17px/45px SourceSansProRegular, Arial, Helvetica, sans-serif;width:inherit!important;height:inherit!important;padding:0px 0px 0px 18px;}
+.leftNavBar ul li .styleSettingTooltip .body header .leftBtn a:hover{background:url(../images/other-ico/backBtn-ico.png) left -51px no-repeat;color:#000;}
+
+.leftNavBar ul li .styleSettingTooltip .body .drawingArea{width:320px;height:100px; overflow:hidden;}
+.leftNavBar ul li .styleSettingTooltip .body .styleSetting ul li{border-top:1px solid #eee;float:inherit!important;width:inherit;height:44px;}
+.leftNavBar ul li .styleSettingTooltip .body .styleSetting ul li:nth-last-child(2){padding:0px;}
+.leftNavBar ul li .styleSettingTooltip .body .styleSetting ul li .title{float:left;font:20px/44px SourceSansProRegular, Arial, Helvetica, sans-serif;margin:0px 0px 0px 15px;}
+.leftNavBar ul li .styleSettingTooltip .body .styleSetting ul li .colorSetting{float:right;margin:6px 10px 6px 0px;background:url(../images/select-arrow-left.png) right center no-repeat;cursor:pointer;padding:0px 16px 0px 0px;}
+.leftNavBar ul li .styleSettingTooltip .body .styleSetting ul li .colorSetting .colorDrawing{width:30px;height:30px; overflow:hidden;box-shadow:0px 0px 4px rgba(0,0,0,0.3);border-radius:100px;}
+.leftNavBar ul li .styleSettingTooltip .body .styleSetting ul li .colorSetting .noneBackground{width:30px;height:30px; overflow:hidden;box-shadow:0px 0px 4px rgba(0,0,0,0.3);border-radius:100px;}
+.leftNavBar ul li .styleSettingTooltip .body .styleSetting ul li .rangeBody{float:right;margin:6px 10px 5px 0px; text-align:left;width:156px;}
+.leftNavBar ul li .styleSettingTooltip .body .styleSetting ul li .rangeBody input{vertical-align:middle;}
+.leftNavBar ul li .styleSettingTooltip .body .styleSetting ul li .rangeBody label{vertical-align:middle;font:15px/33px SourceSansProRegular, Arial, Helvetica, sans-serif;margin:0px 0px 0px 10px;}
+.leftNavBar ul li .styleSettingTooltip .body .styleSetting ul li .rangeBody input[type='range'] {-webkit-appearance: none;border-radius:5px;background-color:#b6b6b6;height:1px;vertical-align: middle; outline:none;width:110px;}
+.leftNavBar ul li .styleSettingTooltip .body .styleSetting ul li .rangeBody  input[type='range']::-moz-range-track {-moz-appearance: none;border-radius: 5px;box-shadow: inset 0 0 5px #333;background-color: #999;height: 10px;}
+.leftNavBar ul li .styleSettingTooltip .body .styleSetting ul li .rangeBody  input[type='range']::-webkit-slider-thumb {-webkit-appearance: none !important; background:url(../images/edPen/range-ico.png) no-repeat;width:31px;height:33px;}
+.leftNavBar ul li .styleSettingTooltip .body .styleSetting ul li .rangeBody input[type='range']::-moz-range-thumb {-moz-appearance: none;border-radius: 20px;background-color: #FFF;box-shadow:inset 0 0 10px rgba(000,000,000,0.5);border: 1px solid #999;height: 20px;width: 20px;}
+
+
+
+
+
+
+
+.leftNavBar ul li .polylineSettingTooltip{ position:absolute;width:341px;left:40px;top:-143px; z-index:10;}
+.leftNavBar ul li .polylineSettingTooltip ul li{background:none!important;border:none;}
+.leftNavBar ul li .polylineSettingTooltip ul li:nth-child(1){ background:none!important;}
+.leftNavBar ul li .polylineSettingTooltip ul li:nth-last-child(2){ background:none!important;}
+.leftNavBar ul li .polylineSettingTooltip div{ position:relative;top:0px;left:0px;}
+.leftNavBar ul li .polylineSettingTooltip .arrow{background:url(../images/edPen/menListTooltip/arrow.png) left center no-repeat;float:right;width:21px;height:320px;}
+.leftNavBar ul li .polylineSettingTooltip .body{float:right;background:#fff; box-shadow:0px 0px 5px rgba(0,0,0,0.2);width:320px;min-height:320px;border-radius:6px; overflow:hidden;}
+.leftNavBar ul li .polylineSettingTooltip .body header{background:#fff;border-bottom:1px solid #eee;}
+.leftNavBar ul li .polylineSettingTooltip .body header .title{ text-align:center; display:inline-block;font:20px/45px SourceSansProSemibold, Arial, Helvetica, sans-serif;}
+.leftNavBar ul li .polylineSettingTooltip .body header .leftBtn{ position:absolute;left:8px;top:0px;}
+.leftNavBar ul li .polylineSettingTooltip .body header .leftBtn a{background:url(../images/other-ico/backBtn-ico.png) left 11px no-repeat; display:block; text-indent:0px; background-size:auto!important;font:17px/45px SourceSansProRegular, Arial, Helvetica, sans-serif;width:inherit!important;height:inherit!important;padding:0px 0px 0px 18px;}
+.leftNavBar ul li .polylineSettingTooltip .body header .leftBtn a:hover{background:url(../images/other-ico/backBtn-ico.png) left -51px no-repeat;color:#000;}
+
+.leftNavBar ul li .polylineSettingTooltip .body .drawingArea{width:320px;height:100px; overflow:hidden;}
+.leftNavBar ul li .polylineSettingTooltip .body .styleSetting ul li{border-top:1px solid #eee;float:inherit!important;width:inherit;height:44px;}
+.leftNavBar ul li .polylineSettingTooltip .body .styleSetting ul li:nth-last-child(2){padding:0px;}
+.leftNavBar ul li .polylineSettingTooltip .body .styleSetting ul li .title{float:left;font:20px/44px SourceSansProRegular, Arial, Helvetica, sans-serif;margin:0px 0px 0px 15px;}
+.leftNavBar ul li .polylineSettingTooltip .body .styleSetting ul li .colorSetting{float:right;margin:6px 10px 6px 0px;background:url(../images/select-arrow-left.png) right center no-repeat;cursor:pointer;padding:0px 16px 0px 0px;}
+.leftNavBar ul li .polylineSettingTooltip .body .styleSetting ul li .colorSetting .colorDrawing{width:30px;height:30px; overflow:hidden;box-shadow:0px 0px 4px rgba(0,0,0,0.3);border-radius:100px;}
+.leftNavBar ul li .polylineSettingTooltip .body .styleSetting ul li .colorSetting .noneBackground{width:30px;height:30px; overflow:hidden;box-shadow:0px 0px 4px rgba(0,0,0,0.3);border-radius:100px;}
+.leftNavBar ul li .polylineSettingTooltip .body .styleSetting ul li .rangeBody{float:right;margin:6px 10px 5px 0px; text-align:left;width:156px;}
+.leftNavBar ul li .polylineSettingTooltip .body .styleSetting ul li .rangeBody input{vertical-align:middle;}
+.leftNavBar ul li .polylineSettingTooltip .body .styleSetting ul li .rangeBody label{vertical-align:middle;font:15px/33px SourceSansProRegular, Arial, Helvetica, sans-serif;margin:0px 0px 0px 10px;}
+.leftNavBar ul li .polylineSettingTooltip .body .styleSetting ul li .rangeBody input[type='range'] {-webkit-appearance: none;border-radius:5px;background-color:#b6b6b6;height:1px;vertical-align: middle; outline:none;width:110px;}
+.leftNavBar ul li .polylineSettingTooltip .body .styleSetting ul li .rangeBody  input[type='range']::-moz-range-track {-moz-appearance: none;border-radius: 5px;box-shadow: inset 0 0 5px #333;background-color: #999;height: 10px;}
+.leftNavBar ul li .polylineSettingTooltip .body .styleSetting ul li .rangeBody  input[type='range']::-webkit-slider-thumb {-webkit-appearance: none !important; background:url(../images/edPen/range-ico.png) no-repeat;width:31px;height:33px;}
+.leftNavBar ul li .polylineSettingTooltip .body .styleSetting ul li .rangeBody input[type='range']::-moz-range-thumb {-moz-appearance: none;border-radius: 20px;background-color: #FFF;box-shadow:inset 0 0 10px rgba(000,000,000,0.5);border: 1px solid #999;height: 20px;width: 20px;}
+
+
+
+
+
+
+
+
+
+.leftNavBar ul li .fontStyleSettingTooltip{ position:absolute;width:341px;left:40px;top:-143px; z-index:10;}
+.leftNavBar ul li .fontStyleSettingTooltip ul li{background:none!important;border:none;}
+.leftNavBar ul li .fontStyleSettingTooltip ul li:nth-child(1){ background:none!important;}
+.leftNavBar ul li .fontStyleSettingTooltip ul li:nth-last-child(2){ background:none!important;}
+.leftNavBar ul li .fontStyleSettingTooltip div{ position:relative;top:0px;left:0px;}
+.leftNavBar ul li .fontStyleSettingTooltip .arrow{background:url(../images/edPen/menListTooltip/arrow.png) left center no-repeat;float:right;width:21px;height:320px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body{float:right;background:#fff; box-shadow:0px 0px 5px rgba(0,0,0,0.2);width:320px;min-height:320px;border-radius:6px; overflow:hidden;}
+.leftNavBar ul li .fontStyleSettingTooltip .body header{background:#fff;border-bottom:1px solid #eee;}
+.leftNavBar ul li .fontStyleSettingTooltip .body header .title{ text-align:center; display:inline-block;font:20px/45px SourceSansProSemibold, Arial, Helvetica, sans-serif;}
+.leftNavBar ul li .fontStyleSettingTooltip .body header .leftBtn{ position:absolute;left:8px;top:0px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body header .leftBtn a{background:url(../images/other-ico/backBtn-ico.png) left 11px no-repeat; display:block; text-indent:0px; background-size:auto!important;font:17px/45px SourceSansProRegular, Arial, Helvetica, sans-serif;width:inherit!important;height:inherit!important;padding:0px 0px 0px 18px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body header .leftBtn a:hover{background:url(../images/other-ico/backBtn-ico.png) left -51px no-repeat;color:#000;}
+
+.leftNavBar ul li .fontStyleSettingTooltip .body .fontStyleShow{width:320px;height:100px;font:122px Arial, Helvetica, sans-serif;line-height:80px;overflow:hidden;padding:10px;box-sizing:border-box;-moz-box-sizing:border-box; overflow:hidden;white-space:nowrap;-o-text-overflow:ellipsis;text-overflow:ellipsis;}
+.alignLeft{ text-align:left;}
+.alignCenter{ text-align:center;}
+.alignRight{ text-align:right;}
+
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li{border-top:1px solid #eee;float:inherit!important;width:inherit;height:44px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li:nth-last-child(2){padding:0px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .title{float:left;font:20px/44px SourceSansProRegular, Arial, Helvetica, sans-serif;margin:0px 0px 0px 15px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .colorSetting{float:right;margin:6px 10px 6px 0px;background:url(../images/select-arrow-left.png) right center no-repeat;cursor:pointer;padding:0px 16px 0px 0px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .colorSetting .colorDrawing{width:30px;height:30px; overflow:hidden;box-shadow:0px 0px 4px rgba(0,0,0,0.3);border-radius:100px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .colorSetting .noneBackground{width:30px;height:30px; overflow:hidden;box-shadow:0px 0px 4px rgba(0,0,0,0.3);border-radius:100px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .rangeBody{float:right;margin:6px 10px 5px 0px; text-align:left;width:156px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .rangeBody input{vertical-align:middle;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .rangeBody label{vertical-align:middle;font:15px/33px SourceSansProRegular, Arial, Helvetica, sans-serif;margin:0px 0px 0px 10px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .rangeBody input[type='range'] {-webkit-appearance: none;border-radius:5px;background-color:#b6b6b6;height:1px;vertical-align: middle; outline:none;width:110px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .rangeBody  input[type='range']::-moz-range-track {-moz-appearance: none;border-radius: 5px;box-shadow: inset 0 0 5px #333;background-color: #999;height: 10px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .rangeBody  input[type='range']::-webkit-slider-thumb {-webkit-appearance: none !important; background:url(../images/edPen/range-ico.png) no-repeat;width:31px;height:33px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .rangeBody input[type='range']::-moz-range-thumb {-moz-appearance: none;border-radius: 20px;background-color: #FFF;box-shadow:inset 0 0 10px rgba(000,000,000,0.5);border: 1px solid #999;height: 20px;width: 20px;}
+
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .sizeNum{float:right;margin:0px 10px;font:17px/45px SourceSansProRegular, Arial, Helvetica, sans-serif;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .adjustmentBtn{float:right;border:1px solid #c7c7cc;border-radius:4px; overflow:hidden;margin:6px 10px 5px 0px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .adjustmentBtn ul li{float:left!important;width:23px;height:23px;padding:3px 5px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .adjustmentBtn ul li a{ display:inherit!IMPORTANT;margin:0px;padding:0px;width:23px;height:23px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .adjustmentBtn ul li:nth-child(1) a{ background:url(../images/edPen/menListTooltip/reduceIco.png) center center no-repeat;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .adjustmentBtn ul li:nth-child(1) a:active{ background:url(../images/edPen/menListTooltip/reduceIcoClick.png) center center no-repeat;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .adjustmentBtn ul li:nth-child(2) a{ background:url(../images/edPen/menListTooltip/increaseIco.png) center center no-repeat;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .adjustmentBtn ul li:nth-child(2) a:active{ background:url(../images/edPen/menListTooltip/increaseIcoClick.png) center center no-repeat;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn{float:right;border:1px solid #c7c7cc;border-radius:4px; overflow:hidden;margin:6px 10px 5px 0px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn ul li{float:left!important;width:23px;height:23px;padding:3px 5px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn ul li a{ display:inherit!IMPORTANT;margin:0px;padding:0px;width:23px;height:23px;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn ul li:nth-child(1) a{ background:url(../images/edPen/menListTooltip/alignLeftIco.png) center center no-repeat;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn ul li:nth-child(1).select a{ background:url(../images/edPen/menListTooltip/alignLeftIco-select.png) center center no-repeat;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn ul li:nth-child(2) a{ background:url(../images/edPen/menListTooltip/alignCenterIco.png) center center no-repeat;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn ul li:nth-child(2).select a{ background:url(../images/edPen/menListTooltip/alignCenterIco-select.png) center center no-repeat;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn ul li:nth-child(3) a{ background:url(../images/edPen/menListTooltip/alignRightIco.png) no-repeat center center;}
+.leftNavBar ul li .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn ul li:nth-child(3).select a{ background:url(../images/edPen/menListTooltip/alignRightIco-select.png) no-repeat center center;}
+
+
+.leftNavBar ul li .signaturesListTooltip{ position:absolute;width:341px;left:40px;top:-50px; z-index:10;}
+.leftNavBar ul li .signaturesListTooltip ul li{background:none!important;border:none;}
+.leftNavBar ul li .signaturesListTooltip ul li:nth-child(1){ background:none!important;}
+.leftNavBar ul li .signaturesListTooltip ul li:nth-last-child(2){ background:none!important;}
+.leftNavBar ul li .signaturesListTooltip div{ position:relative;top:0px;left:0px;}
+.leftNavBar ul li .signaturesListTooltip .arrow{background:url(../images/edPen/menListTooltip/arrow.png) left center no-repeat;float:right;width:21px;height:136px;}
+.leftNavBar ul li .signaturesListTooltip .body{float:right;background:#fff; box-shadow:0px 0px 5px rgba(0,0,0,0.2);width:320px;min-height:120px;border-radius:6px; overflow:hidden;}
+.leftNavBar ul li .signaturesListTooltip .body header{background:#fff;border-bottom:1px solid #eee;}
+.leftNavBar ul li .signaturesListTooltip .body header .title{ text-align:center; display:inline-block;font:20px/45px SourceSansProSemibold, Arial, Helvetica, sans-serif;}
+.leftNavBar ul li .signaturesListTooltip .body header .leftBtn{ position:absolute;left:8px;top:0px;}
+.leftNavBar ul li .signaturesListTooltip .body header .leftBtn a{display:block; text-indent:0px; background:none!important;font:17px/45px SourceSansProRegular, Arial, Helvetica, sans-serif;width:inherit!important;height:inherit!important;}
+.leftNavBar ul li .signaturesListTooltip .body header .leftBtn a:hover{color:#000;}
+.leftNavBar ul li .signaturesListTooltip .body header .addBtn{ position:absolute;right:8px;top:13px;left:inherit!important;}
+.leftNavBar ul li .signaturesListTooltip .body header .addBtn a{background:url(../images/other-ico/addTagsBtn.png) no-repeat;width:18px;height:18px;}
+.leftNavBar ul li .signaturesListTooltip .body .signaturesList{position:inherit!important;}
+.leftNavBar ul li .signaturesListTooltip .body .signaturesList ul{position:inherit!important;}
+.leftNavBar ul li .signaturesListTooltip .body .signaturesList ul li div{float:inherit!important; }
+.leftNavBar ul li .signaturesListTooltip .body .signaturesList ul li{float:none!important;width:inherit!important;height:inherit!important; position:relative;border-bottom:1px solid #eee;border-radius:0px!important;}
+.leftNavBar ul li .signaturesListTooltip .body .signaturesList ul li:last-child{border:none;}
+.leftNavBar ul li .signaturesListTooltip .body .signaturesList ul li .deleteBtn{ position:absolute;left:10px;top:30px;}
+.leftNavBar ul li .signaturesListTooltip .body .signaturesList ul li .deleteBtn a{ background:url(../images/other-ico/folderDelete.png) no-repeat;width:22px;height:22px;}
+.leftNavBar ul li .signaturesListTooltip .body .signaturesList ul li .signatureImg{margin:0px 50px 0px 42px;padding:10px 0px; text-align:center;}
+.leftNavBar ul li .signaturesListTooltip .body .signaturesList ul li .signatureImg img{height:60px;}
+.leftNavBar ul li .signaturesListTooltip .body .signaturesList ul li .moveBtn{ position:absolute;right:10px;left:inherit!important;top:38px;}
+
+
+
+.helpMaskLayer{ position:absolute;top:0px;bottom:0px;left:0px;right:0px;background:rgba(0,0,0,0.2);z-index:9998;color:#000;}
+.helpMaskLayer .helpLayer{margin:110px 0px 0px 66px; }
+.helpMaskLayer .helpLayer ul li{margin:9px 0px;font:17px/34px SourceSansProRegular, Arial, Helvetica, sans-serif;}
+.helpMaskLayer .helpLayer ul li div{background:#fff;border:1px solid #333px;float:left;padding:0px 10px;box-shadow:0px 0px 3px rgba(0,0,0,0.5);border-radius:3px;}
+.helpMaskLayer .helpLayer ul li .line{ background:url(../images/point-bg.png) center center repeat-x;width:20px;height:34px;box-shadow:none;padding:0px;}
+.bgMaskLayer{position:absolute;top:0px;bottom:0px;left:0px;right:0px;background:#fff;z-index:9996;}
+
+.addSignatureLayer{ position:absolute;top:0px;bottom:0px;left:0px;right:0px;background:rgba(0,0,0,0.2);z-index:9998;color:#000;}
+.addSignatureLayer .signaturesArea{width:540px;height:620px; position:absolute;top:50%;left:50%;margin:-310px 0px 0px -270px;}
+.addSignatureLayer .signaturesArea header{background:#fff;border-bottom:1px solid #eee;}
+.addSignatureLayer .signaturesArea header .title{ text-align:center; display:inline-block;font:20px/45px SourceSansProSemibold, Arial, Helvetica, sans-serif;}
+.addSignatureLayer .signaturesArea header .leftBtn{ position:absolute;left:8px;top:0px;}
+.addSignatureLayer .signaturesArea header .leftBtn a{display:block; text-indent:0px; background:none!important;font:17px/45px SourceSansProRegular, Arial, Helvetica, sans-serif;width:inherit!important;height:inherit!important;}
+.addSignatureLayer .signaturesArea header .leftBtn a:hover{color:#000;}
+.addSignatureLayer .signaturesArea header .rightBtn{ position:absolute;right:8px;top:0px;}
+.addSignatureLayer .signaturesArea header .rightBtn a{display:block; text-indent:0px; background:none!important;font:17px/45px SourceSansProRegular, Arial, Helvetica, sans-serif;width:inherit!important;height:inherit!important;color:#6666cc;}
+.addSignatureLayer .signaturesArea header .rightBtn a:hover{color:#000; text-decoration:none;}
+.addSignatureLayer .signaturesArea .signatureBody{height:575px;background:#fff;}
+
+
+.bgFrame{}
+.bgFrame .shortcutMenu{position:absolute;left:500px;top:500px;}
+.bgFrame .shortcutMenu .list{ background:#2a2a2a;height:36px;border-radius:6px; overflow:hidden;}
+.bgFrame .shortcutMenu .list ul li{float:left;background:#2a2a2a;border-right:1px solid #4f4f4f;}
+.bgFrame .shortcutMenu .list ul li:nth-last-child(2){border-right:none;}
+.bgFrame .shortcutMenu .list ul li a{font:14px/36px Arial, Helvetica, sans-serif;color:#fff; display:block;padding:0px 5px;}
+.bgFrame .shortcutMenu .list ul li a:hover{ background:#4f4f4f; text-decoration:none;}
+.bgFrame .shortcutMenu .list ul li.textBtn a{ background:url(../images/edPen/menuTooltip/textBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
+.bgFrame .shortcutMenu .list ul li.brushBtn a{ background:url(../images/edPen/menuTooltip/brushBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
+.bgFrame .shortcutMenu .list ul li.SignatureBtn a{ background:url(../images/edPen/menuTooltip/SignatureBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
+.bgFrame .shortcutMenu .list ul li.StampsBtn a{ background:url(../images/edPen/menuTooltip/StampsBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
+.bgFrame .shortcutMenu .list ul li.ImportImageBtn a{ background:url(../images/edPen/menuTooltip/ImportImageBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
+.bgFrame .shortcutMenu .list ul li.eraserBtn a{ background:url(../images/edPen/menuTooltip/eraserBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
+.bgFrame .shortcutMenu .list ul li.deleteBtn a{background:url(../images/edPen/menuTooltip/deleteBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
+.bgFrame .shortcutMenu .list ul li.textBtn a:hover{ background:url(../images/edPen/menuTooltip/textBtnHover.png) no-repeat;background-size:100%;}
+.bgFrame .shortcutMenu .list ul li.brushBtn a:hover{ background:url(../images/edPen/menuTooltip/brushBtnHover.png) no-repeat;background-size:100%;}
+.bgFrame .shortcutMenu .list ul li.SignatureBtn a:hover{ background:url(../images/edPen/menuTooltip/SignatureBtnHover.png) no-repeat;background-size:100%;}
+.bgFrame .shortcutMenu .list ul li.StampsBtn a:hover{ background:url(../images/edPen/menuTooltip/StampsBtnHover.png) no-repeat;background-size:100%;}
+.bgFrame .shortcutMenu .list ul li.ImportImageBtn a:hover{ background:url(../images/edPen/menuTooltip/ImportImageBtnHover.png) no-repeat;background-size:100%;}
+.bgFrame .shortcutMenu .list ul li.eraserBtn a:hover{ background:url(../images/edPen/menuTooltip/eraserBtnHover.png) no-repeat;background-size:100%;}
+.bgFrame .shortcutMenu .list ul li.deleteBtn a:hover{ background:url(../images/edPen/menuTooltip/deleteBtnHover.png) no-repeat;background-size:100%;}
+.bgFrame .shortcutMenu .arrow{ text-align:center;}
+
+
+
+
+.bgFrame .noteTooltip{ position:absolute;width:341px;left:1200px;top:100px; z-index:10;}
+.bgFrame .noteTooltip ul li{background:none!important;border:none;}
+.bgFrame .noteTooltip ul li:nth-child(1){ background:none!important;}
+.bgFrame .noteTooltip ul li:nth-last-child(2){ background:none!important;}
+.bgFrame .noteTooltip div{ position:relative;top:0px;left:0px;}
+.bgFrame .noteTooltip .arrow{background:url(../images/edPen/menListTooltip/arrow.png) left center no-repeat;float:right;width:21px;height:200px; }
+.bgFrame .noteTooltip .body{float:right;background:#fff; box-shadow:0px 0px 5px rgba(0,0,0,0.2);width:320px;height:365px;border-radius:6px; overflow:hidden;}
+.bgFrame .noteTooltip .body textarea{width:320px;height:320px;border:none;padding:6px;-moz-box-sizing:border-box;box-sizing:border-box; resize:none; outline:none;font:20px Arial, Helvetica, sans-serif;background-image: -moz-linear-gradient(top, #bedaff, #6d8cf2); /* Firefox */
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #bedaff), color-stop(1, #6d8cf2)); /* Saf4+, Chrome */
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bedaff', endColorstr='#6d8cf2', GradientType='0'); /* IE*/
+}
+.bgFrame .noteTooltip .body header{background:#fff;border-bottom:1px solid #eee;}
+.bgFrame .noteTooltip .body header .title{ text-align:center; display:inline-block;font:20px/45px SourceSansProSemibold, Arial, Helvetica, sans-serif;}
+.bgFrame .noteTooltip .body header .deleteBtn{ position:absolute;right:8px;top:9px;left:inherit!important;}
+.bgFrame .noteTooltip .body header .deleteBtn a{background:url(../images/edPen/headerNav/clearSelectgrey.png) center center no-repeat; display:block;width:18px;height:25px;text-indent:-9999px;}
+
+
+.bgFrame .fontStyleSettingTooltip{ position:absolute;width:341px;left:500px;top:580px; z-index:10;}
+.bgFrame .fontStyleSettingTooltip ul li{background:none!important;border:none;}
+.bgFrame .fontStyleSettingTooltip ul li:nth-child(1){ background:none!important;}
+.bgFrame .fontStyleSettingTooltip ul li:nth-last-child(2){ background:none!important;}
+.bgFrame .fontStyleSettingTooltip div{ position:relative;top:0px;left:0px;}
+.bgFrame .fontStyleSettingTooltip .arrow{background:url(../images/edPen/menListTooltip/arrow.png) left center no-repeat;float:right;width:21px;height:320px;}
+.bgFrame .fontStyleSettingTooltip .body{float:right;background:#fff; box-shadow:0px 0px 5px rgba(0,0,0,0.2);width:320px;min-height:270px;border-radius:6px; overflow:hidden;}
+.bgFrame .fontStyleSettingTooltip .body header{background:#fff;border-bottom:1px solid #eee;}
+.bgFrame .fontStyleSettingTooltip .body header .title{ text-align:center; display:inline-block;font:20px/45px SourceSansProSemibold, Arial, Helvetica, sans-serif;}
+.bgFrame .fontStyleSettingTooltip .body header .leftBtn{ position:absolute;left:8px;top:0px;}
+.bgFrame .fontStyleSettingTooltip .body header .leftBtn a{background:url(../images/other-ico/backBtn-ico.png) left 11px no-repeat; display:block; text-indent:0px; background-size:auto!important;font:17px/45px SourceSansProRegular, Arial, Helvetica, sans-serif;width:inherit!important;height:inherit!important;padding:0px 0px 0px 18px;}
+.bgFrame .fontStyleSettingTooltip .body header .leftBtn a:hover{background:url(../images/other-ico/backBtn-ico.png) left -51px no-repeat;color:#000;}
+
+.bgFrame .fontStyleSettingTooltip .body .fontStyleShow{width:320px;height:100px;font:122px Arial, Helvetica, sans-serif;line-height:80px;overflow:hidden;padding:10px;box-sizing:border-box;-moz-box-sizing:border-box; overflow:hidden;white-space:nowrap;-o-text-overflow:ellipsis;text-overflow:ellipsis;}
+.alignLeft{ text-align:left;}
+.alignCenter{ text-align:center;}
+.alignRight{ text-align:right;}
+
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li{border-top:1px solid #eee;float:inherit!important;width:inherit;height:44px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li:nth-last-child(2){padding:0px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .title{float:left;font:20px/44px SourceSansProRegular, Arial, Helvetica, sans-serif;margin:0px 0px 0px 15px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .colorSetting{float:right;margin:6px 10px 6px 0px;background:url(../images/select-arrow-left.png) right center no-repeat;cursor:pointer;padding:0px 16px 0px 0px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .colorSetting .colorDrawing{width:30px;height:30px; overflow:hidden;box-shadow:0px 0px 4px rgba(0,0,0,0.3);border-radius:100px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .colorSetting .noneBackground{width:30px;height:30px; overflow:hidden;box-shadow:0px 0px 4px rgba(0,0,0,0.3);border-radius:100px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .rangeBody{float:right;margin:6px 10px 5px 0px; text-align:left;width:156px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .rangeBody input{vertical-align:middle;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .rangeBody label{vertical-align:middle;font:15px/33px SourceSansProRegular, Arial, Helvetica, sans-serif;margin:0px 0px 0px 10px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .rangeBody input[type='range'] {-webkit-appearance: none;border-radius:5px;background-color:#b6b6b6;height:1px;vertical-align: middle; outline:none;width:110px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .rangeBody  input[type='range']::-moz-range-track {-moz-appearance: none;border-radius: 5px;box-shadow: inset 0 0 5px #333;background-color: #999;height: 10px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .rangeBody  input[type='range']::-webkit-slider-thumb {-webkit-appearance: none !important; background:url(../images/edPen/range-ico.png) no-repeat;width:31px;height:33px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .rangeBody input[type='range']::-moz-range-thumb {-moz-appearance: none;border-radius: 20px;background-color: #FFF;box-shadow:inset 0 0 10px rgba(000,000,000,0.5);border: 1px solid #999;height: 20px;width: 20px;}
+
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .sizeNum{float:right;margin:0px 10px;font:17px/45px SourceSansProRegular, Arial, Helvetica, sans-serif;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .adjustmentBtn{float:right;border:1px solid #c7c7cc;border-radius:4px; overflow:hidden;margin:6px 10px 5px 0px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .adjustmentBtn ul li{float:left!important;width:23px;height:23px;padding:3px 5px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .adjustmentBtn ul li a{ display:inherit!IMPORTANT;margin:0px;padding:0px;width:23px;height:23px;text-indent:-9999px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .adjustmentBtn ul li:nth-child(1) a{ background:url(../images/edPen/menListTooltip/reduceIco.png) center center no-repeat;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .adjustmentBtn ul li:nth-child(1) a:active{ background:url(../images/edPen/menListTooltip/reduceIcoClick.png) center center no-repeat;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .adjustmentBtn ul li:nth-child(2) a{ background:url(../images/edPen/menListTooltip/increaseIco.png) center center no-repeat;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .adjustmentBtn ul li:nth-child(2) a:active{ background:url(../images/edPen/menListTooltip/increaseIcoClick.png) center center no-repeat;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn{float:right;border:1px solid #c7c7cc;border-radius:4px; overflow:hidden;margin:6px 10px 5px 0px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn ul li{float:left!important;width:23px;height:23px;padding:3px 5px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn ul li a{ display:inherit!IMPORTANT;margin:0px;padding:0px;width:23px;height:23px; text-indent:-9999px;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn ul li:nth-child(1) a{ background:url(../images/edPen/menListTooltip/alignLeftIco.png) center center no-repeat;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn ul li:nth-child(1).select a{ background:url(../images/edPen/menListTooltip/alignLeftIco-select.png) center center no-repeat;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn ul li:nth-child(2) a{ background:url(../images/edPen/menListTooltip/alignCenterIco.png) center center no-repeat;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn ul li:nth-child(2).select a{ background:url(../images/edPen/menListTooltip/alignCenterIco-select.png) center center no-repeat;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn ul li:nth-child(3) a{ background:url(../images/edPen/menListTooltip/alignRightIco.png) no-repeat center center;}
+.bgFrame .fontStyleSettingTooltip .body .styleSetting ul li .locationBtn ul li:nth-child(3).select a{ background:url(../images/edPen/menListTooltip/alignRightIco-select.png) no-repeat center center;}
+
+
+
+
+.bgFrame .styleSettingTooltip{ position:absolute;width:341px;left:900px;top:580px; z-index:10;}
+.bgFrame .styleSettingTooltip ul li{background:none!important;border:none;}
+.bgFrame .styleSettingTooltip ul li:nth-child(1){ background:none!important;}
+.bgFrame .styleSettingTooltip ul li:nth-last-child(2){ background:none!important;}
+.bgFrame .styleSettingTooltip div{ position:relative;top:0px;left:0px;}
+.bgFrame .styleSettingTooltip .arrow{background:url(../images/edPen/menListTooltip/arrow.png) left center no-repeat;float:right;width:21px;height:320px;}
+.bgFrame .styleSettingTooltip .body{float:right;background:#fff; box-shadow:0px 0px 5px rgba(0,0,0,0.2);width:320px;min-height:320px;border-radius:6px; overflow:hidden;}
+.bgFrame .styleSettingTooltip .body header{background:#fff;border-bottom:1px solid #eee;}
+.bgFrame .styleSettingTooltip .body header .title{ text-align:center; display:inline-block;font:20px/45px SourceSansProSemibold, Arial, Helvetica, sans-serif;}
+.bgFrame .styleSettingTooltip .body header .leftBtn{ position:absolute;left:8px;top:0px;}
+.bgFrame .styleSettingTooltip .body header .leftBtn a{background:url(../images/other-ico/backBtn-ico.png) left 11px no-repeat; display:block; text-indent:0px; background-size:auto!important;font:17px/45px SourceSansProRegular, Arial, Helvetica, sans-serif;width:inherit!important;height:inherit!important;padding:0px 0px 0px 18px;}
+.bgFrame .styleSettingTooltip .body header .leftBtn a:hover{background:url(../images/other-ico/backBtn-ico.png) left -51px no-repeat;color:#000;}
+
+.bgFrame .styleSettingTooltip .body .drawingArea{width:320px;height:100px; overflow:hidden;}
+.bgFrame .styleSettingTooltip .body .styleSetting ul li{border-top:1px solid #eee;float:inherit!important;width:inherit;height:44px;}
+.bgFrame .styleSettingTooltip .body .styleSetting ul li:nth-last-child(2){padding:0px;}
+.bgFrame .styleSettingTooltip .body .styleSetting ul li .title{float:left;font:20px/44px SourceSansProRegular, Arial, Helvetica, sans-serif;margin:0px 0px 0px 15px;}
+.bgFrame .styleSettingTooltip .body .styleSetting ul li .colorSetting{float:right;margin:6px 10px 6px 0px;background:url(../images/select-arrow-left.png) right center no-repeat;cursor:pointer;padding:0px 16px 0px 0px;}
+.bgFrame .styleSettingTooltip .body .styleSetting ul li .colorSetting .colorDrawing{width:30px;height:30px; overflow:hidden;box-shadow:0px 0px 4px rgba(0,0,0,0.3);border-radius:100px;}
+.bgFrame .styleSettingTooltip .body .styleSetting ul li .colorSetting .noneBackground{width:30px;height:30px; overflow:hidden;box-shadow:0px 0px 4px rgba(0,0,0,0.3);border-radius:100px;}
+.bgFrame .styleSettingTooltip .body .styleSetting ul li .rangeBody{float:right;margin:6px 10px 5px 0px; text-align:left;width:156px;}
+.bgFrame .styleSettingTooltip .body .styleSetting ul li .rangeBody input{vertical-align:middle;}
+.bgFrame .styleSettingTooltip .body .styleSetting ul li .rangeBody label{vertical-align:middle;font:15px/33px SourceSansProRegular, Arial, Helvetica, sans-serif;margin:0px 0px 0px 10px;}
+.bgFrame .styleSettingTooltip .body .styleSetting ul li .rangeBody input[type='range'] {-webkit-appearance: none;border-radius:5px;background-color:#b6b6b6;height:1px;vertical-align: middle; outline:none;width:110px;}
+.bgFrame .styleSettingTooltip .body .styleSetting ul li .rangeBody  input[type='range']::-moz-range-track {-moz-appearance: none;border-radius: 5px;box-shadow: inset 0 0 5px #333;background-color: #999;height: 10px;}
+.bgFrame .styleSettingTooltip .body .styleSetting ul li .rangeBody  input[type='range']::-webkit-slider-thumb {-webkit-appearance: none !important; background:url(../images/edPen/range-ico.png) no-repeat;width:31px;height:33px;}
+.bgFrame .styleSettingTooltip .body .styleSetting ul li .rangeBody input[type='range']::-moz-range-thumb {-moz-appearance: none;border-radius: 20px;background-color: #FFF;box-shadow:inset 0 0 10px rgba(000,000,000,0.5);border: 1px solid #999;height: 20px;width: 20px;}
+
+
+
+
+
+.selectColor{}
+.selectColor ul{margin:0px 11px!important;}
+.selectColor ul li{float:left!important;margin:0px!important;width:62px;height:62px;margin:3px 6px!important;}
+.selectColor ul li:first-child{width:62px!important;height:62px!important;}
+.leftNavBar ul li .styleSettingTooltip ul li.select{ background:url(../images/edPen/menListTooltip/select-ico.png) no-repeat!important; z-index:9999;}
+.leftNavBar ul li .fontStyleSettingTooltip ul li.select{ background:url(../images/edPen/menListTooltip/select-ico.png) no-repeat!important; z-index:9999;}
+.leftNavBar ul li .polylineSettingTooltip ul li.select{ background:url(../images/edPen/menListTooltip/select-ico.png) no-repeat!important; z-index:9999;}
+.selectColor ul li.select{ background:url(../images/edPen/menListTooltip/select-ico.png) no-repeat!important; z-index:9999;}
+.selectColor ul li a{width:54px!important;height:54px!important;border-radius:100px!important;box-shadow:0px 0px 6px rgba(0,0,0,0.3)!important;margin:4px!important; text-indent:-9999px; display:block!important;}
+.selectColor ul li:nth-last-child(2) a{ background:url(../images/edPen/menListTooltip/noneBackgroundIco.png) no-repeat!important;}
+
+
+.color-01 a{background:#000!important;}
+.color-02 a{background:#fff!important;}
+.color-03 a{background:#a40000!important;}
+.color-04 a{background:#ff0000!important;}
+.color-05 a{background:#ff9900!important;}
+.color-06 a{background:#ffff00!important;}
+.color-07 a{background:#00ff00!important;}
+.color-08 a{background:#00ffff!important;}
+.color-09 a{background:#4f8ef5!important;}
+.color-10 a{background:#0000ff!important;}
+.color-11 a{background:#9900ff!important;}
+.color-12 a{background:#ff00ff!important;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

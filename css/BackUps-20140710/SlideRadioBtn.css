@@ -1,0 +1,46 @@
+/* CSS Document */
+.slide_button{
+    width: 51px;
+    height: 31px;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    cursor: pointer;
+}
+.slide_left{
+    float: left;
+}
+.slide_right{
+    float: right;
+}
+.slide_button_green{
+    width: 51px;
+    height: 31px;
+    position: absolute;
+    background: url("../images/green-bg.png") no-repeat;
+}
+.slide_button_white{
+    width: 51px;
+    height: 31px;
+    position: absolute;
+    background: url("../images/white-bg.png") no-repeat;
+}
+
+.slide_button span{
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 31px;
+    line-height: 31px;
+    text-align: center;
+    font-size: 12px;
+    background: url("../images/btn.png") no-repeat;
+}
+.slide_button span.on{
+    left: 21px;
+}
+.slide_button span.off{
+    left: 0;
+}

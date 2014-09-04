@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>edZone-googleDocs</title>
+<script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
+</head>
+
+<style type="text/css">
+html, body{margin:0px;padding:0px;}
+ul, li{ list-style:none;padding:0px;margin:0px;}
+.clear { diplay: block!important; float: none!important; clear: both; overflow: hidden; width: auto!important; height: 0!important; margin: 0 auto!important; padding: 0!important; font-size: 0; line-height: 0;border:0px!important;}
+
+.BBrowserStatusBar{width:100%;text-align:center;background:#798796;min-height:45px;border-bottom:1px solid #8593a1; position:relative; padding:0px 0px 0px 0px;-moz-box-sizing:border-box;box-sizing:border-box; position:fixed;top:0px;}
+.BBrowserStatusBar .textBtn{ float:left;font:16px/45px Arial, Helvetica, sans-serif;color:#fff;}
+.BBrowserStatusBar .textBtn:first-child{margin:0px 8px 0px 40px;}
+.BBrowserStatusBar .num2{margin:0px 20px 0px 0px;}
+.BBrowserStatusBar .textBtn a{color:#fff; text-decoration:none;}
+.BBrowserStatusBar .textBtn a:hover{color:#97d5ff;}
+.BBrowserStatusBar .addBtn{ float:left;margin:9px 8px;}
+.BBrowserStatusBar .addBtn a{ background:url(images/other-ico/docs-share.png) no-repeat;width:19px;height:27px; display:block; text-indent:-9999px;}
+.BBrowserStatusBar .refreshBtn{ float:left;margin:12px 8px 10px;}
+.BBrowserStatusBar .refreshBtn a{background:url(images/other-ico/refresh-ico.png) no-repeat;width:18px;height:22px;display:block; text-indent:-9999px;}
+.BBrowserStatusBar .input{float:left;margin:7px 8px ;}
+.BBrowserStatusBar .input input{padding:3px 6px;border:0px;border-radius:4px;font:15px Arial, Helvetica, sans-serif;height:30px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.BBrowserStatusBar .prevBtn{float:left;margin:11px 20px;}
+.BBrowserStatusBar .nextBtn{float:left;margin:11px 8px 11px 20px;}
+.BBrowserStatusBar .screenBtn{float:right;margin:9px 8px;}
+.BBrowserStatusBar .screenBtn a{ background:url(images/other-ico/splitScreen-w.png) no-repeat;width:25px;height:25px;display:block; text-indent:-9999px;}
+.BBrowserStatusBar .addResourceTooltip{position:absolute;}
+
+.BBrowserStatusBar .addResourceTooltip{ position:absolute;z-index:9999;left:15px;top:40px;margin:0px;}
+.BBrowserStatusBar .addResourceTooltip .arrow{ text-align:left;margin-left:83px;}
+.BBrowserStatusBar .addResourceTooltip .body{margin:0px;width:290px;background:rgba(255,255,255,0.95);border-radius:8px;box-shadow: 0px 0px 3px rgba(0,0,0,0.3);}
+.BBrowserStatusBar .addResourceTooltip .body ul li{border-bottom:1px solid #e5e5e5;color:#000;text-align:center;}
+.BBrowserStatusBar .addResourceTooltip .body ul li:last-child{border:0px;}
+.BBrowserStatusBar .addResourceTooltip .body ul li a{ text-decoration:none;text-indent:0px;background:none;color:#09F;padding:0px;font:16px/35px Arial, Helvetica, sans-serif; height:auto;}
+.BBrowserStatusBar .addResourceTooltip .body ul li a:hover{color:#333;}
+
+.BBrowserStatusBar .addResourceTooltip .history{margin:0px;width:350px;background:rgba(255,255,255,0.95);border-radius:8px;box-shadow: 0px 0px 3px rgba(0,0,0,0.3);}
+.BBrowserStatusBar .addResourceTooltip .history .menuBar{padding:0px 10px;border-bottom:1px solid #e5e5e5;}
+.BBrowserStatusBar .addResourceTooltip .history .menuBar a{padding:5px;text-decoration:none;text-indent:0px;background:none;color:#09F;padding:0px;font:16px/35px Arial, Helvetica, sans-serif; height:auto;}
+.BBrowserStatusBar .addResourceTooltip .history .menuBar a:hover{color:#333;}
+.BBrowserStatusBar .addResourceTooltip .history .menuBar .leftBtn{float:left;}
+.BBrowserStatusBar .addResourceTooltip .history .menuBar .rightBtn{float:right;}
+.BBrowserStatusBar .addResourceTooltip .history .historyList ul li{border-bottom:1px solid #e5e5e5;text-align:left; position:relative; font:14px Arial, Helvetica, sans-serif;padding:5px;-moz-box-sizing:border-box;box-sizing:border-box;height:43px; vertical-align:middle;}
+.BBrowserStatusBar .addResourceTooltip .history .historyList ul li:last-child{border:0px;}
+.BBrowserStatusBar .addResourceTooltip .history .historyList ul li .title, .BBrowserStatusBar .addResourceTooltip .history .historyList ul li .link{width:280px;overflow:hidden;white-space:nowrap;-o-text-overflow:ellipsis;text-overflow:ellipsis;}
+.BBrowserStatusBar .addResourceTooltip .history .historyList ul li .onlyLink{width:280px;overflow:hidden;white-space:nowrap;-o-text-overflow:ellipsis;text-overflow:ellipsis;font:14px/33px Arial, Helvetica, sans-serif;}
+.BBrowserStatusBar .addResourceTooltip .history .historyList ul li .deleteBtn{ position:absolute;top:0px;right:0px; background:#F00}
+.BBrowserStatusBar .addResourceTooltip .history .historyList ul li:last-child .deleteBtn{border-bottom-right-radius:9px;}
+.BBrowserStatusBar .addResourceTooltip .history .historyList ul li .deleteBtn a{padding:5px;text-decoration:none;text-indent:0px;background:none;color:#fff;padding:0px;font:16px/42px Arial, Helvetica, sans-serif; height:auto;width:60px;height:42px; display:block; text-align:center;}
+
+.BBrowserBody iframe{width:100%;border:0px;}
+
+.BBrowserFooterBar{background:#7e8c9b;height:40px;width:100%; position:fixed;bottom:0px;}
+.BBrowserFooterBar .prevBtn{float:left; background:url(images/other-ico/prev-btn.png) no-repeat left center; text-indent:20px;font:16px/45px Arial, Helvetica, sans-serif;color:#fff;margin:0px 0px 0px 20px;}
+.BBrowserFooterBar .prevBtn a{color:#fff;text-decoration:none;}
+.BBrowserFooterBar .prevBtn a:hover{color:#97d5ff;}
+.BBrowserFooterBar .nextBtn{float:left; background:url(images/other-ico/next-btn.png) no-repeat right center;margin:0px 20px 0px 0px;padding:0px 20px 0px 0px;font:16px/45px Arial, Helvetica, sans-serif;color:#fff;}
+.BBrowserFooterBar .nextBtn a{color:#fff;text-decoration:none;}
+.BBrowserFooterBar .nextBtn a:hover{color:#97d5ff;}
+
+.BBrowserFooterBar .nextBtn{float:right;}
+</style>
+
+<body>
+
+ <div class="BBrowserStatusBar">
+  <div class="textBtn"><a href="#">Done</a></div>
+  <div class="addBtn"><a href="#">Add Resource</a></div>
+  <div class="refreshBtn"><a href="#">Refresh</a></div>
+  <div class="input"><input type="text" name="textfield" id="webLink" /></div>
+  <div class="textBtn num2"><a href="#">Go</a></div>
+  <div class="prevBtn"><a href="#"><img src="images/other-ico/prev-btn.png" width="13" height="23" /></a></div>
+  <div class="nextBtn"><a href="#"><img src="images/other-ico/next-btn.png" width="13" height="23" /></a></div>
+  <div class="screenBtn"><a href="#">Screen</a></div>
+  <div class="clear"></div>
+  
+
+  <div class="addResourceTooltip">
+   <div class="arrow"><img src="images/selectArrow4.png" width="15" height="12" /></div>
+    <!--div class="body">
+     <ul>
+      <li><a href="javascript:void(0);">From Web</a></li>
+      <li><a href="javascript:void(0);">From Camera Roll</a></li>
+     </ul>
+    </div-->
+    <div class="history">
+     <div class="menuBar">
+      <div class="leftBtn"><a href="#">Edit</a></div>
+      <div class="rightBtn"><a href="#">Clear History</a></div>
+      <div class="clear"></div>
+     </div>
+     <div class="historyList">
+      <ul>
+       <li>
+        <div class="onlyLink">http://sports.sina.com.cnhttp://sports.sina.com.cn</div>
+        <div class="deleteBtn"><a href="#">Delete</a></div>
+       </li>
+       <li>
+        <div class="title">新浪竞技风暴_新浪网</div>
+        <div class="link">http://sports.sina.com.cnhttp://sports.sina.com.cn</div>
+        <div class="deleteBtn"><a href="#">Delete</a></div>
+       </li>
+       <li>
+        <div class="title">新浪竞技风暴_新浪网</div>
+        <div class="link">http://sports.sina.com.cnhttp://sports.sina.com.cn</div>
+        <div class="deleteBtn"><a href="#">Delete</a></div>
+       </li>
+      </ul>
+     </div>
+    </div>
+   </div>
+  
+ </div>
+ 
+ 
+
+ <div class="BBrowserFooterBar">
+  <div class="prevBtn"><a href="#">Prev Resource</a></div>
+  <div class="nextBtn"><a href="#">Next Resource</a></div>
+  <div class="clear"></div>
+ </div>
+
+
+<script type="text/javascript">
+var screenNum=$(window).height();
+var statusBar=$('.BBrowserStatusBar').width()
+
+var googleDocsStatusBarHeight=$('.googleDocsStatusBar').height();
+$('.BBrowserBody iframe').css('height',screenNum-187-googleDocsStatusBarHeight);
+$('#webLink').css('width',statusBar-350);
+
+
+//$('.bookshelfTagBody').css('height',screenNum-148);
+//$('.bookshelfCatalogBody').css('height',screenNum-148);
+//$('.bookshelfCommonBody').css('height',screenNum-148);
+
+
+$( window ).resize(function() {
+var screenNum=$(window).height();
+var statusBar=$('.BBrowserStatusBar').width()
+
+var googleDocsStatusBarHeight=$('.googleDocsStatusBar').height();
+$('.BBrowserBody iframe').css('height',screenNum-187-googleDocsStatusBarHeight);
+$('#webLink').css('width',statusBar-350);
+
+ 
+});
+
+</script>
+</body>
+</html>

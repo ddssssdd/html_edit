@@ -1,0 +1,836 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>edZone-BookShelf</title>
+<link href="css/edZoneWeb-CSS.css" rel="stylesheet" type="text/css" />
+<link href="css/edZoneWeb-popupCSS.css" rel="stylesheet" type="text/css" />
+<link href="css/edZoneWeb-Dropdown.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="js/jquery.dd.js" type="text/javascript"></script>
+<script src="js/checkbox.js" type="text/javascript"></script>
+<script src="js/radioBtn.js" type="text/javascript"></script>
+<script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+</head>
+<style type="text/css">
+html {
+	background: #f2f2f2;
+}
+</style>
+
+<body>
+<div class="wrap bookshelfBG">
+ <header>
+  <div class="logo"><a href="javascript:void(0);">edZone</a></div>
+  <div class="navBar">
+   <ul>
+    <li><a href="homeClass.html">Home</a></li>
+    <li><a href="classes.html">Classes</a></li>
+    <li class="select"><a href="bookshelf.html">Bookshelf</a></li>
+    <li><a href="assessment-AssView.html">Assessment</a></li>
+    <li><a href="poll.html">Poll</a></li>
+    <li><a href="blogReader.html">Blog</a></li>
+    <li><a href="slideshow.html">SlideShow</a></li>
+    <li><a href="faq.html">Help/FAQ</a></li>
+    <li><a href="javascript:void(0);">Refresh</a></li>
+    <li class="clear"></li>
+   </ul>
+  </div>
+  <div class="profileBar">
+   <div class="userFace"><a href="javascript:void(0)"><img src="images/temporary/temp-face.jpg" width="40" height="40" /></a></div>
+   <div class="userName"><a href="javascript:void(0)">Song Tom</a></div>
+  </div>
+  <div class="clear"></div>
+ </header>
+ <div class="mainBody">
+  <div class="bookshelfWrapContent">
+   <div class="bookshelfCatalog">
+    <div class="statusBar"></div>
+    <div class="bookshelfCatalogBody ScrollBAR">
+     <ul>
+      <li><a href="#">My BookShelf</a></li>
+      <li><a href="#">Recent</a></li>
+      <li><a href="#">Folders</a></li>
+      <li><a href="#">Tags</a></li>
+      <li><a href="#">Classes</a></li>
+      
+      <li class="classesList">
+       <ul>
+        <li><a href="#">Ratty I</a></li>
+        <li class="select"><a href="#">ComputerComputerComputerComputerComputerComputerComputer</a></li>
+        <li><a href="#">Violin</a></li>
+        <li><a href="#">Ratty I</a></li>
+        <li><a href="#">Computer</a></li>
+        <li><a href="#">Violin</a></li>
+        <li><a href="#">Ratty I</a></li>
+        <li><a href="#">Computer</a></li>
+        <li><a href="#">Violin</a></li>
+        <li><a href="#">Ratty I</a></li>
+        <li><a href="#">Computer</a></li>
+        <li><a href="#">Violin</a></li>
+        <li><a href="#">Ratty I</a></li>
+        <li><a href="#">Computer</a></li>
+        <li><a href="#">Violin</a></li>
+        <li><a href="#">Ratty I</a></li>
+        <li><a href="#">Computer</a></li>
+        <li><a href="#">Violin</a></li>
+        <li><a href="#">Ratty I</a></li>
+        <li><a href="#">Computer</a></li>
+        <li><a href="#">Violin</a></li>
+        <li><a href="#">Ratty I</a></li>
+        <li><a href="#">Computer</a></li>
+        <li><a href="#">Violin</a></li>
+       </ul>
+      </li>
+      
+      <li class="search"><a href="#">Search in edZone</a></li>
+     </ul>
+    </div>
+   </div>
+   
+   <!--div class="bookshelfCatalog">
+    <div class="statusBar">
+     <div class="textleftBtn"><a href="#">Cancel</a></div>
+     <div class="searchBtn"><a href="javascript:void(0);">Search</a></div>
+    </div>
+    <div class="bookshelfCatalogBody">
+     <div class="searchArea">
+      <ul>
+       <li>
+        <div class="title">Keywords</div>
+        <div class="input"><input type="text" name="textfield" id="textfield" /></div>
+        <div class="clear"></div>
+       </li>
+       <li><a href="#">
+        <span>Tag(s):</span>
+        <span>Tag(s):</span>
+        <span>Tag(s):</span>
+        <span>Tag(s):</span>
+        <span>Tag(s):</span>
+        <span>Tag(s):</span>
+        <span>Tag(s):</span>
+        <span>Tag(s):</span>
+       </a></li>
+       <li><a href="#">Common Core:</a></li>
+       <li>
+        <div class="title">Readabilty</div>
+        <div class="input">
+         <select name="select">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+         </select>
+        </div>
+        <div class="clear"></div>
+       </li>
+      </ul>
+     </div>
+    </div>
+   </div--> 
+   
+   <!--div class="bookshelfCatalog">
+    <div class="statusBar">
+     <div class="textrightBtn"><a href="#">Done</a></div>
+     <div class="backBtn"><a href="javascript:void(0);">Back</a></div>
+    </div>
+    <div class="bookshelfTagBody ScrollBAR">
+     <ul>
+      <li>
+       <input type="checkbox" name="checkbox" id="checkbox1" />
+       <label for="checkbox1" id="checkBox51" class="CBnoselect" onclick="checkBOX5(1)"><span class="name">testes</span><br /><span class="count">Count:1</span></label>
+      </li>
+      <li>
+       <input type="checkbox" name="checkbox" id="checkbox2" />
+       <label for="checkbox2" id="checkBox52" class="CBnoselect" onclick="checkBOX5(2)"><span class="name">testes</span><br /><span class="count">Count:1</span></label>
+      </li>
+      <li>
+       <input type="checkbox" name="checkbox" id="checkbox3" />
+       <label for="checkbox3" id="checkBox53" class="CBnoselect" onclick="checkBOX5(3)"><span class="name">testes</span><br /><span class="count">Count:1</span></label>
+      </li>
+      <li>
+       <input type="checkbox" name="checkbox" id="checkbox4" />
+       <label for="checkbox4" id="checkBox54" class="CBnoselect" onclick="checkBOX5(4)"><span class="name">testes</span><br /><span class="count">Count:1</span></label>
+      </li>
+      <li>
+       <input type="checkbox" name="checkbox" id="checkbox5" />
+       <label for="checkbox5" id="checkBox55" class="CBnoselect" onclick="checkBOX5(5)"><span class="name">testes</span><br /><span class="count">Count:1</span></label>
+      </li>
+      <li>
+       <input type="checkbox" name="checkbox" id="checkbox6" />
+       <label for="checkbox6" id="checkBox56" class="CBnoselect" onclick="checkBOX5(6)"><span class="name">testes</span><br /><span class="count">Count:1</span></label>
+      </li>
+      <li>
+       <input type="checkbox" name="checkbox" id="checkbox5" />
+       <label for="checkbox5" id="checkBox55" class="CBnoselect" onclick="checkBOX5(5)"><span class="name">testes</span><br /><span class="count">Count:1</span></label>
+      </li>
+      <li>
+       <input type="checkbox" name="checkbox" id="checkbox6" />
+       <label for="checkbox6" id="checkBox56" class="CBnoselect" onclick="checkBOX5(6)"><span class="name">testes</span><br /><span class="count">Count:1</span></label>
+      </li>
+
+     </ul>
+    </div>
+   </div--> 
+   
+   <!--div class="bookshelfCatalog">
+    <div class="statusBar">
+     <div class="textrightBtn"><a href="#">Done</a></div>
+     <div class="backBtn"><a href="javascript:void(0);">Back</a></div>
+     <div class="textTitle">Common Core</div>
+    </div>
+    <div class="bookshelfCommonBody">
+    
+     <ul>
+      <li>Standards</li>
+      <li><a href="#">English Language Arts</a></li>
+      <li><a href="#">Math</a></li>
+      <li><a href="#">Science</a></li>
+     </ul>
+
+    </div>
+   </div--> 
+   
+   <div class="bookshelfCatalog">
+    <div class="statusBar">
+     <div class="textrightBtn"><a href="#">Done</a></div>
+     <div class="backBtn"><a href="javascript:void(0);">Back</a></div>
+     <div class="textTitle">Common Core</div>
+    </div>
+    <div class="bookshelfCommonBody">
+    
+     <!--ul class="level1 ScrollBAR">
+      <li class="CCtitle">Conventions of Standard English</li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language ArtsEnglish Language Arts</a></li>
+      <li class="CCtitle">Conventions of Standard English</li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+      <li><a href="#">Demonstrate command of the English Language Arts</a></li>
+     </ul-->
+     <!--ul class="level2 ScrollBAR">
+      <li class="CCtitle">Conventions of Standard English</li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language ArtsDemonstrate command of the English Language Arts</span></a><span class="mark"><img src="images/ selectIco.png" width="23" height="19" /></span></li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li class="CCtitle">Conventions of Standard English</li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li class="CCtitle">Conventions of Standard English</li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li class="CCtitle">Conventions of Standard English</li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+      <li><a href="#"><span class="name">L.1.1</span><br /><span>Demonstrate command of the English Language Arts</span></a></li>
+     </ul-->
+
+    </div>
+   </div> 
+   
+   <!--div class="bookshelfCatalog">
+    <div class="statusBar">
+     <div class="textrightBtn"><a href="#">Done</a></div>
+     <div class="backBtn"><a href="javascript:void(0);">Back</a></div>
+     <div class="textTitle">HSF-13.B</div>
+    </div>
+    <div class="bookshelfCommonBody">
+     <ul class="level3">
+      <li>
+       <h1>Common Core</h1>
+       <h2>13.B.1A</h2>
+      </li>
+      <li>
+       <h1>Description</h1>
+       <h2>Demonstrate command of the English Language ArtsDemonstrate command of the English Language ArtsDemonstrate command of the English Language ArtsDemonstrate command of the English Language ArtsDemonstrate command of the English Language Arts</h2>
+      </li>
+     </ul>
+
+    </div>
+   </div-->
+   
+   <div class="bookshelfContent">
+    <div class="statusBar1">
+     <div class="searchBar">
+      <input type="text" name="textfield" id="textfield" value="Search" />
+     </div>
+     <div class="details"><a href="#">Show Details</a></div>
+     <div class="sortDropdown"><a href="#">SearchSort</a>
+      <!--div class="sortOptionsTooltip">
+       <div class="arrow"><img src="images/selectArrow4.png" width="15" height="12" /></div>
+       <div class="body">
+        <ul>
+         <li>
+          <input type="radio" name="radio" id="radio" value="radio" />
+          <label for="radio" class="radioNoselect" id="sortOption1" onclick="sortOptionRadio(1)">Title, A-Z</label>
+         </li>
+         <li>
+          <input type="radio" name="radio" id="radio" value="radio" />
+          <label for="radio" class="radioNoselect" id="sortOption2" onclick="sortOptionRadio(2)">Title, Z-A</label>
+         </li>
+         <li>
+          <input type="radio" name="radio" id="radio" value="radio" />
+          <label for="radio" class="radioNoselect" id="sortOption3" onclick="sortOptionRadio(3)">Type</label>
+         </li>
+         <li>
+          <input type="radio" name="radio" id="radio" value="radio" />
+          <label for="radio" class="radioNoselect" id="sortOption4" onclick="sortOptionRadio(4)">Color</label>
+         </li>
+         <li>
+          <input type="radio" name="radio" id="radio" value="radio" />
+          <label for="radio" class="radioNoselect" id="sortOption5" onclick="sortOptionRadio(5)">Tag</label>
+         </li>
+        </ul>
+       </div>
+      </div-->
+     </div>
+     <div class="clear"></div>
+    </div>
+    
+    <!--div class="statusBar2">
+     <div class="searchBar"><input type="text" name="textfield" id="textfield" value="Search" /></div>
+     <div class="btn">
+      <ul>
+       <li><a href="javascript:void(0);">Search</a></li>
+       <li><a href="javascript:void(0);">Cancel</a></li>
+       <li class="clear"></li>
+      </ul>
+     </div>
+     <div class="clear"></div>
+    </div>
+    
+    <div class="searchOptions">
+     <ul>
+      <li><a href="#">All</a></li>
+      <li><a href="#">PDF</a></li>
+      <li><a href="#">LINK</a></li>
+      <li><a href="#">MP3</a></li>
+      <li><a href="#">VIDEO</a></li>
+      <li><a href="#">EMAIL</a></li>
+      <li><a href="#">BOOK</a></li>
+      <li><a href="#">FOLDER</a></li>
+      <li><a href="#">PHOTO</a></li>
+      <li class="clear"></li>
+     </ul>
+     <ul class="clear"></ul>
+    </div-->
+    <div class="addFileBar">
+     <div><a href="#">Add Resource</a> 
+      
+      <!--div class="addResouceTooltip">
+       <div class="arrow"><img src="images/selectArrow4.png" width="15" height="12" /></div>
+       <div class="body">
+        <ul>
+         <li><a href="javascript:void(0);">From Web</a></li>
+         <li><a href="javascript:void(0);">From Camera Roll</a></li>
+        </ul>
+       </div>
+      </div--> 
+      
+     </div>
+     <div><a href="#">Add Folder</a></div>
+     <div><a href="#">Google_Drive</a></div>
+    </div>
+    <!--div class="infoModifyTooltip">
+     <div class="modifyColorTooltip">
+      <ul>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li><a href="#"></a></li>
+       <li class="clear"></li>
+      </ul>
+      <ul>
+       <img src="images/selectArrow5.png" width="12" height="15" />
+      </ul>
+      <ul class="clear">
+      </ul>
+     </div>
+     <div class="body ScrollBAR">
+      <div class="menuBar">
+       <div class="rightLink">Tyudddddddddddddddddddddddddddddddddddddddddd</div>
+       <div class="clear"></div>
+      </div>
+      <div class="titleName">OPTIONS</div>
+      <div class="optionsList">
+       <ul>
+        <li><a href="#">Edit</a></li>
+        <li><a href="#">Share</a></li>
+        <li><a href="#">Move to</a></li>
+        <li><a href="#">Delete</a></li>
+       </ul>
+      </div>
+      <div class="titleName">DETAILS</div>
+      <div class="detailsList">
+       <ul>
+        <li>
+         <div class="title">Title</div>
+         <div class="content">Rty</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="title">Type</div>
+         <div class="content">Folder</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="title">Common Core</div>
+         <div class="content"></div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="title">Tags</div>
+         <div class="content">tyugh, yui, rty</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="title">Color</div>
+         <div class="content colorArea"><a href="javascript:void(0);">Change Arrow Color</a></div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="title">Shared EdZone Community</div>
+         <div class="content">No</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="title">Owner</div>
+         <div class="content">song tom</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="title">Pub date</div>
+         <div class="content">01-27-14 23:51:44</div>
+         <div class="clear"></div>
+        </li>
+       </ul>
+      </div>
+     </div>
+     <div class="arrow"><img src="images/selectArrow5.png" width="12" height="15" /></div>
+     <div class="clear"></div>
+    </div-->
+    
+    
+    
+    
+    <!--div class="bookshelfShareTooltip">
+     <div class="body">
+      <div class="topBar">
+       <div class="backBtn"><a href="#">Back</a></div>
+       <div class="rightBtn"><a href="#">Done</a></div>
+       <div class="textTitle">Share</div>
+      </div>
+      <div class="ShareList ScrollBAR">
+       <ul>
+        <li><a href="#">Classes</a></li>
+        <li><a href="#">Students</a></li>
+        <li><a href="#">Flags</a></li>
+       </ul>
+      </div>
+      <div class="ShareListClass ScrollBAR">
+       <ul>
+        <li>
+         <input type="checkbox" name="checkbox1" id="checkbox1" />
+         <label for="checkbox1" class="CBnoselect" id="checkBox21" onclick="checkBOX2(1)">Ratty I</label>
+        </li>
+        <li>
+         <input type="checkbox" name="checkbox2" id="checkbox2" />
+         <label for="checkbox2" class="CBnoselect" id="checkBox22" onclick="checkBOX2(2)">Computer</label>
+        </li>
+        <li>
+         <input type="checkbox" name="checkbox3" id="checkbox3" />
+         <label for="checkbox3" class="CBnoselect" id="checkBox23" onclick="checkBOX2(3)">Violin</label>
+        </li>
+       </ul>
+      </div>
+      <div class="ShareListStudent ScrollBAR">
+       <ul>
+        <li>
+         <div class="userFace"><img src="images/face-ico-ss.png" width="33" height="33" /></div>
+         <div class="checkbox">
+          <input type="checkbox" name="checkbox1" id="checkbox1" />
+          <label for="checkbox1" class="CBnoselect" id="checkBox21" onclick="checkBOX2(1)"><span class="name">Lei Zhang</span><br />
+           <span class="email">zhanglei5945@gmail.com</span></label>
+         </div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="userFace"><img src="images/face-ico-ss.png" width="33" height="33" /></div>
+         <div class="checkbox">
+          <input type="checkbox" name="checkbox2" id="checkbox2" />
+          <label for="checkbox2" class="CBnoselect" id="checkBox22" onclick="checkBOX2(2)"><span class="name">Lei Zhang</span><br />
+           <span class="email">zhanglei5945@gmail.com</span></label>
+         </div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="userFace"><img src="images/face-ico-ss.png" width="33" height="33" /></div>
+         <div class="checkbox">
+          <input type="checkbox" name="checkbox3" id="checkbox3" />
+          <label for="checkbox3" class="CBnoselect" id="checkBox23" onclick="checkBOX2(3)"><span class="name">Lei Zhang</span><br />
+           <span class="email">zhanglei5945@gmail.com</span></label>
+         </div>
+         <div class="clear"></div>
+        </li>
+       </ul>
+      </div>
+      <div class="ShareListFlag ScrollBAR">
+       <ul>
+        <li>
+         <div class="userFace"><img src="images/temporary/flag-3.png" width="33" height="33" /></div>
+         <div class="checkbox">
+          <input type="checkbox" name="checkbox1" id="checkbox1" />
+          <label for="checkbox1" class="CBnoselect" id="checkBox21" onclick="checkBOX2(1)">Qew</label>
+         </div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="userFace"><img src="images/temporary/flag-3.png" width="33" height="33" /></div>
+         <div class="checkbox">
+          <input type="checkbox" name="checkbox2" id="checkbox2" />
+          <label for="checkbox2" class="CBnoselect" id="checkBox22" onclick="checkBOX2(2)">Qew</label>
+         </div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="userFace"><img src="images/temporary/flag-3.png" width="33" height="33" /></div>
+         <div class="checkbox">
+          <input type="checkbox" name="checkbox3" id="checkbox3" />
+          <label for="checkbox3" class="CBnoselect" id="checkBox23" onclick="checkBOX2(3)">Qew</label>
+         </div>
+         <div class="clear"></div>
+        </li>
+       </ul>
+      </div>
+     </div>
+     <div class="arrow"><img src="images/selectArrow5.png" width="12" height="15" /></div>
+     <div class="clear"></div>
+    </div-->
+    
+    
+    
+    
+    <!--div class="bookshelfMoveTooltip">
+     <div class="body">
+      <div class="topBar">
+       <div class="backBtn"><a href="#">Back</a></div>
+       <div class="rightTextBtn"><a href="#">Select</a></div>
+       <div class="textTitle">Root</div>
+      </div>
+      <div class="folderList ScrollBAR">
+       <ul>
+        <li><a href="#">Classes</a></li>
+        <li><a href="#">Students</a></li>
+        <li><a href="#">Flags</a></li>
+       </ul>
+      </div>
+     </div>
+     <div class="arrow"><img src="images/selectArrow5.png" width="12" height="15" /></div>
+     <div class="clear"></div>
+    </div-->
+    
+    
+    
+    <div class="bookshelfContentList ScrollBAR">
+     <ul>
+      <li class="tags">
+       <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+       <div class="tagsName">Rty</div>
+       <div class="tagsNum">3</div>
+       <div class="clear"></div>
+       <ul>
+        <li>
+         <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+         <div class="folderIco"><img src="images/other-ico/folder-ico.png" width="30" height="26" />
+          <div class="bookshelfNum">123</div>
+         </div>
+         <div class="folderTitle">
+          <h1>Rty</h1>
+          <h2>Tyui</h2>
+         </div>
+         <div class="clear"></div>
+         <div class="infoBtn"><a href="#">information</a></div>
+        </li>
+        <li>
+         <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+         <div class="folderIco"><img src="images/other-ico/webLink-ico.png" width="32" height="30" />
+          <div class="bookshelfNum">123</div>
+         </div>
+         <div class="folderTitle">
+          <h1>Google</h1>
+          <h2>http://www.google.com.hk/</h2>
+         </div>
+         <div class="clear"></div>
+         <div class="infoBtn"><a href="#">information</a></div>
+        </li>
+        <li>
+         <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+         <div class="folderIco"><img src="images/other-ico/book-ico.png" width="30" height="29" />
+          <div class="bookshelfNum">123</div>
+         </div>
+         <div class="folderTitle">
+          <h1>Google</h1>
+          <h2>http://www.google.com.hk/</h2>
+         </div>
+         <div class="clear"></div>
+         <div class="infoBtn"><a href="#">information</a></div>
+        </li>
+       </ul>
+      </li>
+      <li class="folder"> <span>
+       <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+       <div class="folderIco"><img src="images/other-ico/folder-ico.png" width="30" height="26" />
+        <div class="bookshelfNum">123</div>
+       </div>
+       <div class="folderTitle">
+        <h1>Google</h1>
+        <h2>http://www.google.com.hk/</h2>
+       </div>
+       <div class="clear"></div>
+       <div class="infoBtn"><a href="#">information</a></div>
+       </span>
+       <ul>
+        <li class="folder"> <span>
+         <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+         <div class="folderIco"><img src="images/other-ico/folder-ico.png" width="30" height="26" />
+          <div class="bookshelfNum">123</div>
+         </div>
+         <div class="folderTitle">
+          <h1>Google</h1>
+          <div class="webUrl">http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/http://www.google.com.hk/
+          </div>
+         </div>
+         <div class="clear"></div>
+         <div class="infoBtn"><a href="#">information</a></div>
+         </span>
+         <ul>
+          <li class="folder"> <span>
+           <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+           <div class="folderIco"><img src="images/other-ico/folder-ico.png" width="30" height="26" />
+            <div class="bookshelfNum">123</div>
+           </div>
+           <div class="folderTitle">
+            <h1>Google</h1>
+            <h2>http://www.google.com.hk/</h2>
+           </div>
+           <div class="clear"></div>
+           <div class="infoBtn"><a href="#">information</a></div>
+           </span> </li>
+          <li class="folder"> <span>
+           <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+           <div class="folderIco"><img src="images/other-ico/folder-ico.png" width="30" height="26" />
+            <div class="bookshelfNum">123</div>
+           </div>
+           <div class="folderTitle">
+            <h1>Google</h1>
+            <h2>http://www.google.com.hk/</h2>
+           </div>
+           <div class="clear"></div>
+           <div class="infoBtn"><a href="#">information</a></div>
+           </span> </li>
+         </ul>
+        </li>
+       </ul>
+      </li>
+      <li class="folder">
+       <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+       <div class="folderIco"><img src="images/other-ico/webLink-ico.png" width="32" height="30" />
+        <div class="bookshelfNum">123</div>
+       </div>
+       <div class="folderTitle">
+        <h1>Google</h1>
+        <h2>http://www.google.com.hk/</h2>
+       </div>
+       <div class="clear"></div>
+       <div class="infoBtn"><a href="#">information</a></div>
+      </li>
+      <li class="folder">
+       <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+       <div class="folderIco"><img src="images/other-ico/mp3-ico.png" width="30" height="22" />
+        <div class="bookshelfNum">123</div>
+       </div>
+       <div class="folderTitle">
+        <h1>Google</h1>
+        <h2>http://www.google.com.hk/</h2>
+       </div>
+       <div class="clear"></div>
+       <div class="infoBtn"><a href="#">information</a></div>
+      </li>
+      <li class="folder">
+       <div class="colorIco1"><img src="images/other-ico/bookshelf-arrow2.png" width="13" height="29" /></div>
+       <div class="folderIco"><img src="images/other-ico/folder2-ico.png" width="30" height="27" />
+        <div class="bookshelfNum">123</div>
+       </div>
+       <div class="folderTitle">
+        <h1>Google</h1>
+        <h2>http://www.google.com.hk/</h2>
+       </div>
+       <div class="clear"></div>
+       <div class="infoBtn"><a href="#">information</a></div>
+      </li>
+      <li class="folder details">
+       <div class="folderIco"><img src="images/other-ico/folder2-ico.png" width="30" height="27" />
+        <div class="bookshelfNum">123</div>
+       </div>
+       <div class="folderTitle">
+        <h1>Google</h1>
+        <h2>http://www.google.com.hk/</h2>
+       </div>
+       <div class="clear"></div>
+       <div class="detailsList">
+        <ul>
+         <li>By song tom on 02-10-14 18:36:48</li>
+         <li>Readability:K - K Low</li>
+         <li>Common Core: L. 1.1</li>
+        </ul>
+       </div>
+       <div class="infoBtn"><a href="#">information</a></div>
+       <ul>
+        <li class="folder details">
+         <div class="folderIco"><img src="images/other-ico/folder2-ico.png" width="30" height="27" />
+          <div class="bookshelfNum">123</div>
+         </div>
+         <div class="folderTitle">
+          <h1>Google</h1>
+          <h2>http://www.google.com.hk/</h2>
+         </div>
+         <div class="clear"></div>
+         <div class="detailsList">
+          <ul>
+           <li>By song tom on 02-10-14 18:36:48</li>
+           <li>Readability:K - K Low</li>
+           <li>Common Core: L. 1.1</li>
+          </ul>
+         </div>
+         <div class="infoBtn"><a href="#">information</a></div>
+        </li>
+        <li class="folder details">
+         <div class="folderIco"><img src="images/other-ico/folder2-ico.png" width="30" height="27" />
+          <div class="bookshelfNum">123</div>
+         </div>
+         <div class="folderTitle">
+          <h1>Google</h1>
+          <h2>http://www.google.com.hk/</h2>
+         </div>
+         <div class="clear"></div>
+         <div class="detailsList">
+          <ul>
+           <li>By song tom on 02-10-14 18:36:48</li>
+           <li>Readability:K - K Low</li>
+           <li>Common Core: L. 1.1</li>
+          </ul>
+         </div>
+         <div class="infoBtn"><a href="#">information</a></div>
+        </li>
+        <li class="folder details">
+         <div class="folderIco"><img src="images/other-ico/folder2-ico.png" width="30" height="27" />
+          <div class="bookshelfNum">123</div>
+         </div>
+         <div class="folderTitle">
+          <h1>Google</h1>
+          <h2>http://www.google.com.hk/</h2>
+         </div>
+         <div class="clear"></div>
+         <div class="detailsList">
+          <ul>
+           <li>By song tom on 02-10-14 18:36:48</li>
+           <li>Readability:K - K Low</li>
+           <li>Common Core: L. 1.1</li>
+          </ul>
+         </div>
+         <div class="infoBtn"><a href="#">information</a></div>
+        </li>
+       </ul>
+      </li>
+     </ul>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+</div>
+<script type="text/javascript">
+var screenNum=$(window).height();
+var windowNum=$('.bookshelfContentList').height()+189;
+
+
+  $('.bookshelfTagBody').css('height',screenNum-146);
+  $('.bookshelfCatalogBody').css('height',screenNum-196);
+  $('.level1').css('height',screenNum-146);
+  $('.level2').css('height',screenNum-146);
+  $('.bookshelfContent').css('height',screenNum-101);
+
+
+
+//$('.bookshelfTagBody').css('height',screenNum-148);
+//$('.bookshelfCatalogBody').css('height',screenNum-148);
+//$('.bookshelfCommonBody').css('height',screenNum-148);
+
+
+
+if(screenNum<windowNum){
+  $('.bookshelfContentList').css('height',screenNum-189);
+}
+
+
+
+$( window ).resize(function() {
+	
+var screenNum=$(window).height();
+
+  $('.bookshelfTagBody').css('height',screenNum-146);
+  $('.bookshelfCatalogBody').css('height',screenNum-146);
+  $('.level1').css('height',screenNum-146);
+  $('.level2').css('height',screenNum-146);
+  $('.bookshelfContent').css('height',screenNum-101);
+  $('.bookshelfContentList').css('height',screenNum-189);
+
+ 
+});
+
+</script> 
+<script src="js/scrollbar.js" type="text/javascript"></script> 
+<script src="js/jquery.select.js" type="text/javascript"></script>
+</body>
+</html>

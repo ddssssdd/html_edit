@@ -1,0 +1,444 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>edZone-Classes</title>
+<link href="css/edZoneWeb-CSS.css" rel="stylesheet" type="text/css" />
+<link href="css/edZoneWeb-popupCSS.css" rel="stylesheet" type="text/css" />
+<link href="css/edZoneWeb-Dropdown.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="js/jquery.dd.js" type="text/javascript"></script>
+<script src="js/checkbox.js" type="text/javascript"></script>
+<script src="js/radioBtn.js" type="text/javascript"></script>
+<script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+</head>
+<style type="text/css">
+html {
+	background: #f2f2f2;
+}
+</style>
+
+<body>
+<div class="wrap">
+ <header>
+  <div class="logo"><a href="javascript:void(0);">edZone</a></div>
+  <div class="navBar">
+   <ul>
+    <li><a href="homeClass.html">Home</a></li>
+    <li class="select"><a href="classes.html">Classes</a></li>
+    <li><a href="bookshelf.html">Bookshelf</a></li>
+    <li><a href="assessment-AssView.html">Assessment</a></li>
+    <li><a href="browser.html">Browser</a></li>
+    <li><a href="poll.html">Poll</a></li>
+    <li><a href="blogReader.html">Blog</a></li>
+    <li><a href="slideshow.html">SlideShow</a></li>
+    <li><a href="faq.html">Help/FAQ</a></li>
+    <li><a href="javascript:void(0);">Refresh</a></li>
+    <li class="clear"></li>
+   </ul>
+  </div>
+  <div class="profileBar">
+   <div class="userFace"><a href="javascript:void(0)"><img src="images/temporary/temp-face.jpg" width="40" height="40" /></a></div>
+   <div class="userName"><a href="javascript:void(0)">Song Tom</a></div>
+  </div>
+  <div class="clear"></div>
+ </header>
+ <div class="statusBar">
+  
+  <div class="leftBar">
+   <ul>
+    <li><a href="#">Student View</a></li>
+    <li class="select"><a href="#">Seating Chart</a></li>
+    <li class="clear"></li>
+   </ul>
+  </div>
+  
+  <select name="select" style="width:300px;">
+   <option>Arts</option>
+   <option selected="selected">United Arab Emirates</option>
+  </select>
+  <div class="sortDropdown"><a href="#">SearchSort</a> 
+  
+   <!--div class="sortOptionsTooltip">
+    <div class="arrow"><img src="images/selectArrow4.png" width="15" height="12" /></div>
+    <div class="body">
+     <ul>
+      <li>
+       <input type="radio" name="radio" id="radio" value="radio" />
+       <label for="radio" class="radioNoselect" id="sortOption1" onclick="sortOptionRadio(1)">Title, A-Z</label>
+      </li>
+      <li>
+       <input type="radio" name="radio" id="radio" value="radio" />
+       <label for="radio" class="radioNoselect" id="sortOption2" onclick="sortOptionRadio(2)">Title, Z-A</label>
+      </li>
+      <li>
+       <input type="radio" name="radio" id="radio" value="radio" />
+       <label for="radio" class="radioNoselect" id="sortOption3" onclick="sortOptionRadio(3)">Type</label>
+      </li>
+      <li>
+       <input type="radio" name="radio" id="radio" value="radio" />
+       <label for="radio" class="radioNoselect" id="sortOption4" onclick="sortOptionRadio(4)">Color</label>
+      </li>
+      <li>
+       <input type="radio" name="radio" id="radio" value="radio" />
+       <label for="radio" class="radioNoselect" id="sortOption5" onclick="sortOptionRadio(5)">Tag</label>
+      </li>
+     </ul>
+    </div>
+   </div--> 
+  </div>
+  <div class="googleDriver"><a href="#">googleDriver</a></div>
+ </div>
+ <div class="mainBody">
+  <div class="classesWrapContent">
+   <ul>
+    <li> 
+     
+     <!--div class="mainLink"><a href="popupStudent.html">student</a></div-->
+     <div class="studentBar">
+      <div class="studentProfile">
+       <div class="studentFace"><a href="popupStudent.html"><img src="images/temporary/temp-face.jpg" width="93" height="93" /></a></div>
+       <div class="studentName"><a href="popupStudent.html">lei zhang</a></div>
+      </div>
+      <div class="flagBar">
+       <ul class="ScrollBAR">
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li class="clear"></li>
+       </ul>
+      </div>
+      <div class="attendanceStatus">
+       <div class="Tardy">T</div>
+      </div>
+      <div class="clear"></div>
+     </div>
+     <div class="studentHonor">
+      <div class="honorGood"><span>100</span></div>
+      <div class="honorBad"><span>0</span></div>
+      <div class="editStudent"><a href="#"></a></div>
+      <div class="clear"></div>
+     </div>
+    </li>
+    <li> 
+     
+     <!--div class="mainLink"><a href="popupStudent.html">student</a></div-->
+     <div class="studentBar">
+      <div class="studentProfile">
+       <div class="studentFace"><a href="popupStudent.html"><img src="images/temporary/temp-face.jpg" width="93" height="93" /></a></div>
+       <div class="studentName"><a href="popupStudent.html">lei zhang</a></div>
+      </div>
+      <div class="flagBar">
+       <ul class="ScrollBAR">
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li><a href="popupDeleteFlag.html"><img src="images/temporary/flag.png" width="20" height="22" /></a></li>
+        <li class="clear"></li>
+       </ul>
+      </div>
+      <div class="attendanceStatus">
+       <div class="Absent">A</div>
+      </div>
+      <div class="clear"></div>
+     </div>
+     <div class="studentHonor">
+      <div class="honorGood"><span>0</span></div>
+      <div class="honorBad"><span>0</span></div>
+      <div class="editStudent"><a href="#"></a></div>
+      <div class="clear"></div>
+     </div>
+    </li>
+    <li class="clear"></li>
+   </ul>
+  </div>
+ </div>
+ <footer class="classes">
+  <div class="description">
+   <ul> 
+    <li>
+     <div class="title">Code:</div>
+     <div class="content">eFUAW</div>
+     <div class="clear"></div>
+    </li>
+    <li>
+     <div class="title">Grade:</div>
+     <div class="content">K</div>
+     <div class="clear"></div>
+    </li>
+    <li>
+     <div class="title">Students #:</div>
+     <div class="content">1</div>
+     <div class="clear"></div>
+    </li>
+   </ul>
+  </div>
+  <div class="btn">
+   <ul>
+    <li><a href="popupEditClass.html">Participation</a>
+     <!--div class="participationTooltip ">
+      <div class="body">
+       <div class="listTooltip">
+        <ul>
+         <li>Rodrigo Arantes</li>
+         <li><a href="#">Raised Hand</a></li>
+         <li><a href="#">Call On</a></li>
+         <li><a href="#">History</a></li>
+        </ul>
+        <ul>
+         <li><a href="#">Cancel</a></li>
+        </ul>
+       </div>
+       <div class="menuBar">
+        <div class="leftLink"><a href="#">Cancel</a></div>
+        <div class="rightLink"><a href="#">Random</a></div>
+        <div class="clear"></div>
+       </div>
+       <div class="list ScrollBAR">
+        <ul>
+         <li>
+          <div class="title"><a href="#">Rodrigo Arantes</a></div>
+          <div class="time"><a href="#">05-06 19:00</a></div>
+          <div class="clear"></div>
+         </li>
+         <li>
+          <div class="title"><a href="#">Rodrigo Arantes</a></div>
+          <div class="time"><a href="#">05-06 19:00</a></div>
+          <div class="clear"></div>
+         </li>
+         <li>
+          <div class="title"><a href="#">Rodrigo Arantes</a></div>
+          <div class="time"><a href="#">05-06 19:00</a></div>
+          <div class="clear"></div>
+         </li>
+         <li>
+          <div class="title"><a href="#">Rodrigo Arantes</a></div>
+          <div class="time"><a href="#">05-06 19:00</a></div>
+          <div class="clear"></div>
+         </li>
+         <li>
+          <div class="title"><a href="#">Rodrigo Arantes</a></div>
+          <div class="time"><a href="#">05-06 19:00</a></div>
+          <div class="clear"></div>
+         </li>
+         <li>
+          <div class="title"><a href="#">Rodrigo Arantes</a></div>
+          <div class="time"><a href="#">05-06 19:00</a></div>
+          <div class="clear"></div>
+         </li>
+        </ul>
+       </div>
+      </div>
+      <div class="arrow"><img src="images/selectArrow6.png" width="15" height="12" /></div>
+     </div-->
+     
+     <div class="participationHistoryTooltip">
+      <div class="body">
+       <div class="menuBar">
+        <div class="leftLink"><a href="#">Cancel</a></div>
+        <div class="title">History</div>
+        <div class="rightLink">
+         <ul>
+          <li><a href="#">Raised Hand</a></li>
+          <li><a href="#">Call On</a></li>
+          <li><a href="#">Award Rec. Point</a></li>
+          <li class="clear"></li>
+         </ul>
+        </div>
+       </div>
+       <div class="typeBar">
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+         <tr>
+          <td width="15%">Date</td>
+          <td width="10%">Time</td>
+          <td width="30%">Class</td>
+          <td width="20%">Type</td>
+          <td width="25%">Comment</td>
+         </tr>
+        </table>
+       </div>
+       <div class="content ScrollBAR">
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">YesYesYes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+         <tr>
+          <td width="15%">2014-05-06 </td>
+          <td width="10%">19:00:00</td>
+          <td width="30%">Computer</td>
+          <td width="20%">Call On</td>
+          <td width="25%">Yes</td>
+         </tr>
+        </table>
+       </div>
+      
+      </div>
+      <div class="arrow"><img src="images/selectArrow6.png" width="15" height="12" /></div>
+     </div>
+     
+    </li>
+    <li><a href="popupEditClass.html">Edit</a></li>
+    <li><a href="homeAddCourse.html">Class Board</a></li>
+    <li><a href="popupAttendance.html">Attendance</a></li>
+    <li><a href="#">Recognition</a></li>
+    <li><a href="#">Flag</a></li>
+    <li class="clear"></li>
+   </ul>
+  </div>
+  <div class="clear"></div>
+ </footer>
+</div>
+<script src="js/scrollbar.js" type="text/javascript"></script> 
+<script src="js/jquery.select.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,616 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>edZone-HOME</title>
+<link href="css/edZoneWeb-CSS.css" rel="stylesheet" type="text/css" />
+<link href="css/edZoneWeb-popupCSS.css" rel="stylesheet" type="text/css" />
+<link href="css/edZoneWeb-Dropdown.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="js/jquery.dd.js" type="text/javascript"></script>
+<script src="js/checkbox.js" type="text/javascript"></script>
+<script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+<script type="text/javascript" src="date-js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="date-js/jquery.datePicker-min.js"></script>
+<link type="text/css" href="date-css/datepicker.css" rel="stylesheet" />
+<input name="markerDate" value=1404489600000 type="input" style="display:none;"/>
+<input name="markerDate" value=1402675200000 type="input" style="display:none;"/>
+<input name="markerDate" value=1402848000000 type="input" style="display:none;"/>
+<input name="markerDate" value=1402934400000 type="input" style="display:none;"/>
+<script type="text/javascript">
+$(document).ready(function(){
+//------------------------
+	var markerDate=[];
+	$("input[name=markerDate]").each(function(n,element){
+			markerDate[n]=parseInt($(this).val());
+		});
+	console.log(markerDate);
+//-------------------------
+	$("#datepicker").datePicker({
+		inline:true,
+		selectMultiple:false,
+		clickInput:true,
+		markerDate:markerDate,
+	});
+
+	
+});
+</script>
+</head>
+
+<body>
+<div class="blackWrap">
+ <div class="mainWrap">
+  <div class="popupWrapStyle2">
+   <div class="popupHeader">
+    <div class="btnRight"><a href="#">Done</a></div>
+    <div class="clear"></div>
+   </div>
+   <div class="popupMenuBar">
+    <div class="leftMenuBar">
+     <ul>
+      <li><a href="javascript:void(0)">edit</a> 
+       <!--div class="editTooltip">
+        
+        <div class="body">
+         <div class="menuBar">
+          <div class="leftLink"><a href="#">Cancel</a></div>
+          <div class="rightLink"><a href="#">Done</a></div>
+          <div class="titleBar">Edit Student Profile</div>
+         </div>
+         
+         <div class="mainBody">
+          <ul>
+           <li>
+            <div class="title">First Name:</div>
+            <div class="content"><input type="text" name="textfield2" id="textfield2" value="lei" /></div>
+            <div class="clear"></div>
+           </li>
+           <li>
+            <div class="title">Last Name:</div>
+            <div class="content"><input type="text" name="textfield2" id="textfield2" value="zhang" /></div>
+            <div class="clear"></div>
+           </li>
+           <li>
+            <div class="title">Screen Name:</div>
+            <div class="content"><input type="text" name="textfield2" id="textfield2" value="lei zhang "/></div>
+            <div class="clear"></div>
+           </li>
+           <li>
+            <div class="title">Email:</div>
+            <div class="content"><input name="textfield2" type="text" disabled="disabled" id="textfield2" value="zhanglei5945@gmail.com" /></div>
+            <div class="clear"></div>
+           </li>
+           <li>
+            <div class="title">&nbsp;</div>
+            <div class="content"><input type="submit" name="button" id="button" value="Submit" /></div>
+            <div class="clear"></div>
+           </li>
+          </ul>
+         </div>
+         
+        </div>
+       </div--> 
+       
+      </li>
+      <li><a href="javascript:void(0)">assessment</a></li>
+      <li><a href="javascript:void(0)">bookshelf</a></li>
+      <li><a href="javascript:void(0)">comment</a> 
+       
+       <!--div class="commentTooltip">
+        
+        <div class="body">
+         <div class="menuBar">
+          <div class="leftLink"><a href="#">Cancel</a></div>
+          <div class="rightLink"><a href="#">Done</a></div>
+          <div class="titleBar">Teacher's Notes</div>
+         </div>
+         
+         <div class="mainBody">
+          <div class="noteTextarea"><textarea name="textarea" id="textarea" cols="45" rows="5"></textarea></div>
+          <div class="noteList">
+           <ul>
+            <li>
+             <div class="dateBar">2014年1月26日 星期日 at 20:03</div>
+             <div class="textBody">Eerrr</div>
+            </li>
+            <li>
+             <div class="dateBar">2014年1月23日 星期日 at 20:03</div>
+             <div class="textBody">rrrr</div>
+            </li>
+           </ul>
+          </div>
+         </div>
+         
+        </div>
+       </div--> 
+       
+      </li>
+      <li><a href="javascript:void(0)">time</a>
+       <div class="dateTooltip">
+        <div class="body">
+         <div class="menuBar">
+          <div class="title">Today:2014-06-30</div>
+          <div class="rightLink"><a href="#">Done</a></div>
+          <div class="clear"></div>
+         </div>
+         <div id="datepicker"></div>
+         <div class="postscript">
+          <ul>
+           <li><img src="date-images/blue-S.png" width="20" height="20" />Absent</li>
+           <li><img src="date-images/red-S.png" width="20" height="20" />Tardy</li>
+           <li class="clear"></li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </li>
+      <li><a href="javascript:void(0)">history</a></li>
+      <li class="clear"></li>
+     </ul>
+    </div>
+    <div class="rightMenuBar">
+     <ul>
+      <li><a href="javascript:void(0)">flag</a>
+       <div class="AddflagTooltip">
+        <div class="body">
+         <div class="menuBar">
+          <div class="leftLink"><a href="#">Cancel</a></div>
+          <div class="rightLink"><a href="#">Done</a></div>
+          <div class="clear"></div>
+         </div>
+         <div class="flagList">
+          <ul>
+           <li>
+            <div class="flagImg"><img src="images/temporary/flag.png"/></div>
+            <input type="checkbox" name="checkbox11" id="checkbox1" />
+            <label for="checkbox1" class="CBnoselect" id="checkBox21" onclick="checkBOX2(1)">test1</label>
+           </li>
+           <li>
+            <div class="flagImg"><img src="images/temporary/flag.png"/></div>
+            <input type="checkbox" name="checkbox2" id="checkbox2" />
+            <label for="checkbox2" class="CBnoselect" id="checkBox22" onclick="checkBOX2(2)">test2</label>
+           </li>
+           <li>
+            <div class="flagImg"><img src="images/temporary/flag.png"/></div>
+            <input type="checkbox" name="checkbox3" id="checkbox3" />
+            <label for="checkbox3" class="CBnoselect" id="checkBox23" onclick="checkBOX2(3)">test3</label>
+           </li>
+          </ul>
+         </div>
+         <div class="content">
+          <ul>
+           <li class="btn"><a href="#">Insert Flag</a></li>
+           <li></li>
+           <li></li>
+          </ul>
+         </div>
+        </div>
+       </div>
+       
+       <div class="flagColorTooltip">
+        <div class="body">
+         
+         
+         <div class="menuBar">
+          <div class="rightLink"><a href="#">Done</a></div>
+          <div class="clear"></div>
+         </div>
+         
+         <div class="displayArea">
+          <div class="img"><img src="images/temporary/flag-big.png"/></div>
+          <div class="title"><input name="textfield" type="text" id="textfield" value="Title" /></div>
+         </div>
+         
+         <div class="colorArea">
+          <ul>
+           <li><a href="#"></a></li>
+           <li><a href="#"></a></li>
+           <li><a href="#"></a></li>
+           <li><a href="#"></a></li>
+           <li><a href="#"></a></li>
+           <li><a href="#"></a></li>
+           <li><a href="#"></a></li>
+           <li><a href="#"></a></li>
+           <li><a href="#"></a></li>
+           <li><a href="#"></a></li>
+           <li><a href="#"></a></li>
+           <li><a href="#"></a></li>
+           <li class="clear"></li>
+          </ul>
+         </div>
+         
+         
+        </div>
+        <div class="arrow"><img src="images/selectArrow2.png" width="12" height="15" /></div>
+        <div class="clear"></div>
+       </div>
+      </li>
+      
+      <li><a href="javascript:void(0)">honor</a>
+       <!--div class="honorTooltip">
+        <div class="body ScrollBAR">
+         <div class="menuBar">
+          <div class="leftLink"><a href="#">Cancel</a></div>
+          <div class="rightLink"><a href="#">Done</a></div>
+          <div class="removeBtnInactive"><a href="#">removeBtn</a></div>
+          <div class="addBtn"><a href="#">addBtn</a></div>
+          <div class="clear"></div>
+         </div>
+         <div class="titleBar">Positive</div>
+         <div class="honorList">
+          <ul>
+           <li> <a href="javascript:void(0);">select</a>
+            <div class="honorNUM">3</div>
+            <div class="temphonorNUM">0</div>
+            <div class="studentName">Stone</div>
+           </li>
+           <li> <a href="javascript:void(0);">select</a>
+            <div class="honorNUM">3</div>
+            <div class="temphonorNUM">0</div>
+            <div class="studentName">Stone</div>
+           </li>
+           <li> <a href="javascript:void(0);">select</a>
+            <div class="honorNUM">3</div>
+            <div class="temphonorNUM">0</div>
+            <div class="studentName">Stone</div>
+           </li>
+           <li> <a href="javascript:void(0);">select</a>
+            <div class="honorNUM">3</div>
+            <div class="temphonorNUM">0</div>
+            <div class="studentName">Stone</div>
+           </li>
+           <li> <a href="javascript:void(0);">select</a>
+            <div class="honorNUM">3</div>
+            <div class="temphonorNUM">0</div>
+            <div class="studentName">Stone</div>
+           </li>
+           <li> <a href="javascript:void(0);">select</a>
+            <div class="honorNUM">3</div>
+            <div class="subtracttemphonorNUM">-10</div>
+            <div class="studentName">Stone</div>
+           </li>
+           <li> <a href="javascript:void(0);">select</a>
+            <div class="honorNUM">3</div>
+            <div class="plustemphonorNUM">+10</div>
+            <div class="studentName">Stone</div>
+           </li>
+           <li class="addHonor"> <a href="#">Insert Positive Recognition</a> </li>
+          </ul>
+         </div>
+         <div class="titleBar">Negative</div>
+         <div class="honorList">
+          <ul>
+           <li> <a href="javascript:void(0);">select</a>
+            <div class="honorNUM">3</div>
+            <div class="temphonorNUM">0</div>
+            <div class="studentName">Stone</div>
+           </li>
+           <li class="select"> <a href="javascript:void(0);">select</a>
+            <div class="honorNUM">3</div>
+            <div class="plustemphonorNUM">+10</div>
+            <div class="studentName">Stone</div>
+           </li>
+           <li class="addHonor"><a href="#">Insert Positive Recognition</a></li>
+          </ul>
+         </div>
+        </div>
+        <div class="recTooltipMain">
+         <div class="body">
+          <div class="menuBar">
+           <div class="rightLink"><a href="#">Done</a></div>
+          </div>
+          <div class="inputArea">
+           <div class="ico"><img src="images/other-ico/recognition-bg1.png" width="47" height="47" /></div>
+           <div class="input">
+            <input type="text" name="textfield" id="textfield" value="title"/>
+           </div>
+          </div>
+         </div>
+         <div class="arrow"><img src="images/selectArrow5.png" width="12" height="15" /></div>
+         <div class="clear"></div>
+        </div>
+        <div class="recTooltipMain">
+         <div class="body">
+          <div class="menuBar">
+           <div class="rightLink"><a href="#">Done</a></div>
+          </div>
+          <div class="inputArea">
+           <div class="ico"><img src="images/other-ico/recognition-bg2.png" width="47" height="47" /></div>
+           <div class="input">
+            <input type="text" name="textfield" id="textfield" value="title"/>
+           </div>
+          </div>
+         </div>
+         <div class="arrow"><img src="images/selectArrow5.png" width="12" height="15" /></div>
+         <div class="clear"></div>
+        </div>
+       </div-->
+      </li>
+      <li>
+       <select name="select" style="width:110px;">
+        <option>Tardy</option>
+        <option selected="selected">Absent</option>
+        <option>Present</option>
+       </select>
+      </li>
+      <li class="clear"></li>
+     </ul>
+    </div>
+    <div class="clear"></div>
+   </div>
+   <div class="studentStautsBody ">
+    <div class="userDescriptzion">
+     <div class="userFace"><img src="images/temporary/temp-face2.jpg" width="120" height="120" /></div>
+     <div class="description">
+      <ul>
+       <li>
+        <div class="title">First Name:</div>
+        <div class="content">lei</div>
+        <div class="clear"></div>
+       </li>
+       <li>
+        <div class="title">Last Name:</div>
+        <div class="content">zhang</div>
+        <div class="clear"></div>
+       </li>
+       <li>
+        <div class="title">Screen Name:</div>
+        <div class="content">lei zhang</div>
+        <div class="clear"></div>
+       </li>
+       <li>
+        <div class="title">Email</div>
+        <div class="content">Zhanglei5945@gmail.com</div>
+        <div class="clear"></div>
+       </li>
+      </ul>
+     </div>
+     <div class="flagList ScrollBAR">
+      <ul>
+       <li>
+        <div class="img"><img src="images/temporary/flag.png"/></div>
+        <div class="text">FlagS</div>
+       </li>
+       <li>
+        <div class="img"><img src="images/temporary/flag.png"/></div>
+        <div class="text">FlagS</div>
+       </li>
+       <li>
+        <div class="img"><img src="images/temporary/flag.png"/></div>
+        <div class="text">FlagS</div>
+       </li>
+       <li>
+        <div class="img"><img src="images/temporary/flag.png"/></div>
+        <div class="text">FlagS</div>
+       </li>
+       <li>
+        <div class="img"><img src="images/temporary/flag.png"/></div>
+        <div class="text">FlagS</div>
+       </li>
+       <li>
+        <div class="img"><img src="images/temporary/flag.png"/></div>
+        <div class="text">FlagSFlagSFlagSFlagSFlagSFlagSborder-collapse:collapse;border-collapse:collapse;</div>
+       </li>
+       <li>
+        <div class="img"><img src="images/temporary/flag.png"/></div>
+        <div class="text">FlagSFlagSFlagSFlagSFlagSFlagSborder-collapse:collapse;border-collapse:collapse;</div>
+       </li>
+       <li>
+        <div class="img"><img src="images/temporary/flag.png"/></div>
+        <div class="text">FlagSFlagSFlagSFlagSFlagSFlagSborder-collapse:collapse;border-collapse:collapse;</div>
+       </li>
+      </ul>
+     </div>
+     <div class="studentHonor">
+      <div class="honorGood"><span>0</span></div>
+      <div class="honorBad"><span>0</span></div>
+     </div>
+     <div class="clear"></div>
+    </div>
+    <div class="classesContent">
+     <div class="classesList">
+      <div class="titleBar">Classes</div>
+      <div class="content ScrollBAR">
+       <ul>
+        <li>
+         <div class="className">Ratty I</div>
+         <div class="classCode">eFUAW</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="className">Ratty I</div>
+         <div class="classCode">eFUAW</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="className">Ratty I</div>
+         <div class="classCode">eFUAW</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="className">Ratty I</div>
+         <div class="classCode">eFUAW</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="className">Ratty I</div>
+         <div class="classCode">eFUAW</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="className">Ratty I</div>
+         <div class="classCode">eFUAW</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="className">Ratty I</div>
+         <div class="classCode">eFUAW</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="className">Ratty I</div>
+         <div class="classCode">eFUAW</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="className">Ratty I</div>
+         <div class="classCode">eFUAW</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="className">Ratty I</div>
+         <div class="classCode">eFUAW</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="className">Ratty I</div>
+         <div class="classCode">eFUAW</div>
+         <div class="clear"></div>
+        </li>
+       </ul>
+      </div>
+     </div>
+     <div class="parentList">
+      <div class="titleBar">Parent/Guardian Info <a href="javascript:void(0);">add</a> 
+       
+       <!--div class="addInfoTooltip">
+        <div class="body">
+         <div class="menuBar">
+          <div class="leftLink"><a href="#">Cancel</a></div>
+          <div class="title">Parent/Guardian Info</div>
+          <div class="rightLink"><a href="#">Done</a></div>
+          <div class="clear"></div>
+         </div>
+         
+         <div class="infoList">
+          <ul>
+           <li>
+            <div class="title">Name:</div>
+            <div class="input"><input type="text" name="textfield" id="textfield" /></div>
+           </li>
+           <li>
+            <div class="title">Relationship:</div>
+            <div class="input"><input type="text" name="textfield" id="textfield" /></div>
+           </li>
+           <li>
+            <div class="title">Email:</div>
+            <div class="input"><input type="text" name="textfield" id="textfield" /></div>
+           </li>
+           <li>
+            <div class="title">Phone:</div>
+            <div class="input"><input type="text" name="textfield" id="textfield" /></div>
+           </li>
+          </ul>
+         </div>
+         
+        </div>        
+        <div class="arrow"><img src="images/selectArrow2.png" width="12" height="15" /></div>
+        <div class="clear"></div>
+       </div--> 
+       
+      </div>
+      
+      <!--div class="addInfoTooltip">
+            <div class="body">
+             <div class="menuBar">
+              <div class="leftLink"><a href="#">Cancel</a></div>
+              <div class="title">Parent/Guardian Info</div>
+              <div class="rightLink"><a href="#">Done</a></div>
+              <div class="clear"></div>
+             </div>
+             
+             <div class="infoList">
+              <ul>
+               <li>
+                <div class="title">Name:</div>
+                <div class="input"><input type="text" name="textfield" id="textfield" /></div>
+               </li>
+               <li>
+                <div class="title">Relationship:</div>
+                <div class="input"><input type="text" name="textfield" id="textfield" /></div>
+               </li>
+               <li>
+                <div class="title">Email:</div>
+                <div class="input"><input type="text" name="textfield" id="textfield" /></div>
+               </li>
+               <li>
+                <div class="title">Phone:</div>
+                <div class="input"><input type="text" name="textfield" id="textfield" /></div>
+               </li>
+              </ul>
+             </div>
+             
+            </div>        
+            <div class="arrow"><img src="images/selectArrow3.png"/></div>
+       </div-->
+      
+      <div class="content ScrollBAR">
+       <ul>
+        <li>
+         <div class="mainLink"><a href="javascript:void(0);">mainLink</a></div>
+         <div class="infoName">Epirus</div>
+         <div class="infoPhone">Phone</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="mainLink"><a href="javascript:void(0);">mainLink</a></div>
+         <div class="infoName">Epirus</div>
+         <div class="infoPhone">Phone</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="mainLink"><a href="javascript:void(0);">mainLink</a></div>
+         <div class="infoName">Epirus</div>
+         <div class="infoPhone">Phone</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="mainLink"><a href="javascript:void(0);">mainLink</a></div>
+         <div class="infoName">Epirus</div>
+         <div class="infoPhone">Phone</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="mainLink"><a href="javascript:void(0);">mainLink</a></div>
+         <div class="infoName">Epirus</div>
+         <div class="infoPhone">Phone</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="mainLink"><a href="javascript:void(0);">mainLink</a></div>
+         <div class="infoName">Epirus</div>
+         <div class="infoPhone">Phone</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="mainLink"><a href="javascript:void(0);">mainLink</a></div>
+         <div class="infoName">Epirus</div>
+         <div class="infoPhone">Phone</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="mainLink"><a href="javascript:void(0);">mainLink</a></div>
+         <div class="infoName">Epirus</div>
+         <div class="infoPhone">Phone</div>
+         <div class="clear"></div>
+        </li>
+        <li>
+         <div class="mainLink"><a href="javascript:void(0);">mainLink</a></div>
+         <div class="infoName">Epirus</div>
+         <div class="infoPhone">Phone</div>
+         <div class="clear"></div>
+        </li>
+       </ul>
+      </div>
+     </div>
+     <div class="clear"></div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+<script src="js/scrollbar.js" type="text/javascript"></script> 
+<script src="js/jquery.select.js" type="text/javascript"></script>
+</body>
+</html>
