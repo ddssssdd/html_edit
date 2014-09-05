@@ -17,6 +17,8 @@ var Canvas = function (div)
     this.isaction = false;
     this.selecting = false;
     this.select_command = null;
+    this.top;
+    this.left;
     this.initCavnas = function ()
     {
         var div = $(this.divName);
@@ -33,6 +35,8 @@ var Canvas = function (div)
         this.canvas.height = this.height;
         this.canvas_top.width = this.width;
         this.canvas_top.height = this.height;
+        this.top = $(this.canvas).offset().top;
+        this.left = $(this.canvas).offset().left;
         this.context = this.canvas.getContext("2d");
         this.context_top = this.canvas_top.getContext("2d");
         var instance = this;
@@ -41,16 +45,17 @@ var Canvas = function (div)
         $(this.canvas_top).bind("mousemove", mousemove);
         $(this.canvas_top).bind("mouseout", mouseout);
         function mouseup(e) {
-            instance.mouseup(e);
+            
+            instance.mouseup({offsetX:e.clientX-instance.left,offsetY:e.clientY-instance.top});
         }
         function mousedown(e) {
-            instance.mousedown(e);
+            instance.mousedown({ offsetX: e.clientX - instance.left, offsetY: e.clientY - instance.top });
         }
         function mouseout(e) {
-            instance.mouseout(e);
+            instance.mouseout({ offsetX: e.clientX - instance.left, offsetY: e.clientY - instance.top });
         }
         function mousemove(e) {
-            instance.mousemove(e);
+            instance.mousemove({ offsetX: e.clientX - instance.left, offsetY: e.clientY - instance.top });
         }
         
     }

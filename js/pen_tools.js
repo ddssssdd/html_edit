@@ -58,6 +58,7 @@ var Command = function (type, command, pencolor, penwidth, brushcolor, opacity) 
     this.moving = false;
     this.min = { x: 10000, y: 10000 };
     this.max = { x: 0, y: 0 };
+    this.cornor = -1;
     this.move = function (x, y) {
         if (this.points.length == 0) {
             this.start = { x: x, y: y };
@@ -102,40 +103,84 @@ var Command = function (type, command, pencolor, penwidth, brushcolor, opacity) 
         this.move_point.x = x;
         this.move_point.y = y;
         this.moving = true;
+        this.iscorner(x, y);
         
+    }
+    this.iscorner = function (x, y)
+    {
+        /*  
+            1----------2----------3
+            -                     - 
+            8                     4
+            -                     -
+            7----------6----------5
+
+        */
+        var result = -1;
+        if (this.distance(x, y, this.min.x, this.min.y)<=10) {
+            result = 1;
+        } else if (this.distance(x, y, this.min.x+ (this.max.x-this.min.x)/2, this.min.y) <= 10) {
+            result = 2;
+        } else if (this.distance(x, y, this.max.x, this.min.y) <= 10) {
+            result = 3;
+        } else if (this.distance(x, y, this.max.x, this.min.y+(this.max.y-this.min.y)/2) <= 10) {
+            result = 4;
+        } else if (this.distance(x, y, this.max.x, this.max.y) <= 10) {
+            result = 5;
+        } else if (this.distance(x, y, this.min.x+(this.max.x-this.min.x)/2, this.max.y) <= 10) {
+            result = 6;
+        } else if (this.distance(x, y, this.min.x, this.max.y) <= 10) {
+            result = 7;
+        } else if (this.distance(x, y, this.min.x, this.min.y+(this.max.y-this.min.y)/2) <= 10) {
+            result = 8;
+        }
+        this.cornor = result;
+
+    }
+    this.distance = function (x1, y1, x2, y2) {
+        return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
     }
     this.move_to = function (x, y)
     {
-        
-
         var deltax = x - this.move_point.x;
         var deltay = y - this.move_point.y;
+        var calc_point = function (p,x,y,min,max) {
+            return { x: p.x + deltax, y: p.y + deltay };
+        }
+        if (this.cornor > 0)//click on cornor, resize not moving;
+        {
+            calc_point = function (p, x, y, min, max)
+            {
+                console.log("calc begin:(x0,y0)=(" + p.x + "," + p.y + "), (x1,y1)=(" + min.x + "," + min.y + "), (x2,y2)=(" + max.x + "," + max.y + "), target:(x,y)=(" + x + "," + y + ")");
+                var x3 = p.x;
+                var y3 = p.y;
+                if (p.y == max.y) {
+                    x3 = x - (max.y - p.y) / ((max.y - min.y) / (p.x - min.x));
+                    y3 = min.y;
+                } else if (p.x == min.x) {
+                    x3 = min.x;
+                    y3 = y - (max.x - p.x) / ((max.x - min.x) / (p.y - min.y));
+                } else {
+                    x3 = x - (max.y - p.y) / ((max.y - min.y) / (p.x - min.x));
+                    y3 = y - (max.x - p.x) / ((max.x - min.x) / (p.y - min.y));
+                }
+                
+                console.log("x=" + x3 + ",y=" + y3);
+                return { x: x3, y: y3 };
+            }
+        } 
         this.move_point.x = x;
         this.move_point.y = y;
         for (var i = 0; i < this.path.length; i++) {
             for (var j = 0; j < this.path[i].length; j++) {
-                this.path[i][j] = { x: this.path[i][j].x + deltax, y: this.path[i][j].y + deltay };
+                
+                this.path[i][j] = calc_point(this.path[i][j],x,y,this.min,this.max);
             }
             
         }
-        this.min.x = this.min.x + deltax;
-        this.min.y = this.min.y + deltay;
-        this.max.x = this.max.x + deltax;
-        this.max.y = this.max.y + deltay;
-
-        /*
-        var temp_path = this.path.slice(0);
-        this.path = Array();
-        for (var i = 0; i < temp_path.length; i++)
-        {
-            var temp_points = temp_path[i];
-            this.points = Array();
-            for (var j = 0; j < temp_points.length; j++) {
-                this.move(temp_points[j].x + deltax, temp_points[j].y + deltay);
-            }
-            this.path.push(this.points);
-        }*/
-        
+        this.min = calc_point(this.min, x, y, this.min, this.max);
+        this.max = calc_point(this.max, x, y, this.min, this.max);
+                
     }
     this.move_end = function (x, y)
     {

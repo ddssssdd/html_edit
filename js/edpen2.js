@@ -98,8 +98,8 @@
     }
     function mouseup(e)
     {
-        end_paint(e.offsetX, e.offsetY);
-        debugInfo("MouseUp:x=" + e.offsetX + ",y=" + e.offsetY);
+        end_paint(e.clientX - $("#canvas").parent().offset().left, e.clientY - $("#canvas").parent().offset().top);
+        debugInfo("MouseUp:x=" + e.clientX + ",y=" + e.clientY);
 
        // console.log(e);
     }
@@ -108,12 +108,12 @@
         if (currentKey != "") {
             popup(currentKey);
         }
-        start_paint(e.offsetX,e.offsetY);
+        start_paint(e.clientX - $("#canvas").parent().offset().left, e.clientY - $("#canvas").parent().offset().top);
         debugInfo("MouseDown:x=" + e.clientX + ",y=" + e.clientY);
         //console.log(e);
     }
     function mousemove(e) {
-        draw_graphic(e.offsetX, e.offsetY);
+        draw_graphic(e.clientX - $("#canvas").parent().offset().left, e.clientY - $("#canvas").parent().offset().top);
         debugInfo("MouseMove:x=" + e.clientX + ",y=" + e.clientY);
         //console.log(e);
     }
@@ -147,7 +147,7 @@
     }
     function debugInfo(message)
     {
-        //$("#debug").html(message);
+        $("#debug").html(message);
     }
     function debugCanvas()
     {
