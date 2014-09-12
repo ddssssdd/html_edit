@@ -170,7 +170,9 @@ var Canvas = function (div)
         if (this.cmd_current == "action") {
 
         } else {
-            
+            if (this.cmd_current.command != "pencil") {
+                this.clear_context();
+            }
             this.cmd_current.drawing(e.offsetX, e.offsetY);
         }
         
@@ -198,9 +200,12 @@ var Canvas = function (div)
         if (this.command_list.indexOf(this.cmd_current)<0){
             this.command_list.push(this.cmd_current);
         }
+        /*
         this.clear_context();
         this.cmd_current.draw(this.context);
-        
+        */
+        this.clear_context(1);
+        this.draw();
     }
     
     this.mouseout = function (e) {

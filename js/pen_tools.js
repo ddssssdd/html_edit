@@ -80,6 +80,32 @@ var Command = function (type, command, pencolor, penwidth, brushcolor, opacity) 
         }
 
     }
+    this.drawEllipseByCenter = function (context, cx, cy, w, h) {
+        this.drawEllipse(context,cx - w / 2.0, cy - h / 2.0, w, h);
+    }
+
+    this.drawEllipse = function (context, x, y, w, h, fill) {
+        var kappa = .5522848,
+            ox = (w / 2) * kappa, // control point offset horizontal
+            oy = (h / 2) * kappa, // control point offset vertical
+            xe = x + w,           // x-end
+            ye = y + h,           // y-end
+            xm = x + w / 2,       // x-middle
+            ym = y + h / 2;       // y-middle
+
+        context.beginPath();
+        context.moveTo(x, ym);
+        context.bezierCurveTo(x, ym - oy, xm - ox, y, xm, y);
+        context.bezierCurveTo(xm + ox, y, xe, ym - oy, xe, ym);
+        context.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
+        context.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
+        //ctx.closePath(); // not used correctly, see comments (use to close off open path)
+        if (fill) {
+            context.fill();
+        } else {
+            context.stroke();
+        }
+    }
     this.clone = function () {
         var cmd = new Command(this.type, this.command, this.pencolor, this.penwidth, this.brushcolor, this.opacity);
         return cmd;
@@ -103,7 +129,7 @@ var Command = function (type, command, pencolor, penwidth, brushcolor, opacity) 
         this.move_point.x = x;
         this.move_point.y = y;
         this.moving = true;
-        this.iscorner(x, y);
+        //this.iscorner(x, y);
         
     }
     this.iscorner = function (x, y)
@@ -180,6 +206,8 @@ var Command = function (type, command, pencolor, penwidth, brushcolor, opacity) 
         }
         this.min = calc_point(this.min, x, y, this.min, this.max);
         this.max = calc_point(this.max, x, y, this.min, this.max);
+        this.start = calc_point(this.start, x, y, this.min, this.max);
+        this.end = calc_point(this.end, x, y, this.min, this.max);
                 
     }
     this.move_end = function (x, y)
@@ -191,21 +219,35 @@ var Command = function (type, command, pencolor, penwidth, brushcolor, opacity) 
         context.strokeStyle = this.pencolor;
         context.fillStyle = this.brushcolor;
         context.lineWidth = this.penwidth;
-        for (var i = 0; i < this.path.length; i++)
-        {
-            var points = this.path[i];
-            if (points.length > 0)
-            {
-                context.beginPath();
-                context.moveTo(points[0].x, points[0].y);
-                for (var j = 1; j < points.length; j++) {
-                    context.lineTo(points[j].x, points[j].y);
-                    context.stroke();
+        if (this.command == "pencil") {
+            for (var i = 0; i < this.path.length; i++) {
+                var points = this.path[i];
+                if (points.length > 0) {
+                    context.beginPath();
+                    context.moveTo(points[0].x, points[0].y);
+                    for (var j = 1; j < points.length; j++) {
+                        context.lineTo(points[j].x, points[j].y);
+                        context.stroke();
+                    }
+                    context.closePath();
                 }
-                context.closePath();
+
             }
-            
+        } else if (this.command == "Square") {
+            var tempx = this.start.x >= this.end.x ? this.end.x : this.start.x;
+            var tempy = this.start.y >= this.end.y ? this.end.y : this.start.y;
+            this.context.strokeRect(tempx, tempy, Math.abs(this.end.x - this.start.x), Math.abs(this.end.y - this.start.y));
+        } else if (this.command == "Circle") {
+            var w = (this.end.x - this.start.x);
+            var h = (this.end.y - this.start.y);
+            this.drawEllipse(context,this.start.x, this.start.y, w, h, false);
+        } else if (this.command = "Lice") {
+            this.context.beginPath();
+            this.context.moveTo(this.start.x, this.start.y);
+            this.context.lineTo(this.end.x, this.end.y);
+            this.context.stroke();
         }
+        
     }
     this.draw_select = function (context)
     {
@@ -234,19 +276,43 @@ var Command = function (type, command, pencolor, penwidth, brushcolor, opacity) 
         this.context.fillStyle = this.brushcolor;
         this.context.lineWidth = this.penwidth;
         //should have opacity setup
-        this.context.beginPath();
-        this.context.moveTo(x, y);
+
+        if (this.command == "pencil") {
+            this.context.beginPath();
+            this.context.moveTo(x, y);
+        } else if (this.command == "Square") {
+            this.context.moveTo(x, y);
+        }
+        
     }
     this.drawing = function (x,y)
     {
-        this.move(x, y);
-        this.context.lineTo(x, y);
-        this.context.stroke();
+        if (this.command == "pencil") {
+            this.move(x, y);
+            this.context.lineTo(x, y);
+            this.context.stroke();
+        } else if (this.command == "Square") {
+           
+            var tempx = this.start.x >= x ? x : this.start.x;
+            var tempy = this.start.y >= y ? y : this.start.y;
+            this.context.strokeRect(tempx, tempy, Math.abs(x - this.start.x), Math.abs(y - this.start.y));
+        } else if (this.command == "Circle") {
+            var w = (x - this.start.x);
+            var h = (y - this.start.y);
+            this.drawEllipse(this.context, this.start.x, this.start.y, w,h,false);
+        } else if (this.command == "Lice") {
+            this.context.beginPath();
+            this.context.moveTo(this.start.x, this.start.y);
+            this.context.lineTo(x, y);
+            this.context.stroke();
+        }
+        
     }
     this.end_draw = function (x,y)
     {
         this.move(x, y);
-        this.context.closePath();
+
+        //this.context.closePath();
         this.path.push(this.points);
         this.points = Array();
     }
