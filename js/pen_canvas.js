@@ -140,7 +140,11 @@ var Canvas = function (div)
         } else {
             this.cmd_current = this.command.clone();
         }
-        
+        for (var i = 0; i < this.command_list.length; i++) {
+            this.command_list[i].is_select = false;
+            
+        }
+        this.draw();
         if (this.cmd_current == "action") {
 
         } else {
