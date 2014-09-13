@@ -236,34 +236,35 @@ var Command = function (type, command, pencolor, penwidth, brushcolor, opacity) 
         } else if (this.command == "Square") {
             var tempx = this.start.x >= this.end.x ? this.end.x : this.start.x;
             var tempy = this.start.y >= this.end.y ? this.end.y : this.start.y;
-            this.context.strokeRect(tempx, tempy, Math.abs(this.end.x - this.start.x), Math.abs(this.end.y - this.start.y));
+            context.strokeRect(tempx, tempy, Math.abs(this.end.x - this.start.x), Math.abs(this.end.y - this.start.y));
         } else if (this.command == "Circle") {
             var w = (this.end.x - this.start.x);
             var h = (this.end.y - this.start.y);
             this.drawEllipse(context,this.start.x, this.start.y, w, h, false);
         } else if (this.command = "Lice") {
-            this.context.beginPath();
-            this.context.moveTo(this.start.x, this.start.y);
-            this.context.lineTo(this.end.x, this.end.y);
-            this.context.stroke();
+            context.beginPath();
+            context.moveTo(this.start.x, this.start.y);
+            context.lineTo(this.end.x, this.end.y);
+            context.stroke();
         }
         
     }
     this.draw_select = function (context)
     {
+        var p_width = this.penwidth / 2;
         context.strokeStyle = "#0000ff";
         context.fillStyle = "#000";
-        context.lineWidth = 0.5;
-        context.strokeRect(this.min.x - 5, this.min.y - 5, 10, 10);
-        context.strokeRect(this.max.x - 5, this.max.y - 5, 10, 10);
-        context.strokeRect(this.min.x - 5, this.max.y - 5, 10, 10);
-        context.strokeRect(this.max.x - 5, this.min.y - 5, 10, 10);
+        context.lineWidth = 1;
+        context.strokeRect(this.min.x - 5 - p_width, this.min.y - 5 - p_width, 10, 10);
+        context.strokeRect(this.max.x - 5 + p_width, this.max.y - 5 + p_width, 10, 10);
+        context.strokeRect(this.min.x - 5 - p_width, this.max.y - 5 + p_width, 10, 10);
+        context.strokeRect(this.max.x - 5 + p_width, this.min.y - 5 - p_width, 10, 10);
         context.beginPath();
-        context.moveTo(this.min.x, this.min.y);
-        context.lineTo(this.min.x, this.max.y);
-        context.lineTo(this.max.x, this.max.y);
-        context.lineTo(this.max.x, this.min.y);
-        context.lineTo(this.min.x, this.min.y);
+        context.moveTo(this.min.x - p_width, this.min.y - p_width);
+        context.lineTo(this.min.x - p_width, this.max.y + p_width);
+        context.lineTo(this.max.x + p_width, this.max.y + p_width);
+        context.lineTo(this.max.x + p_width, this.min.y - p_width);
+        context.lineTo(this.min.x - p_width, this.min.y - p_width);
         context.stroke();
         context.closePath();
         
