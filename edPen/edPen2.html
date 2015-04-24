@@ -16,6 +16,8 @@
             <button class="btn btn-default">line</button>
             <button class="btn btn-default">rect</button>
             <button class="btn btn-default">circle</button>
+            <button class="btn btn-default">text</button>
+            <button class="btn btn-default">image</button>
             
         </div>
         <div class="btn-group" onclick="goto();">
@@ -24,11 +26,15 @@
         </div>
        
     </div>
-    
-    <div id="wrapCanvas" style="width:1000px;height:800px;float:left;">
+    <form enctype="multipart/form-data">
+        <input id="upload_file" name="upload_file" type="file" style="display:none" onchange="upload_start(this)" />
+        
+   </form>
+    <div id="wrapCanvas" style="width:1000px;height:800px;float:left;position:relative;">
 
-
+        
     </div>
+    <input type="text" style="border:0px;" />
     <div class="panel">
         <div >
             <h5>StrokeColor</h5>
@@ -68,6 +74,13 @@
         </div>
     </div>
     <script>
+        function upload_start(f) {
+            console.log("start uploading..1");
+            var file = f.files[0];
+            if (file) {
+                scence.load_file(file, { offsetX: 50, offsetY: 50 });
+            }
+        }
         function goto() {
             //console.log(event.target);
             var button = $(event.target);
@@ -75,11 +88,16 @@
             
             button.parent().find("button").removeClass('active');
             button.addClass("active");
-            scence.do(command);
+            
             if (command == "reset") {
                 button.parent().prev().find("button").removeClass("active");
                 button.parent().find("button").removeClass("active");
             }
+            if (command == 'image') {
+                $("#upload_file").trigger("click");
+                return;
+            }
+            scence.do(command);
         }
         function color_select(type) {
             //console.log(event.target);

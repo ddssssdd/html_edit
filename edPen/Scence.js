@@ -72,6 +72,13 @@
         this.drawPos(offset);
         this.drawCross(offset);
     }
+    this.log = function (msg) {
+        this.context.clearRect(10, this.canvas-20, this.canvas.width-20, 20);
+        this.context.fillStyle = "black";
+        this.context.textBaseline = "bottom";
+        var w = parseInt(this.context.measureText(msg).width);
+        this.context.fillText(msg, this.canvas.width/2 - w/2, this.canvas.height - 20);
+    }
     
 }
 
@@ -117,6 +124,8 @@ var Scence = function (divName, settings) {
     $(this.canvas_debug).bind("mousedown", mousedown);
     $(this.canvas_debug).bind("mousemove", mousemove);
     $(this.canvas_debug).bind("mouseout", mouseout);
+    this.canvas_debug.addEventListener('dragover', handleDragOver, false);
+    this.canvas_debug.addEventListener('drop', handleFileSelect, false);
     $(document).bind("keydown", onkeydown);
     $(document).bind("keypress", onkeypress);
     function onkeydown (event) {
@@ -125,6 +134,20 @@ var Scence = function (divName, settings) {
     function onkeypress(event) {
         instance.onkeypress(event);
     }
+    function handleFileSelect(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var pos = { offsetX: e.clientX - instance.left, offsetY: e.clientY - instance.top }
+        var files = e.dataTransfer.files;
+        for (var i = 0, f; f = files[i]; i++) {
+            instance.load_file(f,pos);
+        }
+    }
+    function handleDragOver(evt) {
+        evt.stopPropagation();
+        evt.preventDefault();
+    }
+
     function mouseup(e) {
         instance.mouseup({ offsetX: e.clientX - instance.left, offsetY: e.clientY - instance.top });
     }
@@ -138,30 +161,33 @@ var Scence = function (divName, settings) {
         instance.mousemove({ offsetX: e.clientX - instance.left, offsetY: e.clientY - instance.top });
     }
     this.mouseup = function (e) {
-        logger("mouseup", e);
+        handleMouse("mouseup", e);
        
     }
     this.mousedown = function (e) {
-        logger("mousedown", e)
+        handleMouse("mousedown", e)
        
         
     }
     this.mouseout = function (e) {
-        logger("mouseout", e);
+        handleMouse("mouseout", e);
        
         
     }
     this.mousemove = function (e) {
-        logger("mousemove", e);
+        handleMouse("mousemove", e);
        
         
     }
-    function logger(type, offset) {
+    function handleMouse(type, offset) {
         if (instance.debug) {
             instance.debugger.outputInfo(type, offset);
         }
         instance.command[type](offset);
         //instance.refresh();
+    }
+    this.log = function (msg) {
+        this.debugger.log(msg);
     }
     this.refresh = function () {
         //this.command.Draw();
@@ -181,7 +207,7 @@ var Scence = function (divName, settings) {
     this.lastCommandName = "select";
     this.command = new Select(instance);
     this.commandList = [];
-    this.registerTools = [MultiMoveSelect, Pen, Line, Rect, Circle, Reset];
+    this.registerTools = [MultiMoveSelect, Pen, Line, Rect, Circle, Reset,Text];
     this.getTool = function (name) {
         for (var i = 0; i < this.registerTools.length; i++) {
             if (this.registerTools[i].classname == name) {
@@ -226,7 +252,14 @@ var Scence = function (divName, settings) {
         }
     }
     this.onkeypress = function (event) {
-        console.log("keycode=" + event.keyCode + ",ctrl=" + event.ctrlKey);
+        //console.log("keycode=" + event.keyCode + ",ctrl=" + event.ctrlKey);
+    }
+    this.load_file = function (f,pos) {
+        console.log(f);
+        console.log(pos);
+        var upload = new UploadFile(instance, f, pos);
+        this.commandList.push(upload);
+        upload.Draw();
     }
 }
 

@@ -210,21 +210,24 @@
                     this.processPoint(this.groups[j].points);
                 }
             } else if (this.resize_selected == 1) { //right corner
-                this.clientRect.right += e.x;
-                this.clientRect.top += e.y;
                 this.resize(0, e.y, e.x, 0);
+                this.clientRect.right += e.x;
+                this.clientRect.top += e.y;
             } else if (this.resize_selected == 2) { //right bottom corner
+                this.resize(0, 0, e.x, e.y);
                 this.clientRect.right += e.x;
                 this.clientRect.bottom += e.y;
-                this.resize(0, 0, e.x, e.y);
+                
             } else if (this.resize_selected == 3) { //left bottom corner
+                this.resize(e.x, 0, 0, e.y);
                 this.clientRect.left += e.x;
                 this.clientRect.bottom += e.y;
-                this.resize(e.x, 0,0, e.y);
+                
             } else if (this.resize_selected == 4) { //left corner
+                this.resize(e.x, e.y, 0, 0);
                 this.clientRect.left += e.x;
                 this.clientRect.top += e.y;
-                this.resize(e.x, e.y, 0, 0);
+                
             }
         }
     }
@@ -291,6 +294,31 @@ var Pen = function (scence) {
         }
         con.closePath();
 
+    }
+    this.resize = function (left, top, right, bottom) {        
+        var old_width = this.clientRect.right - this.clientRect.left;
+        var old_height = this.clientRect.bottom - this.clientRect.top;
+        var change_width = right - left;
+        var change_height = bottom - top;
+        var x_rate = change_width / old_width;
+        var y_rate = change_height / old_height;
+        var msg = "Resize: left=" + left + ",top=" + top + ",right=" + right + ",bottom=" + bottom+",x_rate="+x_rate+",y_rate="+y_rate;
+        this.scence.log(msg);
+        for (var j = 0; j < this.groups.length; j++) {
+            for (var i = 0; i < this.groups[j].points.length; i++) {
+                var p = this.groups[j].points[i];
+                if (x_rate != 0) {
+                    var neww = x_rate * (p.x - this.clientRect.left);
+                    p.x = p.x + neww;
+                }
+                if (y_rate != 0) {
+                    var newy = y_rate * (p.y - this.clientRect.top);
+
+                    p.y = p.y + newy;
+                }
+                
+            }
+        }
     }
 }
 Pen.classname = "pen";
@@ -399,3 +427,129 @@ var Circle = function (scence) {
 
 Circle.classname = "circle";
 Circle.prototype = new Action();
+
+var UploadFile = function (scence,f,pos) {
+    this.scence = scence;
+    this.context = scence.context;
+    this.context_top = scence.context_top;
+    this.fillColor = "white";
+    this.upload_file = f;
+    this.start_pos = { x: pos.offsetX, y: pos.offsetY };
+    this.drawAll = function (con) {
+        this.drawOne(con);
+    }
+    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth) {
+        con.drawImage(this.image, 0, 0, this.image.width, this.image.height,
+            this.clientRect.left,this.clientRect.top,this.clientRect.right-this.clientRect.left,this.clientRect.bottom-this.clientRect.top);
+    }
+
+    this.reader = new FileReader();
+    this.image = new Image();
+    var instance = this;
+    this.reader.onload = (function (theFile) {
+        return function (e) {
+            instance.image.src = e.target.result;
+        }
+    })(this.upload_file);
+    this.reader.readAsDataURL(this.upload_file);
+    this.image.onload = function () {
+        
+        console.log("load complete");
+        instance.loadImage();
+        
+    }
+    this.loadImage = function () {
+        this.done = true;
+        this.groups = [];
+        this.points = [];
+
+        this.clientRect = { left: this.start_pos.x, top: this.start_pos.y, right: this.start_pos.x + this.image.width, bottom: this.start_pos.y + this.image.height };
+        this.points = [{ x: this.clientRect.left, y: this.clientRect.top }, { x: this.clientRect.right, y: this.clientRect.bottom }];
+        this.groups.push({
+            points: this.points,
+            strokeColor: this.strokeColor,
+            fillColor: this.fillColor,
+            lineWidth: this.lineWidth
+        });
+        this.drawOne(this.context);
+    }
+    
+}
+
+UploadFile.classname = "uploadfile";
+UploadFile.prototype = new Action();
+
+
+var Text = function (scence) {
+    this.scence = scence;
+    this.context = scence.context;
+    this.context_top = scence.context_top;
+    this.input = null;
+    this.fontName = "Arial";
+    this.fontSize = 32;
+    this.start_pos = { x: 0, y: 0 };
+    this.message = "";
+    var instance = this;
+    this.font = function () {
+        return this.fontSize + "px " + this.fontName;
+    }
+    this.mouseup = function (e) {
+
+    }
+    this.endCreate = function (e) {
+        this.message = this.input.val();
+        this.input.remove();
+        this.groups = [];
+        this.points = [];
+        this.done = true;        
+        
+        this.lineWidth = 1;
+        this.context.save();
+        this.context.font = this.font();
+        var w = parseInt(this.context.measureText(this.message).width);
+        var h = parseInt(this.context.measureText('W').width)
+        this.clientRect = { left: this.start_pos.x, top: this.start_pos.y, right: this.start_pos.x + w, bottom: this.start_pos.y + h };
+        this.points = [{ x: this.clientRect.left, y: this.clientRect.top }, { x: this.clientRect.right, y: this.clientRect.bottom }];
+        this.groups.push({
+            points: this.points,
+            strokeColor: this.strokeColor,
+            fillColor: this.fillColor,
+            lineWidth: this.lineWidth
+        });
+        this.context.restore();
+        this.scence.commandList.push(instance);
+        this.drawOne(this.context);
+
+    }
+    this.mousedown = function (e) {
+        if (this.input == null) {
+            this.start_pos.x = e.offsetX;
+            this.start_pos.y = e.offsetY;
+            var inputElement = "<input type='text' style='position:absolute;width:300px;left:"+e.offsetX+"px;top:"+e.offsetY+"px;z-index:5;' />";
+            this.input = $(inputElement).appendTo(this.scence.div);
+            this.input.bind("blur", function () {
+                instance.endCreate(e);
+            })
+        }
+    }
+    this.mousemove = function (e) {
+
+    }
+    this.mouseout = function (e) {
+
+    }
+    this.drawAll = function (con) {
+        this.drawOne(con);
+    }
+    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth) {
+        con.save();
+        con.strokeStyle = strokeColor;
+        con.fillStyle = fillColor;
+        con.lineWidth = lineWidth;
+        con.font = this.font();
+        con.fillText(this.message, this.clientRect.left, this.clientRect.bottom);
+        con.restore();
+    }
+}
+Text.classname = "text";
+Text.prototype = new Action();
