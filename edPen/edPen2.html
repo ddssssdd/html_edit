@@ -11,18 +11,22 @@
 
 <body>
     <div class="btn-toolbar">
-        <div class="btn-group" onclick="goto();">
+        <div class="btn-group" onclick="goto(event);">
             <button class="btn btn-default">pen</button>
             <button class="btn btn-default">line</button>
             <button class="btn btn-default">rect</button>
             <button class="btn btn-default">circle</button>
             <button class="btn btn-default">text</button>
             <button class="btn btn-default">image</button>
+            <button class="btn btn-info">brush</button>
+            <button class="btn btn-info">erease</button>
             
         </div>
-        <div class="btn-group" onclick="goto();">
+        <div class="btn-group" onclick="goto(event);">
             <button class="btn btn-default">select</button>
             <button class="btn btn-default">reset</button>
+            <button class="btn btn-info">redo</button>
+            <button class="btn btn-info">undo</button>
         </div>
        
     </div>
@@ -38,7 +42,7 @@
     <div class="panel">
         <div >
             <h5>StrokeColor</h5>
-            <ul onclick="color_select('strokeColor');">
+            <ul onclick="color_select(event,'strokeColor');">
                 <li class="color-01" color="#000"><a href="#">Black</a></li>
                 <li class="color-02" color="#fff"><a href="#">White</a></li>
                 <li class="color-03" color="#a40000"><a href="#">DullRed</a></li>
@@ -56,7 +60,7 @@
         </div>
         <div >
             <h5>FillColor</h5>
-            <ul onclick="color_select('fillColor');">
+            <ul onclick="color_select(event,'fillColor');">
                 <li class="color-01" color="#000"><a href="#">Black</a></li>
                 <li class="color-02" color="#fff"><a href="#">White</a></li>
                 <li class="color-03" color="#a40000"><a href="#">DullRed</a></li>
@@ -73,6 +77,24 @@
             </ul>
         </div>
     </div>
+    <br />
+    <div class="panel">
+        <div class="panel-header">
+            <span>Issue List</span>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <li>Pen resize</li>
+                <li>Text Resize</li>
+                <li>Text display position</li>
+                <li>Move upload file html code to scence autocreate like input</li>
+                <li>Brush</li>
+                <li>Erease</li>
+                <li>Redo/Undo</li>
+            </ul>
+        </div>
+
+    </div>
     <script>
         function upload_start(f) {
             console.log("start uploading..1");
@@ -81,7 +103,7 @@
                 scence.load_file(file, { offsetX: 50, offsetY: 50 });
             }
         }
-        function goto() {
+        function goto(event) {
             //console.log(event.target);
             var button = $(event.target);
             var command = button.text();
@@ -99,7 +121,7 @@
             }
             scence.do(command);
         }
-        function color_select(type) {
+        function color_select(event,type) {
             //console.log(event.target);
             var li = $(event.target).parent();
             if (li && li.attr("color")) {

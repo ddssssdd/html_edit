@@ -59,6 +59,9 @@
             return;
         if (!this.done)
             return;
+        if (this.deleted) {
+            return;
+        }
         this.context_top.save();
         this.context_top.strokeStyle = "blue";
         this.context_top.lineWidth = 2;
@@ -543,12 +546,28 @@ var Text = function (scence) {
     }
     this.drawOne = function (con, points, strokeColor, fillColor, lineWidth) {
         con.save();
-        con.strokeStyle = strokeColor;
-        con.fillStyle = fillColor;
-        con.lineWidth = lineWidth;
+        con.strokeStyle = this.strokeColor;
+        con.fillStyle = this.fillColor;
+        con.lineWidth = this.lineWidth;
         con.font = this.font();
         con.fillText(this.message, this.clientRect.left, this.clientRect.bottom);
         con.restore();
+    }
+    this.resize = function (left, top, right, bottom) {
+        var old_width = this.clientRect.right - this.clientRect.left;
+        var old_height = this.clientRect.bottom - this.clientRect.top;
+        var change_width = right - left;
+        var change_height = bottom - top;
+        var x_rate = change_width / old_width;
+        var y_rate = change_height / old_height;
+        var rate = Math.max(Math.abs(x_rate), Math.abs(y_rate));
+        if (rate > 0) {
+            var old = this.fontSize;
+            this.fontSize += this.fontSize * rate;
+            console.log("Old size=" + old + ",new size=" + this.fontSize);
+        }
+        
+
     }
 }
 Text.classname = "text";
