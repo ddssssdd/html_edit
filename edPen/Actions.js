@@ -469,6 +469,13 @@ var Circle = function (scence) {
 
 Circle.classname = "circle";
 Circle.prototype = new Action();
+var UploadCommand = function (scence) {
+    this.execute = function () {
+        $("#upload_file").trigger("click");
+    }
+}
+UploadCommand.classname = "upload";
+UploadCommand.prototype = new Action();
 
 var UploadFile = function (scence,f,pos) {
     this.scence = scence;
@@ -477,6 +484,8 @@ var UploadFile = function (scence,f,pos) {
     this.fillColor = "white";
     this.upload_file = f;
     this.start_pos = { x: pos.offsetX, y: pos.offsetY };
+    var instance = this;
+    
     this.drawAll = function (con) {
         this.drawOne(con);
     }
@@ -487,7 +496,7 @@ var UploadFile = function (scence,f,pos) {
 
     this.reader = new FileReader();
     this.image = new Image();
-    var instance = this;
+    
     this.reader.onload = (function (theFile) {
         return function (e) {
             instance.image.src = e.target.result;
@@ -630,7 +639,7 @@ var Brush = function (scence) {
         con.lineWidth = lineWidth;
         con.fillStyle = fillColor;
         con.globalAlpha = 0.5;
-        con.globalCompositeOperation = "lighter";
+       // con.globalCompositeOperation = "lighter";
         con.lineCap = "round";
         con.beginPath();
         con.moveTo(points[0].x, points[0].y);
@@ -646,3 +655,47 @@ var Brush = function (scence) {
 }
 Brush.classname = "brush";
 Brush.prototype = new Pen(null);
+
+var Erase = function (scence) {
+    this.scence = scence;
+    if (scence) {
+        this.context = scence.context;
+        this.context_top = scence.context_top;
+    }
+    this.isgroup = true;
+    this.strokeColor = "black";    
+    this.lineWidth = 1;
+    this.r = 20;
+    this.start_pos = { x: 0, y: 0 };
+    this.drawAll = function (con) {
+        for (var j = 0; j < this.groups.length; j++) {
+            var p = this.groups[j];
+            this.drawOne(con, p.points, p.strokeColor, p.fillColor, p.lineWidth);
+        }
+
+    }
+    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth) {
+        if (!points || points.length < 1)
+            return;
+        if (this.creating) {//creating
+            var p = points[points.length - 1];
+            //con.strokeRect(p.x - this.r / 2, p.y - this.r / 2, this.r, this.r);
+            con.strokeStyle = "black";
+            con.beginPath();
+            con.arc(p.x - this.r / 2, p.y - this.r / 2, this.r, 0, Math.PI * 2, false);
+            con.closePath();
+            con.stroke();
+            this.context.clearRect(p.x - this.r / 2, p.y - this.r / 2, this.r, this.r);
+        } else {
+            for (var i = 0; i < points.length; i++) {
+                var p = points[i];
+                con.clearRect(p.x - this.r / 2, p.y - this.r / 2, this.r, this.r);
+
+            }
+        }
+        
+    }
+    
+}
+Erase.classname = "erase";
+Erase.prototype = new Action();

@@ -94,6 +94,8 @@ var Scence = function (divName, settings) {
     $("<canvas id='canvas_select' style='position:absolute;z-index:2;'></canvas>").appendTo(this.div);
     $("<canvas id='canvas_top' style='position:absolute;z-index:1;'></canvas>").appendTo(this.div);
     $("<canvas id='canvas'></canvas>").appendTo(this.div);
+    var form_upload = "<form enctype='multipart/form-data'><input id='upload_file' name='upload_file' type='file' style='display:none'/></form>";
+    $(form_upload).appendTo(this.div);
     this.canvas = document.getElementById("canvas");
     this.canvas_top = document.getElementById("canvas_top");
     this.canvas_debug = document.getElementById("canvas_debug");
@@ -124,6 +126,7 @@ var Scence = function (divName, settings) {
     $(this.canvas_debug).bind("mousedown", mousedown);
     $(this.canvas_debug).bind("mousemove", mousemove);
     $(this.canvas_debug).bind("mouseout", mouseout);
+    $("#upload_file").bind("change", upload_start);
     this.canvas_debug.addEventListener('dragover', handleDragOver, false);
     this.canvas_debug.addEventListener('drop', handleFileSelect, false);
     $(document).bind("keydown", onkeydown);
@@ -133,6 +136,12 @@ var Scence = function (divName, settings) {
     }
     function onkeypress(event) {
         instance.onkeypress(event);
+    }
+    function upload_start(f) {
+        var file = f.target.files[0];
+        if (file) {
+            instance.load_file(file, { offsetX: 50, offsetY: 50 });
+        }
     }
     function handleFileSelect(e) {
         e.stopPropagation();
@@ -207,7 +216,7 @@ var Scence = function (divName, settings) {
     this.lastCommandName = "select";
     this.command = new Select(instance);
     this.commandList = [];
-    this.registerTools = [MultiMoveSelect, Pen, Line, Rect, Circle, Reset,Text,Brush];
+    this.registerTools = [MultiMoveSelect, Pen, Line, Rect, Circle, Reset,Text,Brush,Erase,UploadCommand,Undo,Redo];
     this.getTool = function (name) {
         for (var i = 0; i < this.registerTools.length; i++) {
             if (this.registerTools[i].classname == name) {

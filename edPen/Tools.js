@@ -248,3 +248,45 @@ var MultiMoveSelect = function (scence) {
 }
 MultiMoveSelect.classname = "select";
 MultiMoveSelect.prototype = new Select(null); //complex one;
+//redo
+var Redo = function (scence) {
+    this.scence = scence;
+    this.context = scence.context;
+    this.context_top = scence.context_select;
+    this.execute = function () {
+        var index = 0;
+        while (index <this.scence.commandList.length) {
+            var action = this.scence.commandList[index];
+            if (action.deleted) {
+                action.deleted = false;
+                break;
+            } else {
+                index++;
+            }
+        }
+        
+        this.scence.reDraw();
+    }
+}
+Redo.classname = "redo";
+//undo
+var Undo = function (scence) {
+    this.scence = scence;
+    this.context = scence.context;
+    this.context_top = scence.context_select;
+    this.execute = function () {
+        var l = this.scence.commandList.length;
+        while (l>0){
+            var action = this.scence.commandList[l - 1];
+            if (action.deleted) {
+                l = l - 1;
+            } else {
+                action.deleted = true;
+                break;
+            }
+        }
+        this.scence.reDraw();
+        
+    }
+}
+Undo.classname = "undo";
