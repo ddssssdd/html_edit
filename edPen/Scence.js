@@ -149,16 +149,16 @@ var Scence = function (divName, settings) {
     }
 
     function mouseup(e) {
-        instance.mouseup({ offsetX: e.clientX - instance.left, offsetY: e.clientY - instance.top });
+        instance.mouseup({ offsetX: e.clientX - instance.left, offsetY: e.clientY - instance.top ,event:e});
     }
     function mousedown(e) {
-        instance.mousedown({ offsetX: e.clientX - instance.left, offsetY: e.clientY - instance.top });
+        instance.mousedown({ offsetX: e.clientX - instance.left, offsetY: e.clientY - instance.top, event: e });
     }
     function mouseout(e) {
-        instance.mouseout({ offsetX: e.clientX - instance.left, offsetY: e.clientY - instance.top });
+        instance.mouseout({ offsetX: e.clientX - instance.left, offsetY: e.clientY - instance.top, event: e });
     }
     function mousemove(e) {
-        instance.mousemove({ offsetX: e.clientX - instance.left, offsetY: e.clientY - instance.top });
+        instance.mousemove({ offsetX: e.clientX - instance.left, offsetY: e.clientY - instance.top, event: e });
     }
     this.mouseup = function (e) {
         handleMouse("mouseup", e);
@@ -207,7 +207,7 @@ var Scence = function (divName, settings) {
     this.lastCommandName = "select";
     this.command = new Select(instance);
     this.commandList = [];
-    this.registerTools = [MultiMoveSelect, Pen, Line, Rect, Circle, Reset,Text];
+    this.registerTools = [MultiMoveSelect, Pen, Line, Rect, Circle, Reset,Text,Brush];
     this.getTool = function (name) {
         for (var i = 0; i < this.registerTools.length; i++) {
             if (this.registerTools[i].classname == name) {
@@ -235,7 +235,7 @@ var Scence = function (divName, settings) {
         console.log(actions);
     }
     this.onkeydown = function (event) {
-        if (event.keyCode = 46) {
+        if (event.which == 46) {
             if (this.command.last_select && this.command.last_select.length > 0) {
                 for (var i = this.command.last_select.length - 1; i > -1; i--) {
                     var action = this.command.last_select[i];

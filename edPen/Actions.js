@@ -17,6 +17,7 @@
     this.scale = { x: 1, y: 1 };
     this.SELECT_BORDER = 0;
     this.CORNER_WIDTH = 10;
+    this.ctrlSelect = false;
     Action.prototype.drawOne = function (con) {
 
     }
@@ -39,6 +40,7 @@
                 
             } else {
                 //this.context.transform(2, 1, 1, 1, 1, 1);
+                //this.context.globalAlpha = 0.2;
                 this.drawAll(this.context);
                 
             }
@@ -89,7 +91,39 @@
         this.context_top.fillStyle = "black";
         this.context_top.textBaseline = "bottom";
         this.context_top.fillText(this.resize_selected + '', x + 20, y + 20);
+
         
+        if (this.scence.debug && this.ctrlSelect) {
+            this.drawDebugSelect(x, y, w, h);
+        }
+        
+    }
+    Action.prototype.drawDebugSelect = function (x, y, w, h) {
+        var con = this.context_top;
+        con.save();
+        var outputCoords = function (x, y) {
+            con.fillStyle = "red";
+            var msg = "(" + x + "," + y+")";
+            con.fillText(msg, x, y);
+        }
+        outputCoords(x , y ); //left
+        outputCoords(x + w , y ); //right
+        outputCoords(x , y + h ); //left -bottom
+        outputCoords(x + w , y + h ); //right-bottom
+        outputCoords(x + w / 2, y + h / 2); //center
+        this.context_top.fillText("width=" + w, x + w / 2, y);
+        this.context_top.fillText("height=" + h, x + w , y+h/2);
+        this.context_top.strokeStyle = "red";
+        this.context_top.setLineDash([2]);
+        this.context_top.beginPath();
+        this.context_top.moveTo(x, y);
+        this.context_top.lineTo(x + w, y + h);
+        this.context_top.stroke();
+        this.context_top.beginPath();
+        this.context_top.moveTo(x+w, y);
+        this.context_top.lineTo(x, y + h);
+        this.context_top.stroke();
+        con.restore();
     }
     Action.prototype.endCreate = function (e) {
         this.creating = false;
@@ -158,6 +192,7 @@
     Action.prototype.inside = function (e) {
         this.selected = false;
         this.resize_selected = 0;
+        this.ctrlSelect = false;
         var r = this.CORNER_WIDTH / 2;
         if ((e.offsetX >= this.clientRect.left-r && e.offsetX <= this.clientRect.right+r) &&
             (e.offsetY >= this.clientRect.top-r && e.offsetY <= this.clientRect.bottom+r)) {
@@ -182,6 +217,7 @@
             (e.offsetY >= this.clientRect.bottom - r && e.offsetY <= this.clientRect.bottom + r)) {
                 this.resize_selected = 2;
             }
+            this.ctrlSelect = e.event.ctrlKey;
 
         }
         return this.selected;
@@ -275,8 +311,11 @@
 }
 var Pen = function (scence) {
     this.scence = scence;
-    this.context = scence.context;
-    this.context_top = scence.context_top;
+    if (scence) {
+        this.context = scence.context;
+        this.context_top = scence.context_top;
+    }
+    
     this.isgroup = true;
     this.drawAll = function (con) {
         for (var j = 0; j < this.groups.length; j++) {
@@ -572,3 +611,38 @@ var Text = function (scence) {
 }
 Text.classname = "text";
 Text.prototype = new Action();
+
+
+var Brush = function (scence) {
+    this.scence = scence;
+    if (scence) {
+        this.context = scence.context;
+        this.context_top = scence.context_top;
+    }
+    this.strokeColor = "brown";
+    this.isgroup = true;
+    this.lineWidth = 40;
+    this.alpha = 0.2;
+    
+    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth) {
+        con.save();
+        con.strokeStyle = strokeColor;
+        con.lineWidth = lineWidth;
+        con.fillStyle = fillColor;
+        con.globalAlpha = 0.5;
+        con.globalCompositeOperation = "lighter";
+        con.lineCap = "round";
+        con.beginPath();
+        con.moveTo(points[0].x, points[0].y);
+        for (var i = 1; i < points.length; i++) {
+            con.lineTo(points[i].x, points[i].y);
+            con.stroke();
+        }
+        con.closePath();
+        con.restore();
+
+    }
+    
+}
+Brush.classname = "brush";
+Brush.prototype = new Pen(null);
