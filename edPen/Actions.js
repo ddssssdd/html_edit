@@ -333,7 +333,7 @@
         this.nextCommand = action;
     }
     Action.prototype.distance = function (x1, y1, x2, y2) {
-        return Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y2,2));
+        return Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2));
     }
 }
 var Pen = function (scence) {
@@ -969,11 +969,12 @@ function Polygon(scence) {
         if (this.selected) {
             con.save();
             con.strokeStyle = "green";
+            con.fillStyle = "green";
             con.beginPath();
-
             con.arc(x, y, this.SELECT_BORDER, 0, Math.PI * 2, false);
             con.closePath();
             con.stroke();
+            con.fill();
             con.restore();
         }
     }
