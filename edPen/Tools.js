@@ -269,6 +269,7 @@ var Redo = function (scence) {
     }
 }
 Redo.classname = "redo";
+Redo.runonce = true;
 //undo
 var Undo = function (scence) {
     this.scence = scence;
@@ -290,3 +291,77 @@ var Undo = function (scence) {
     }
 }
 Undo.classname = "undo";
+Undo.runonce = true;
+//local save
+var LocalItem = function (index,commands) {
+    this.date = new Date();
+    this.index = index;
+    this.count = commands.length;
+    this.items = [];
+    for (var i = 0; i < commands.length; i++) {
+        var c = commands[i];
+        this.items.push(c.clone());
+    }
+}
+var LocalSave = function (scence) {
+    this.scence = scence;
+    this.list = [];
+    this.MAIN_KEY = "com.synvata.canvas.draw";    
+    this.execute = function () {
+        var item = new LocalItem(this.list.length, this.scence.commandList);
+        this.list.push(item);
+        this.saveList();
+    }
+    this.saveList = function () {
+        try {
+            var list = JSON.stringify(this.list);
+            localStorage.setItem(this.MAIN_KEY, list);
+        } catch (exception) {
+            console.log(exception);
+        }
+        
+    }
+    this.restoreList = function () {
+        var list = localStorage.getItem(this.MAIN_KEY);
+        if (list) {
+            this.list = JSON.parse(list);
+        } else {
+            this.list = [];
+        }
+    }
+    this.init = function () {
+        this.restoreList();
+    }
+    this.init();
+}
+LocalSave.classname = "save";
+LocalSave.runonce = true;
+//local restore
+var LocalRestore = function (scence) {
+    this.scence = scence;
+    this.list = [];
+    this.MAIN_KEY = "com.synvata.canvas.draw";
+    this.execute = function () {
+        console.log(this.list);
+        if (this.list.length > 0) { //restore the latest save items;
+            var item = this.list[this.list.length - 1];
+            this.scence.commandList = [];
+            for (var i = 0; i < item.items.length; i++) {
+                var c = item.items[i];
+                var classname = c.classname;
+                var actionname = this.scence.getTool(classname);
+                var action = new actionname(this.scence);
+                action.execute(classname);
+                action.restore(c);
+                this.scence.commandList.push(action);
+            }
+            this.scence.reDraw();
+        }
+        
+
+    }
+    this.init();
+}
+LocalRestore.classname = "restore"
+LocalRestore.prototype = new LocalSave(null);
+LocalRestore.runonce = true;

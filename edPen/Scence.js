@@ -216,7 +216,8 @@ var Scence = function (divName, settings) {
     this.lastCommandName = "select";
     this.command = new Select(instance);
     this.commandList = [];
-    this.registerTools = [MultiMoveSelect, Pen, Line, Rect, Circle, Reset,Text,Brush,Erase,UploadCommand,Undo,Redo];
+    this.registerTools = [MultiMoveSelect, Pen, Line, Rect, Circle, Reset, Text, Brush, Erase, UploadCommand,UploadFile,
+        Undo, Redo, LocalSave, LocalRestore];
     this.getTool = function (name) {
         for (var i = 0; i < this.registerTools.length; i++) {
             if (this.registerTools[i].classname == name) {
@@ -230,9 +231,15 @@ var Scence = function (divName, settings) {
         this.lastCommandName = name;
         var newCommand = this.getTool(name);
         if (newCommand) {
-            this.command = new newCommand(instance);
-            this.command.execute();
-            return this.command;
+            if (newCommand["runonce"]) {
+                (new newCommand(instance)).execute(name);
+                return this.command;
+            } else {
+                this.command = new newCommand(instance);
+                this.command.execute(name);
+                return this.command;
+            }
+            
         }
         
     }

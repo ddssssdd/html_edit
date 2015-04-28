@@ -18,6 +18,7 @@
     this.SELECT_BORDER = 0;
     this.CORNER_WIDTH = 10;
     this.ctrlSelect = false;
+    this.classname = "action";
     Action.prototype.drawOne = function (con) {
 
     }
@@ -47,7 +48,7 @@
             //console.log(this);
         }
     }
-    Action.prototype.execute = function () {
+    Action.prototype.execute = function (classname) {
         this.clientRect = { top: 102400, left: 102400, right: 0, bottom: 0 };
         this.selected = false;
         this.creating = false;
@@ -55,6 +56,7 @@
         this.resize_selected = 0;
         this.points = [];
         this.groups = [];
+        this.classname = classname;
     }
     Action.prototype.drawSelect = function () {
         if (!this.context_top)
@@ -307,6 +309,25 @@
         }
         this.Draw();
     }
+    Action.prototype.clone = function () {
+        return {
+            classname: this.classname,
+            isgroup: this.isgroup,
+            lineWidth: this.lineWidth,
+            fillColor: this.fillColor,
+            strokeColor: this.strokeColor,
+            clientRect: this.clientRect,
+            groups: this.groups
+        };
+    }
+    Action.prototype.restore = function (other) {
+        this.groups = other.groups;
+        this.done = true;
+        this.lineWidth = other.lineWidth;
+        this.fillColor = other.fillColor;
+        this.strokeColor = other.strokeColor;
+        this.clientRect = other.clientRect;
+    }
 
 }
 var Pen = function (scence) {
@@ -483,7 +504,7 @@ var UploadFile = function (scence,f,pos) {
     this.context_top = scence.context_top;
     this.fillColor = "white";
     this.upload_file = f;
-    this.start_pos = { x: pos.offsetX, y: pos.offsetY };
+    this.start_pos = { x: pos?pos.offsetX:0, y:pos?pos.offsetY:0 };
     var instance = this;
     
     this.drawAll = function (con) {
@@ -502,7 +523,8 @@ var UploadFile = function (scence,f,pos) {
             instance.image.src = e.target.result;
         }
     })(this.upload_file);
-    this.reader.readAsDataURL(this.upload_file);
+    if (this.upload_file)
+        this.reader.readAsDataURL(this.upload_file);
     this.image.onload = function () {
         
         console.log("load complete");
@@ -523,6 +545,29 @@ var UploadFile = function (scence,f,pos) {
             lineWidth: this.lineWidth
         });
         this.drawOne(this.context);
+    }
+    this.clone = function () {
+        return {
+            classname: "uploadfile",
+            isgroup: this.isgroup,
+            lineWidth: this.lineWidth,
+            fillColor: this.fillColor,
+            strokeColor: this.strokeColor,
+            clientRect: this.clientRect,
+            message: this.message,
+            image_src : this.image.src,
+            groups: this.groups
+        };
+    }
+    this.restore = function (other) {
+        this.groups = other.groups;
+        this.done = true;
+        this.lineWidth = other.lineWidth;
+        this.fillColor = other.fillColor;
+        this.strokeColor = other.strokeColor;
+        this.clientRect = other.clientRect;
+        this.message = other.message;
+        this.image.src = other.image_src;
     }
     
 }
@@ -617,6 +662,27 @@ var Text = function (scence) {
         
 
     }
+    this.clone = function () {
+        return {
+            classname: this.classname,
+            isgroup: this.isgroup,
+            lineWidth: this.lineWidth,
+            fillColor: this.fillColor,
+            strokeColor: this.strokeColor,
+            clientRect: this.clientRect,
+            message:this.message,
+            groups: this.groups
+        };
+    }
+    this.restore = function (other) {
+        this.groups = other.groups;
+        this.done = true;
+        this.lineWidth = other.lineWidth;
+        this.fillColor = other.fillColor;
+        this.strokeColor = other.strokeColor;
+        this.clientRect = other.clientRect;
+        this.message = other.message;
+    }
 }
 Text.classname = "text";
 Text.prototype = new Action();
@@ -639,7 +705,7 @@ var Brush = function (scence) {
         con.lineWidth = lineWidth;
         con.fillStyle = fillColor;
         con.globalAlpha = 0.5;
-       // con.globalCompositeOperation = "lighter";
+        con.globalCompositeOperation = "source-over";//"lighter";
         con.lineCap = "round";
         con.beginPath();
         con.moveTo(points[0].x, points[0].y);
