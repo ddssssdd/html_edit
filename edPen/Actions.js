@@ -18,7 +18,7 @@
     this.SELECT_BORDER = 0;
     this.CORNER_WIDTH = 10;
     this.ctrlSelect = false;
-    this.classname = "action";
+    this.classname = arguments.callee.classname ? arguments.callee.classname : "action";
     Action.prototype.drawOne = function (con) {
 
     }
@@ -40,7 +40,7 @@
                 this.drawSelect();
                 
             } else {
-                //this.context.transform(2, 1, 1, 1, 1, 1);
+                
                 //this.context.globalAlpha = 0.2;
                 this.drawAll(this.context);
                 
@@ -328,7 +328,13 @@
         this.strokeColor = other.strokeColor;
         this.clientRect = other.clientRect;
     }
-
+    this.nextCommand = null;
+    Action.prototype.next = function (action) {
+        this.nextCommand = action;
+    }
+    Action.prototype.distance = function (x1, y1, x2, y2) {
+        return Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y2,2));
+    }
 }
 var Pen = function (scence) {
     this.scence = scence;
@@ -416,6 +422,7 @@ var Rect = function (scence) {
     this.context = scence.context;
     this.context_top = scence.context_top;
     this.fillColor = "white";
+    this.strokeColor = "black";
     this.drawAll = function (con) {
         for (var j = 0; j < this.groups.length; j++) {
             var p = this.groups[j];
@@ -765,3 +772,290 @@ var Erase = function (scence) {
 }
 Erase.classname = "erase";
 Erase.prototype = new Action();
+
+//Multiple Line
+var PolyLine = function (scence) {
+    this.scence = scence;
+    this.context = scence.context;
+    this.context_top = scence.context_top;
+    this.isgroup = false;
+    this.lineWidth = 3;
+    this.SELECT_BORDER = 6;
+    this.next = function (action) {
+        this.nextCommand = action;
+        if (!this.done) {
+            this.endLine(false);
+        }
+        
+    }
+    this.mouseout = function (e) {
+        //nothing;
+    }
+    this.endLine = function (fromHere) {
+        this.done = true;
+        this.creating = false;
+        this.Draw();
+        if (fromHere) {
+            this.points = [];
+            this.scence.clone(this);
+        }
+        
+    }
+    this.mouseup = function (e) {
+        if (this.done) {            
+            this.creating = false;
+            return;
+        }
+        if (this.creating) { //if creating ,then end;
+            this.endCreate(e);
+        }
+        this.Draw();
+        if (e.event && e.event.button != 0) {
+            this.endLine(true);
+        }
+    }
+    this.endCreate = function (e) {
+        //this.__proto__.endCreate(e);
+        if (this.points && this.points.length == 0) {
+            return;
+        }
+        this.creating = true;
+        this.points=[{x:this.points[0].x,y:this.points[0].y},{ x: e.offsetX, y: e.offsetY }];
+        this.groups.push({
+            points: this.points,
+            strokeColor: this.strokeColor,
+            fillColor: this.fillColor,
+            lineWidth: this.lineWidth
+        });
+        this.processPoint(this.points);
+        if (this.scence.commandList.indexOf(this) < 0) {
+            this.scence.commandList.push(this);
+        }
+        this.points = [];
+        this.Draw();
+    }
+    this.drawAll = function (con) {
+        this.drawOne(con);
+
+    }
+    this.drawJointSelect = function (con,x,y) {
+        if (this.selected) {
+            con.save();
+            con.strokeStyle = "green";
+            con.beginPath();
+            
+            con.arc(x, y, this.SELECT_BORDER, 0, Math.PI * 2, false);
+            con.closePath();
+            con.stroke();
+            con.restore();
+        }
+    }
+    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth) {
+        var last = { x: 0, y: 0,start:false};
+        function drawline(con, points) {
+            
+            con.beginPath();
+            if (last.start) {
+                con.moveTo(last.x, last.y);
+                con.lineTo(points[0].x, points[0].y);
+            }
+            con.moveTo(points[0].x, points[0].y);
+            con.lineTo(points[points.length - 1].x, points[points.length - 1].y);
+            con.stroke();
+            con.closePath();
+            if (last.start == false) {                
+                last.start = true;
+            }
+            last.x = points[points.length - 1].x;
+            last.y = points[points.length - 1].y;
+        }
+        con.strokeStyle = this.strokeColor;
+        con.lineWidth = this.lineWidth;
+        con.fillStyle = this.fillColor;
+        for (var j = 0; j < this.groups.length; j++) {
+            var p = this.groups[j];
+            drawline(con, p.points);
+            this.drawJointSelect(con, p.points[0].x, p.points[0].y);
+            this.drawJointSelect(con, p.points[p.points.length - 1].x, p.points[p.points.length - 1].y);
+        }
+       
+    }
+    this.selected_point = null;
+
+    this.inside = function (e) {
+        this.selected_point = null;
+        var result = this.__proto__.inside.call(this, e);
+        if (result) {
+            for (var j = 0; j < this.groups.length; j++) {
+                for (var i = 0; i < this.groups[j].points.length; i++) {
+                    var p = this.groups[j].points[i];
+                    var distance = this.distance(p.x, p.y, e.offsetX, e.offsetY);
+                    if (distance < 6) {
+                        this.selected_point = p;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+        
+    }
+    
+    this.move = function (e) {
+        if (this.selected) {
+            if (this.selected_point) {
+                this.selected_point.x += e.x;
+                this.selected_point.y += e.y;
+                this.clientRect = { top: 102400, left: 102400, right: 0, bottom: 0 };
+                for (var j = 0; j < this.groups.length; j++) {                   
+                    this.processPoint(this.groups[j].points);
+                }
+                return;
+            }
+            this.__proto__.move.call(this, e);
+        }
+        
+    }
+    
+}
+PolyLine.classname = "polyline";
+PolyLine.prototype = new Action();
+
+function Polygon(scence) {
+    this.scence = scence;
+    this.context = scence.context;
+    this.context_top = scence.context_top;
+    this.fillColor = "red";
+    this.SELECT_BORDER = 6;
+    this.alpha = 0.6;
+    this.next = function (action) {
+        this.nextCommand = action;
+        this.endCreate();
+    }
+    this.mousedown = function (e) {
+
+    }
+    this.endCreate = function (e) {
+        this.creating = false;
+        this.done = true;
+        
+        this.processPoint(this.points);
+        this.groups = [{ points: this.points, lineWidth: this.lineWidth, fillColor: this.fillColor, strokeColor: this.strokeColor }];
+        if (e) {
+            this.scence.clone(this);
+        } else {
+            this.scence.commandList.push(this);
+        }
+        this.Draw();
+    }
+    this.mouseup = function (e) {
+        if (this.done) {
+            return;
+        }
+        this.creating = true;
+        this.points.push({ x: e.offsetX, y: e.offsetY });        
+        if (e.event && e.event.button != 0) {
+            this.endCreate(e);
+        }
+        this.Draw();
+    }
+    this.mousemove = function (e) {
+        
+    }
+    this.mouseout = function (e) {
+
+    }
+    this.drawJointSelect = function (con, x, y) {
+        if (this.selected) {
+            con.save();
+            con.strokeStyle = "green";
+            con.beginPath();
+
+            con.arc(x, y, this.SELECT_BORDER, 0, Math.PI * 2, false);
+            con.closePath();
+            con.stroke();
+            con.restore();
+        }
+    }
+    this.drawOne = function (con) {
+        var points = this.points;
+        if (points.length > 0) {
+            
+            con.save();
+            con.fillStyle = this.fillColor;
+            con.lineWidth = this.lineWidth;
+            con.strokeStyle = this.strokeColor;
+            con.globalAlpha = this.alpha;
+            con.beginPath();
+            con.moveTo(points[0].x, points[0].y);
+            for (var i = 1; i < points.length; i++) {
+                con.lineTo(points[i].x, points[i].y);
+                
+            }
+            con.lineTo(points[0].x, points[0].y);
+            con.closePath();
+            con.stroke();
+            con.fill();
+            con.restore();
+            for (var i = 0; i < points.length; i++) {             
+                this.drawJointSelect(con, points[i].x, points[i].y);
+            }
+        }
+        
+    }
+    this.drawAll = function (con) {
+        this.drawOne(con);
+    }
+    this.processPoint = function (points) {
+        for (var i = 0; i < points.length; i++) {
+            var p = points[i];
+            if (p.x > this.clientRect.right)
+                this.clientRect.right = p.x;
+            if (p.x < this.clientRect.left)
+                this.clientRect.left = p.x;
+            if (p.y < this.clientRect.top)
+                this.clientRect.top = p.y;
+            if (p.y > this.clientRect.bottom)
+                this.clientRect.bottom = p.y;
+        }
+    }
+    this.selected_point = null;
+
+    this.inside = function (e) {
+        this.selected_point = null;
+        var result = this.__proto__.inside.call(this, e);
+        if (result) {
+            for (var j = 0; j < this.groups.length; j++) {
+                for (var i = 0; i < this.groups[j].points.length; i++) {
+                    var p = this.groups[j].points[i];
+                    var distance = this.distance(p.x, p.y, e.offsetX, e.offsetY);
+                    if (distance < 6) {
+                        this.selected_point = p;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+
+    }
+
+    this.move = function (e) {
+        if (this.selected) {
+            if (this.selected_point) {
+                this.selected_point.x += e.x;
+                this.selected_point.y += e.y;
+                this.clientRect = { top: 102400, left: 102400, right: 0, bottom: 0 };
+                for (var j = 0; j < this.groups.length; j++) {
+                    this.processPoint(this.groups[j].points);
+                }
+                return;
+            }
+            this.__proto__.move.call(this, e);
+        }
+
+    }
+
+}
+Polygon.classname = "polygon";
+Polygon.prototype = new Action();
