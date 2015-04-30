@@ -623,7 +623,7 @@ var Text = function (scence) {
         this.context.font = this.font();
         var w = parseInt(this.context.measureText(this.message).width);
         var h = parseInt(this.context.measureText('W').width)
-        this.clientRect = { left: this.start_pos.x, top: this.start_pos.y, right: this.start_pos.x + w, bottom: this.start_pos.y + h };
+        this.clientRect = { left: this.start_pos.x, top: this.start_pos.y, right: this.start_pos.x + w, bottom: this.start_pos.y+h};
         this.points = [{ x: this.clientRect.left, y: this.clientRect.top }, { x: this.clientRect.right, y: this.clientRect.bottom }];
         this.groups.push({
             points: this.points,
@@ -657,6 +657,7 @@ var Text = function (scence) {
         this.drawOne(con);
     }
     this.drawOne = function (con, points, strokeColor, fillColor, lineWidth) {
+        con = this.context;
         con.save();
         con.strokeStyle = this.strokeColor;
         con.fillStyle = this.fillColor;
@@ -664,21 +665,40 @@ var Text = function (scence) {
         con.font = this.font();
         con.fillText(this.message, this.clientRect.left, this.clientRect.bottom);
         con.restore();
+        
     }
     this.resize = function (left, top, right, bottom) {
+        this.__proto__.resize.call(this, left, top, right, bottom);
+        this.context.save();
+        var w = this.clientRect.right - this.clientRect.left;
+        for (var i = 6; i < 1200; i++) {
+            this.fontSize = i;
+            this.context.font = this.font();
+            var realw = parseInt(this.context.measureText(this.message).width);
+            if (w - realw < 5) {
+                break;
+            }
+        }
+        this.context.restore();
+        /*
         var old_width = this.clientRect.right - this.clientRect.left;
         var old_height = this.clientRect.bottom - this.clientRect.top;
         var change_width = right - left;
         var change_height = bottom - top;
         var x_rate = change_width / old_width;
         var y_rate = change_height / old_height;
-        var rate = Math.max(Math.abs(x_rate), Math.abs(y_rate));
+        var rate = 0;// Math.max(Math.abs(x_rate), Math.abs(y_rate));
+        if (Math.abs(x_rate) >= Math.abs(y_rate)) {
+            rate = x_rate;
+        } else {
+            rate = y_rate;
+        }
         if (rate > 0) {
             var old = this.fontSize;
             this.fontSize += this.fontSize * rate;
             console.log("Old size=" + old + ",new size=" + this.fontSize);
         }
-        
+        */
 
     }
     this.clone = function () {

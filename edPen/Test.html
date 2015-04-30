@@ -20,7 +20,7 @@
 
     function drawTest() {
         context.save();
-        context.fillStyle = "yellow";
+        context.fillStyle = "red";
         context.strokeStyle = "black";
         context.globalAlpha = 1;
         /*
@@ -31,6 +31,7 @@
         drawScaleRect(100, 100, 100, 100, 1.2, 1.2);
         context.restore();
         */
+        /*
         var x = 100,
             y = 100,
             w = 200,
@@ -45,6 +46,10 @@
         context.fillStyle = "blue";
         context.fillRect(x, y, w, h);
         context.restore();
+        */
+        context.font = "24px arial";
+        context.scale(20, 20);
+        context.fillText("Hello, this is string on 100,100", 20, 20);
         
     }
     function drawRotateRect(x, y, w, h, degree) {
