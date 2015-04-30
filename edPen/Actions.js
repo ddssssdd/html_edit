@@ -371,19 +371,31 @@ var Pen = function (scence) {
         var change_height = bottom - top;
         var x_rate = change_width / old_width;
         var y_rate = change_height / old_height;
-        var msg = "Resize: left=" + left + ",top=" + top + ",right=" + right + ",bottom=" + bottom+",x_rate="+x_rate+",y_rate="+y_rate;
+        var msg = "Resize[" + this.resize_selected + "]: left=" + left + ",top=" + top + ",right=" + right + ",bottom=" + bottom + ",x_rate=" + x_rate + ",y_rate=" + y_rate;
         this.scence.log(msg);
         for (var j = 0; j < this.groups.length; j++) {
             for (var i = 0; i < this.groups[j].points.length; i++) {
                 var p = this.groups[j].points[i];
                 if (x_rate != 0) {
-                    var neww = x_rate * (p.x - this.clientRect.left);
-                    p.x = p.x + neww;
+                    if (this.resize_selected == 3 || this.resize_selected == 4) {
+                        var neww = x_rate * (p.x - this.clientRect.right);
+                        p.x = p.x + neww;
+                    } else {
+                        var neww = x_rate * (p.x - this.clientRect.left);
+                        p.x = p.x + neww;
+                    }
+                    
                 }
                 if (y_rate != 0) {
-                    var newy = y_rate * (p.y - this.clientRect.top);
-
-                    p.y = p.y + newy;
+                    
+                    if (this.resize_selected == 1 || this.resize_selected == 4) {
+                        var newy = y_rate * (p.y - this.clientRect.bottom);
+                        p.y = p.y + newy;
+                    } else {
+                        var newy = y_rate * (p.y - this.clientRect.top);
+                        p.y = p.y + newy;
+                    }
+                    
                 }
                 
             }
@@ -919,7 +931,7 @@ var PolyLine = function (scence) {
     
 }
 PolyLine.classname = "polyline";
-PolyLine.prototype = new Action();
+PolyLine.prototype = new Pen(null);
 
 function Polygon(scence) {
     this.scence = scence;
@@ -1059,4 +1071,4 @@ function Polygon(scence) {
 
 }
 Polygon.classname = "polygon";
-Polygon.prototype = new Action();
+Polygon.prototype = new Pen(null);
