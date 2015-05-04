@@ -84,7 +84,7 @@
         function drawCoords() {
             for (var r = 1; r < 8; r++) {
                 context.strokeStyle = "black";
-                context.setLineDash([10]);
+                context.setLineDash([1]);
                 context.lineWidth = 1;
                 context.moveTo(0, r * 100);
                 context.lineTo(1000, r * 100);
@@ -93,7 +93,7 @@
             }
             for (var c = 1; c < 10; c++) {
                 context.strokeStyle = "black";
-                context.setLineDash([10]);
+                context.setLineDash([1]);
                 context.lineWidth = 1;
                 context.moveTo(c * 100, 0);
                 context.lineTo(c * 100, 800);
