@@ -1773,6 +1773,8 @@
            self.cursoractive = false;
          }
          self.cursortimeout = 0;
+
+
       },tm||self.opt.hidecursordelay);
     };
     
