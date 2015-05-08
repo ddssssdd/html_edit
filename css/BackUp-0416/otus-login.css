@@ -1,0 +1,64 @@
+/* CSS Document */
+@media screen and (min-width: 1500px) and (max-width: 5000px){
+	html{ background:url(../images/1920-bg.jpg) center center no-repeat;height:100%;}
+	}
+	@media screen and (max-width: 1499px){
+	html{ background:url(../images/1366-bg.jpg) center center no-repeat;height:100%;}
+	}
+
+
+header.login{height:60px;background: url(../images/logo-login.png) center center no-repeat #fff;border-top:5px solid #cfcdcf;}
+.login-body{width:350px;height:470px;background:#fff;border-radius:4px; box-shadow: 0px 0px 10px rgba(0,0,0,0.4); position:absolute;left:50%;top:50%;margin:-235px 0px 0px -175px;border-radius:5px; overflow:hidden;}
+
+.login-body:after{content:""; display:table; clear:both;}
+.login-body .left{float:left;margin:9px 0px 0px 10px;}
+.login-body .right{float:right;margin:9px 10px 0px 0px;}
+.login-body .popup-title{ position:absolute;color:#fff; text-align:center; font:17px/46px AvenirMedium, Arial, sans-serif;left:50%;margin-left:-25px;}
+
+.login-body:after{content:"";clear:both;display:table;}
+.login-body .google-login{float:left;width:340px;margin-top:8px;}
+.login-body .google-login-area{ text-align:center;}
+.login-body .google-login-area ul li{margin:8px;}
+
+.login-body .dividing-line{ background:url(../images/dividing-line.jpg) center center repeat-y;height:460px;margin:15px 0px; position:relative;float:left;width:20px;}
+.login-body .dividing-line span{position:absolute;background:#fff;top:50px; font:20px AvenirMedium, Arial, sans-serif;color:#7a7da8;left:1px;padding:5px 0px;}
+.login-body .otus-login{float:left;width:340px;margin-top:16px;}
+.login-body .otus-login .label{width:270px;margin:0px auto;color:#2f3337; background:url(../images/vertical-logo.png) center center no-repeat;height:156px;font:17px/130px AvenirMedium, Arial, sans-serif;}
+.login-body .otus-login .login-area{width:290px;margin:20px auto 0px;}
+.login-body .otus-login .login-area ul li{padding:15px 10px;-moz-box-sizing:border-box;box-sizing:border-box; text-align:center;font:14px AvenirMedium, Arial, sans-serif;}
+.login-body .otus-login .login-area ul li:nth-child(1){border-top:1px solid #dde0e4;border-bottom:1px solid #dde0e4;}
+.login-body .otus-login .login-area ul li:nth-child(2){border-bottom:1px solid #dde0e4;}
+.login-body .otus-login .login-area ul li:nth-child(3){padding:0px;margin-top:25px;}
+.login-body .otus-login .login-area ul li:nth-child(4){padding:0px;border-bottom:1px solid #dde0e4;margin:15px 0px;padding-bottom:15px;}
+.login-body .otus-login .login-area ul li:nth-child(5){padding:0px;margin:15px 0px;}
+.login-body .otus-login .login-area ul li:nth-child(6){padding:0px;}
+
+.login-body .otus-login .login-area ul li:after{content:"";clear:both;display:table;}
+.login-body .otus-login .login-area ul li input{float:right;border:0px;color:#747d86; text-align:right;font:14px AvenirMedium, Arial, sans-serif; outline:none;}
+
+.CreateBody{border-radius:10px;background:#f5f5f5;width:300px;display:inline-block;margin-top:50px;}
+.CreateBody .title{font:20px AvenirMedium, Arial, Helvetica, sans-serif;color:#333;margin:15px 0px 0px;}
+.CreateBody .body .message{font:17px AvenirMedium, Arial, Helvetica, sans-serif;padding:10px 15px;color:#333;}
+.CreateBody .body .createFolder{margin:15px 10px 20px;}
+.CreateBody .body .createFolder input{border:1px solid #e1e1e1;background:#fff;border-radius:4px;padding:6px 10px;font:14px AvenirMedium, Arial, Helvetica, sans-serif;width:240px;}
+.CreateBody .btn{margin:8px 0px 0px;border-top:1px solid #e1e1e1;}
+.CreateBody .btn ul li{width:150px;box-sizing:border-box;-moz-box-sizing:border-box;font:17px AvenirMedium, Arial, Helvetica, sans-serif;color:#09F;}
+.CreateBody .btn ul li:first-child{ float:left;border-right:1px solid #e1e1e1;}
+.CreateBody .btn ul li:first-child a{ display:block;padding:10px 20px;color:#09F;border-radius:6px; text-decoration:none;}
+.CreateBody .btn ul li:first-child a:hover{color:#000;}
+.CreateBody .btn ul li:nth-last-child(2){ float:right;}
+.CreateBody .btn ul li:nth-last-child(2) a{border-radius:6px; text-decoration:none; display:block;padding:10px 20px;color:#09F;}
+.CreateBody .btn ul li:nth-last-child(2) a:hover{color:#000;}
+
+.CreateBody .btn2{margin:8px 0px 0px;border-top:1px solid #e1e1e1;}
+.CreateBody .btn2 ul li{box-sizing:border-box;-moz-box-sizing:border-box;font:17px AvenirMedium, Arial, Helvetica, sans-serif;color:#09F; text-align:center;}
+.CreateBody .btn2 ul li:first-child a{ display:block;padding:10px 20px;color:#09F;border-radius:6px; text-decoration:none;}
+.CreateBody .btn2 ul li:first-child a:hover{color:#000;}
+
+.CreateBody .btn3{margin:8px 0px 0px;border-top:1px solid #e1e1e1;}
+.CreateBody .btn3 ul li{padding:12px;box-sizing:border-box;-moz-box-sizing:border-box;font:17px AvenirMedium, Arial, Helvetica, sans-serif;color:#09F; text-align:center;}
+.CreateBody .btn3 ul li a{padding:10px;color:#09F;border-radius:6px; text-decoration:none;}
+.CreateBody .btn3 ul li a:hover{color:#000;}
+
+.loadingWrap{ background-color:rgba(0,0,0,0);height:100%;width:100%;background-size:100%; z-index: 9999;}
+.loadingBar { height: 90px; left: 50%; margin: -45px 0 0 -45px; position: fixed; top: 50%; width: 90px;}

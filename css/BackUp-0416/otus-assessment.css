@@ -1,0 +1,31 @@
+/* CSS Document */
+
+.assessment-body{}
+.assessment-body header.assessment-search{background:#fff;height:46px;padding:9px 0px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.assessment-body header.assessment-search ul:after{content:""; display:table; clear:both;}
+.assessment-body header.assessment-search ul li{float:left;margin:0px 0px 0px 20px;}
+.assessment-body header.assessment-search ul li .search-bar{width:400px;}
+/*.assessment-body select{border: 1px solid #575a86;border-radius: 4px;height: 28px;padding: 3px 4px;-moz-box-sizing: border-box;box-sizing: border-box;outline: none;color: #7a7da8;}*/
+.assessment-body header.assessment-title table td{text-align:center;}
+.assessment-body header.assessment-title table td:first-child{ text-align:left;}
+.assessment-body .assessment-list{height:45px;-moz-box-sizing:border-box;box-sizing:border-box;padding:0px 20px;line-height:40px;}
+.assessment-body .assessment-list table td{border-bottom:1px solid #d8dbdf; text-align:center;color:#54606c}
+.assessment-body .assessment-list table tr td:first-child{ text-align:left;color:#2f3337;}
+.assessment-body .assessment-list table tr td.red{color:#ff0000;}
+
+header.assessment-question-option{height:46px;}
+header.assessment-question-option:after{content:""; display:table; clear:both;}
+header.assessment-question-option div{float:right;margin:0px 20px;}
+header.assessment-question-option .label{line-height:46px;}
+header.assessment-question-option .option{margin:8px 20px;}
+header.assessment-question-option .option :after{content:""; display:table; clear:both;}
+header.assessment-question-option .option ul li{width:120px;}
+
+.question-list ul{padding:20px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.question-list ul:after{content:""; display:table; clear:both;}
+.question-list ul li{float:left;width:460px;height:280px;background:#fff;box-shadow:0px 0px 5px rgba(0,0,0,0.20);border-radius:5px;margin:20px;padding:20px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.question-list ul li .topic{font-size:16px;color:#333;}
+.question-list ul li .topic .position{border-bottom:1px solid #333;width:70px;height:22px; display:inline-block;}
+.question-list ul li .answer.option ul{padding:0px;margin:20px;}
+.question-list ul li .answer.option ul li{width:inherit;height:inherit;float:none;background:none;box-shadow:none;margin:0px;padding:0px;list-style:upper-alpha inside;color:#54606c;font-size:14px;margin-bottom:10px;}
+.question-list ul li .answer.option ul li:last-child{margin:0px;}

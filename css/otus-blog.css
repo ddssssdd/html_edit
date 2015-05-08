@@ -1,0 +1,124 @@
+/* CSS Document */
+
+/* webkit 浏览器*/
+#textfield::-webkit-input-placeholder { color:#b1bac5;}
+#textarea::-webkit-input-placeholder { color:#b1bac5;}
+/* 火狐浏览器 */
+#textfield::-moz-placeholder { color:#b1bac5;}
+#textarea::-moz-placeholder { color:#b1bac5;}
+
+
+
+
+.sub-slide-bar.blogExpand .edit-menu{width:190px;margin:30px auto 0px;}
+.sub-slide-bar.blogExpand .edit-menu ul li{margin-bottom:8px;}
+.sub-slide-bar.blogExpand .edit-menu ul li:last-child{ text-align:center;border-bottom:none;}
+.sub-slide-bar.blogExpand .edit-menu ul li a{width:190px;display:block;height:34px;color:#fff; text-decoration:none; text-align:center;font:15px/34px AvenirMedium, Arial, sans-serif;border-radius:4px;border:1px solid #fff;}
+.sub-slide-bar.blogExpand .sub-nav ul li a{text-decoration:none;display:block;font:15px/26px AvenirMedium, Arial, sans-serif; color:#fff;margin:0px auto;padding:10px;width:190px;text-align:left; background:url(../images/list-ico.png) 20px center no-repeat;}
+.sub-slide-bar.blogExpand .sub-nav ul li:last-child{background:none;}
+.sub-slide-bar .student-list{width:210px;margin:37px auto 0px;}
+.sub-slide-bar .student-list ul{ position:relative;}
+.sub-slide-bar .student-list ul li:after{content:"";display:table;clear:both;}
+.sub-slide-bar .student-list ul li {margin:0px 0px;padding:5px 10px;-moz-box-sizing:border-box;box-sizing:border-box;background:url(../images/nav-ico/student-list.png) center bottom no-repeat;}
+.sub-slide-bar .student-list ul li{ position:relative; cursor:pointer;}
+.sub-slide-bar .student-list ul li .info{margin-left:50px;width:140px;top:13px;-moz-box-sizing:border-box;box-sizing:border-box; position:absolute;}
+.sub-slide-bar .student-list ul li .info .name{width:140px;overflow:hidden;white-space:nowrap;-o-text-overflow:ellipsis;text-overflow:ellipsis;font-size:14px;color:#fff;line-height:14px;}
+.sub-slide-bar .student-list ul li.selected{background:#fff!important;}
+.sub-slide-bar .student-list ul li.selected div{color:#54606c!important;}
+.sub-slide-bar .student-list ul li:hover{background:#fff;}
+.sub-slide-bar .student-list ul li:hover div{color:#54606c!important;}
+
+.sub-slide-bar.blogCollapse .edit-menu{margin:30px auto 0px;}
+.sub-slide-bar.blogCollapse .edit-menu ul li{margin-bottom:8px;margin-left:auto;margin-right:auto;width:50px;}
+.sub-slide-bar.blogCollapse .edit-menu ul li:last-child{ text-align:center;border-bottom:none;}
+.sub-slide-bar.blogCollapse .edit-menu ul li a{width:50px;display:block;height:34px;color:#fff; text-decoration:none; text-align:center;font:15px/34px AvenirMedium, Arial, sans-serif;border-radius:4px;border:1px solid #fff; text-indent:-9999px;}
+.sub-slide-bar.blogCollapse .edit-menu ul li.my-blog a{ background:url(../images/blog/my-blog.png) center center no-repeat;}
+.sub-slide-bar.blogCollapse .edit-menu ul li.student-blog a{ background:url(../images/blog/student-blog.png) center center no-repeat;}
+.sub-slide-bar.blogCollapse .edit-menu ul li.following a{ background:url(../images/blog/following.png) center center no-repeat;}
+.sub-slide-bar.blogCollapse .edit-menu ul li.my-blog a:hover{ background:url(../images/blog/my-blog-hover.png) center center no-repeat #fff;}
+.sub-slide-bar.blogCollapse .edit-menu ul li.student-blog a:hover{ background:url(../images/blog/student-blog-hover.png) center center no-repeat #fff;}
+.sub-slide-bar.blogCollapse .edit-menu ul li.following a:hover{ background:url(../images/blog/following-hover.png) center center no-repeat #fff;}
+.sub-slide-bar.blogCollapse .edit-menu ul li.my-blog.selected a{ background:url(../images/blog/my-blog-hover.png) center center no-repeat #fff;}
+.sub-slide-bar.blogCollapse .edit-menu ul li.student-blog.selected a{ background:url(../images/blog/student-blog-hover.png) center center no-repeat #fff;}
+.sub-slide-bar.blogCollapse .edit-menu ul li.following.selected a{ background:url(../images/blog/following-hover.png) center center no-repeat #fff;}
+
+.blog-list ul{padding:20px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.blog-list ul:after{content:"";clear:both;display:table;}
+.blog-list ul li{background:#fff;box-shadow:0px 0px 3px rgba(0,0,0,0.4);border-radius:5px; overflow:hidden;margin-bottom:20px;}
+.blog-list ul li header:after{content:"";clear:both;display:table;}
+.blog-list ul li header .face{ position:absolute;top:10px;left:15px;}
+.blog-list ul li header .info{float:left;margin:9px 0px 0px 90px;color:#505c69;}
+.blog-list ul li header .info h1{font-size:15px;font-weight:normal;line-height:15px;}
+.blog-list ul li header .info h2{font:12px arial;}
+.blog-list ul li header .button{float:right;}
+.blog-list ul li header .button ul{padding:13px 0px;}
+.blog-list ul li header .button ul:after{content:"";clear:both;display:table;}
+.blog-list ul li header .button ul li{float:left;box-shadow:none;background:none;margin: 0px 10px 0px 0px;padding:0px;text-indent:-9999px; cursor:pointer; position:relative;}
+.blog-list ul li .content{-moz-box-sizing:border-box;box-sizing:border-box;padding:35px 20px 20px 20px;margin:0px;width:100%;}
+.blog-list ul li .content .title{font-size:14px;margin-bottom:10px;}
+.blog-list ul li .content .detail{font-size:12px;}
+.blog-list ul li .content .picture-content{ overflow:hidden; text-align:center;}
+.blog-list ul li .content .picture-content img{max-width:880px;}
+
+.my-blog-body{border-radius:5px;margin:20px;box-shadow:0px 0px 3px rgba(48,51,95,0.5);}
+.my-blog-profile{overflow:hidden; position:relative;border-top-left-radius:5px;border-top-right-radius:5px;}
+.my-blog-profile .user-face{ position:absolute;left:20px;top:20px;z-index:2;}
+.my-blog-profile .title input{width:100%;color:#fff;background:none;height:26px;margin:10px 0px;border:0px; outline:none;}
+.my-blog-profile .title .edit{ cursor:pointer;position:absolute;top:13px;right:15px; background:url(../images/gear.png) no-repeat;width:20px;height:20px; text-indent:-9999px;}
+.my-blog-profile .title .edit:hover{ background:url(../images/gear-hover.png) no-repeat;}
+
+.my-blog-list{background:#fff;border-bottom-left-radius:5px;border-bottom-right-radius:5px;}
+.my-blog-list ul:first-child{ text-align:center;color:#505c69;line-height:36px;}
+.my-blog-list ul li{border-bottom:1px solid #e5e5e5;}
+.my-blog-list ul:first-child li{margin:0px;}
+.my-blog-list ul:last-child li{padding:10px 20px; position:relative;padding-right:40px;}
+.my-blog-list ul:last-child li:hover{background:#f5f6fd;}
+.my-blog-list ul:last-child li:last-child{border:0px;border-bottom-left-radius:5px;border-bottom-right-radius:5px;}
+.my-blog-list ul:last-child li .title{color: #8E5B36;font-size:16px;}
+.my-blog-list ul:last-child li .other:after{clear:both;content:""; display:table;}
+.my-blog-list ul:last-child li .other div{float:left;color:#505c69;font-size:14px;margin-right:20px;}
+.my-blog-list ul:last-child li .other .class-name{ position:relative;}
+
+
+.post-body{width:850px;background:#fff;margin:0px auto;padding:40px;-moz-box-sizing:border-box;box-sizing:border-box;box-shadow:0px 0px 6px rgba(0,0,0,0.2);}
+.post-body .title{ text-align:center;font-size:18px;}
+.post-body .details{font-size:14px;margin:20px 0px 0px;}
+
+.sub-blog-body{padding:20px;box-sizing:border-box;-moz-box-sizing:border-box;}
+.sub-blog-body:after{content:"";clear:both; display:table;}
+.sub-blog-body .blog-body{float:left;background:#fff;border-radius:5px;min-width:400px;box-shadow: 0px 0px 4px rgba(0,0,0,0.3);}
+.sub-blog-body .blog-body .profile:after{ display:table; clear:both; content:"";}
+.sub-blog-body .blog-body .profile .face{float:left;}
+.sub-blog-body .blog-body .profile .info{width:320px;float:left;margin:9px 0px 0px 10px;color:#505c69;overflow:hidden;white-space:nowrap;-o-text-overflow:ellipsis;text-overflow:ellipsis;}
+.sub-blog-body .blog-body .profile .info h1{font-size:15px;font-weight:normal;line-height:15px;}
+.sub-blog-body .blog-body .profile .info h2{font:12px arial;}
+.sub-blog-body .blog-body .images{padding:10px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.sub-blog-body .blog-body .images img{width:380px;}
+.sub-blog-body .blog-body .title{padding:10px 5px 5px 20px;-moz-box-sizing:border-box;box-sizing:border-box;font-size:19px;}
+.sub-blog-body .blog-body .content{padding:10px;-moz-box-sizing:border-box;box-sizing:border-box;border-top:1px solid #e5e5e5;}
+
+.sub-blog-body .comment-body{float: right;width:400px;border-radius:5px; overflow:hidden;background:#f5f5f5;}
+.sub-blog-body .comment-body header .center-title{font:17px/46px AvenirMedium, Arial, sans-serif;color:#fff; display:inline-block;width:260px;overflow:hidden;white-space:nowrap;-o-text-overflow:ellipsis;text-overflow:ellipsis;}
+.sub-blog-body .comment-body header .right-bar{ position:absolute;right:10px;top:8px;}
+.sub-blog-body .comment-body .comment-input{margin:10px;}
+.sub-blog-body .comment-body .comment-input .comment textarea{width:100%;background:#fff; resize:none; outline:none;border:0px;border-radius:4px;height:80px;box-shadow: 0px 0px 4px rgba(0,0,0,0.1);padding:10px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.sub-blog-body .comment-body .comment-input .comment-btn{ text-align:center; position:relative;margin:2px 0px;}
+.sub-blog-body .comment-body .comment-input .comment-btn div:first-child{ position:absolute;left:0px;}
+.sub-blog-body .comment-body .comment-input .comment-btn div:nth-child(2){line-height:28px;}
+.sub-blog-body .comment-body .comment-input .comment-btn div:last-child{ position:absolute;right:0px;top:0px;}
+
+.sub-blog-body .comment-body .comment-list{background:#fff;}
+.sub-blog-body .comment-body .comment-list ul li{border-bottom:1px solid #e5e5e5;padding:10px;-moz-box-sizing:border-box;box-sizing:border-box; position:relative;}
+.sub-blog-body .comment-body .comment-list ul li:last-child{border:none;}
+.sub-blog-body .comment-body .comment-list ul li .face{float:left;}
+.sub-blog-body .comment-body .comment-list ul li .info{width:290px;float:left;margin:9px 0px 0px 10px;color:#505c69;}
+.sub-blog-body .comment-body .comment-list ul li .info h1{font-size:15px;font-weight:normal;line-height:15px;}
+.sub-blog-body .comment-body .comment-list ul li .info h2{font:12px arial;}
+.sub-blog-body .comment-body .comment-list ul li .time{ text-align:right;display:table; clear:both; content:"";width:380px;font:12px/12px AvenirMedium, Arial, sans-serif;}
+
+
+
+
+
+
+

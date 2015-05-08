@@ -126,6 +126,7 @@ var Scence = function (divName, settings) {
     $(this.canvas_debug).bind("mousedown", mousedown);
     $(this.canvas_debug).bind("mousemove", mousemove);
     $(this.canvas_debug).bind("mouseout", mouseout);
+    
     $("#upload_file").bind("change", upload_start);
     this.canvas_debug.addEventListener('dragover', handleDragOver, false);
     this.canvas_debug.addEventListener('drop', handleFileSelect, false);
@@ -214,7 +215,7 @@ var Scence = function (divName, settings) {
         }
     }
     this.lastCommandName = "select";
-    this.command = new Select(instance);
+    this.command = new MultiMoveSelect(instance);
     this.commandList = [];
     this.registerTools = [MultiMoveSelect, Pen, Line, Rect, Circle, Reset, Text, Brush, Erase, UploadCommand,UploadFile,
         Undo, Redo, LocalSave, LocalRestore,PolyLine,Polygon];
@@ -239,6 +240,7 @@ var Scence = function (divName, settings) {
                 this.command = new newCommand(instance);
                 this.command.execute(name);
                 oldCommand.next(this.command);
+                this.fire("create", { target: this.command });
                 return this.command;
             }
             
@@ -249,8 +251,20 @@ var Scence = function (divName, settings) {
         this.commandList.push(action);
         this.do(this.lastCommandName).getStyle(action);
     }
-    this.selectCommand = function (actions) {
+    this.selectCommand = function (actions,event) {
         console.log(actions);
+        this.fire("select", { target: actions,original:event });
+    }
+    this.fire = function (type, event) {
+        for (var i = 0; i < this.watchlist.length; i++) {
+            if (this.watchlist[i].type == type) {
+                this.watchlist[i].do(event);
+            }
+        }
+    }
+    this.watchlist = [];
+    this.addEvent = function (type, func) {
+        this.watchlist.push({ type: type, do: func });
     }
     this.onkeydown = function (event) {
         if (event.which == 46) {

@@ -1,0 +1,40 @@
+.poll-body:after{ display:table; content:""; clear:both;}
+.poll-body{padding:20px;}
+.poll-body .poll-info{float:left;width:480px; text-align:center;border-right:1px solid #d5d5d5;}
+.poll-body .student-choice-list{float:left;}
+.poll-body .student-choice-list .list{border-bottom:1px solid #d5d5d5;padding:0px 30px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.poll-body .student-choice-list .list ul li{border-bottom:1px solid #d5d5d5;width:450px;padding-bottom:15px;margin-top:15px;}
+.poll-body .student-choice-list .list ul li:first-child{margin:0px;}
+.poll-body .student-choice-list .list ul li:last-child{border:0px;}
+.poll-body .student-choice-list .list ul li:after{display:table;content:"";clear:both;}
+.poll-body .student-choice-list .list ul li div{margin:0px 10px;}
+.poll-body .student-choice-list .list ul li .option{float:left;width:16px;height:16px; border-radius:100px;margin:1px 6px;}
+.poll-body .student-choice-list .list ul li .name{float:left;font-size:15px;line-height:18px;}
+.poll-body .student-choice-list .list ul li .time{float:right;font-size:15px;line-height:18px;}
+.poll-body .student-choice-list .btn ul{}
+div.after:after,ul.after:after,li.after:after{display:table; content:""; clear:both;}
+.poll-body .student-choice-list .btn{padding:15px 30px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.poll-body .student-choice-list .btn ul li{line-height:32px;width:200px;}
+.poll-body .student-choice-list .btn ul li div:first-child{margin-right:10px;}
+.poll-body .student-choice-list .btn ul li:first-child{float:left; text-align:left}
+.poll-body .student-choice-list .btn ul li:last-child{float:right; text-align:left;}
+
+.poll-body .poll-title{color:#333;margin:0px 0px 18px;}
+.poll-body .poll-title h1{font:19px AvenirMedium;}
+.poll-body .poll-title h2{font:12px arial;}
+.poll-body .poll-graph{}
+.poll-body .choice-percentage{margin:25px 20px;}
+.poll-body .choice-percentage ul li{font-size:17px;color:#333; text-align:left;line-height:35px;margin:0px 0px 5px;}
+.poll-body .choice-percentage ul li span{ display:inline-block;width:65px;height:35px;font-size:20px;line-height:35px;color:#fff;text-align:center;border-radius:5px;margin-right:10px;}
+
+.poll-blue{background:#12abf5;}
+.poll-red{background:#ec008c;}
+.poll-orange{background:#f7941d;}
+.poll-green{background:#25cc0f;}
+.poll-purple{background:#575a86;}
+
+
+
+
+
+

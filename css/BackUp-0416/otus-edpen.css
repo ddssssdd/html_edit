@@ -1,0 +1,100 @@
+/* CSS Document */
+.center-bar{}
+.center-bar .edpen li{ display:block;width:33px;height:33px; text-indent:-9999px;margin:8px; cursor:pointer;border-radius:3px;}
+.center-bar .edpen .toolbar{ background:url(../images/edpen/toolbar.png) center center no-repeat;}
+.center-bar .edpen .help{ background:url(../images/edpen/help.png) center center no-repeat;width:}
+.center-bar .edpen .search{ background:url(../images/edpen/search.png) center center no-repeat;}
+.center-bar .edpen .history{ background:url(../images/edpen/history.png) center center no-repeat;}
+.center-bar .edpen .export{ background:url(../images/edpen/export.png) center center no-repeat;}
+.center-bar .edpen .grid{ background:url(../images/edpen/grid.png) center center no-repeat;}
+.center-bar .edpen .clear{ background:url(../images/edpen/clear.png) center center no-repeat;}
+.center-bar .edpen .toolbar:hover{ background:url(../images/edpen/toolbar-hover.png) center center no-repeat #c3c6ed;}
+.center-bar .edpen .help:hover{ background:url(../images/edpen/help-hover.png) center center no-repeat #c3c6ed;}
+.center-bar .edpen .search:hover{ background:url(../images/edpen/search-hover.png) center center no-repeat #c3c6ed;}
+.center-bar .edpen .history:hover{ background:url(../images/edpen/history-hover.png) center center no-repeat #c3c6ed;}
+.center-bar .edpen .export:hover{ background:url(../images/edpen/export-hover.png) center center no-repeat #c3c6ed;}
+.center-bar .edpen .grid:hover{ background:url(../images/edpen/grid-hover.png) center center no-repeat #c3c6ed;}
+.center-bar .edpen .clear:hover{ background:url(../images/edpen/clear-hover.png) center center no-repeat #c3c6ed;}
+.center-bar .edpen .toolbar.selected{ background:url(../images/edpen/toolbar-hover.png) center center no-repeat #c3c6ed;}
+.center-bar .edpen .help.selected{ background:url(../images/edpen/help-hover.png) center center no-repeat #c3c6ed;}
+.center-bar .edpen .search.selected{ background:url(../images/edpen/search-hover.png) center center no-repeat #c3c6ed;}
+.center-bar .edpen .history.selected{ background:url(../images/edpen/history-hover.png) center center no-repeat #c3c6ed;}
+.center-bar .edpen .export.selected{ background:url(../images/edpen/export-hover.png) center center no-repeat #c3c6ed;}
+.center-bar .edpen .grid.selected{ background:url(../images/edpen/grid-hover.png) center center no-repeat #c3c6ed;}
+.center-bar .edpen .clear.selected{ background:url(../images/edpen/clear-hover.png) center center no-repeat #c3c6ed;}
+
+
+.main-body .toolbar{ position:absolute;left:20px;top:20px;width:50px;box-shadow:0px 0px 2px rgba(0,0,0,0.6);border-radius:4px;}
+.main-body .toolbar ul li{border-bottom:1px solid #ECECEC;}
+.main-body .toolbar ul li span{width:50px;height:50px; display:block; text-indent:-9999px; cursor:pointer;}
+.main-body .toolbar ul li:last-child{border:0px;}
+
+.main-body .toolbar .move span{ background:url(../images/edpen/toolbar/move.png) center center no-repeat;}
+.main-body .toolbar .text-style span{ background:url(../images/edpen/toolbar/textStyle.png) center center no-repeat;}
+.main-body .toolbar .free-text span{ background:url(../images/edpen/toolbar/freeText.png) center center no-repeat;}
+.main-body .toolbar .note span{ background:url(../images/edpen/toolbar/note.png) center center no-repeat;}
+.main-body .toolbar .pencil span{ background:url(../images/edpen/toolbar/pencil.png) center center no-repeat;}
+.main-body .toolbar .paintbrush span{ background:url(../images/edpen/toolbar/paintbrush.png) center center no-repeat;}
+.main-body .toolbar .shape span{ background:url(../images/edpen/toolbar/shape.png) center center no-repeat;}
+.main-body .toolbar .color span{ background:url(../images/edpen/toolbar/color.png) center center no-repeat;}
+.main-body .toolbar .image span{ background:url(../images/edpen/toolbar/image.png) center center no-repeat;}
+.main-body .toolbar .voicereord span{ background:url(../images/edpen/toolbar/voice.png) center center no-repeat;}
+.main-body .toolbar .erase span{ background:url(../images/edpen/toolbar/erase.png) center center no-repeat;}
+.main-body .toolbar .select span{ background:url(../images/edpen/toolbar/select.png) center center no-repeat;}
+.main-body .toolbar .undo span{ background:url(../images/edpen/toolbar/undo.png) center center no-repeat;}
+.main-body .toolbar .redo span{ background:url(../images/edpen/toolbar/redo.png) center center no-repeat;}
+
+.main-body .toolbar .move span:hover{ background:url(../images/edpen/toolbar/move-hover.png) center center no-repeat #ebedfc;}
+.main-body .toolbar .text-style span:hover{ background:url(../images/edpen/toolbar/textStyle-hover.png) center center no-repeat #ebedfc;}
+.main-body .toolbar .free-text span:hover{ background:url(../images/edpen/toolbar/freeText-hover.png) center center no-repeat #ebedfc;}
+.main-body .toolbar .note span:hover{ background:url(../images/edpen/toolbar/note-hover.png) center center no-repeat #ebedfc;}
+.main-body .toolbar .pencil span:hover{ background:url(../images/edpen/toolbar/pencil-hover.png) center center no-repeat;}
+.main-body .toolbar .paintbrush span:hover{ background:url(../images/edpen/toolbar/paintbrush-hover.png) center center no-repeat;}
+.main-body .toolbar .shape span:hover{ background:url(../images/edpen/toolbar/shape-hover.png) center center no-repeat #ebedfc;}
+.main-body .toolbar .color span:hover{ background:url(../images/edpen/toolbar/color-hover.png) center center no-repeat;}
+.main-body .toolbar .image span:hover{ background:url(../images/edpen/toolbar/image-hover.png) center center no-repeat #ebedfc;}
+.main-body .toolbar .voicereord span:hover{ background:url(../images/edpen/toolbar/voice-hover.png) center center no-repeat #ebedfc;}
+.main-body .toolbar .erase span:hover{ background:url(../images/edpen/toolbar/erase-hover.png) center center no-repeat #ebedfc;}
+.main-body .toolbar .select span:hover{ background:url(../images/edpen/toolbar/select-hover.png) center center no-repeat #ebedfc;}
+.main-body .toolbar .undo span:hover{ background:url(../images/edpen/toolbar/undo-hover.png) center center no-repeat #ebedfc;}
+.main-body .toolbar .redo span:hover{ background:url(../images/edpen/toolbar/redo-hover.png) center center no-repeat #ebedfc;}
+
+.main-body .toolbar .move.selected span{ background:url(../images/edpen/toolbar/move-selected.png) center center no-repeat #575a85;}
+.main-body .toolbar .text-style.selected span{ background:url(../images/edpen/toolbar/textStyle-selected.png) center center no-repeat #575a85;}
+.main-body .toolbar .free-text.selected span{ background:url(../images/edpen/toolbar/freeText-selected.png) center center no-repeat #575a85;}
+.main-body .toolbar .note.selected span{ background:url(../images/edpen/toolbar/note-selected.png) center center no-repeat #575a85;}
+.main-body .toolbar .pencil.selected span{ background:url(../images/edpen/toolbar/pencil-selected.png) center center no-repeat;}
+.main-body .toolbar .paintbrush.selected span{ background:url(../images/edpen/toolbar/paintbrush-selected.png) center center no-repeat;}
+.main-body .toolbar .shape.selected span{ background:url(../images/edpen/toolbar/shape-selected.png) center center no-repeat #575a85;}
+.main-body .toolbar .color.selected span{ background:url(../images/edpen/toolbar/color-selected.png) center center no-repeat;}
+.main-body .toolbar .image.selected span{ background:url(../images/edpen/toolbar/image-selected.png) center center no-repeat #575a85;}
+.main-body .toolbar .voicereord.selected span{ background:url(../images/edpen/toolbar/voice-selected.png) center center no-repeat #575a85;}
+.main-body .toolbar .erase.selected span{ background:url(../images/edpen/toolbar/erase-selected.png) center center no-repeat #575a85;}
+.main-body .toolbar .select.selected span{ background:url(../images/edpen/toolbar/select-selected.png) center center no-repeat #575a85;}
+.main-body .toolbar .undo.selected span{ background:url(../images/edpen/toolbar/undo-selected.png) center center no-repeat #575a85;}
+.main-body .toolbar .redo.selected span{ background:url(../images/edpen/toolbar/redo-selected.png) center center no-repeat #575a85;}
+
+
+.tooltip .edpen-option ul li{line-height:45px;padding:0px 18px; cursor:pointer;}
+.tooltip .edpen-option ul li:after{content:""; clear:both; display:table;}
+.tooltip .edpen-option ul li.show-area{ text-align:center;padding:20px;-moz-box-sizing:border-box;box-sizing:border-box;height:inherit;border-bottom:1px solid #d8dbe0;}
+.tooltip .edpen-option ul li.show-area:hover{background:none;}
+.tooltip .edpen-option ul li:hover{background:#ebedfc;}
+.tooltip .edpen-option ul li div{border-bottom:1px solid #d8dbe0;}
+.tooltip .edpen-option ul li:last-child div{border-bottom:none;}
+.tooltip .edpen-option ul li .label{float:left;width:100px;color:#6b6ebd;}
+.tooltip .edpen-option ul li .value{float:right;width:264px; text-align:right;overflow:hidden;white-space:nowrap;-o-text-overflow:ellipsis;text-overflow:ellipsis;color:#505c69;height:46px;background:url(../images/home/sub-tooltip-arrow.png) center right no-repeat;padding-right:18px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.tooltip .edpen-option ul li:hover .value{background:url(../images/home/sub-tooltip-arrow-hover.png) center right no-repeat;}
+
+
+
+
+
+
+
+
+
+
+
+
+

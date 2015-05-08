@@ -1,0 +1,51 @@
+/* CSS Document */
+
+/* webkit 浏览器*/
+#textfield::-webkit-input-placeholder { color:#b1bac5;}
+#textarea::-webkit-input-placeholder { color:#b1bac5;}
+/* 火狐浏览器 */
+#textfield::-moz-placeholder { color:#b1bac5;}
+#textarea::-moz-placeholder { color:#b1bac5;}
+
+
+.modal-addClass{width:365px;height:260px;margin:-130px 0px 0px -182px;}
+.modal-addClass .label{margin:0px auto;color:#2f3337;font:17px AvenirMedium, Arial, sans-serif; background:url(../images/logo-addClass.png) center center no-repeat;padding-top:130px; text-align:center;}
+.modal-addClass .btn-add-class{ text-align:center;margin:10px;}
+
+
+.main-body .classes-list{padding:15px 0px 15px 15px;}
+.main-body .classes-list ul{position: relative;}
+.main-body .classes-list ul:after{content:""; display:table; clear:both;}
+.main-body .classes-list ul li.top-level{float:left;width:250px;height:170px;background:#fff;border-radius:4px;margin:15px; position: relative;}
+.main-body .classes-list ul li:after{content:""; display:table; clear:both;}
+
+.main-body .classes-list .classes-ico, .main-body .classes-list .classes-info{float:left;}
+.main-body .classes-list .classes-info ul li div{float:left;}
+.main-body .classes-list .classes-info ul li div:last-child{float:right;}
+.main-body .classes-list .classes-info ul li:after{content:""; display:table; clear:both;}{float:left;}
+
+.main-body .classes-list ul li.top-level{padding:15px;box-sizing:border-box;-moz-box-sizing:border-box;}
+.main-body .classes-list ul li.top-level{padding:20px 15px;box-sizing:border-box;-moz-box-sizing:border-box;}
+.main-body .classes-list ul li .classes-ico{margin:40px 5px 0px 0px;}
+.main-body .classes-list ul li .classes-ico a{display: block; width: 60px; height: 60px; text-indent: -999em;}
+.main-body .classes-list ul li .classes-info{width:155px;font:13px/24px AvenirMedium, Arial, sans-serif;overflow:hidden;white-space:nowrap;-o-text-overflow:ellipsis;text-overflow:ellipsis;}
+.main-body .classes-list ul li .classes-info:after{content:""; display:table; clear:both;}
+.main-body .classes-list ul li .classes-info .value{float:right;color:#535f6b;text-align:left;width:87px;margin-left:5px;line-height: 22px;width:90px;overflow:hidden;white-space:nowrap;-o-text-overflow:ellipsis;text-overflow:ellipsis;}
+
+
+
+.tooltip .body.add-class{font:16px/46px AvenirMedium, Arial, sans-serif;}
+.tooltip .body.add-class ul li{padding:0px 13px;-moz-box-sizing:border-box;box-sizing:border-box;border-bottom:1px solid #d8dbe0;}
+.tooltip .body.add-class ul li:last-child{border:0px;}
+.tooltip .body.add-class ul li:after{content:""; display:table; clear:both;}
+.tooltip .body.add-class ul li:first-child .value{float:left;margin:0px 0px 0px 10px;}
+.tooltip .body.add-class ul li .clear-ico{float:right;background:url(../images/home/clear-ico.png) no-repeat;width:15px;height:15px;margin:15px 0px; cursor:pointer;}
+.tooltip .body.add-class ul li .value input{border:0px;background:none;width:350px; outline:none;color:#505c69; text-align:right;}
+.tooltip .body.add-class ul li .value{float:right;color:#505c69;}
+.tooltip .body.add-class ul li .value.radio-btn{margin:7px 0px;height:32px;}
+
+
+
+
+
+

@@ -1,0 +1,20 @@
+.versionBody {
+    background: url("../images/login-bg.jpg") no-repeat scroll center top / 400% auto rgba(0, 0, 0, 0);
+    min-height: 570px;
+    padding-bottom: 20px;
+}
+.versionBody .ico {
+    color: #6363b9;
+    font: 17px AvenirMedium, Arial, sans-serif;;
+    margin: 0 auto;
+    padding: 30px 0 30px;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 1);
+    text-align: center;
+    width: 150px;
+}
+
+.versionBody .versionExplain p {
+    color: #333;
+    font: 14px AvenirMedium, Arial, sans-serif;;
+    margin-bottom: 10px;
+}

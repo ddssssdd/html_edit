@@ -10,9 +10,12 @@
     this.deleted = false;
     this.points = [];
     this.groups = [];
-    this.strokeColor = "black";
-    this.fillColor = "black";
+    this.strokeColor = "rgb(0, 0, 0)";
+    this.fillColor = "rgba(0, 0, 0, 0)";
     this.lineWidth = 1;
+    this.fontName = "Arial";
+    this.fontSize = 32;
+    this.opacity = 100;
     this.isgroup = false;
     this.scale = { x: 1, y: 1 };
     this.SELECT_BORDER = 0;
@@ -31,7 +34,7 @@
         }
         if (this.creating) {
             this.context_top.clearRect(0, 0, this.context_top.canvas.width, this.context_top.canvas.height);
-            this.drawOne(this.context_top, this.points, this.strokeColor, this.fillColor, this.lineWidth);
+            this.drawOne(this.context_top, this.points, this.strokeColor, this.fillColor, this.lineWidth,this.opacity);
             return;
         }
         if (this.done) {
@@ -137,7 +140,8 @@
                 points: this.points,
                 strokeColor: this.strokeColor,
                 fillColor: this.fillColor,
-                lineWidth: this.lineWidth
+                lineWidth: this.lineWidth,
+                opacity:this.opacity
             });
             if (!this.isgroup) {
                 this.points = [];
@@ -189,12 +193,21 @@
             if (p.y > this.clientRect.bottom)
                 this.clientRect.bottom = p.y;
         }
+        this.clientRect = {
+            top: this.clientRect.top - this.lineWidth / 2,
+            left: this.clientRect.left - this.lineWidth / 2,
+            right: this.clientRect.right + this.lineWidth / 2,
+            bottom:this.clientRect.bottom + this.lineWidth /2}
     }
 
     Action.prototype.inside = function (e) {
+
         this.selected = false;
         this.resize_selected = 0;
         this.ctrlSelect = false;
+        if (this.deleted) {
+            return this.selected;
+        }
         var r = this.CORNER_WIDTH / 2;
         if ((e.offsetX >= this.clientRect.left-r && e.offsetX <= this.clientRect.right+r) &&
             (e.offsetY >= this.clientRect.top-r && e.offsetY <= this.clientRect.bottom+r)) {
@@ -226,6 +239,9 @@
     }
     Action.prototype.inRect = function (x1, y1, x2, y2) {
         this.selected = false;
+        if (this.deleted) {
+            return this.selected;
+        }
         for (var j = 0; j < this.groups.length; j++) {
             for (var i = 0; i < this.groups[j].points.length; i++) {
                 var p = this.groups[j].points[i];
@@ -306,6 +322,7 @@
             this.groups[i].lineWidth = style.lineWidth || this.groups[i].lineWidth;
             this.groups[i].strokeColor = style.strokeColor || this.groups[i].strokeColor;
             this.groups[i].fillColor = style.fillColor || this.groups[i].fillColor;
+            this.groups[i].opacity = style.opacity || this.groups[i].opacity;
         }
         this.Draw();
     }
@@ -347,14 +364,16 @@ var Pen = function (scence) {
     this.drawAll = function (con) {
         for (var j = 0; j < this.groups.length; j++) {
             var p = this.groups[j];
-            this.drawOne(con, p.points, p.strokeColor, p.fillColor, p.lineWidth);
+            this.drawOne(con, p.points, p.strokeColor, p.fillColor, p.lineWidth,p.opacity);
         }
 
     }
-    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth) {
+    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth, opacity) {
+        con.save();
         con.strokeStyle = strokeColor;
         con.lineWidth = lineWidth;
         con.fillStyle = fillColor;
+        con.globalAlpha = opacity;
         con.beginPath();
         con.moveTo(points[0].x, points[0].y);
         for (var i = 1; i < points.length; i++) {
@@ -362,6 +381,7 @@ var Pen = function (scence) {
             con.stroke();
         }
         con.closePath();
+        con.restore();
 
     }
     this.resize = function (left, top, right, bottom) {        
@@ -411,19 +431,22 @@ var Line = function (scence) {
     this.drawAll = function (con) {
         for (var j = 0; j < this.groups.length; j++) {
             var p = this.groups[j];
-            this.drawOne(con, p.points, p.strokeColor, p.fillColor, p.lineWidth);
+            this.drawOne(con, p.points, p.strokeColor, p.fillColor, p.lineWidth,p.opacity);
         }
 
     }
-    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth) {
+    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth, opacity) {
+        con.save();
         con.strokeStyle = strokeColor;
         con.lineWidth = lineWidth;
         con.fillStyle = fillColor;
+        con.globalAlpha = opacity;
         con.beginPath();
         con.moveTo(points[0].x, points[0].y);
         con.lineTo(points[points.length - 1].x, points[points.length - 1].y);
         con.stroke();
         con.closePath();
+        con.restore();
     }
     
 }
@@ -433,23 +456,24 @@ var Rect = function (scence) {
     this.scence = scence;
     this.context = scence.context;
     this.context_top = scence.context_top;
-    this.fillColor = "white";
-    this.strokeColor = "black";
+    this.fillColor = "rgba(0, 0, 0, 0)";
+    this.strokeColor = "rgb(0, 0, 0)";
     this.drawAll = function (con) {
         for (var j = 0; j < this.groups.length; j++) {
             var p = this.groups[j];
-            this.drawOne(con, p.points, p.strokeColor, p.fillColor, p.lineWidth);
+            this.drawOne(con, p.points, p.strokeColor, p.fillColor, p.lineWidth,p.opacity);
         }
 
     }
-    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth) {
+    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth,opacity) {
+        con.save();
         con.strokeStyle = strokeColor;
         con.lineWidth = lineWidth;
         con.fillStyle = fillColor;
-
+        con.globalAlpha = opacity;
         con.strokeRect(points[0].x, points[0].y, points[points.length - 1].x - points[0].x, points[points.length - 1].y - points[0].y);
         con.fillRect(points[0].x, points[0].y, points[points.length - 1].x - points[0].x, points[points.length - 1].y - points[0].y);
-
+        con.restore();
 
     }
 
@@ -462,18 +486,20 @@ var Circle = function (scence) {
     this.scence = scence;
     this.context = scence.context;
     this.context_top = scence.context_top;
-    this.fillColor = "white";
+    this.fillColor = "rgba(0, 0, 0, 0)";
     this.drawAll = function (con) {
         for (var j = 0; j < this.groups.length; j++) {
             var p = this.groups[j];
-            this.drawOne(con, p.points, p.strokeColor, p.fillColor, p.lineWidth);
+            this.drawOne(con, p.points, p.strokeColor, p.fillColor, p.lineWidth,p.opacity);
         }
 
     }
-    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth) {
+    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth, opacity) {
+        con.save();
         con.strokeStyle = strokeColor;
         con.lineWidth = lineWidth;
         con.fillStyle = fillColor;
+        con.globalAlpha = opacity;
         var x = points[0].x;
         var y = points[0].y;
         var w = points[points.length - 1].x - points[0].x;
@@ -502,6 +528,7 @@ var Circle = function (scence) {
         }*/
         con.stroke();
         con.fill();
+        con.restore();
 
     }
 
@@ -521,7 +548,7 @@ var UploadFile = function (scence,f,pos) {
     this.scence = scence;
     this.context = scence.context;
     this.context_top = scence.context_top;
-    this.fillColor = "white";
+    this.fillColor = "rgba(0, 0, 0, 0)";
     this.upload_file = f;
     this.start_pos = { x: pos?pos.offsetX:0, y:pos?pos.offsetY:0 };
     var instance = this;
@@ -529,9 +556,12 @@ var UploadFile = function (scence,f,pos) {
     this.drawAll = function (con) {
         this.drawOne(con);
     }
-    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth) {
+    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth, opacity) {
+        con.save();
+        con.globalAlpha = opacity;
         con.drawImage(this.image, 0, 0, this.image.width, this.image.height,
-            this.clientRect.left,this.clientRect.top,this.clientRect.right-this.clientRect.left,this.clientRect.bottom-this.clientRect.top);
+            this.clientRect.left, this.clientRect.top, this.clientRect.right - this.clientRect.left, this.clientRect.bottom - this.clientRect.top);
+        con.restore();
     }
 
     this.reader = new FileReader();
@@ -561,7 +591,8 @@ var UploadFile = function (scence,f,pos) {
             points: this.points,
             strokeColor: this.strokeColor,
             fillColor: this.fillColor,
-            lineWidth: this.lineWidth
+            lineWidth: this.lineWidth,
+            opacity:this.opacity
         });
         this.drawOne(this.context);
     }
@@ -629,7 +660,8 @@ var Text = function (scence) {
             points: this.points,
             strokeColor: this.strokeColor,
             fillColor: this.fillColor,
-            lineWidth: this.lineWidth
+            lineWidth: this.lineWidth,
+            opacity:this.opacity
         });
         this.context.restore();
         this.scence.commandList.push(instance);
@@ -656,9 +688,10 @@ var Text = function (scence) {
     this.drawAll = function (con) {
         this.drawOne(con);
     }
-    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth) {
+    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth,opacity) {
         con = this.context;
         con.save();
+        con.globalAlpha = opacity;
         con.strokeStyle = this.strokeColor;
         con.fillStyle = this.fillColor;
         con.lineWidth = this.lineWidth;
@@ -736,15 +769,15 @@ var Brush = function (scence) {
     this.strokeColor = "brown";
     this.isgroup = true;
     this.lineWidth = 40;
-    this.alpha = 0.2;
+    this.opacity = 0.2;
     
-    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth) {
+    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth,opacity) {
         con.save();
         con.strokeStyle = strokeColor;
         con.lineWidth = lineWidth;
         con.fillStyle = fillColor;
-        con.globalAlpha = 0.5;
-        con.globalCompositeOperation = "source-over";//"lighter";
+        con.globalAlpha = this.opacity;
+        //con.globalCompositeOperation = "source-over";//"lighter";
         con.lineCap = "round";
         con.beginPath();
         con.moveTo(points[0].x, points[0].y);
@@ -768,7 +801,7 @@ var Erase = function (scence) {
         this.context_top = scence.context_top;
     }
     this.isgroup = true;
-    this.strokeColor = "black";    
+    this.strokeColor = "rgb(0, 0, 0)";    
     this.lineWidth = 1;
     this.r = 20;
     this.start_pos = { x: 0, y: 0 };
@@ -857,7 +890,8 @@ var PolyLine = function (scence) {
             points: this.points,
             strokeColor: this.strokeColor,
             fillColor: this.fillColor,
-            lineWidth: this.lineWidth
+            lineWidth: this.lineWidth,
+            opactiy:this.opacity
         });
         this.processPoint(this.points);
         if (this.scence.commandList.indexOf(this) < 0) {
@@ -882,7 +916,8 @@ var PolyLine = function (scence) {
             con.restore();
         }
     }
-    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth) {
+    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth, opacity) {
+        con.save();
         var last = { x: 0, y: 0,start:false};
         function drawline(con, points) {
             
@@ -910,7 +945,7 @@ var PolyLine = function (scence) {
             this.drawJointSelect(con, p.points[0].x, p.points[0].y);
             this.drawJointSelect(con, p.points[p.points.length - 1].x, p.points[p.points.length - 1].y);
         }
-       
+        con.restore();
     }
     this.selected_point = null;
 

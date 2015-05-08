@@ -1,0 +1,31 @@
+/* CSS Document */
+.faq-body h1{font:21px AvenirMedium;padding:20px 0px 0px 30px;}
+.faq-body .faq-title ul li{ list-style:decimal;border-bottom:1px solid #d8dbdf;line-height:40px; cursor:pointer; list-style-position:inside;}
+.faq-body .faq-details{padding:20px 0px 0px 30px;background:#f2f2f2;color:#333;-moz-box-sizing:border-box;box-sizing:border-box;}
+.faq-body .faq-details h1{margin:0px;font:17px AvenirMedium;padding:0px;}
+.faq-body .faq-details ul li{border-bottom:1px solid #d8dbdf;padding:10px 0px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.faq-body .faq-details ul li p{font-size:14px;}
+.faq-body .faq-details ul li ul{margin:10px 0px;}
+.faq-body .faq-details ul li li{border:0px;padding:0px; list-style-type:disc;margin-left:22px;font-size:14px;}
+
+.feedback-body{}
+.feedback-body{} .class-select{padding:7px 15px;border-bottom:1px solid #e4e4e4;}
+.feedback-body{} .class-select:after{ display:table; clear:both; content:"";}
+.feedback-body{} .class-select .title{float:left;line-height:28px;color:#999;}
+.feedback-body{} .class-select .select{float:right;}
+
+.feedback-body{} .feedback{}
+.feedback-body{} .feedback .subject{padding:7px 15px;line-height:28px;border-bottom:1px solid #e4e4e4; position:relative;}
+.feedback-body{} .feedback .subject label{color:#999; position:absolute;}
+.feedback-body{} .feedback .subject input{width:100%;font-size:16px;color:#000;border:0px; outline:none;padding-left:60px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.feedback-body{} .feedback .content{padding:7px 15px;border-bottom:1px solid #e4e4e4;}
+.feedback-body{} .feedback .content textarea{width:100%;min-height:500px;font-size:16px;color:#000;border:0px; outline:none; resize:none;}
+
+
+
+
+
+
+
+
+

@@ -163,7 +163,7 @@ var MultiMoveSelect = function (scence) {
             for (var i = 0; i < this.current.length; i++) {
                 this.last_select.push(this.current[i]);
             }
-            this.scence.selectCommand(this.last_select);
+            this.scence.selectCommand(this.last_select,e);
         }
         this.current = [];
         this.selecting = false;

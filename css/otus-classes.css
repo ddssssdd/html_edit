@@ -1,0 +1,172 @@
+/* CSS Document */
+
+
+.sub-slide-bar.classesExpand .tab-menu{width:130px;margin:30px auto 0px;border-radius:4px;border:1px solid #fff;}
+.sub-slide-bar.classesExpand .tab-menu ul li:last-child{ text-align:center;border-bottom:none;}
+.sub-slide-bar.classesExpand .tab-menu ul li a{width:130px;display:block;height:34px;color:#fff; text-decoration:none; text-align:center;font:14px/34px AvenirMedium, Arial, sans-serif;}
+.sub-slide-bar.classesExpand .sub-nav{margin:37px auto 0px;}
+.sub-slide-bar.classesExpand .sub-nav ul li{background:url(../images/nav-ico/sub-nav-line.png) center bottom no-repeat; overflow:hidden;text-indent:24px;}
+.sub-slide-bar.classesExpand .sub-nav ul li a{text-decoration: none;display: block;font:15px/26px AvenirMedium, Arial, sans-serif;color: #FFF;margin: 0px auto;padding: 10px;width: 130px;text-align: left;background: url(../images/list-ico.png) no-repeat scroll 20px center transparent;}
+.sub-slide-bar.classesExpand .sub-nav ul li:last-child{background:none;}
+
+
+.sub-slide-bar.classesCollapse .tab-menu{width:48px;margin:30px auto 0px;border-radius:4px;border:1px solid #fff;}
+.sub-slide-bar.classesCollapse .tab-menu ul li:last-child{ text-align:center;border-bottom:none;}
+.sub-slide-bar.classesCollapse .tab-menu ul li a{width:48px;height:34px;display:block; text-indent:-9999px;}
+
+.sub-slide-bar.classesCollapse .tab-menu ul li:first-child:hover a{ background:url(../images/classes/student-view-ico.png) center -73px #fff no-repeat;width:48px;height:34px;}
+.sub-slide-bar.classesCollapse .tab-menu ul li:last-child:hover a{ background:url(../images/classes/student-chart-ico.png) center -73px #fff no-repeat;width:48px;height:34px;}
+
+.sub-slide-bar.classesCollapse .tab-menu ul li:first-child.selected a{ background:url(../images/classes/student-view-ico.png) center -73px #fff no-repeat;width:48px;height:34px;}
+.sub-slide-bar.classesCollapse .tab-menu ul li:last-child.selected a{ background:url(../images/classes/student-chart-ico.png) center -73px #fff no-repeat;width:48px;height:34px;}
+.sub-slide-bar.classesCollapse .tab-menu ul li:first-child a{ background:url(../images/classes/student-view-ico.png) center 7px no-repeat;}
+.sub-slide-bar.classesCollapse .tab-menu ul li:last-child a{ background:url(../images/classes/student-chart-ico.png) center 7px no-repeat;}
+
+.sub-slide-bar.classesCollapse .sub-nav{margin:37px auto 0px;}
+.sub-slide-bar.classesCollapse .sub-nav ul li{background:url(../images/nav-ico/sub-nav-short.png) center bottom no-repeat; overflow:hidden;}
+.sub-slide-bar.classesCollapse .sub-nav ul li a{text-align:center;color:#fff; text-decoration:none;display:block;font:15px/44px AvenirMedium, Arial, sans-serif;text-indent: -9999px;margin:0px auto;padding:10px;}
+.sub-slide-bar.classesCollapse .sub-nav ul li:last-child{background:none;}
+
+.sub-slide-bar.classesCollapse .sub-nav ul li.participation a:hover{background: url(../images/classes/participation-ico-hover.png) center no-repeat #fff;height:27px;}
+.sub-slide-bar.classesCollapse .sub-nav ul li.class-board a:hover{background: url(../images/classes/classboard-ico-hover.png) center no-repeat #fff;height:26px; }
+.sub-slide-bar.classesCollapse .sub-nav ul li.attendance a:hover{ background: url(../images/classes/attendance-ico-hover.png) center no-repeat #fff;height:26px;}
+.sub-slide-bar.classesCollapse .sub-nav ul li.recognition a:hover{background: url(../images/classes/recognition-ico-hover.png) center no-repeat #fff;height:27px;}
+.sub-slide-bar.classesCollapse .sub-nav ul li.flag a:hover{background: url(../images/classes/flag-ico-hover.png) center no-repeat #fff;height:25px;}
+.sub-slide-bar.classesCollapse .sub-nav ul li.edit a:hover{background: url(../images/classes/edit-ico-hover.png) center no-repeat #fff;height:26px;}
+
+.sub-slide-bar.classesCollapse .sub-nav ul li.participation.selected a{background: url(../images/classes/participation-ico-hover.png) center no-repeat #fff;height:27px;}
+.sub-slide-bar.classesCollapse .sub-nav ul li.class-board.selected a{background: url(../images/classes/classboard-ico-hover.png) center  no-repeat #fff;height:26px; }
+.sub-slide-bar.classesCollapse .sub-nav ul li.attendance.selected a{ background: url(../images/classes/attendance-ico-hover.png) center  no-repeat #fff;height:26px;}
+.sub-slide-bar.classesCollapse .sub-nav ul li.recognition.selected a{background: url(../images/classes/recognition-ico-hover.png) center  no-repeat #fff;height:27px;}
+.sub-slide-bar.classesCollapse .sub-nav ul li.flag.selected a{background: url(../images/classes/flag-ico-hover.png) center  no-repeat #fff;height:25px;}
+.sub-slide-bar.classesCollapse .sub-nav ul li.edit.selected a{background: url(../images/classes/edit-ico-hover.png) center  no-repeat #fff;height:26px;}
+
+
+/* CSS Document */
+
+/* webkit 浏览器*/
+#textfield::-webkit-input-placeholder { color:#b1bac5;}
+#textarea::-webkit-input-placeholder { color:#b1bac5;}
+/* 火狐浏览器 */
+#textfield::-moz-placeholder { color:#b1bac5;}
+#textarea::-moz-placeholder { color:#b1bac5;}
+
+
+.modal-addClass{width:365px;height:260px;margin:-130px 0px 0px -182px;}
+.modal-addClass .label{margin:0px auto;color:#2f3337;font:17px AvenirMedium, Arial, sans-serif; background:url(../images/logo-addClass.png) center center no-repeat;padding-top:130px; text-align:center;}
+.modal-addClass .btn-add-class{ text-align:center;margin:10px;}
+
+
+/*.main-body .classes-list{padding:15px 0px 15px 15px;}
+.main-body .classes-list ul:after{content:""; display:table; clear:both;}
+.main-body .classes-list ul li.top-level{float:left;width:250px;height:170px;background:#fff;border-radius:4px;margin:15px;}
+.main-body .classes-list ul li:after{content:""; display:table; clear:both;}
+
+.main-body .classes-list .classes-ico, .main-body .classes-list .classes-info{float:left;}
+.main-body .classes-list .classes-info ul li div{float:left;}
+.main-body .classes-list .classes-info ul li div:last-child{float:right;}
+.main-body .classes-list .classes-info ul li:after{content:""; display:table; clear:both;}{float:left;}
+
+theme .main-body .classes-list .classes-ico{ background:url(../images/home/class-ico.png) center center no-repeat #dfe1fb;border-radius:100px;width:60px;height:60px;}
+.main-body .classes-list ul li.top-level{padding:15px;box-sizing:border-box;-moz-box-sizing:border-box;}
+.main-body .classes-list ul li.top-level{padding:15px;box-sizing:border-box;-moz-box-sizing:border-box;}
+.main-body .classes-list ul li .classes-ico{margin:40px 5px 0px 0px;}
+.main-body .classes-list ul li .classes-info{width:155px;font:14px/24px AvenirMedium, Arial, sans-serif;}
+.main-body .classes-list ul li .classes-info:after{content:""; display:table; clear:both;}
+theme .main-body .classes-list ul li .classes-info .label{float:left;color:#6468ba;width:60px;text-align:right;}
+.main-body .classes-list ul li .classes-info .value{float:right;color:#535f6b;text-align:left;width:87px;margin-left:8px;}*/
+
+
+.tooltip .body.class-board{font:14px/46px AvenirMedium, Arial, sans-serif;}
+.tooltip .body.class-board ul li{padding:0px 13px;-moz-box-sizing:border-box;box-sizing:border-box;border-bottom:1px solid #d8dbe0;}
+.tooltip .body.class-board ul li:last-child{border:0px;}
+.tooltip .body.class-board ul li:after{content:""; display:table; clear:both;}
+.tooltip .body.class-board ul li .clear-ico{float:right;background:url(../images/home/clear-ico.png) no-repeat;width:15px;height:15px;margin:15px 0px; cursor:pointer;}
+.tooltip .body.class-board ul li .value input{border:0px;background:none;width:350px; outline:none;color:#505c69; text-align:right;}
+.tooltip .body.class-board ul li .value{float:right;color:#505c69;}
+.tooltip .body.class-board ul li .value.sub{ background:url(../images/home/sub-tooltip-arrow.png) center right no-repeat; text-align:right;padding:0px 13px 0px 0px; cursor:pointer;min-width:8px;height:46px;}
+.tooltip .body.class-board ul li .value.radio-btn{margin:7px 0px;height:32px;}
+
+.main-body .student-view-list{padding:15px 0px 15px 15px;}
+.main-body .student-view-list ul li.student{width:220px;height:160px;float:left;background:#fff;border-radius:4px;margin:15px;box-shadow:0px 0px 6px rgba(0,0,0,0.1);overflow:hidden;}
+.main-body .student-view-list ul:after{content:""; display:table; clear:both;}
+
+.main-body .student-view-list ul li .user-info{padding:15px 15px 0px;-moz-box-sizing:border-box;box-sizing:border-box; position:relative;}
+.main-body .student-view-list ul li .user-info:after{content:""; display:table; clear:both;}
+.main-body .student-view-list ul li .user-info .face{float:left;}
+.main-body .student-view-list ul li .user-info .face{position:relative;width:80px;margin:0px auto;}
+.main-body .student-view-list ul li .user-info .info{float:left;color:#505c69;font-size:13px}
+.main-body .student-view-list ul li .user-info .name{margin:23px 0px 0px 10px;width:100px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;}
+.main-body .student-view-list ul li .user-info .name a{ text-decoration:none;}
+.main-body .student-view-list ul li .user-info .flag-wrap{ position:relative;width:100px;height:22px; overflow:hidden;margin:18px 0px 0px 10px;}
+.main-body .student-view-list ul li .user-info .flag{ position:absolute;left:0px;top:0px;}
+.main-body .student-view-list ul li .user-info .flag table div{background:url(../images/classes/flags.png) no-repeat;width:12px;height:12px; text-indent:-9999px;}
+
+.main-body .student-view-list ul li .user-info .attendanceStatus.tardy{ background:url(../images/classes/tardy-bg.png) no-repeat;width:47px;height:35px; position:absolute; text-indent:-9999px;right:0px;top:0px;}
+.main-body .student-view-list ul li .user-info .attendanceStatus.absent{ background:url(../images/classes/absent-bg.png) no-repeat;width:47px;height:35px; position:absolute; text-indent:-9999px;right:0px;top:0px;}
+
+.main-body .student-view-list ul li .user-evaluate ul:after{content:""; display:table; clear:both;}
+.main-body .student-view-list ul li .user-evaluate ul li{float:left;width:53px;border-right:1px solid #cdcddb;margin:0px 0px;padding:0px 8px;font-size:20px;line-height:25px;}
+.main-body .student-view-list ul li .user-evaluate ul li.evaluate-positive{ text-align:center;}
+.main-body .student-view-list ul li .user-evaluate ul li.evaluate-negative{ text-align:center;}
+
+.main-body .student-view-list ul li .user-evaluate ul li:last-child{border:0px;}
+
+.main-body .student-chart{ background:url(../images/classes/chart-bg.png);width:749px;height:749px;margin:40px;border:1px solid #c2c2c2;border-radius:4px;box-sizing:border-box;-moz-box-sizing:border-box;}
+.main-body .student-chart ul{ position:relative;}
+.main-body .student-chart ul li{position:absolute; background:url(../images/classes/chart-student-bg.png) no-repeat;width:68px;height:68px;}
+.main-body .student-chart ul li .face{width:46px;margin:3px auto 2px;}
+.main-body .student-chart ul li .name{width:58px;margin:0px auto;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;font:11px arial;}
+.main-body .student-chart ul li.door{ background:url(../images/classes/chart-door.png) no-repeat;width:68px;height:68px;}
+.main-body .student-chart ul li.blackboard{ background:url(../images/classes/chart-blackboard-single.png) no-repeat;width:68px;height:68px;}
+
+.main-body:after{}
+.main-body .side-bar{float:left;margin:15px 10px 0px 20px;}
+.main-body .main-bar{float:left;}
+.main-body .side-bar .user-info:after{content:""; display:table; clear:both;}
+.main-body .side-bar .user-info div{float:left;}
+.main-body .side-bar .user-info .face {margin:0px 0px 0px 10px;}
+.main-body .side-bar .user-info .info{margin:15px 0px 15px 10px;}
+.main-body .side-bar .user-info .info h1{font-size:17px;font-weight:normal;color:#fff;line-height:18px;}
+
+
+
+.main-body .announcement-list ul li{background:#fff;width:360px;margin:0px 0px 6px;box-shadow:0px 0px 6px rgba(0,0,0,0.10); overflow:hidden;}
+
+.main-body .announcement-list ul li .post-title h1{font-size:15px;font-weight:normal;color:#333;line-height:15px;}
+.main-body .announcement-list ul li .post-title h2{font:12px/15px AvenirMedium, Arial, sans-serif;color:#54606c;}
+.main-body .announcement-list ul li .post-value{width:310px;margin:15px auto;line-height:14px;font-size:14px;}
+.main-body .announcement-list ul li .comment{width:330px;margin:15px auto;}
+.main-body .announcement-list ul li .comment ul li{width:330px;height:inherit;box-shadow:none;border-top:1px solid #e5e5e5;padding:5px 0px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.main-body .announcement-list ul li .comment ul li:after{content:""; display:table; clear:both;}
+.main-body .announcement-list ul li .comment ul li div{float:left;}
+.main-body .announcement-list ul li .comment ul li .face img{width:40px;height:40px;border-radius:100px;}
+.main-body .announcement-list ul li .comment ul li .value{margin:0px 0px 0px 10px;width:280px;font-size:12px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
