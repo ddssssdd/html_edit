@@ -77,13 +77,19 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         $scope.command.setStyle({lineWidth:v})
     });
     $scope.$watch("command.opacity", function (v) {
-        $scope.command.setStyle({ opacity: v })
+        $scope.command.setStyle({ opacity: v/100 })
     });
     $scope.$watch("command.fillColor", function (v) {
         $scope.command.setStyle({ fillColor: v })
     });
     $scope.$watch("command.strokeColor", function (v) {
         $scope.command.setStyle({ strokeColor: v })
+    });
+    $scope.$watch("command.fontSize", function (v) {
+        $scope.command.setStyle({ fontSize: v })
+    });
+    $scope.$watch("command.fontName", function (v) {
+        $scope.command.setStyle({ fontName: v })
     });
     $scope.deleteCurrent = function () {
         $scope.command.deleted = true;
@@ -252,3 +258,48 @@ app.directive("setupColor", function () {
         }
     };
 });
+
+app.directive("moving_abondon", function () {
+    return {
+        link: function (scope, element, attrs) {
+            var moving = false;
+            var start = { x: 0, y: 0 };
+            element.bind("mouseup", function (event) {
+                console.log("mouseup");
+                moving = false;
+                start = { x: 0, y: 0 };
+            });
+            element.bind("mousedown", function (event) {
+                console.log("mousedown");
+                moving = true;                
+                start = { x: event.clientX , y: event.clientY  };
+                console.log("x=" + start.x + ",y=" + start.y);
+            });
+            
+            element.bind("mousemove", function (event) {
+                
+                if (moving) {
+                    start2 = { x: event.clientX, y: event.clientY };
+                    console.log("x=" + start2.x + ",y=" + start2.y);
+                    var left = angular.element("div.toolbar").offset().left;
+                    var top = angular.element("div.toolbar").offset().top;
+                    console.log("left=" + left + ",top=" + top);
+                    var vx = left + (start2.x- start.x);
+                    var vy =top+ (start2.y - start.y);
+                    console.log("vx=" + vx + ",vy=" + vy);
+                    angular.element("div.toolbar").css("left",vx);
+                    angular.element("div.toolbar").css("top", vy );
+                    left = angular.element("div.toolbar").offset().left;
+                    top = angular.element("div.toolbar").offset().top;
+                    console.log("left=" + left + ",top=" + top);
+                    start2 = start;
+                }
+                
+            });
+            element.bind("mouseout", function (event) {
+                moving = false;
+                start = { x: 0, y: 0 };
+            });
+        }
+    }
+})

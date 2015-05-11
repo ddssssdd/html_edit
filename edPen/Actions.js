@@ -323,6 +323,8 @@
             this.groups[i].strokeColor = style.strokeColor || this.groups[i].strokeColor;
             this.groups[i].fillColor = style.fillColor || this.groups[i].fillColor;
             this.groups[i].opacity = style.opacity || this.groups[i].opacity;
+            this.groups[i].fontName = style.fontName || this.groups[i].fontName;
+            this.groups[i].fontSize = style.fontSize || this.groups[i].fontSize;
         }
         this.Draw();
     }
@@ -634,6 +636,7 @@ var Text = function (scence) {
     this.fontName = "Arial";
     this.fontSize = 32;
     this.start_pos = { x: 0, y: 0 };
+    this.fillColor = "rgb(0, 0, 0)";
     this.message = "";
     var instance = this;
     this.font = function () {
@@ -661,7 +664,9 @@ var Text = function (scence) {
             strokeColor: this.strokeColor,
             fillColor: this.fillColor,
             lineWidth: this.lineWidth,
-            opacity:this.opacity
+            opacity: this.opacity,
+            fontName: this.fontName,
+            fontSize:this.fontSize
         });
         this.context.restore();
         this.scence.commandList.push(instance);
@@ -754,6 +759,19 @@ var Text = function (scence) {
         this.strokeColor = other.strokeColor;
         this.clientRect = other.clientRect;
         this.message = other.message;
+    }
+    this.setStyle = function (style) {
+        if (!style)
+            return;
+        
+        this.lineWidth = style.lineWidth || this.lineWidth;
+        this.strokeColor = style.strokeColor || this.strokeColor;   
+        this.fillColor = style.fillColor || this.fillColor;
+        this.opacity = style.opacity || this.opacity;
+        this.fontName = style.fontName || this.fontName;
+        this.fontSize = style.fontSize || this.fontSize;
+        
+        this.Draw();
     }
 }
 Text.classname = "text";
