@@ -225,7 +225,10 @@ var Scence = function (divName, settings) {
                 return this.registerTools[i];
             }
         }
-        throw Error("Not found");
+        //throw Error("Not found");
+
+        alert("Not implement this command: " + name);
+        return MultiMoveSelect;
     }
     this.do = function (name) {
         this.reDraw(true);
