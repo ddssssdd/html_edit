@@ -42,7 +42,11 @@
                                     <ul>
 
                                         <li>
-                                            <div class="annotationsIco"><img src="images/edpen/annotationsIcon/brushBtn.png" /></div>
+                                            <div class="annotationsIco">
+                                            
+                                            <img src="images/edpen/annotationsIcon/brushBtn.png" />
+                                            
+                                            </div>
                                             <div class="annotationsContent">
                                                 <div class="annotationsTitle">Ink, 1 Line</div>
                                                 <div class="annotationsRecord">Synvata's iPad 14-8-28 20:14</div>
@@ -149,7 +153,7 @@
                 <li class="note"><span>Note</span></li>
                 <li class="pencil" command="pen" style="background:#e91425;"><span>Pencil</span></li>
                 <li class="paintbrush" command="brush" style="background:#e91425;"><span>Paintbrush</span></li>
-                <li class="square" command="rect" longpress window="div.sharp-win"><span>Square</span></li>
+                <li class="rect" command="rect" longpress window="div.sharp-win"><span>Square</span></li>
                 <!--li class="circle"><span>circle</span></li>
                 <li class="line"><span>line</span></li>
                 <li class="polygon"><span>polygon</span></li>
@@ -181,7 +185,7 @@
             <div class="arrow"></div>
             <div class="body Shape">
                 <ul tool-change target="div.sharp-win">
-                    <li><span>square</span></li>
+                    <li><span>rect</span></li>
                     <li><span>circle</span></li>
                     <li><span>line</span></li>
                     <li><span>polygon</span></li>
@@ -202,34 +206,38 @@
                 <div class="body ScrollBAR" style="width:400px;">
                     <div class="edpen-option">
                         <ul>
-                            <li class="show-area"><img src="images/temp/paintbrush.png" width="300" height="60" alt="" /></li>
-                            <li ng-click="openColor($event,'strokeColor');">
+                            <li class="show-area">
+                            
+                            <canvas  id="example_canvas" width="360" height="100" />
+                            
+                            </li>
+                            <li ng-click="openColor($event,'strokeColor');" ng-show="settings.set_color">
                                 <div class="label">Color</div>
                                 <div class="value color"><span style="background:{{command.strokeColor}};"></span></div>
                             </li>
-                            <li ng-click="openColor($event,'fillColor');">
+                            <li ng-click="openColor($event,'fillColor');" ng-show="settings.set_fill">
                                 <div class="label">Fill Color</div>
-                                <div class="value color" style="background:{{command.fillColor}};"><span></span></div>
+                                <div class="value color"><span style="background:{{command.fillColor}};"></span></div>
                             </li>
-                            <li>
+                            <li ng-show="settings.set_opactiy">
                                 <div class="label">Opacity</div>
                                 <div class="value rangeBody">
                                     <input type="range" max="100" min="0" step="1" ng-model="command.opacity" />
-                                    <label ng-bind="command.opacity"></label>
+                                    <label>{{command.opacity+"%"}}</label>
                                 </div>
                             </li>
-                            <li>
+                            <li ng-show="settings.set_thinkness">
                                 <div class="label">Thickness</div>
                                 <div class="value rangeBody">
-                                    <input type="range" max="200" min="1" step="1" ng-model="command.lineWidth" />
+                                    <input type="range" max="40" min="1" step="1" ng-model="command.lineWidth" />
                                     <label>{{command.lineWidth}} px</label>
                                 </div>
                             </li>
-                            <li>
+                            <li ng-show="settings.set_font">
                                 <div class="label">Font</div>
                                 <div class="value" ng-bind="command.fontName"></div>
                             </li>
-                            <li>
+                            <li ng-show="settings.set_size">
                                 <div class="label">Size</div>
                                 <div class="value">
                                     <div class="adjustmentBtn">
@@ -241,14 +249,14 @@
                                     <div class="sizeNum">{{command.fontSize}}pt</div>
                                 </div>
                             </li>
-                            <li>
+                            <li ng-show="settings.set_alignment">
                                 <div class="label">Alignment</div>
                                 <div class="value">
                                     <div class="locationBtn">
                                         <ul>
-                                            <li class="select"><a href="#">alignLeft</a></li>
-                                            <li><a href="#">alignCenter</a></li>
-                                            <li><a href="#">alignRight</a></li>
+                                            <li class="{{command.alignment=='left'?'':'select'}}" ng-click="command.alignment='left';"><a href="javascript:void(0);">alignLeft</a></li>
+                                            <li class="{{command.alignment=='center'?'':'select'}}" ng-click="command.alignment='center';"><a href="javascript:void(0);">alignCenter</a></li>
+                                            <li class="{{command.alignment=='right'?'':'select'}}" ng-click="command.alignment='right';"><a href="javascript:void(0);">alignRight</a></li>
                                         </ul>
                                     </div>
                                 </div>

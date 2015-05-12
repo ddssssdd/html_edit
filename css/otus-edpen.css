@@ -38,7 +38,7 @@
 .main-body .toolbar .note span{ background:url(../images/edpen/toolbar/note.png) center center no-repeat;}
 .main-body .toolbar .pencil span{ background:url(../images/edpen/toolbar/pencil.png) center center no-repeat;}
 .main-body .toolbar .paintbrush span{ background:url(../images/edpen/toolbar/paintbrush.png) center center no-repeat;}
-.main-body .toolbar .square span{ background:url(../images/edpen/toolbar/square.png) center center no-repeat;}
+.main-body .toolbar .rect span{ background:url(../images/edpen/toolbar/square.png) center center no-repeat;}
 .main-body .toolbar .circle span{ background:url(../images/edpen/toolbar/circle.png) center center no-repeat;}
 .main-body .toolbar .line span{ background:url(../images/edpen/toolbar/line.png) center center no-repeat;}
 .main-body .toolbar .polygon span{ background:url(../images/edpen/toolbar/polygon.png) center center no-repeat;}
@@ -60,7 +60,7 @@
 .main-body .toolbar .note span:hover{ background:url(../images/edpen/toolbar/note-hover.png) center center no-repeat #ebedfc;}
 .main-body .toolbar .pencil span:hover{ background:url(../images/edpen/toolbar/pencil-hover.png) center center no-repeat;}
 .main-body .toolbar .paintbrush span:hover{ background:url(../images/edpen/toolbar/paintbrush-hover.png) center center no-repeat;}
-.main-body .toolbar .square span:hover{ background:url(../images/edpen/toolbar/square-hover.png) center center no-repeat #ebedfc;}
+.main-body .toolbar .rect span:hover{ background:url(../images/edpen/toolbar/square-hover.png) center center no-repeat #ebedfc;}
 .main-body .toolbar .circle span:hover{ background:url(../images/edpen/toolbar/circle-hover.png) center center no-repeat #ebedfc;}
 .main-body .toolbar .line span:hover{ background:url(../images/edpen/toolbar/line-hover.png) center center no-repeat #ebedfc;}
 .main-body .toolbar .polygon span:hover{ background:url(../images/edpen/toolbar/polygon-hover.png) center center no-repeat #ebedfc;}
@@ -82,7 +82,7 @@
 .main-body .toolbar .note.selected span{ background:url(../images/edpen/toolbar/note-selected.png) center center no-repeat #575a85;}
 .main-body .toolbar .pencil.selected span{ background:url(../images/edpen/toolbar/pencil-selected.png) center center no-repeat;}
 .main-body .toolbar .paintbrush.selected span{ background:url(../images/edpen/toolbar/paintbrush-selected.png) center center no-repeat;}
-.main-body .toolbar .square.selected span{ background:url(../images/edpen/toolbar/square-selected.png) center center no-repeat #575a85;}
+.main-body .toolbar .rect.selected span{ background:url(../images/edpen/toolbar/square-selected.png) center center no-repeat #575a85;}
 
 .main-body .toolbar .circle.selected span{ background:url(../images/edpen/toolbar/circle-selected.png) center center no-repeat #575a85;}
 .main-body .toolbar .line.selected span{ background:url(../images/edpen/toolbar/line-selected.png) center center no-repeat #575a85;}
@@ -118,25 +118,25 @@
 .tooltip .edpen-option ul li .value .adjustmentBtn ul li{float:left!important;width:23px;height:23px;padding:3px 8px;border-right:1px solid #7a7da8;}
 .tooltip .edpen-option ul li .value .adjustmentBtn ul li:last-child{border:0px;}
 .tooltip .edpen-option ul li .value .adjustmentBtn ul li a{ display:block;margin:0px;padding:0px;width:23px;height:23px;text-indent:-9999px; text-align:left;}
-.tooltip .edpen-option ul li .value .adjustmentBtn ul li:nth-child(1) a{ background:url(../images/edPen/menListTooltip/reduceIco.png) center center no-repeat;}
-.tooltip .edpen-option ul li .value .adjustmentBtn ul li:nth-child(1) a:active{ background:url(../images/edPen/menListTooltip/reduceIcoClick.png) center center no-repeat;}
-.tooltip .edpen-option ul li .value .adjustmentBtn ul li:nth-child(2) a{ background:url(../images/edPen/menListTooltip/increaseIco.png) center center no-repeat;}
-.tooltip .edpen-option ul li .value .adjustmentBtn ul li:nth-child(2) a:active{ background:url(../images/edPen/menListTooltip/increaseIcoClick.png) center center no-repeat;}
+.tooltip .edpen-option ul li .value .adjustmentBtn ul li:nth-child(1) a{ background:url(../images/edpen/menListTooltip/reduceIco.png) center center no-repeat;}
+.tooltip .edpen-option ul li .value .adjustmentBtn ul li:nth-child(1) a:active{ background:url(../images/edpen/menListTooltip/reduceIcoClick.png) center center no-repeat;}
+.tooltip .edpen-option ul li .value .adjustmentBtn ul li:nth-child(2) a{ background:url(../images/edpen/menListTooltip/increaseIco.png) center center no-repeat;}
+.tooltip .edpen-option ul li .value .adjustmentBtn ul li:nth-child(2) a:active{ background:url(../images/edpen/menListTooltip/increaseIcoClick.png) center center no-repeat;}
 
 .tooltip .edpen-option ul li .value .locationBtn{float:right;border:1px solid #7a7da8;border-radius:4px; overflow:hidden;margin:7px 0px;}
 .tooltip .edpen-option ul li .value .locationBtn ul:after{content:""; clear:both; display:table;}
 .tooltip .edpen-option ul li .value .locationBtn ul li{float:left!important;width:23px;height:23px;padding:3px 8px;border-right:1px solid #7a7da8;background:#fff;}
 .tooltip .edpen-option ul li .value .locationBtn ul li:last-child{border:0px;}
 .tooltip .edpen-option ul li .value .locationBtn ul li a{ display:inherit!IMPORTANT;margin:0px;padding:0px;width:23px;height:23px; text-indent:-9999px; text-align:left;}
-.tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(1) a{ background:url(../images/edPen/menListTooltip/alignLeftIco.png) center center no-repeat;}
+.tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(1) a{ background:url(../images/edpen/menListTooltip/alignLeftIco.png) center center no-repeat;}
 .tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(1).select{background:#7a7da8;}
-.tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(1).select a{ background:url(../images/edPen/menListTooltip/alignLeftIco-select.png) center center no-repeat;}
-.tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(2) a{ background:url(../images/edPen/menListTooltip/alignCenterIco.png) center center no-repeat;}
+.tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(1).select a{ background:url(../images/edpen/menListTooltip/alignLeftIco-select.png) center center no-repeat;}
+.tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(2) a{ background:url(../images/edpen/menListTooltip/alignCenterIco.png) center center no-repeat;}
 .tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(2).select{background:#7a7da8;}
-.tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(2).select a{ background:url(../images/edPen/menListTooltip/alignCenterIco-select.png) center center no-repeat;}
-.tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(3) a{ background:url(../images/edPen/menListTooltip/alignRightIco.png) no-repeat center center;}
+.tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(2).select a{ background:url(../images/edpen/menListTooltip/alignCenterIco-select.png) center center no-repeat;}
+.tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(3) a{ background:url(../images/edpen/menListTooltip/alignRightIco.png) no-repeat center center;}
 .tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(3).select{background:#7a7da8;}
-.tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(3).select a{ background:url(../images/edPen/menListTooltip/alignRightIco-select.png) no-repeat center center;}
+.tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(3).select a{ background:url(../images/edpen/menListTooltip/alignRightIco-select.png) no-repeat center center;}
 
 
 .nav-tooltip{ position:absolute;}
@@ -217,20 +217,20 @@
 .shortcutMenu .list ul li:nth-last-child(2){border-right:none;}
 .shortcutMenu .list ul li a{font:14px/36px Arial, Helvetica, sans-serif;color:#fff; display:block;padding:0px 5px;}
 .shortcutMenu .list ul li a:hover{ background:#4f4f4f; text-decoration:none;}
-.shortcutMenu .list ul li.textBtn a{ background:url(../images/edPen/menuTooltip/textBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
-.shortcutMenu .list ul li.brushBtn a{ background:url(../images/edPen/menuTooltip/brushBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
-.shortcutMenu .list ul li.SignatureBtn a{ background:url(../images/edPen/menuTooltip/SignatureBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
-.shortcutMenu .list ul li.StampsBtn a{ background:url(../images/edPen/menuTooltip/StampsBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
-.shortcutMenu .list ul li.ImportImageBtn a{ background:url(../images/edPen/menuTooltip/ImportImageBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
-.shortcutMenu .list ul li.eraserBtn a{ background:url(../images/edPen/menuTooltip/eraserBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
-.shortcutMenu .list ul li.deleteBtn a{background:url(../images/edPen/menuTooltip/deleteBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
-.shortcutMenu .list ul li.textBtn a:hover{ background:url(../images/edPen/menuTooltip/textBtnHover.png) no-repeat;background-size:100%;}
-.shortcutMenu .list ul li.brushBtn a:hover{ background:url(../images/edPen/menuTooltip/brushBtnHover.png) no-repeat;background-size:100%;}
-.shortcutMenu .list ul li.SignatureBtn a:hover{ background:url(../images/edPen/menuTooltip/SignatureBtnHover.png) no-repeat;background-size:100%;}
-.shortcutMenu .list ul li.StampsBtn a:hover{ background:url(../images/edPen/menuTooltip/StampsBtnHover.png) no-repeat;background-size:100%;}
-.shortcutMenu .list ul li.ImportImageBtn a:hover{ background:url(../images/edPen/menuTooltip/ImportImageBtnHover.png) no-repeat;background-size:100%;}
-.shortcutMenu .list ul li.eraserBtn a:hover{ background:url(../images/edPen/menuTooltip/eraserBtnHover.png) no-repeat;background-size:100%;}
-.shortcutMenu .list ul li.deleteBtn a:hover{ background:url(../images/edPen/menuTooltip/deleteBtnHover.png) no-repeat;background-size:100%;}
+.shortcutMenu .list ul li.textBtn a{ background:url(../images/edpen/menuTooltip/textBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
+.shortcutMenu .list ul li.brushBtn a{ background:url(../images/edpen/menuTooltip/brushBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
+.shortcutMenu .list ul li.SignatureBtn a{ background:url(../images/edpen/menuTooltip/SignatureBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
+.shortcutMenu .list ul li.StampsBtn a{ background:url(../images/edpen/menuTooltip/StampsBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
+.shortcutMenu .list ul li.ImportImageBtn a{ background:url(../images/edpen/menuTooltip/ImportImageBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
+.shortcutMenu .list ul li.eraserBtn a{ background:url(../images/edpen/menuTooltip/eraserBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
+.shortcutMenu .list ul li.deleteBtn a{background:url(../images/edpen/menuTooltip/deleteBtn.png) no-repeat;width:36px;height:36px;background-size:100%;text-indent:-9999px;padding:0px;}
+.shortcutMenu .list ul li.textBtn a:hover{ background:url(../images/edpen/menuTooltip/textBtnHover.png) no-repeat;background-size:100%;}
+.shortcutMenu .list ul li.brushBtn a:hover{ background:url(../images/edpen/menuTooltip/brushBtnHover.png) no-repeat;background-size:100%;}
+.shortcutMenu .list ul li.SignatureBtn a:hover{ background:url(../images/edpen/menuTooltip/SignatureBtnHover.png) no-repeat;background-size:100%;}
+.shortcutMenu .list ul li.StampsBtn a:hover{ background:url(../images/edpen/menuTooltip/StampsBtnHover.png) no-repeat;background-size:100%;}
+.shortcutMenu .list ul li.ImportImageBtn a:hover{ background:url(../images/edpen/menuTooltip/ImportImageBtnHover.png) no-repeat;background-size:100%;}
+.shortcutMenu .list ul li.eraserBtn a:hover{ background:url(../images/edpen/menuTooltip/eraserBtnHover.png) no-repeat;background-size:100%;}
+.shortcutMenu .list ul li.deleteBtn a:hover{ background:url(../images/edpen/menuTooltip/deleteBtnHover.png) no-repeat;background-size:100%;}
 .shortcutMenu .arrow{ text-align:center;}
 
 
@@ -241,8 +241,8 @@
 .noteTooltip ul li:nth-child(1){ background:none!important;}
 .noteTooltip ul li:nth-last-child(2){ background:none!important;}
 .noteTooltip div{ position:relative;top:0px;left:0px;}
-.noteTooltip.left .arrow{background:url(../images/edPen/menListTooltip/arrow.png) left center no-repeat;float:right;width:21px;height:200px; }
-.noteTooltip.right .arrow{background:url(../images/edPen/menListTooltip/arrow-right.png) left center no-repeat;float:right;width:21px;height:200px; }
+.noteTooltip.left .arrow{background:url(../images/edpen/menListTooltip/arrow.png) left center no-repeat;float:right;width:21px;height:200px; }
+.noteTooltip.right .arrow{background:url(../images/edpen/menListTooltip/arrow-right.png) left center no-repeat;float:right;width:21px;height:200px; }
 .noteTooltip .body{float:right;background:#fff; box-shadow:0px 0px 5px rgba(0,0,0,0.2);width:320px;height:365px;border-radius:6px; overflow:hidden;}
 .noteTooltip .body textarea{width:320px;height:320px;border:none;padding:6px;-moz-box-sizing:border-box;box-sizing:border-box; resize:none; outline:none;font:20px Arial, Helvetica, sans-serif;background-image: -moz-linear-gradient(top, #bedaff, #6d8cf2); /* Firefox */
 background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #bedaff), color-stop(1, #6d8cf2)); /* Saf4+, Chrome */

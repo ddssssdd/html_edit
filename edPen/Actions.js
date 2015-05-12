@@ -11,7 +11,7 @@
     this.points = [];
     this.groups = [];
     this.strokeColor = "rgb(0, 0, 0)";
-    this.fillColor = "rgba(0, 0, 0, 0)";
+    this.fillColor = "rgba(0, 0, 0)";
     this.lineWidth = 1;
     this.fontName = "Arial";
     this.fontSize = 32;
@@ -375,7 +375,7 @@ var Pen = function (scence) {
         con.strokeStyle = strokeColor;
         con.lineWidth = lineWidth;
         con.fillStyle = fillColor;
-        con.globalAlpha = opacity;
+        con.globalAlpha = opacity/100;
         con.beginPath();
         con.moveTo(points[0].x, points[0].y);
         for (var i = 1; i < points.length; i++) {
@@ -442,7 +442,7 @@ var Line = function (scence) {
         con.strokeStyle = strokeColor;
         con.lineWidth = lineWidth;
         con.fillStyle = fillColor;
-        con.globalAlpha = opacity;
+        con.globalAlpha = opacity/100;
         con.beginPath();
         con.moveTo(points[0].x, points[0].y);
         con.lineTo(points[points.length - 1].x, points[points.length - 1].y);
@@ -472,7 +472,7 @@ var Rect = function (scence) {
         con.strokeStyle = strokeColor;
         con.lineWidth = lineWidth;
         con.fillStyle = fillColor;
-        con.globalAlpha = opacity;
+        con.globalAlpha = opacity/100;
         con.strokeRect(points[0].x, points[0].y, points[points.length - 1].x - points[0].x, points[points.length - 1].y - points[0].y);
         con.fillRect(points[0].x, points[0].y, points[points.length - 1].x - points[0].x, points[points.length - 1].y - points[0].y);
         con.restore();
@@ -501,7 +501,7 @@ var Circle = function (scence) {
         con.strokeStyle = strokeColor;
         con.lineWidth = lineWidth;
         con.fillStyle = fillColor;
-        con.globalAlpha = opacity;
+        con.globalAlpha = opacity/100;
         var x = points[0].x;
         var y = points[0].y;
         var w = points[points.length - 1].x - points[0].x;
@@ -560,7 +560,7 @@ var UploadFile = function (scence,f,pos) {
     }
     this.drawOne = function (con, points, strokeColor, fillColor, lineWidth, opacity) {
         con.save();
-        con.globalAlpha = opacity;
+        con.globalAlpha = opacity/100;
         con.drawImage(this.image, 0, 0, this.image.width, this.image.height,
             this.clientRect.left, this.clientRect.top, this.clientRect.right - this.clientRect.left, this.clientRect.bottom - this.clientRect.top);
         con.restore();
@@ -637,6 +637,7 @@ var Text = function (scence) {
     this.fontSize = 32;
     this.start_pos = { x: 0, y: 0 };
     this.fillColor = "rgb(0, 0, 0)";
+    this.alignment = "left";
     this.message = "";
     var instance = this;
     this.font = function () {
@@ -696,10 +697,11 @@ var Text = function (scence) {
     this.drawOne = function (con, points, strokeColor, fillColor, lineWidth,opacity) {
         con = this.context;
         con.save();
-        con.globalAlpha = opacity;
+        con.globalAlpha = opacity/100;
         con.strokeStyle = this.strokeColor;
         con.fillStyle = this.fillColor;
         con.lineWidth = this.lineWidth;
+        //con.textAlign = this.alignment;
         con.font = this.font();
         con.fillText(this.message, this.clientRect.left, this.clientRect.bottom);
         con.restore();
@@ -770,7 +772,7 @@ var Text = function (scence) {
         this.opacity = style.opacity || this.opacity;
         this.fontName = style.fontName || this.fontName;
         this.fontSize = style.fontSize || this.fontSize;
-        
+        this.alignment = style.alignment || this.alignment;
         this.Draw();
     }
 }
@@ -787,23 +789,25 @@ var Brush = function (scence) {
     this.strokeColor = "brown";
     this.isgroup = true;
     this.lineWidth = 40;
-    this.opacity = 0.2;
+    this.opacity = 20;
     
     this.drawOne = function (con, points, strokeColor, fillColor, lineWidth,opacity) {
         con.save();
         con.strokeStyle = strokeColor;
         con.lineWidth = lineWidth;
         con.fillStyle = fillColor;
-        con.globalAlpha = this.opacity;
+        con.globalAlpha = this.opacity/100;
         //con.globalCompositeOperation = "source-over";//"lighter";
         con.lineCap = "round";
-        con.beginPath();
-        con.moveTo(points[0].x, points[0].y);
+        
         for (var i = 1; i < points.length; i++) {
+            con.beginPath();
+            con.moveTo(points[i-1].x, points[i-1].y);
             con.lineTo(points[i].x, points[i].y);
             con.stroke();
+            con.closePath();
         }
-        con.closePath();
+        
         con.restore();
 
     }
@@ -1010,9 +1014,9 @@ function Polygon(scence) {
     this.scence = scence;
     this.context = scence.context;
     this.context_top = scence.context_top;
-    this.fillColor = "red";
+    this.fillColor = "rgb(233, 20, 37)";
     this.SELECT_BORDER = 6;
-    this.alpha = 0.6;
+    
     this.next = function (action) {
         this.nextCommand = action;
         this.endCreate();
@@ -1071,7 +1075,7 @@ function Polygon(scence) {
             con.fillStyle = this.fillColor;
             con.lineWidth = this.lineWidth;
             con.strokeStyle = this.strokeColor;
-            con.globalAlpha = this.alpha;
+            con.globalAlpha = this.opacity/100;
             con.beginPath();
             con.moveTo(points[0].x, points[0].y);
             for (var i = 1; i < points.length; i++) {
