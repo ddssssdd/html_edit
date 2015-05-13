@@ -319,12 +319,12 @@
         if (!style)
             return;
         for(var i=0;i<this.groups.length;i++){
-            this.groups[i].lineWidth = style.lineWidth || this.groups[i].lineWidth;
-            this.groups[i].strokeColor = style.strokeColor || this.groups[i].strokeColor;
-            this.groups[i].fillColor = style.fillColor || this.groups[i].fillColor;
-            this.groups[i].opacity = style.opacity || this.groups[i].opacity;
-            this.groups[i].fontName = style.fontName || this.groups[i].fontName;
-            this.groups[i].fontSize = style.fontSize || this.groups[i].fontSize;
+           this.lineWidth = this.groups[i].lineWidth = style.lineWidth || this.groups[i].lineWidth;
+           this.strokeColro = this.groups[i].strokeColor = style.strokeColor || this.groups[i].strokeColor;
+           this.fillColor =  this.groups[i].fillColor = style.fillColor || this.groups[i].fillColor;
+           this.opacity =  this.groups[i].opacity = style.opacity || this.groups[i].opacity;
+           this.fontName =  this.groups[i].fontName = style.fontName || this.groups[i].fontName;
+           this.fontSize = this.groups[i].fontSize = style.fontSize || this.groups[i].fontSize;
         }
         this.Draw();
     }
@@ -539,9 +539,23 @@ var Circle = function (scence) {
 Circle.classname = "circle";
 Circle.prototype = new Action();
 var UploadCommand = function (scence) {
+    this.classname = "upload";
     this.execute = function () {
         $("#upload_file").trigger("click");
     }
+    this.mouseup = function (e) {
+
+    }
+    this.mousedown = function (e) {
+
+    }
+    this.mouseover = function (e) {
+
+    }
+    this.mouseout = function (e) {
+
+    }
+
 }
 UploadCommand.classname = "upload";
 UploadCommand.prototype = new Action();
@@ -554,13 +568,13 @@ var UploadFile = function (scence,f,pos) {
     this.upload_file = f;
     this.start_pos = { x: pos?pos.offsetX:0, y:pos?pos.offsetY:0 };
     var instance = this;
-    
+    this.classname = "upload";
     this.drawAll = function (con) {
         this.drawOne(con);
     }
     this.drawOne = function (con, points, strokeColor, fillColor, lineWidth, opacity) {
         con.save();
-        con.globalAlpha = opacity/100;
+        con.globalAlpha = this.opacity/100;
         con.drawImage(this.image, 0, 0, this.image.width, this.image.height,
             this.clientRect.left, this.clientRect.top, this.clientRect.right - this.clientRect.left, this.clientRect.bottom - this.clientRect.top);
         con.restore();
@@ -1007,19 +1021,24 @@ var PolyLine = function (scence) {
     }
     
 }
-PolyLine.classname = "polyline";
+PolyLine.classname = "polyline_old";
 PolyLine.prototype = new Pen(null);
 
-function Polygon(scence) {
+var Polygon = function (scence) {
     this.scence = scence;
-    this.context = scence.context;
-    this.context_top = scence.context_top;
+    if (scence) {
+        this.context = scence.context;
+        this.context_top = scence.context_top;
+    }
+    
     this.fillColor = "rgb(233, 20, 37)";
     this.SELECT_BORDER = 6;
     
     this.next = function (action) {
         this.nextCommand = action;
-        this.endCreate();
+        if (!this.done && this.points.length > 2) {
+            this.endCreate();
+        }
     }
     this.mousedown = function (e) {
 
@@ -1149,3 +1168,149 @@ function Polygon(scence) {
 }
 Polygon.classname = "polygon";
 Polygon.prototype = new Pen(null);
+
+
+
+
+//Multiple Line
+var PolyLine2 = function (scence) {
+    this.scence = scence;
+    
+    this.context = scence.context;
+    this.context_top = scence.context_top;
+    this.isgroup = false;
+    this.lineWidth = 3;
+    this.SELECT_BORDER = 6;
+    this.next = function (action) {
+        this.nextCommand = action;
+        if (!this.done && this.points.length>2) {
+            this.endCreate();
+        }
+    }
+    this.mousedown = function (e) {
+
+    }
+    this.endCreate = function (e) {
+        this.creating = false;
+        this.done = true;
+
+        this.processPoint(this.points);
+        this.groups = [{ points: this.points, lineWidth: this.lineWidth, fillColor: this.fillColor, strokeColor: this.strokeColor }];
+        if (e) {
+            this.scence.clone(this);
+        } else {
+            this.scence.commandList.push(this);
+        }
+        this.Draw();
+    }
+    this.processPoint = function (points) {
+        for (var i = 0; i < points.length; i++) {
+            var p = points[i];
+            if (p.x > this.clientRect.right)
+                this.clientRect.right = p.x;
+            if (p.x < this.clientRect.left)
+                this.clientRect.left = p.x;
+            if (p.y < this.clientRect.top)
+                this.clientRect.top = p.y;
+            if (p.y > this.clientRect.bottom)
+                this.clientRect.bottom = p.y;
+        }
+    }
+    this.mouseup = function (e) {
+        if (this.done) {
+            return;
+        }
+        this.creating = true;
+        this.points.push({ x: e.offsetX, y: e.offsetY });
+        if (e.event && e.event.button != 0) {
+            this.endCreate(e);
+        }
+        this.Draw();
+    }
+    this.mousemove = function (e) {
+
+    }
+    this.mouseout = function (e) {
+
+    }
+    this.drawAll = function (con) {
+        this.drawOne(con);
+
+    }
+    this.drawJointSelect = function (con, x, y) {
+        if (this.selected) {
+            con.save();
+            con.strokeStyle = "green";
+            con.beginPath();
+
+            con.arc(x, y, this.SELECT_BORDER, 0, Math.PI * 2, false);
+            con.closePath();
+            con.stroke();
+            con.restore();
+        }
+    }
+    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth, opacity) {
+        var points = this.points;
+        if (points.length > 0) {
+
+            con.save();
+            con.fillStyle = this.fillColor;
+            con.lineWidth = this.lineWidth;
+            con.strokeStyle = this.strokeColor;
+            con.globalAlpha = this.opacity / 100;
+            con.beginPath();
+            con.moveTo(points[0].x, points[0].y);
+            for (var i = 1; i < points.length; i++) {
+                con.lineTo(points[i].x, points[i].y);
+
+            }
+            //con.lineTo(points[0].x, points[0].y);
+            //con.closePath();
+            con.stroke();
+            
+            con.restore();
+            for (var i = 0; i < points.length; i++) {
+                this.drawJointSelect(con, points[i].x, points[i].y);
+            }
+        }
+    }
+    this.selected_point = null;
+
+    this.inside = function (e) {
+        this.selected_point = null;
+        var result = this.__proto__.inside.call(this, e);
+        if (result) {
+            for (var j = 0; j < this.groups.length; j++) {
+                for (var i = 0; i < this.groups[j].points.length; i++) {
+                    var p = this.groups[j].points[i];
+                    var distance = this.distance(p.x, p.y, e.offsetX, e.offsetY);
+                    if (distance < 6) {
+                        this.selected_point = p;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+
+    }
+
+    this.move = function (e) {
+        if (this.selected) {
+            if (this.selected_point) {
+                this.selected_point.x += e.x;
+                this.selected_point.y += e.y;
+                this.clientRect = { top: 102400, left: 102400, right: 0, bottom: 0 };
+                for (var j = 0; j < this.groups.length; j++) {
+                    this.processPoint(this.groups[j].points);
+                }
+                return;
+            }
+            this.__proto__.move.call(this, e);
+        }
+
+    }
+
+}
+PolyLine2.classname = "polyline";
+PolyLine2.prototype = new Pen(null);

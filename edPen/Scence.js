@@ -217,8 +217,9 @@ var Scence = function (divName, settings) {
     this.lastCommandName = "select";
     this.command = new MultiMoveSelect(instance);
     this.commandList = [];
-    this.registerTools = [MultiMoveSelect, Pen, Line, Rect, Circle, Reset, Text, Brush, Erase, UploadCommand,UploadFile,
-        Undo, Redo, LocalSave, LocalRestore,PolyLine,Polygon];
+    this.registerTools = [MultiMoveSelect, Pen, Line, Rect, Circle, Reset, Text, Brush, Erase,
+        UploadCommand, UploadFile,
+        Undo, Redo, LocalSave, LocalRestore,PolyLine2,Polygon];
     this.getTool = function (name) {
         for (var i = 0; i < this.registerTools.length; i++) {
             if (this.registerTools[i].classname == name) {

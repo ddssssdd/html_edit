@@ -22,13 +22,7 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         if (event.target.length == 1) {
             //$scope.command = event.target[0];
             $scope.change_command(event.target[0]);
-            var rect = event.target[0].clientRect;
-            var menu = angular.element("div.shortcutMenu");
-            menu.css("left", rect.left+(rect.right-rect.left-menu.width())/2);
-            menu.css("top", rect.top-56);
-            menu.show();
-            $scope.ispopuping = true;
-            //event.original.event.stopPropagation();
+            $scope.selectCommand(event.target[0]);
         }
     });
     $scope.command = $scope.scence.command;
@@ -42,6 +36,7 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         } else {
             $scope.mainmenu.selected = command;
         }
+        console.log("Execute mainmenu command:" + command);
         MainMenuService[command](li);
 
     }
@@ -117,8 +112,31 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
     $scope.deleteCurrent = function () {
         $scope.command.deleted = true;
         $scope.scence.reDraw();
-        $("div[popup]").hide();
+        angular.element("div[popup]").hide();
     }
+    $scope.popup_shortmenu = function (action) {
+        angular.element("div[popup]").hide();
+        var rect = action.clientRect;
+        var menu = angular.element("div.shortcutMenu");
+        menu.css("left", rect.left + (rect.right - rect.left - menu.width()) / 2);
+        menu.css("top", rect.top - 56);
+        menu.show();
+        $scope.ispopuping = true;
+    }
+    $scope.selectCommand = function (action) {
+        
+        action.selected = true;
+        $scope.scence.reDraw();
+        $scope.popup_shortmenu(action);
+        //$scope.scence.do("select");
+    }
+    $scope.deleteCommand = function (action, event) {
+        event.stopPropagation();
+        action.deleted = true;
+        $scope.scence.reDraw();
+        angular.element("div[popup]").hide();
+    }
+
 });
 app.service("MainMenuService", function () {
     
@@ -206,6 +224,7 @@ app.directive("command", function () {
             element.bind("click", function (event) {
                 //var command = angular.element(event.target).attr("command");
                 //console.log(command + "," + attrs.command);
+                angular.element("div[popup]").hide();
                 event.stopPropagation();
                 if (element.attr("done") == "1") {
                     return;
@@ -501,6 +520,19 @@ function ActionHelper() {
 
     }
     erase.prototype = new action();
+    var upload = function () {
+        this.set_color = false;
+        this.set_fill = true;
+        this.set_opactiy = true;
+        this.set_thinkness = false;
+        this.set_font = false;
+        this.set_size = false;
+        this.set_alignment = false;
+        this.draw_example = function (context) {
+
+        }
+    }
+    upload.prototype = new pen();
     this.setCommand = function (command) {
         this[command.classname] = eval("new " + command.classname + "()");
         this[command.classname].command = command;

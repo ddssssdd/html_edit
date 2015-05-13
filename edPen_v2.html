@@ -32,52 +32,38 @@
                 <li class="search">Search</li>
                 <li class="history">
                     History
-                    <div class="annotationsTooltip" popup>
+                    <div class="annotationsTooltip" style="z-index:100;" popup>
                         <div class="arrow"><img src="images/edPen/menListTooltip/arrow-top.png" width="40" height="21" /></div>
                         <div class="annotationsBody">
                             <header>History</header>
                             <div class="body">
                                 <div class="pageTitle">Page1</div>
                                 <div class="list ScrollBAR">
-                                    <ul>
+                                    <ul ng-show="scence.commandList.length>0">
 
-                                        <li>
+                                        <li ng-repeat="action in scence.commandList" ng-click="selectCommand(action);" ng-show="!action.deleted">
                                             <div class="annotationsIco">
-                                            
-                                            <img src="images/edpen/annotationsIcon/brushBtn.png" />
-                                            
+
+                                                <img src="images/edpen/annotationsIcon/brushBtn.png" />
+
                                             </div>
                                             <div class="annotationsContent">
-                                                <div class="annotationsTitle">Ink, 1 Line</div>
+                                                <div class="annotationsTitle">{{action.classname}}</div>
                                                 <div class="annotationsRecord">Synvata's iPad 14-8-28 20:14</div>
                                             </div>
                                             <div class="clear"></div>
-                                            <div class="deleteBtn"><a href="#">deleteBtn</a></div>
+                                            <div class="deleteBtn" ng-click="deleteCommand(action,$event);"><a href="javascript:void(0);">deleteBtn</a></div>
                                         </li>
-                                        <li>
-                                            <div class="annotationsIco"><img src="images/edpen/annotationsIcon/brushBtn.png" /></div>
-                                            <div class="annotationsContent">
-                                                <div class="annotationsTitle">Ink, 1 Line</div>
-                                                <div class="annotationsRecord">Synvata's iPad 14-8-28 20:14</div>
-                                            </div>
-                                            <div class="clear"></div>
-                                            <div class="deleteBtn"><a href="#">deleteBtn</a></div>
-                                        </li>
-                                        <li>
-                                            <div class="annotationsIco"><img src="images/edpen/annotationsIcon/brushBtn.png" /></div>
-                                            <div class="annotationsContent">
-                                                <div class="annotationsTitle">Ink, 1 Line</div>
-                                                <div class="annotationsRecord">Synvata's iPad 14-8-28 20:14</div>
-                                            </div>
-                                            <div class="clear"></div>
-                                            <div class="deleteBtn"><a href="#">deleteBtn</a></div>
-                                        </li>
-                                        <li class="total">3 Annotations</li>
+
+                                        <li class="total">{{scence.commandList.length}} Annotations</li>
+
+                                    </ul>
+                                    <ul ng-show="scence.commandList.length==0">
                                         <li class="no-data">No Annotations</li>
                                     </ul>
                                 </div>
                             </div>
-                            <footer><div class="clearBtn"><a href="javascript:void(0)">Clear All</a></div></footer>
+                            <footer><div class="clearBtn" command="reset" once="true"><a href="javascript:void(0)">Clear All</a></div></footer>
                         </div>
                     </div>
                 </li>
@@ -151,8 +137,8 @@
                 <li class="squiggly"><span>Squiggly-text</span></li-->
                 <li class="free-text" command="text"><span>Free Text</span></li>
                 <li class="note"><span>Note</span></li>
-                <li class="pencil" command="pen" style="background:#e91425;"><span>Pencil</span></li>
-                <li class="paintbrush" command="brush" style="background:#e91425;"><span>Paintbrush</span></li>
+                <li class="pencil" command="pen" style="background:{{command.strokeColor}};"><span>Pencil</span></li>
+                <li class="paintbrush" command="brush" style="background:{{command.strokeColor}};"><span>Paintbrush</span></li>
                 <li class="rect" command="rect" longpress window="div.sharp-win"><span>Square</span></li>
                 <!--li class="circle"><span>circle</span></li>
                 <li class="line"><span>line</span></li>
