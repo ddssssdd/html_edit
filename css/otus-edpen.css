@@ -138,6 +138,14 @@
 .tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(3).select{background:#7a7da8;}
 .tooltip .edpen-option ul li .value .locationBtn ul li:nth-child(3).select a{ background:url(../images/edpen/menListTooltip/alignRightIco-select.png) no-repeat center center;}
 
+.sub-tooltip .tooltip-body.graph ul{margin:28px;border-radius:6px;border:2px solid #7a7da8; overflow:hidden;}
+.sub-tooltip .tooltip-body.graph ul:after{content:""; clear:both; display:table;}
+.sub-tooltip .tooltip-body.graph ul li{float:left!important;width:48px!important;height:48px;border-right:1px solid #7a7da8;padding:0px;-moz-box-sizing:border-box;box-sizing:border-box;margin:0px!important;padding:0px!important;border-bottom:0px!important;}
+.sub-tooltip .tooltip-body.graph ul li:last-child{border:0px;}
+.sub-tooltip .tooltip-body.graph ul li:hover{background:#ebedfc!important;}
+.sub-tooltip .tooltip-body.graph ul li.selected{background:#7a7da8!important;}
+
+
 
 .nav-tooltip{ position:absolute;}
 .nav-tooltip:after{content:""; clear:both; display:table;}
@@ -256,7 +264,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bedaff', endC
 
 .annotationsTooltip{position:absolute;left:-144px;top:32px; text-indent:0px!important;}
 .annotationsTooltip .arrow{z-index:100; position:relative;}
-.annotationsTooltip .annotationsBody{box-shadow:0px 0px 3px rgba(0,0,0,0.3);width:320px;border-radius:8px;height:360px;overflow:hidden; position:relative;z-index:90;}
+.annotationsTooltip .annotationsBody{box-shadow:0px 0px 3px rgba(0,0,0,0.3);width:320px;border-radius:8px;height:360px;overflow:hidden; position:relative;z-index:90;background:#fff;}
 .annotationsTooltip .annotationsBody header{background:#fff;border-bottom:1px solid #eee;text-align:center;font:20px/45px SourceSansProSemibold, Arial, Helvetica, sans-serif;}
 .annotationsTooltip .annotationsBody footer{ position:absolute;bottom:0px;background:#fff;border-top:1px solid #eee;text-align:center;font:15px/45px SourceSansProRegular, Arial, Helvetica, sans-serif;width:100%;}
 .annotationsTooltip .annotationsBody footer a{background:none!important;width:inherit!important;height:inherit!important; text-indent:0px!important; display:inherit!important;margin:0px!important;color:#6666cc; text-decoration:none;}

@@ -219,7 +219,7 @@ var Scence = function (divName, settings) {
     this.commandList = [];
     this.registerTools = [MultiMoveSelect, Pen, Line, Rect, Circle, Reset, Text, Brush, Erase,
         UploadCommand, UploadFile,
-        Undo, Redo, LocalSave, LocalRestore,PolyLine2,Polygon];
+        Undo, Redo, LocalSave, LocalRestore,PolyLine,Polygon];
     this.getTool = function (name) {
         for (var i = 0; i < this.registerTools.length; i++) {
             if (this.registerTools[i].classname == name) {

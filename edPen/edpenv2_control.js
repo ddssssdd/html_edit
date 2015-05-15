@@ -15,6 +15,7 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         $scope.command = newCommand;
         $scope.helper.setCommand($scope.command);
         $scope.settings = $scope.helper[$scope.command.classname];
+        $scope.helper.draw($scope.command);
     }
     
     $scope.ispopuping = false;
@@ -58,6 +59,9 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         angular.element("div.setting-win").toggle();
     }
     $scope.openColor = function (event, c) {
+        angular.element("div.color-win").hide();
+        angular.element("div.line-start-win").hide();
+        angular.element("div.line-end-win").hide();
         event.stopPropagation();
         var popup= angular.element(event.target).closest("div[popup]");
         var top = angular.element(event.target).offset().top - 185;
@@ -75,8 +79,22 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
             }
         });
         win.attr("target-color", c);
-        win.toggle();
+        win.show();
         
+    }
+    $scope.openLineSetting = function (event, lineWin) {
+        angular.element("div.color-win").hide();
+        angular.element("div.line-start-win").hide();
+        angular.element("div.line-end-win").hide();
+        event.stopPropagation();
+        var popup = angular.element(event.target).closest("div[popup]");
+        var top = angular.element(event.target).offset().top - 125;
+        var left = popup.offset().left + popup.width();
+        var win = angular.element("div."+lineWin);
+        win.css("left", left);
+        win.css("top", top);
+        win.show();
+
     }
     $scope.changFontSize = function (v) {
         $scope.command.fontSize += v;
@@ -107,6 +125,14 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
     });
     $scope.$watch("command.alignment", function (v) {
         $scope.command.setStyle({ alignment: v });
+        $scope.helper.draw($scope.command);
+    });
+    $scope.$watch("command.lineStart", function (v) {
+        $scope.command.setStyle({ lineStart: v });
+        $scope.helper.draw($scope.command);
+    });
+    $scope.$watch("command.lineEnd", function (v) {
+        $scope.command.setStyle({ lineEnd: v });
         $scope.helper.draw($scope.command);
     });
     $scope.deleteCurrent = function () {
@@ -224,11 +250,12 @@ app.directive("command", function () {
             element.bind("click", function (event) {
                 //var command = angular.element(event.target).attr("command");
                 //console.log(command + "," + attrs.command);
-                angular.element("div[popup]").hide();
+                
                 event.stopPropagation();
                 if (element.attr("done") == "1") {
                     return;
                 }
+                angular.element("div[popup]").hide();
                 scope.execute(element.attr("command"));
                 //scope.execute(attrs.command);
                 if (attrs.once) {
@@ -344,6 +371,41 @@ app.directive("moving_abondon", function () {
             });
         }
     }
+});
+app.directive("lineSetting", function () {
+    return {
+        scope:false,
+        link: function (scope, element, attrs) {
+            //console.log(attrs);
+            function refresh() {
+                if (scope.command && scope.command.classname == "polyline") {
+                    var degree = angular.element(element).closest("div[popup]").hasClass("line-start-win") ? 0 : 180;
+                    var context = element.context.getContext('2d');
+                    element.context.width = element.width();
+                    element.context.height = element.height();
+                    var w = context.canvas.width;
+                    var h = context.canvas.height;
+                    context.clearRect(0, 0, w, h);
+                    scope.command.drawLineSet(context,w/2,h/2, attrs.lineSetting, degree, scope.command.strokeColor, scope.command.fillColor);
+                }
+                
+            }
+            refresh();
+            scope.$watch(attrs.fillColor, function () {
+                refresh();
+            });
+            scope.$watch(attrs.strokeColor, function () {
+                refresh();
+            });
+            element.bind("click", function () {
+                var index = attrs.lineSetting;
+                var prop = angular.element(element).closest("div[popup]").hasClass("line-start-win") ? "lineStart" : "lineEnd";
+                scope.command[prop] = index;
+                scope.$apply();
+            });
+        }
+    };
+
 });
 function ActionHelper() {
     this.example_context = null;
@@ -461,6 +523,8 @@ function ActionHelper() {
     }
     polygon.prototype = new pen();
     var polyline = function () {
+        this.set_lineStart = true;
+        this.set_lineEnd = true;
         this.draw_example = function (context) {
             var r = 15;
             var start = 20;
@@ -474,6 +538,8 @@ function ActionHelper() {
             context.lineTo(w-start, h/2);
             context.stroke();
             context.closePath();
+            this.command.drawLineDirBegin(context, start, h / 2,w/4,h-r*2, this.command.lineStart, this.command.strokeColor, this.command.fillColor);
+            this.command.drawLineDirEnd(context, w-start, h / 2,w / 4 * 3, r * 2, this.command.lineEnd, this.command.strokeColor, this.command.fillColor);
         }
     }
     polyline.prototype = new pen();
@@ -543,4 +609,5 @@ function ActionHelper() {
         }
         
     }
+   
 }

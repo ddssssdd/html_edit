@@ -247,6 +247,18 @@
                                     </div>
                                 </div>
                             </li>
+                            <li ng-show="settings.set_lineStart" ng-click="openLineSetting($event,'line-start-win');">
+                                <div class="label">Line Start</div>
+                                <div class="value">
+                                    <span></span>
+                                </div>
+                            </li>
+                            <li ng-show="settings.set_lineEnd" ng-click="openLineSetting($event,'line-end-win');">
+                                <div class="label">Line End</div>
+                                <div class="value">
+                                    <span></span>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -282,6 +294,46 @@
                     <li><span></span></li>
                     <li><span></span></li>
                     <li><span></span></li>
+                </ul>
+            </div>
+        </div>
+       
+        <div class="sub-tooltip arrow-left line-start-win" style="left:500px;top:180px;" popup>
+            <div class="arrow-position" style="margin-top:80px;">
+                <div class="arrow"><span></span></div>
+            </div>
+            <div class="tooltip-body graph">
+                <ul>
+                    <li ng-repeat="item in [1,2,3,4,5]" class="{{command.lineStart==item?'selected':''}}">
+                        <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor">
+
+                        </canvas>
+                    </li>
+                    
+                </ul>
+                <ul>
+                    <li ng-repeat="item in [6,7,8,9,10]" class="{{command.lineStart==item?'selected':''}}">
+                        <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor">
+                        </canvas>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="sub-tooltip arrow-left line-end-win" style="left:500px;top:180px;" popup>
+            <div class="arrow-position" style="margin-top:80px;">
+                <div class="arrow"><span></span></div>
+            </div>
+            <div class="tooltip-body graph">
+                <ul>
+                    <li ng-repeat="item in [1,2,3,4,5]" class="{{command.lineEnd==item?'selected':''}}">
+                        <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor"></canvas>
+                    </li>
+
+                </ul>
+                <ul>
+                    <li ng-repeat="item in [6,7,8,9,10]" class="{{command.lineEnd==item?'selected':''}}">
+                        <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor"></canvas>
+                    </li>
                 </ul>
             </div>
         </div>

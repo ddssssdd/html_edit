@@ -325,6 +325,9 @@
            this.opacity =  this.groups[i].opacity = style.opacity || this.groups[i].opacity;
            this.fontName =  this.groups[i].fontName = style.fontName || this.groups[i].fontName;
            this.fontSize = this.groups[i].fontSize = style.fontSize || this.groups[i].fontSize;
+
+           this.lineStart = this.groups[i].lineStart = style.lineStart || this.groups[i].lineStart;
+           this.lineEnd = this.groups[i].lineEnd = style.lineEnd || this.groups[i].lineEnd;
         }
         this.Draw();
     }
@@ -874,155 +877,6 @@ var Erase = function (scence) {
 Erase.classname = "erase";
 Erase.prototype = new Action();
 
-//Multiple Line
-var PolyLine = function (scence) {
-    this.scence = scence;
-    this.context = scence.context;
-    this.context_top = scence.context_top;
-    this.isgroup = false;
-    this.lineWidth = 3;
-    this.SELECT_BORDER = 6;
-    this.next = function (action) {
-        this.nextCommand = action;
-        if (!this.done) {
-            this.endLine(false);
-        }
-        
-    }
-    this.mouseout = function (e) {
-        //nothing;
-    }
-    this.endLine = function (fromHere) {
-        this.done = true;
-        this.creating = false;
-        this.Draw();
-        if (fromHere) {
-            this.points = [];
-            this.scence.clone(this);
-        }
-        
-    }
-    this.mouseup = function (e) {
-        if (this.done) {            
-            this.creating = false;
-            return;
-        }
-        if (this.creating) { //if creating ,then end;
-            this.endCreate(e);
-        }
-        this.Draw();
-        if (e.event && e.event.button != 0) {
-            this.endLine(true);
-        }
-    }
-    this.endCreate = function (e) {
-        //this.__proto__.endCreate(e);
-        if (this.points && this.points.length == 0) {
-            return;
-        }
-        this.creating = true;
-        this.points=[{x:this.points[0].x,y:this.points[0].y},{ x: e.offsetX, y: e.offsetY }];
-        this.groups.push({
-            points: this.points,
-            strokeColor: this.strokeColor,
-            fillColor: this.fillColor,
-            lineWidth: this.lineWidth,
-            opactiy:this.opacity
-        });
-        this.processPoint(this.points);
-        if (this.scence.commandList.indexOf(this) < 0) {
-            this.scence.commandList.push(this);
-        }
-        this.points = [];
-        this.Draw();
-    }
-    this.drawAll = function (con) {
-        this.drawOne(con);
-
-    }
-    this.drawJointSelect = function (con,x,y) {
-        if (this.selected) {
-            con.save();
-            con.strokeStyle = "green";
-            con.beginPath();
-            
-            con.arc(x, y, this.SELECT_BORDER, 0, Math.PI * 2, false);
-            con.closePath();
-            con.stroke();
-            con.restore();
-        }
-    }
-    this.drawOne = function (con, points, strokeColor, fillColor, lineWidth, opacity) {
-        con.save();
-        var last = { x: 0, y: 0,start:false};
-        function drawline(con, points) {
-            
-            con.beginPath();
-            if (last.start) {
-                con.moveTo(last.x, last.y);
-                con.lineTo(points[0].x, points[0].y);
-            }
-            con.moveTo(points[0].x, points[0].y);
-            con.lineTo(points[points.length - 1].x, points[points.length - 1].y);
-            con.stroke();
-            con.closePath();
-            if (last.start == false) {                
-                last.start = true;
-            }
-            last.x = points[points.length - 1].x;
-            last.y = points[points.length - 1].y;
-        }
-        con.strokeStyle = this.strokeColor;
-        con.lineWidth = this.lineWidth;
-        con.fillStyle = this.fillColor;
-        for (var j = 0; j < this.groups.length; j++) {
-            var p = this.groups[j];
-            drawline(con, p.points);
-            this.drawJointSelect(con, p.points[0].x, p.points[0].y);
-            this.drawJointSelect(con, p.points[p.points.length - 1].x, p.points[p.points.length - 1].y);
-        }
-        con.restore();
-    }
-    this.selected_point = null;
-
-    this.inside = function (e) {
-        this.selected_point = null;
-        var result = this.__proto__.inside.call(this, e);
-        if (result) {
-            for (var j = 0; j < this.groups.length; j++) {
-                for (var i = 0; i < this.groups[j].points.length; i++) {
-                    var p = this.groups[j].points[i];
-                    var distance = this.distance(p.x, p.y, e.offsetX, e.offsetY);
-                    if (distance < 6) {
-                        this.selected_point = p;
-                        break;
-                    }
-                }
-            }
-        }
-        return result;
-        
-    }
-    
-    this.move = function (e) {
-        if (this.selected) {
-            if (this.selected_point) {
-                this.selected_point.x += e.x;
-                this.selected_point.y += e.y;
-                this.clientRect = { top: 102400, left: 102400, right: 0, bottom: 0 };
-                for (var j = 0; j < this.groups.length; j++) {                   
-                    this.processPoint(this.groups[j].points);
-                }
-                return;
-            }
-            this.__proto__.move.call(this, e);
-        }
-        
-    }
-    
-}
-PolyLine.classname = "polyline_old";
-PolyLine.prototype = new Pen(null);
 
 var Polygon = function (scence) {
     this.scence = scence;
@@ -1173,14 +1027,17 @@ Polygon.prototype = new Pen(null);
 
 
 //Multiple Line
-var PolyLine2 = function (scence) {
+var PolyLine = function (scence) {
     this.scence = scence;
     
     this.context = scence.context;
     this.context_top = scence.context_top;
     this.isgroup = false;
-    this.lineWidth = 3;
+    this.lineWidth = 1;
+    this.fillColor = "rgba(0, 0, 0, 0)";
     this.SELECT_BORDER = 6;
+    this.lineStart = 2;
+    this.lineEnd = 2;
     this.next = function (action) {
         this.nextCommand = action;
         if (!this.done && this.points.length>2) {
@@ -1195,7 +1052,7 @@ var PolyLine2 = function (scence) {
         this.done = true;
 
         this.processPoint(this.points);
-        this.groups = [{ points: this.points, lineWidth: this.lineWidth, fillColor: this.fillColor, strokeColor: this.strokeColor }];
+        this.groups = [{ points: this.points, lineWidth: this.lineWidth, fillColor: this.fillColor, strokeColor: this.strokeColor,lineStart:this.lineStart,lineEnd:this.lineEnd }];
         if (e) {
             this.scence.clone(this);
         } else {
@@ -1312,5 +1169,144 @@ var PolyLine2 = function (scence) {
     }
 
 }
-PolyLine2.classname = "polyline";
-PolyLine2.prototype = new Pen(null);
+PolyLine.classname = "polyline";
+PolyLine.prototype = new Pen(null);
+PolyLine.prototype.drawLineDirBegin = function (context, x, y, x2, y2, no, strokeColor, fillColor) {
+    var degree = Math.atan((y2 - y) / (x2 - x))*(180/Math.PI);
+    this.drawLineSet(context, x, y, no, degree, strokeColor, fillColor);
+}
+PolyLine.prototype.drawLineDirEnd = function (context, x, y, x2, y2, no, strokeColor, fillColor) {
+    var degree = Math.atan((y2 - y) / (x2 - x)) * (180 / Math.PI)+180;
+    this.drawLineSet(context, x, y, no, degree, strokeColor, fillColor);
+}
+PolyLine.prototype.drawLineSet = function (context, x, y, no, degree, strokeColor, fillColor) {
+    context.save();
+    context.strokeStyle = strokeColor || "black";
+    context.fillStyle = fillColor || "red";
+    context.translate(x, y);
+    var index = no * 1;
+    //degree = index * 30;
+    context.rotate(degree * Math.PI / 180);
+    var r = 12;
+    var tr = Math.sqrt(r * r * 2);
+    
+    var tr2 = Math.sqrt(r / 2 * r / 2 / 2);
+    switch (index) {
+        case 1:
+            context.beginPath();
+            context.moveTo(-r, 0);
+            context.lineTo(r, 0);
+            context.closePath();
+            context.stroke();
+            break;
+        case 2:
+            context.beginPath();
+            context.moveTo(0, 0);
+            context.lineTo(r, 0);
+            context.closePath();
+            context.stroke();
+            context.fillRect(-r, -r / 2, r, r);
+            context.strokeRect(-r, -r / 2, r, r);
+            
+            break;
+        case 3:
+            context.beginPath();
+            context.moveTo(0, 0);
+            context.lineTo(r, 0);
+            context.closePath();
+            context.stroke();
+            context.beginPath();
+            context.arc(-r / 2, 0, r / 2, 0, Math.PI * 2, false);
+            context.closePath();
+            context.fill();
+            context.stroke();
+            break;
+        case 4:
+            context.beginPath();
+            context.moveTo(0, 0);
+            context.lineTo(r, 0);
+            context.closePath();
+            context.stroke();
+            context.beginPath();
+            context.moveTo(0, 0);
+            context.lineTo(-tr / 2, -tr / 2);
+            context.lineTo(-tr, 0);
+            context.lineTo(-tr / 2, tr / 2);
+            context.closePath();
+            context.fill();
+            context.stroke();
+            break;
+        case 5:
+            context.beginPath();
+            context.moveTo(-r, 0);
+            context.lineTo(r, 0);
+            context.closePath();
+            context.stroke();
+            context.beginPath();
+            context.moveTo(-r, 0);
+            context.lineTo(0, -r / 2);
+            context.moveTo(-r, 0);
+            context.lineTo(0, r / 2);
+            context.closePath();
+
+            context.stroke();
+            break;
+        case 6:
+            context.beginPath();
+            context.moveTo(0, 0);
+            context.lineTo(r, 0);
+            context.closePath();
+            context.stroke();
+            context.beginPath();
+            context.moveTo(-r, 0);
+            context.lineTo(0, -r / 2);
+            context.lineTo(0, r / 2);
+            context.closePath();
+            context.stroke();
+            context.fill();
+            break;
+        case 7:
+            context.beginPath();
+            context.moveTo(-r, 0);
+            context.lineTo(r, 0);
+            context.moveTo(-r, -r / 2);
+            context.lineTo(-r, r / 2);
+
+            context.closePath();
+            context.stroke();
+            break;
+        case 8:
+            context.beginPath();
+            context.moveTo(0, 0);
+            context.lineTo(r, 0);
+            context.moveTo(0, 0);
+            context.lineTo(-r, -r / 2);
+            context.moveTo(0, 0);
+            context.lineTo(-r, r / 2);
+            context.closePath();
+            context.stroke();
+            break;
+        case 9:
+            context.beginPath();
+            context.moveTo(0, 0);
+            context.lineTo(r, 0);
+            context.moveTo(0, 0);
+            context.lineTo(-r, -r / 2);
+
+            context.lineTo(-r, r / 2);
+            context.closePath();
+            context.stroke();
+            context.fill();
+            break;
+        case 10:
+            context.beginPath();
+            context.moveTo(-r, 0);
+            context.lineTo(r, 0);
+            context.moveTo(-r + tr2, -tr2);
+            context.lineTo(-r - tr2, tr2);
+            context.closePath();
+            context.stroke();
+            break;
+    }
+    context.restore();
+}

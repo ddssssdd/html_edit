@@ -365,3 +365,6 @@ var LocalRestore = function (scence) {
 LocalRestore.classname = "restore"
 LocalRestore.prototype = new LocalSave(null);
 LocalRestore.runonce = true;
+
+
+
