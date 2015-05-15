@@ -1129,6 +1129,18 @@ var PolyLine = function (scence) {
             for (var i = 0; i < points.length; i++) {
                 this.drawJointSelect(con, points[i].x, points[i].y);
             }
+            if (points.length > 2) {
+                var x = points[0].x;
+                var y = points[0].y;
+                var x1 = points[1].x;
+                var y1 = points[1].y;
+                this.drawLineDirBegin(con, x,y,x1,y1, this.lineStart, this.strokeColor, this.fillColor,this.lineWidth*1);
+                x = points[points.length - 1].x;
+                y = points[points.length - 1].y;
+                x1 = points[points.length - 2].x;
+                y1 = points[points.length - 2].y;
+                this.drawLineDirEnd(con, x,y,x1,y1, this.lineEnd, this.strokeColor, this.fillColor,this.lineWidth*1);
+            }
         }
     }
     this.selected_point = null;
@@ -1171,15 +1183,21 @@ var PolyLine = function (scence) {
 }
 PolyLine.classname = "polyline";
 PolyLine.prototype = new Pen(null);
-PolyLine.prototype.drawLineDirBegin = function (context, x, y, x2, y2, no, strokeColor, fillColor) {
-    var degree = Math.atan((y2 - y) / (x2 - x))*(180/Math.PI);
-    this.drawLineSet(context, x, y, no, degree, strokeColor, fillColor);
+PolyLine.prototype.drawLineDirBegin = function (context, x, y, x2, y2, no, strokeColor, fillColor, lineWidth) {
+    var degree = Math.atan((y2 - y) / (x2 - x)) * (180 / Math.PI);
+    if (x2 < x) {
+        degree += 180;
+    }
+    this.drawLineSet(context, x, y, no, degree, strokeColor, fillColor, lineWidth);
 }
-PolyLine.prototype.drawLineDirEnd = function (context, x, y, x2, y2, no, strokeColor, fillColor) {
-    var degree = Math.atan((y2 - y) / (x2 - x)) * (180 / Math.PI)+180;
-    this.drawLineSet(context, x, y, no, degree, strokeColor, fillColor);
+PolyLine.prototype.drawLineDirEnd = function (context, x, y, x2, y2, no, strokeColor, fillColor, lineWidth) {
+    var degree = Math.atan((y2 - y) / (x2 - x)) * (180 / Math.PI) + 180;
+    if (x2 > x) {
+        degree += 180;
+    }
+    this.drawLineSet(context, x, y, no, degree, strokeColor, fillColor, lineWidth);
 }
-PolyLine.prototype.drawLineSet = function (context, x, y, no, degree, strokeColor, fillColor) {
+PolyLine.prototype.drawLineSet = function (context, x, y, no, degree, strokeColor, fillColor,lineWidth) {
     context.save();
     context.strokeStyle = strokeColor || "black";
     context.fillStyle = fillColor || "red";
@@ -1188,6 +1206,7 @@ PolyLine.prototype.drawLineSet = function (context, x, y, no, degree, strokeColo
     //degree = index * 30;
     context.rotate(degree * Math.PI / 180);
     var r = 12;
+    context.lineWidth = lineWidth;
     var tr = Math.sqrt(r * r * 2);
     
     var tr2 = Math.sqrt(r / 2 * r / 2 / 2);
