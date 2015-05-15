@@ -338,24 +338,23 @@
             </div>
         </div>
 
-        <div class="shortcutMenu" popup style="display:none;z-index:100;">
+        <div class="shortcutMenu" popup style="display:none;z-index:100;" shortmenu>
             <div class="list">
                 <ul>
 
                     <li ng-click="openSetting($event);"><a href="javascript:void(0);">Inspector</a></li>
-                    <li><a href="#">Note</a></li>
-                    <li><a href="#">Copy</a></li>
+                    <li ng-click="noteCurrent($event);"><a href="javascript:void(0);">Note</a></li>
+                    <li ng-click="copyCurrent($event);"><a href="javascript:void(0);">Copy</a></li>
                     <li class="deleteBtn" ng-click="deleteCurrent();"><a href="javascript:void(0);">eraserBtn</a></li>
                     <li class="clear"></li>
                 </ul>
             </div>
             <div class="arrow"><img src="images/edPen/menuTooltip/arrow-2.png" width="18" /></div>
         </div>
-        <div class="shortcutMenu_all" style="display:none;">
+        <div class="shortcutMenu" style="display:none;" popup shortmenuall>
             <div class="list">
                 <ul>
                     <li><a href="#">Paste</a></li>
-                    <li><a href="#">Inspector...</a></li>
                     <li><a href="#">Edit</a></li>
                     <li><a href="#">Copy</a></li>
                     <li class="textBtn"><a href="#">textBtn</a></li>
@@ -379,10 +378,10 @@
             <div class="body">
                 <header>
                     <div class="title">Text</div>
-                    <div class="deleteBtn"><a href="javascript:void(0);">Add</a></div>
+                    <div class="deleteBtn" ng-click="command.note='';"><a href="javascript:void(0);">Add</a></div>
                 </header>
                 <div class="noteBody">
-                    <textarea name="textarea" id="textarea" cols="45" rows="5"></textarea>
+                    <textarea cols="45" rows="5" ng-model="command.note"></textarea>
                 </div>
             </div>
             <div class="arrow"></div>

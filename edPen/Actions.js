@@ -16,6 +16,7 @@
     this.fontName = "Arial";
     this.fontSize = 32;
     this.opacity = 100;
+    this.note = "";
     this.isgroup = false;
     this.scale = { x: 1, y: 1 };
     this.SELECT_BORDER = 0;
@@ -695,7 +696,7 @@ var Text = function (scence) {
         if (this.input == null) {
             this.start_pos.x = e.offsetX;
             this.start_pos.y = e.offsetY;
-            var inputElement = "<input type='text' style='position:absolute;width:300px;left:"+e.offsetX+"px;top:"+e.offsetY+"px;z-index:5;' />";
+            var inputElement = "<input type='text' style='position:absolute;width:300px;left:"+e.offsetX+"px;top:"+e.offsetY+"px;z-index:5;font:"+this.font()+"' />";
             this.input = $(inputElement).appendTo(this.scence.div);
             this.input.bind("blur", function () {
                 instance.endCreate(e);

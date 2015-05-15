@@ -143,7 +143,7 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
     $scope.popup_shortmenu = function (action) {
         angular.element("div[popup]").hide();
         var rect = action.clientRect;
-        var menu = angular.element("div.shortcutMenu");
+        var menu = angular.element("div[shortmenu]");
         menu.css("left", rect.left + (rect.right - rect.left - menu.width()) / 2);
         menu.css("top", rect.top - 56);
         menu.show();
@@ -162,7 +162,18 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         $scope.scence.reDraw();
         angular.element("div[popup]").hide();
     }
-
+    $scope.noteCurrent = function (event) {
+        event.stopPropagation();
+        var rect = $scope.command.clientRect;
+        var win = angular.element("div.left");
+        win.css("left", rect.right);
+        win.css("top", rect.top);
+        win.show();
+        win.find("textarea").focus();
+    }
+    $scope.copyCurrent = function (event) {
+        console.log($scope.command);
+    }
 
 
     //for moving
@@ -286,29 +297,6 @@ app.directive("command", function () {
     }
 });
 
-app.directive("longpress", function () {
-    return {
-        link: function (scope, element, attrs) {
-            var pressTimer;
-            element.bind("mousedown", function () {
-                element.removeAttr("done");
-                pressTimer = window.setTimeout(function () {
-                    //console.log("long press" + element);
-                    do_longpress();
-                }, 1000);
-                
-            });
-            element.bind("mouseup", function () {
-                clearTimeout(pressTimer);
-            });
-            function do_longpress() {
-                //console.log(attrs.window);
-                angular.element(attrs.window).show();
-                element.attr("done", "1"); //to prevent click event happen.
-            }
-        }
-    }
-});
 app.directive("toolChange", function () {
     return {
         link: function (scope, element, attrs) {
@@ -348,41 +336,58 @@ app.directive("setupColor", function () {
 app.directive("moving", function () {
     return {
         link: function (scope, element, attrs) {
-            /*
-            element.bind("mouseup", function (event) {
-                var index = scope.mouse.items.indexOf(element);
-                if (index > -1) {
-                    scope.mouse.items.splice(index, 1);
-                }
-            });
-            element.bind("mouseout", function (event) {
-                var index = scope.mouse.items.indexOf(element);
-                if (index > -1) {
-                    scope.mouse.items.splice(index, 1);
-                }
-            });*/
             element.bind("mousedown", function (event) {
                 scope.mouse.items.push(element);
             });
+        }
+    }
+});
 
-            
+app.directive("longpress", function () {
+    return {
+        link: function (scope, element, attrs) {
+            var pressTimer;
+            element.bind("mousedown", function (event) {
+                element.removeAttr("done");
+                pressTimer = window.setTimeout(function () {
+                    //console.log("long press" + element);
+                    do_longpress();
+                }, 1000);
+                event.stopPropagation();
+            });
+            element.bind("mouseup", function (event) {
+                clearTimeout(pressTimer);
+                event.stopPropagation();
+            });
+            function do_longpress() {
+                //console.log(attrs.window);
+                angular.element(attrs.window).show();
+                element.attr("done", "1"); //to prevent click event happen.
+            }
         }
     }
 });
 app.directive("mouseEvent", function () {
     return {
         link: function (scope, element, attrs) {
+            var pressTimer;
             element.bind("mouseup", function (event) {                
                 scope.mouse.start = { x: 0, y: 0 };
                 scope.mouse.false = true;
                 scope.mouse.items = [];
+                clearTimeout(pressTimer);
             });
             element.bind("mousedown", function (event) {
                 scope.mouse.start ={ x: event.clientX, y: event.clientY };
                 scope.mouse.moving = true;
+                element.removeAttr("done");
+                pressTimer = window.setTimeout(function () {
+                    do_longpress(event);
+                }, 1000);
             });
 
             element.bind("mousemove", function (event) {
+                clearTimeout(pressTimer);
                 if (scope.mouse.moving) {
                     start2 = { x: event.clientX, y: event.clientY };
                     var vx = (start2.x - scope.mouse.start.x);
@@ -396,6 +401,14 @@ app.directive("mouseEvent", function () {
                 scope.mouse.moving = false;
                 scope.mouse.items = [];
             });
+            function do_longpress(event) {
+                var win = angular.element("div[shortmenuall]");
+                win.css("left", event.clientX- element.offset().left - win.width()/2);
+                win.css("top", event.clientY - element.offset().top - win.height());
+                win.show();
+                scope.ispopuping = true;
+                clearTimeout(pressTimer);
+            }
         }
     }
 });
