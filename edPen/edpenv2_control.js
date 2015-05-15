@@ -163,6 +163,23 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         angular.element("div[popup]").hide();
     }
 
+
+
+    //for moving
+    $scope.mouse = {
+        start: { x: 0, y: 0 },
+        moving : false,
+        items: [],
+        move: function (vx,vy) {
+            for (var i = 0; i < this.items.length; i++) {
+                var item = this.items[i];
+                var top = parseInt(item.css("top"));
+                var left = parseInt(item.css("left"));
+                item.css("top", top + vy);
+                item.css("left", left + vx);
+            }
+        }
+    }
 });
 app.service("MainMenuService", function () {
     
@@ -328,46 +345,56 @@ app.directive("setupColor", function () {
     };
 });
 
-app.directive("moving_abondon", function () {
+app.directive("moving", function () {
     return {
         link: function (scope, element, attrs) {
-            var moving = false;
-            var start = { x: 0, y: 0 };
+            /*
             element.bind("mouseup", function (event) {
-                console.log("mouseup");
-                moving = false;
-                start = { x: 0, y: 0 };
+                var index = scope.mouse.items.indexOf(element);
+                if (index > -1) {
+                    scope.mouse.items.splice(index, 1);
+                }
+            });
+            element.bind("mouseout", function (event) {
+                var index = scope.mouse.items.indexOf(element);
+                if (index > -1) {
+                    scope.mouse.items.splice(index, 1);
+                }
+            });*/
+            element.bind("mousedown", function (event) {
+                scope.mouse.items.push(element);
+            });
+
+            
+        }
+    }
+});
+app.directive("mouseEvent", function () {
+    return {
+        link: function (scope, element, attrs) {
+            element.bind("mouseup", function (event) {                
+                scope.mouse.start = { x: 0, y: 0 };
+                scope.mouse.false = true;
+                scope.mouse.items = [];
             });
             element.bind("mousedown", function (event) {
-                console.log("mousedown");
-                moving = true;
-                start = { x: event.clientX, y: event.clientY };
-                console.log("x=" + start.x + ",y=" + start.y);
+                scope.mouse.start ={ x: event.clientX, y: event.clientY };
+                scope.mouse.moving = true;
             });
 
             element.bind("mousemove", function (event) {
-
-                if (moving) {
+                if (scope.mouse.moving) {
                     start2 = { x: event.clientX, y: event.clientY };
-                    console.log("x=" + start2.x + ",y=" + start2.y);
-                    var left = angular.element("div.toolbar").offset().left;
-                    var top = angular.element("div.toolbar").offset().top;
-                    console.log("left=" + left + ",top=" + top);
-                    var vx = left + (start2.x - start.x);
-                    var vy = top + (start2.y - start.y);
-                    console.log("vx=" + vx + ",vy=" + vy);
-                    angular.element("div.toolbar").css("left", vx);
-                    angular.element("div.toolbar").css("top", vy);
-                    left = angular.element("div.toolbar").offset().left;
-                    top = angular.element("div.toolbar").offset().top;
-                    console.log("left=" + left + ",top=" + top);
-                    start2 = start;
+                    var vx = (start2.x - scope.mouse.start.x);
+                    var vy = (start2.y - scope.mouse.start.y);
+                    scope.mouse.move(vx, vy);
+                    scope.mouse.start = { x: event.clientX, y: event.clientY };
                 }
-
             });
             element.bind("mouseout", function (event) {
-                moving = false;
-                start = { x: 0, y: 0 };
+                scope.mouse.start = { x: 0, y: 0 };
+                scope.mouse.moving = false;
+                scope.mouse.items = [];
             });
         }
     }

@@ -127,23 +127,23 @@
         </div>
     </div>
 
-    <div class="main-body bgWrite edpen-body" id="mainBody">
+    <div class="main-body bgWrite edpen-body" id="mainBody" mouse-event>
         <div class="toolbar" style="z-index:100;" moving>
             <ul>
                 <li class="move"><span>Move</span></li>
                 <li class="highlight" longpress window="div.text-win" command="highlight"><span>Highlight-text</span></li>
                 <!--li class="underline"><span>Underline-text</span></li>
-                <li class="strikethru"><span>Strikethru-text</span></li>
-                <li class="squiggly"><span>Squiggly-text</span></li-->
+            <li class="strikethru"><span>Strikethru-text</span></li>
+            <li class="squiggly"><span>Squiggly-text</span></li-->
                 <li class="free-text" command="text"><span>Free Text</span></li>
                 <li class="note"><span>Note</span></li>
                 <li class="pencil" command="pen" style="background:{{command.strokeColor}};"><span>Pencil</span></li>
                 <li class="paintbrush" command="brush" style="background:{{command.strokeColor}};"><span>Paintbrush</span></li>
                 <li class="rect" command="rect" longpress window="div.sharp-win"><span>Square</span></li>
                 <!--li class="circle"><span>circle</span></li>
-                <li class="line"><span>line</span></li>
-                <li class="polygon"><span>polygon</span></li>
-                <li class="polyline"><span>polyline</span></li-->
+            <li class="line"><span>line</span></li>
+            <li class="polygon"><span>polygon</span></li>
+            <li class="polyline"><span>polyline</span></li-->
                 <li class="color" style="background:{{command.fillColor}};" ng-click="openSetting($event);"><span>Color</span></li>
                 <li class="image" command="upload"><span>Image</span></li>
                 <li class="voicereord"><span>Voice Record</span></li>
