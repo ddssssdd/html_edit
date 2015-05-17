@@ -137,8 +137,8 @@
             <li class="squiggly"><span>Squiggly-text</span></li-->
                 <li class="free-text" command="text"><span>Free Text</span></li>
                 <li class="note"><span>Note</span></li>
-                <li class="pencil" command="pen" style="background:{{command.strokeColor}};"><span>Pencil</span></li>
-                <li class="paintbrush" command="brush" style="background:{{command.strokeColor}};"><span>Paintbrush</span></li>
+                <li class="pencil" command="pen" style="background:{{command.classname=='pen'?command.strokeColor:'rgba(0,0,0,0)'}};"><span>Pencil</span></li>
+                <li class="paintbrush" command="brush" style="background:{{command.classname=='brush'?command.strokeColor:'rgba(0,0,0,0)'}};"><span>Paintbrush</span></li>
                 <li class="rect" command="rect" longpress window="div.sharp-win"><span>Square</span></li>
                 <!--li class="circle"><span>circle</span></li>
             <li class="line"><span>line</span></li>
@@ -351,7 +351,7 @@
             </div>
             <div class="arrow"><img src="images/edPen/menuTooltip/arrow-2.png" width="18" /></div>
         </div>
-        <div class="shortcutMenu" style="display:none;" popup shortmenuall>
+        <div class="shortcutMenu" style="display:none;z-index:100;" popup shortmenuall>
             <div class="list">
                 <ul>
                     <li><a href="#">Paste</a></li>

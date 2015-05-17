@@ -72,7 +72,7 @@
         }
         this.context_top.save();
         this.context_top.strokeStyle = "blue";
-        this.context_top.lineWidth = 2;
+        this.context_top.lineWidth = 1;
         var x = this.clientRect.left - this.SELECT_BORDER / 2;
         var y = this.clientRect.top - this.SELECT_BORDER / 2;
         var w = this.clientRect.right - this.clientRect.left + this.SELECT_BORDER;
@@ -86,6 +86,10 @@
         this.context_top.clearRect(x + w - r, y - r, this.CORNER_WIDTH, this.CORNER_WIDTH); //right
         this.context_top.clearRect(x - r, y + h - r, this.CORNER_WIDTH, this.CORNER_WIDTH); //left -bottom
         this.context_top.clearRect(x + w - r, y + h - r, this.CORNER_WIDTH, this.CORNER_WIDTH); //right-bottom
+        this.context_top.clearRect(x - r + w / 2, y - r, this.CORNER_WIDTH, this.CORNER_WIDTH); //left -right top
+        this.context_top.clearRect(x - r + w / 2, y + h - r, this.CORNER_WIDTH, this.CORNER_WIDTH); //left - right botton
+        this.context_top.clearRect(x - r, y + h / 2 - r, this.CORNER_WIDTH, this.CORNER_WIDTH); //left -bottom
+        this.context_top.clearRect(x + w - r, y + h / 2 - r, this.CORNER_WIDTH, this.CORNER_WIDTH); //right-bottom
         //draw rect
         this.context_top.lineWidth = 1;
         this.context_top.strokeStyle = "blue";
@@ -94,10 +98,16 @@
         this.context_top.strokeRect(x - r, y +h- r, this.CORNER_WIDTH, this.CORNER_WIDTH); //left -bottom
         this.context_top.strokeRect(x + w - r, y + h - r, this.CORNER_WIDTH, this.CORNER_WIDTH); //right-bottom
 
+        this.context_top.strokeRect(x - r+w/2, y - r, this.CORNER_WIDTH, this.CORNER_WIDTH); //left -right top
+        this.context_top.strokeRect(x - r+w/2, y +h - r, this.CORNER_WIDTH, this.CORNER_WIDTH); //left - right botton
+        this.context_top.strokeRect(x - r, y + h/2 - r, this.CORNER_WIDTH, this.CORNER_WIDTH); //left -bottom
+        this.context_top.strokeRect(x + w - r, y + h/2 - r, this.CORNER_WIDTH, this.CORNER_WIDTH); //right-bottom
+
+        /*
         this.context_top.fillStyle = "black";
         this.context_top.textBaseline = "bottom";
         this.context_top.fillText(this.resize_selected + '', x + 20, y + 20);
-
+        */
         
         if (this.scence.debug && this.ctrlSelect) {
             this.drawDebugSelect(x, y, w, h);
