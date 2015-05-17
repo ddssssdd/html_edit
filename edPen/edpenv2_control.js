@@ -24,7 +24,11 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
             //$scope.command = event.target[0];
             $scope.change_command(event.target[0]);
             $scope.selectCommand(event.target[0]);
+            //console.log($scope.command);
         }
+    });
+    $scope.scence.addEvent("add_command", function (event) {
+        //console.log(event.target);
     });
     $scope.command = $scope.scence.command;
     $scope.mainmenu = { selected: 'toolbar' };
@@ -52,6 +56,7 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         } else {
             $("div[popup]").hide();
         }
+        //$scope.scence.reDraw();
         
     });
     $scope.openSetting = function (event) {
@@ -139,6 +144,16 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         $scope.command.deleted = true;
         $scope.scence.reDraw();
         angular.element("div[popup]").hide();
+        console.log("Delete_current:");
+        console.log($scope.command);
+    }
+    $scope.deleteCommand = function (action, event) {
+        event.stopPropagation();
+        action.deleted = true;
+        $scope.scence.reDraw();
+        angular.element("div[popup]").hide();
+        console.log("Delete:");
+        console.log(action);
     }
     $scope.popup_shortmenu = function (action) {
         angular.element("div[popup]").hide();
@@ -150,18 +165,14 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         $scope.ispopuping = true;
     }
     $scope.selectCommand = function (action) {
-        
+        angular.element("div.toolbar li[command='select']").trigger("click");
         action.selected = true;
         $scope.scence.reDraw();
         $scope.popup_shortmenu(action);
+        $scope.change_command(action);
         //$scope.scence.do("select");
     }
-    $scope.deleteCommand = function (action, event) {
-        event.stopPropagation();
-        action.deleted = true;
-        $scope.scence.reDraw();
-        angular.element("div[popup]").hide();
-    }
+   
     $scope.noteCurrent = function (event) {
         event.stopPropagation();
         var rect = $scope.command.clientRect;
@@ -174,7 +185,16 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
     $scope.copyCurrent = function (event) {
         console.log($scope.command);
     }
+    $scope.actions = function () {
+        var results = [];
+        angular.forEach($scope.scence.commandList, function (item) {
+            if (!item.deleted) {
+                results.push(item);
+            }
+        });
+        return results;
 
+    }
 
     //for moving
     $scope.mouse = {
@@ -230,6 +250,10 @@ app.service("MainMenuService", function () {
     }
     this.export = function (li) {
         this.log(arguments.callee, li);
+        var scence = angular.element(li).scope().scence;
+        window.open(scence.data_image(), "_blank", "location=yes,width=600,height=400");
+        //window.location = scence.canvas.toDataURL("image/png");
+        //{ imgdata: canvas_back.toDataURL("image/png") }
     }
     this.grid = function (li) {
         this.log(arguments.callee, li);

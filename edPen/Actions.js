@@ -159,7 +159,7 @@
                 this.scence.clone(this);
             } else {
                 if (this.scence.commandList.indexOf(this) < 0) {
-                    this.scence.commandList.push(this);
+                    this.scence.addCommand(this);
                 }
             }
         }
@@ -340,7 +340,8 @@
            this.lineStart = this.groups[i].lineStart = style.lineStart || this.groups[i].lineStart;
            this.lineEnd = this.groups[i].lineEnd = style.lineEnd || this.groups[i].lineEnd;
         }
-        this.Draw();
+        //this.Draw();
+        this.scence.reDraw();
     }
     Action.prototype.clone = function () {
         return {
@@ -350,6 +351,9 @@
             fillColor: this.fillColor,
             strokeColor: this.strokeColor,
             clientRect: this.clientRect,
+            fontName: this.fontName,
+            fontSize: this.fontSize,
+            opacity:this.opacity,
             groups: this.groups
         };
     }
@@ -360,6 +364,9 @@
         this.fillColor = other.fillColor;
         this.strokeColor = other.strokeColor;
         this.clientRect = other.clientRect;
+        this.fontSize = other.fontSize;
+        this.fontName = other.fontName;
+        this.opacity = other.opacity;
     }
     this.nextCommand = null;
     Action.prototype.next = function (action) {
@@ -698,7 +705,7 @@ var Text = function (scence) {
             fontSize:this.fontSize
         });
         this.context.restore();
-        this.scence.commandList.push(instance);
+        this.scence.addCommand(instance);
         this.drawOne(this.context);
 
     }
@@ -917,7 +924,7 @@ var Polygon = function (scence) {
         if (e) {
             this.scence.clone(this);
         } else {
-            this.scence.commandList.push(this);
+            this.scence.addCommand(this);
         }
         this.Draw();
     }
@@ -1067,7 +1074,7 @@ var PolyLine = function (scence) {
         if (e) {
             this.scence.clone(this);
         } else {
-            this.scence.commandList.push(this);
+            this.scence.addCommand(this);
         }
         this.Draw();
     }

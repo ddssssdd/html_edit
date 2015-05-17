@@ -41,7 +41,7 @@
                                 <div class="list ScrollBAR">
                                     <ul ng-show="scence.commandList.length>0">
 
-                                        <li ng-repeat="action in scence.commandList" ng-click="selectCommand(action);" ng-show="!action.deleted">
+                                        <li ng-repeat="action in actions()" ng-click="selectCommand(action);" ng-show="!action.deleted">
                                             <div class="annotationsIco">
 
                                                 <img src="images/edpen/annotationsIcon/brushBtn.png" />
@@ -49,16 +49,16 @@
                                             </div>
                                             <div class="annotationsContent">
                                                 <div class="annotationsTitle">{{action.classname}}</div>
-                                                <div class="annotationsRecord">Synvata's iPad 14-8-28 20:14</div>
+                                                <div class="annotationsRecord">{{action.dateCreated |  date:"MM/dd/yyyy @ h:mma"}}</div>
                                             </div>
                                             <div class="clear"></div>
                                             <div class="deleteBtn" ng-click="deleteCommand(action,$event);"><a href="javascript:void(0);">deleteBtn</a></div>
                                         </li>
 
-                                        <li class="total">{{scence.commandList.length}} Annotations</li>
+                                        <li class="total">{{actions().length}} Annotations</li>
 
                                     </ul>
-                                    <ul ng-show="scence.commandList.length==0">
+                                    <ul ng-show="actions().length==0">
                                         <li class="no-data">No Annotations</li>
                                     </ul>
                                 </div>

@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Test</title>
+
+<script src="../js/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="../js/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="pie_chart.js" type="text/javascript"></script>
+<link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    
+    <div id="wrapCanvas" style="width:450px;height:300px;float:left;position:relative;border:1px solid;">
+        
+    </div>
+    <div id="wrapCanvas2" style="width:300px;height:300px;float:left;position:relative;border:1px solid;">
+
+    </div>
+    <div id="wrapCanvas3" style="width:300px;height:450px;float:left;position:relative;border:1px solid;">
+
+    </div>
+    <script>
+        var data = [2, 2, 2, 1, 4, 4, 10, 2, 2, 2, 1, 4, 4, 10, 2, 2,21,22,12,44,21];
+        var labels = ["This is one", "this is two", "this is thuree","this is forth","5","6","7"];
+        new PieChart(data, labels, "wrapCanvas", { not_sort: true });
+
+        new PieChart(data, labels, "wrapCanvas2");
+        new PieChart(data, labels, "wrapCanvas3", { not_sort: true });
+   
+    </script>
+    
+    <br />
+
+    <div id="wrapCanvas4" style="width:450px;height:300px;float:left;position:relative;border:1px solid;">
+    </div>
+    <div id="wrapCanvas5" style="width:300px;height:300px;float:left;position:relative;border:1px solid;">
+    </div>
+    <div id="wrapCanvas6" style="width:300px;height:450px;float:left;position:relative;border:1px solid;">
+    </div>
+    <script>
+        var data = [
+            { data: 3, percent: 20, label: "this is first line" },
+            { data: 20, percent: 30, label: "this is second line" },
+            { data: 3, percent: 50, label: "this is third line" }];
+        new PieChart(data, 100, "wrapCanvas4");
+
+
+        new PieChart(data, 100, "wrapCanvas5");
+        new PieChart(data, 100, "wrapCanvas6");
+
+    </script>
+
+</body>
+
+</html>

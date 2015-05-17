@@ -252,12 +252,17 @@ var Scence = function (divName, settings) {
         
     }
     this.clone = function (action) {
-        this.commandList.push(action);
+        this.addCommand(action);
         this.do(this.lastCommandName).getStyle(action);
     }
     this.selectCommand = function (actions,event) {
-        console.log(actions);
+       // console.log(actions);
         this.fire("select", { target: actions,original:event });
+    }
+    this.addCommand = function (action) {
+        action.dateCreated = new Date();
+        this.commandList.push(action);
+        this.fire("add_command", { target: action });
     }
     this.fire = function (type, event) {
         for (var i = 0; i < this.watchlist.length; i++) {
@@ -294,8 +299,15 @@ var Scence = function (divName, settings) {
         console.log(f);
         console.log(pos);
         var upload = new UploadFile(instance, f, pos);
-        this.commandList.push(upload);
+        this.addCommand(upload);
         upload.Draw();
+    }
+    this.data_image = function () {
+        for (var i = 0; i < this.commandList.length; i++) {
+            this.commandList[i].selected = false;
+        }
+        this.reDraw();
+        return this.canvas.toDataURL("image/png");
     }
 }
 
