@@ -128,9 +128,9 @@
     </div>
 
     <div class="main-body bgWrite edpen-body" id="mainBody" mouse-event>
-        <div class="toolbar" style="z-index:100;" moving>
+        <div class="toolbar" style="z-index:100;" >
             <ul>
-                <li class="move"><span>Move</span></li>
+                <li class="move" moving target="div.toolbar"><span>Move</span></li>
                 <li class="highlight" longpress window="div.text-win" command="highlight"><span>Highlight-text</span></li>
                 <!--li class="underline"><span>Underline-text</span></li>
             <li class="strikethru"><span>Strikethru-text</span></li>
@@ -250,13 +250,22 @@
                             <li ng-show="settings.set_lineStart" ng-click="openLineSetting($event,'line-start-win');">
                                 <div class="label">Line Start</div>
                                 <div class="value">
-                                    <span></span>
+                                    <canvas class="graph-wrap" line-setting="{{command.lineStart}}" style="width:36px;height:36px;" 
+                                            fill-color="command.fillColor" stroke-color="command.strokeColor" line-start="command.lineStart"
+                                            line-degree="0"
+                                            >
+                                        </canvas>
                                 </div>
                             </li>
                             <li ng-show="settings.set_lineEnd" ng-click="openLineSetting($event,'line-end-win');">
                                 <div class="label">Line End</div>
                                 <div class="value">
-                                    <span></span>
+                                    <canvas class="graph-wrap" line-setting="{{command.lineEnd}}" style="width:36px;height:36px;" 
+                                            fill-color="command.fillColor" stroke-color="command.strokeColor" line-end="command.lineEnd"
+                                            line-degree="180"
+                                            >
+
+                                    </canvas>
                                 </div>
                             </li>
                         </ul>
@@ -305,16 +314,13 @@
             <div class="tooltip-body graph">
                 <ul>
                     <li ng-repeat="item in [1,2,3,4,5]" class="{{command.lineStart==item?'selected':''}}">
-                        <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor">
-
-                        </canvas>
+                        <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor" line-degree="0"></canvas>
                     </li>
                     
                 </ul>
                 <ul>
                     <li ng-repeat="item in [6,7,8,9,10]" class="{{command.lineStart==item?'selected':''}}">
-                        <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor">
-                        </canvas>
+                        <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor" line-degree="0"></canvas>
                     </li>
                 </ul>
             </div>
@@ -326,13 +332,13 @@
             <div class="tooltip-body graph">
                 <ul>
                     <li ng-repeat="item in [1,2,3,4,5]" class="{{command.lineEnd==item?'selected':''}}">
-                        <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor"></canvas>
+                        <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor" line-degree="180"></canvas>
                     </li>
 
                 </ul>
                 <ul>
                     <li ng-repeat="item in [6,7,8,9,10]" class="{{command.lineEnd==item?'selected':''}}">
-                        <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor"></canvas>
+                        <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor" line-degree="180"></canvas>
                     </li>
                 </ul>
             </div>
@@ -342,10 +348,11 @@
             <div class="list">
                 <ul>
 
-                    <li ng-click="openSetting($event);"><a href="javascript:void(0);">Inspector</a></li>
-                    <li ng-click="noteCurrent($event);"><a href="javascript:void(0);">Note</a></li>
-                    <li ng-click="copyCurrent($event);"><a href="javascript:void(0);">Copy</a></li>
-                    <li class="deleteBtn" ng-click="deleteCurrent();"><a href="javascript:void(0);">eraserBtn</a></li>
+                    <li ng-click="openSetting($event,true);" ng-show="settings.set_inspector"><a href="javascript:void(0);">Inspector</a></li>
+                    <li ng-click="noteCurrent($event);" ng-show="settings.set_note"><a href="javascript:void(0);">Note</a></li>
+                    <li ng-click="editCurrent($event);" ng-show="settings.set_edit"><a href="javascript:void(0);">Edit</a></li>
+                    <li ng-click="copyCurrent($event);" ng-show="settings.set_copy"><a href="javascript:void(0);">Copy</a></li>
+                    <li class="deleteBtn" ng-click="deleteCurrent();" ng-show="settings.set_delete"><a href="javascript:void(0);">eraserBtn</a></li>
                     <li class="clear"></li>
                 </ul>
             </div>
@@ -354,16 +361,16 @@
         <div class="shortcutMenu" style="display:none;z-index:100;" popup shortmenuall>
             <div class="list">
                 <ul>
-                    <li><a href="#">Paste</a></li>
-                    <li><a href="#">Edit</a></li>
-                    <li><a href="#">Copy</a></li>
-                    <li class="textBtn"><a href="#">textBtn</a></li>
-                    <li class="brushBtn"><a href="#">brushBtn</a></li>
-                    <li class="SignatureBtn"><a href="#">SignatureBtn</a></li>
-                    <li class="StampsBtn"><a href="#">StampsBtn</a></li>
-                    <li class="ImportImageBtn"><a href="#">ImportImageBtn</a></li>
-                    <li class="eraserBtn"><a href="#">eraserBtn</a></li>
-                    <li class="deleteBtn"><a href="#">eraserBtn</a></li>
+                    <li ng-click="pasteCommand($event)"><a href="#">Paste</a></li>
+                    
+                    
+                    <li class="textBtn" ng-click="executeCommand($event,'text')"><a href="#">textBtn</a></li>
+                    <li class="brushBtn" ng-click="executeCommand($event,'brush')"><a href="#">brushBtn</a></li>
+                    <!--<li class="SignatureBtn"><a href="#">SignatureBtn</a></li>-->
+                    <!--<li class="StampsBtn"><a href="#">StampsBtn</a></li>-->
+                    <li class="ImportImageBtn" ng-click="executeCommand($event,'upload')"><a href="#">ImportImageBtn</a></li>
+                    <li class="eraserBtn" ng-click="executeCommand($event,'erase')"><a href="#">eraserBtn</a></li>
+                    <!--<li class="deleteBtn" ><a href="#">eraserBtn</a></li>-->
                     <li class="clear"></li>
                 </ul>
             </div>

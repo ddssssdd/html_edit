@@ -16,6 +16,7 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         $scope.helper.setCommand($scope.command);
         $scope.settings = $scope.helper[$scope.command.classname];
         $scope.helper.draw($scope.command);
+        //console.log($scope.settings);
     }
     
     $scope.ispopuping = false;
@@ -59,9 +60,24 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         //$scope.scence.reDraw();
         
     });
-    $scope.openSetting = function (event) {
+    $scope.openSetting = function (event,inWindow) {
         event.stopPropagation();
-        angular.element("div.setting-win").toggle();
+        var win = angular.element("div.setting-win");
+        var left = parseInt(win.css("left"));
+        var top = parseInt(win.css("top"));
+        if (inWindow) {
+            var rect = $scope.command.clientRect;
+            left = rect.right+10;
+            top = rect.top-200-15+(rect.bottom-rect.top)/2;
+
+        } else {
+            var li = angular.element(event.target).closest("div");
+            left = parseInt(li.css("left"))+50;
+            top = parseInt(li.css("top"))+51*3+15;
+        }
+        win.css("left", left);
+        win.css("top", top);
+        win.toggle();
     }
     $scope.openColor = function (event, c) {
         angular.element("div.color-win").hide();
@@ -163,6 +179,7 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         menu.css("top", rect.top - 56);
         menu.show();
         $scope.ispopuping = true;
+        $scope.$apply();
     }
     $scope.selectCommand = function (action) {
         angular.element("div.toolbar li[command='select']").trigger("click");
@@ -183,8 +200,32 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         win.find("textarea").focus();
     }
     $scope.copyCurrent = function (event) {
-        console.log($scope.command);
+        //console.log($scope.command);
+        $scope.clipboard = $scope.command;
     }
+    $scope.pasteCommand = function (event) {
+        event.stopPropagation();
+
+        var div = angular.element(event.target).closest("div[popup]");
+
+        var left = parseInt(div.css("left"))+div.width()/2;
+        var top = parseInt(div.css("top"))+div.height();
+        $scope.scence.pasteCommand($scope.command, left, top);
+        angular.element("div[popup]").hide();
+    }
+    $scope.editCurrent = function (event) {
+        $scope.command.edit();
+    }
+    $scope.executeCommand = function (event, action) {
+        angular.element("li[command='" + action + "']").trigger("click");
+        if (action == "text") {
+            var e = { offsetX: event.clientX - $scope.scence.left, offsetY: event.clientY - $scope.scence.top, event: event }
+            $scope.scence.mousedown(e);
+        } else if (action=="upload") {
+            $scope.scence.useOncePos = { offsetX: event.clientX - $scope.scence.left, offsetY: event.clientY - $scope.scence.top, using:true }
+        }
+    }
+
     $scope.actions = function () {
         var results = [];
         angular.forEach($scope.scence.commandList, function (item) {
@@ -361,7 +402,12 @@ app.directive("moving", function () {
     return {
         link: function (scope, element, attrs) {
             element.bind("mousedown", function (event) {
-                scope.mouse.items.push(element);
+                if (attrs.target) {
+                    scope.mouse.items.push(angular.element(attrs.target));
+                } else {
+                    scope.mouse.items.push(element);
+                }
+                
             });
         }
     }
@@ -385,7 +431,13 @@ app.directive("longpress", function () {
             });
             function do_longpress() {
                 //console.log(attrs.window);
-                angular.element(attrs.window).show();
+                var win = angular.element(attrs.window);
+                var li = element.closest("li");
+                var left = li.offset().left+50;
+                var top = li.offset().top-51;
+                win.css("left", left);
+                win.css("top", top);
+                win.show();
                 element.attr("done", "1"); //to prevent click event happen.
             }
         }
@@ -441,16 +493,16 @@ app.directive("lineSetting", function () {
         scope:false,
         link: function (scope, element, attrs) {
             //console.log(attrs);
-            function refresh() {
+            function refresh(v) {
                 if (scope.command && scope.command.classname == "polyline") {
-                    var degree = angular.element(element).closest("div[popup]").hasClass("line-start-win") ? 0 : 180;
+                    var degree =attrs.lineDegree;// ||  angular.element(element).closest("div[popup]").hasClass("line-start-win") ? 0 : 180;
                     var context = element.context.getContext('2d');
                     element.context.width = element.width();
                     element.context.height = element.height();
                     var w = context.canvas.width;
                     var h = context.canvas.height;
                     context.clearRect(0, 0, w, h);
-                    scope.command.drawLineSet(context,w/2,h/2, attrs.lineSetting, degree, scope.command.strokeColor, scope.command.fillColor);
+                    scope.command.drawLineSet(context,w/2,h/2,v||attrs.lineSetting, degree, scope.command.strokeColor, scope.command.fillColor);
                 }
                 
             }
@@ -461,6 +513,17 @@ app.directive("lineSetting", function () {
             scope.$watch(attrs.strokeColor, function () {
                 refresh();
             });
+            if (attrs.lineStart) {
+                scope.$watch(attrs.lineStart, function (v) {
+                    refresh(v);
+                });
+            }
+            if (attrs.lineEnd) {
+                scope.$watch(attrs.lineEnd, function (v) {
+                    refresh(v);
+                });
+            }
+            
             element.bind("click", function () {
                 var index = attrs.lineSetting;
                 var prop = angular.element(element).closest("div[popup]").hasClass("line-start-win") ? "lineStart" : "lineEnd";
@@ -483,6 +546,11 @@ function ActionHelper() {
         this.set_size = false;
         this.set_alignment = false;
         this.command = null;
+
+        this.set_inspector = true;
+        this.set_note = true;
+        this.set_copy = true;
+        this.set_delete = true;
     }
     pen.prototype.draw = function (example_context,thumb_context) {
         this.draw_example_full(example_context);
@@ -616,6 +684,8 @@ function ActionHelper() {
         this.set_font = true;
         this.set_size = true;
         this.set_alignment = true;
+        this.set_note = false;
+        this.set_edit = true;
         this.draw_example = function (context) {
             context.font = this.command.font();
             var text = "Sample";
@@ -641,8 +711,9 @@ function ActionHelper() {
         this.set_font = false;
         this.set_size = false;
         this.set_alignment = false;
+        
         this.draw_example = function (context) {
-         
+        
         }
     }
     action.prototype = new pen();
@@ -663,6 +734,19 @@ function ActionHelper() {
         }
     }
     upload.prototype = new pen();
+    var uploadfile = function () {
+        this.set_color = false;
+        this.set_fill = true;
+        this.set_opactiy = true;
+        this.set_thinkness = false;
+        this.set_font = false;
+        this.set_size = false;
+        this.set_alignment = false;
+        this.draw_example = function (context) {
+
+        }
+    }
+    uploadfile.prototype = new pen();
     this.setCommand = function (command) {
         this[command.classname] = eval("new " + command.classname + "()");
         this[command.classname].command = command;

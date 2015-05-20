@@ -17,12 +17,43 @@
     this.fontSize = 32;
     this.opacity = 100;
     this.note = "";
+    this.message = "";
     this.isgroup = false;
     this.scale = { x: 1, y: 1 };
     this.SELECT_BORDER = 0;
     this.CORNER_WIDTH = 10;
     this.ctrlSelect = false;
     this.classname = arguments.callee.classname ? arguments.callee.classname : "action";
+    Action.prototype.copyFrom = function (other) {
+        this.clientRect = { top: other.clientRect.top, left: other.clientRect.left, bottom: other.clientRect.bottom, right: other.clientRect.right };
+        this.selected = true;
+        this.done = true;
+        this.strokeColor = other.strokeColor;
+        this.fillColor = other.fillColor;
+        this.lineWidth = other.lineWidth;
+        this.fontName = other.fontName;
+        this.fontSize = other.fontSize;
+        this.opacity = other.opacity;
+        this.message = other.message;
+        for (var i = 0; i < other.groups.length; i++) {
+            var item = {
+                points: [], strokeColor: other.groups[i].strokeColor,
+                fillColor: other.groups[i].fillColor,
+                lineWidth: other.groups[i].lineWidth,
+                fontSize: other.groups[i].fontSize,
+                fontName: other.groups[i].fontName,
+                opactiy: other.groups[i].opacity
+            }
+            for (var j = 0; j < other.groups[i].points.length; j++) {
+                item.points.push({ x: other.groups[i].points[j].x, y: other.groups[i].points[j].y });
+            }
+            this.groups.push(item);
+        }
+        this.points = [];
+        for (var j = 0; j < other.points.length; j++) {
+            this.points.push({ x: other.points[j].x, y: other.points[j].y });
+        }
+    }
     Action.prototype.drawOne = function (con) {
 
     }
@@ -263,6 +294,23 @@
             }
         }
         return this.selected;
+    }
+    Action.prototype.moveTo = function (x, y) {
+        var vx = x - this.clientRect.left;
+        var vy = y - this.clientRect.top;
+        this.clientRect = { top: 102400, left: 102400, right: 0, bottom: 0 };
+        for (var j = 0; j < this.groups.length; j++) {
+            for (var i = 0; i < this.groups[j].points.length; i++) {
+                var p = this.groups[j].points[i];
+                p.x = p.x + vx;
+                p.y = p.y + vy;
+            }
+            this.processPoint(this.groups[j].points);
+        }
+        for (var i = 0; i < this.points.length; i++) {
+            this.points[i].x += vx;
+            this.points[i].y += vy;
+        }
     }
     Action.prototype.move = function (e) {
         if (this.selected) {
@@ -589,7 +637,7 @@ var UploadFile = function (scence,f,pos) {
     this.upload_file = f;
     this.start_pos = { x: pos?pos.offsetX:0, y:pos?pos.offsetY:0 };
     var instance = this;
-    this.classname = "upload";
+    this.classname = "uploadfile";
     this.drawAll = function (con) {
         this.drawOne(con);
     }
@@ -656,6 +704,11 @@ var UploadFile = function (scence,f,pos) {
         this.message = other.message;
         this.image.src = other.image_src;
     }
+
+    this.copyFrom = function (other) {
+        this.__proto__.copyFrom.call(this, other);
+        this.image.src = other.image.src;
+    }
     
 }
 
@@ -714,11 +767,27 @@ var Text = function (scence) {
             this.start_pos.x = e.offsetX;
             this.start_pos.y = e.offsetY;
             var inputElement = "<input type='text' style='position:absolute;width:300px;left:"+e.offsetX+"px;top:"+e.offsetY+"px;z-index:5;font:"+this.font()+"' />";
-            this.input = $(inputElement).appendTo(this.scence.div);
+            this.input = angular.element(inputElement).appendTo(this.scence.div);
             this.input.bind("blur", function () {
                 instance.endCreate(e);
-            })
+            });
+            //this.input.focus();
+            
         }
+    }
+    this.edit = function () {
+        alert(this.message);
+        var w = this.clientRect.right - this.clientRect.left;
+        var h = this.clientRect.bottom - this.clientRect.top;
+        var textinput = "<textarea rows='10' cols='10' style='position:absolute;width:" + w +
+            "px;height:"+h+"px;left:" + this.clientRect.left + "px;top:" + this.clientRect.top + "px;z-index:5;font:" + this.font() + "'>" +
+            this.message + "</textarea>";
+        var area = angular.element(textinput).appendTo(this.scence.div);
+        area.bind("blur", function () {
+            area.remove();
+            instance.message = area.val();
+        });
+        
     }
     this.mousemove = function (e) {
 
@@ -730,8 +799,9 @@ var Text = function (scence) {
         this.drawOne(con);
     }
     this.drawOne = function (con, points, strokeColor, fillColor, lineWidth,opacity) {
-        con = this.context;
+       // con = this.context;
         con.save();
+        con.clearRect(this.clientRect.left, this.clientRect.top, this.clientRect.right - this.clientRect.left, this.clientRect.bottom - this.clientRect.top);
         con.globalAlpha = opacity/100;
         con.strokeStyle = this.strokeColor;
         con.fillStyle = this.fillColor;
@@ -920,7 +990,13 @@ var Polygon = function (scence) {
         this.done = true;
         
         this.processPoint(this.points);
-        this.groups = [{ points: this.points, lineWidth: this.lineWidth, fillColor: this.fillColor, strokeColor: this.strokeColor }];
+        this.groups = [{
+            points: this.points,
+            lineWidth: this.lineWidth,
+            fillColor: this.fillColor,
+            strokeColor: this.strokeColor,
+            opacity:this.opacity
+        }];
         if (e) {
             this.scence.clone(this);
         } else {
@@ -958,15 +1034,15 @@ var Polygon = function (scence) {
             con.restore();
         }
     }
-    this.drawOne = function (con) {
-        var points = this.points;
+    this.drawOne = function (con,points,strokeColor,fillColor,lineWidth,opacity) {
+        //var points = this.points;
         if (points.length > 0) {
             
             con.save();
-            con.fillStyle = this.fillColor;
-            con.lineWidth = this.lineWidth;
-            con.strokeStyle = this.strokeColor;
-            con.globalAlpha = this.opacity/100;
+            con.fillStyle = fillColor;
+            con.lineWidth = lineWidth;
+            con.strokeStyle = strokeColor;
+            con.globalAlpha = opacity/100;
             con.beginPath();
             con.moveTo(points[0].x, points[0].y);
             for (var i = 1; i < points.length; i++) {
@@ -985,7 +1061,10 @@ var Polygon = function (scence) {
         
     }
     this.drawAll = function (con) {
-        this.drawOne(con);
+        for (var i = 0; i < this.groups.length; i++) {
+            this.drawOne(con, this.groups[i].points, this.strokeColor, this.fillColor, this.lineWidth, this.opacity);
+        }
+        
     }
     this.processPoint = function (points) {
         for (var i = 0; i < points.length; i++) {
@@ -1109,7 +1188,9 @@ var PolyLine = function (scence) {
 
     }
     this.drawAll = function (con) {
-        this.drawOne(con);
+        for (var i = 0; i < this.groups.length; i++) {
+            this.drawOne(con, this.groups[i].points,this.strokeColor,this.fillColor,this.lineWidth,this.opacity);
+        }
 
     }
     this.drawJointSelect = function (con, x, y) {
@@ -1125,7 +1206,7 @@ var PolyLine = function (scence) {
         }
     }
     this.drawOne = function (con, points, strokeColor, fillColor, lineWidth, opacity) {
-        var points = this.points;
+        //var points = this.points;
         if (points.length > 0) {
 
             con.save();

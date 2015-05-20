@@ -114,6 +114,7 @@ var Scence = function (divName, settings) {
     this.context_top = this.canvas_top.getContext("2d");
     this.context_debug = this.canvas_debug.getContext("2d");
     this.context_select = this.canvas_select.getContext("2d");
+    this.useOncePos = { offsetX: 0, offsetY: 0, using: false };
     if (this.debug) {
         $(this.canvas_debug).css("border", "1px solid");
         $(this.canvas_select).css("border", "1px solid");
@@ -141,7 +142,12 @@ var Scence = function (divName, settings) {
     function upload_start(f) {
         var file = f.target.files[0];
         if (file) {
-            instance.load_file(file, { offsetX: 50, offsetY: 50 });
+            var pos = { offsetX: 50, offsetY: 50 };
+            if (instance.useOncePos.using) {
+                pos = { offsetX: instance.useOncePos.offsetX, offsetY: instance.useOncePos.offsetY };
+                instance.useOncePos = { offsetX: 0, offsetY: 0, using: false };
+            }
+            instance.load_file(file, pos);
         }
     }
     function handleFileSelect(e) {
@@ -299,8 +305,9 @@ var Scence = function (divName, settings) {
         console.log(f);
         console.log(pos);
         var upload = new UploadFile(instance, f, pos);
-        this.addCommand(upload);
         upload.Draw();
+        this.addCommand(upload);
+        
     }
     this.data_image = function () {
         for (var i = 0; i < this.commandList.length; i++) {
@@ -308,6 +315,15 @@ var Scence = function (divName, settings) {
         }
         this.reDraw();
         return this.canvas.toDataURL("image/png");
+    }
+    this.pasteCommand = function (command, x, y) {        
+        var newCommandClass = this.getTool(command.classname);
+        var newCommand = new newCommandClass(instance);
+        newCommand.execute(command.classname);
+        newCommand.copyFrom(command)
+        newCommand.moveTo(x, y);
+        this.addCommand(newCommand);
+        this.reDraw();
     }
 }
 

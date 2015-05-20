@@ -112,6 +112,7 @@
 
 .tooltip .edpen-option ul li .value:after{content:""; clear:both; display:table;}
 .tooltip .edpen-option ul li .value .sizeNum{float:right;margin:0px 10px;font:17px/45px SourceSansProRegular, Arial, Helvetica, sans-serif;}
+.tooltip .edpen-option ul li .value .graph-wrap{width:36px;height:36px; display:block; border:2px solid #7a7da8; box-sizing:border-box;-moz-box-sizing:border-box;float:right;margin:5px 0px 0px;}
 .tooltip .edpen-option ul li .value .adjustmentBtn{float:right;border:1px solid #7a7da8;border-radius:4px; overflow:hidden;margin:7px 0px;}
 
 .tooltip .edpen-option ul li .value .adjustmentBtn ul:after{content:""; clear:both; display:table;}
