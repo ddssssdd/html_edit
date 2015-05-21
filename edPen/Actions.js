@@ -776,7 +776,7 @@ var Text = function (scence) {
         }
     }
     this.edit = function () {
-        alert(this.message);
+        //alert(this.message);
         var w = this.clientRect.right - this.clientRect.left;
         var h = this.clientRect.bottom - this.clientRect.top;
         var textinput = "<textarea rows='10' cols='10' style='position:absolute;width:" + w +

@@ -33,7 +33,7 @@
                 <li class="history">
                     History
                     <div class="annotationsTooltip" style="z-index:100;" popup>
-                        <div class="arrow"><img src="images/edPen/menListTooltip/arrow-top.png" width="40" height="21" /></div>
+                        <div class="arrow"><img src="images/edpen/menListTooltip/arrow-top.png" width="40" height="21" /></div>
                         <div class="annotationsBody">
                             <header>History</header>
                             <div class="body">
@@ -348,33 +348,33 @@
             <div class="list">
                 <ul>
 
-                    <li ng-click="openSetting($event,true);" ng-show="settings.set_inspector"><a href="javascript:void(0);">Inspector</a></li>
-                    <li ng-click="noteCurrent($event);" ng-show="settings.set_note"><a href="javascript:void(0);">Note</a></li>
-                    <li ng-click="editCurrent($event);" ng-show="settings.set_edit"><a href="javascript:void(0);">Edit</a></li>
-                    <li ng-click="copyCurrent($event);" ng-show="settings.set_copy"><a href="javascript:void(0);">Copy</a></li>
-                    <li class="deleteBtn" ng-click="deleteCurrent();" ng-show="settings.set_delete"><a href="javascript:void(0);">eraserBtn</a></li>
+                    <li ng-click="openSetting($event,true);"><a href="javascript:void(0);">Inspector</a></li>
+                    <li ng-click="noteCurrent($event);" note><a href="javascript:void(0);">Note</a></li>
+                    <li ng-click="editCurrent($event);" edit><a href="javascript:void(0);">Edit</a></li>
+                    <li ng-click="copyCurrent($event);" ><a href="javascript:void(0);">Copy</a></li>
+                    <li class="deleteBtn" ng-click="deleteCurrent();"><a href="javascript:void(0);">eraserBtn</a></li>
                     <li class="clear"></li>
                 </ul>
             </div>
-            <div class="arrow"><img src="images/edPen/menuTooltip/arrow-2.png" width="18" /></div>
+            <div class="arrow"><img src="images/edpen/menuTooltip/arrow-2.png" width="18" /></div>
         </div>
         <div class="shortcutMenu" style="display:none;z-index:100;" popup shortmenuall>
             <div class="list">
                 <ul>
-                    <li ng-click="pasteCommand($event)"><a href="#">Paste</a></li>
+                    <li ng-click="pasteCommand($event)"><a href="javascript:void(0);">Paste</a></li>
                     
                     
-                    <li class="textBtn" ng-click="executeCommand($event,'text')"><a href="#">textBtn</a></li>
-                    <li class="brushBtn" ng-click="executeCommand($event,'brush')"><a href="#">brushBtn</a></li>
+                    <li class="textBtn" ng-click="executeCommand($event,'text')"><a href="javascript:void(0);">textBtn</a></li>
+                    <li class="brushBtn" ng-click="executeCommand($event,'brush')"><a href="javascript:void(0);">brushBtn</a></li>
                     <!--<li class="SignatureBtn"><a href="#">SignatureBtn</a></li>-->
                     <!--<li class="StampsBtn"><a href="#">StampsBtn</a></li>-->
-                    <li class="ImportImageBtn" ng-click="executeCommand($event,'upload')"><a href="#">ImportImageBtn</a></li>
-                    <li class="eraserBtn" ng-click="executeCommand($event,'erase')"><a href="#">eraserBtn</a></li>
+                    <li class="ImportImageBtn" ng-click="executeCommand($event,'upload')"><a href="javascript:void(0);">ImportImageBtn</a></li>
+                    <li class="eraserBtn" ng-click="executeCommand($event,'erase')"><a href="javascript:void(0);">eraserBtn</a></li>
                     <!--<li class="deleteBtn" ><a href="#">eraserBtn</a></li>-->
                     <li class="clear"></li>
                 </ul>
             </div>
-            <div class="arrow"><img src="images/edPen/menuTooltip/arrow-2.png" width="18" /></div>
+            <div class="arrow"><img src="images/edpen/menuTooltip/arrow-2.png" width="18" /></div>
         </div>
 
 

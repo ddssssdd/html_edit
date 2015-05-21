@@ -7,25 +7,31 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
     $scope.settings = {};
     var example_canvas = document.getElementById("example_canvas");
     $scope.helper.example_context = example_canvas.getContext("2d");
+
+
+    $scope.execute = function (command) {
+        $scope.command = $scope.scence.do(command);
+    }
+
     $scope.scence.addEvent("create", function (event) {
         //$scope.command = event.target;
-        $scope.change_command(event.target);
+        if (event.target.classname != "action") {
+            $scope.change_command(event.target);
+        }
+        
     });
     $scope.change_command = function (newCommand) {
         $scope.command = newCommand;
         $scope.helper.setCommand($scope.command);
         $scope.settings = $scope.helper[$scope.command.classname];
         $scope.helper.draw($scope.command);
-        //console.log($scope.settings);
+        //console.log("edit=" + $scope.settings.set_edit + ",inspector=" + $scope.settings.set_inspector);
     }
     
     $scope.ispopuping = false;
     $scope.scence.addEvent("select", function (event) {
         if (event.target.length == 1) {
-            //$scope.command = event.target[0];
-            $scope.change_command(event.target[0]);
             $scope.selectCommand(event.target[0]);
-            //console.log($scope.command);
         }
     });
     $scope.scence.addEvent("add_command", function (event) {
@@ -42,16 +48,14 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         } else {
             $scope.mainmenu.selected = command;
         }
-        console.log("Execute mainmenu command:" + command);
+       // console.log("Execute mainmenu command:" + command);
         MainMenuService[command](li);
 
     }
-    $scope.execute = function (command) {
-        $scope.command= $scope.scence.do(command);
-    }
+    
 
     angular.element(document).bind("click", function () {
-        console.log("document click!");
+        //console.log("document click!");
         if ($scope.ispopuping) {
             $scope.ispopuping = false;
         } else {
@@ -160,16 +164,16 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         $scope.command.deleted = true;
         $scope.scence.reDraw();
         angular.element("div[popup]").hide();
-        console.log("Delete_current:");
-        console.log($scope.command);
+        //console.log("Delete_current:");
+        //console.log($scope.command);
     }
     $scope.deleteCommand = function (action, event) {
         event.stopPropagation();
         action.deleted = true;
         $scope.scence.reDraw();
         angular.element("div[popup]").hide();
-        console.log("Delete:");
-        console.log(action);
+        //console.log("Delete:");
+        //console.log(action);
     }
     $scope.popup_shortmenu = function (action) {
         angular.element("div[popup]").hide();
@@ -177,16 +181,23 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         var menu = angular.element("div[shortmenu]");
         menu.css("left", rect.left + (rect.right - rect.left - menu.width()) / 2);
         menu.css("top", rect.top - 56);
+        if ($scope.settings.set_edit) {
+            menu.find("li[edit]").show();
+            menu.find("li[note]").hide();
+        } else {
+            menu.find("li[edit]").hide();
+            menu.find("li[note]").show();
+        }
         menu.show();
         $scope.ispopuping = true;
-        $scope.$apply();
+        
     }
     $scope.selectCommand = function (action) {
         angular.element("div.toolbar li[command='select']").trigger("click");
         action.selected = true;
         $scope.scence.reDraw();
-        $scope.popup_shortmenu(action);
         $scope.change_command(action);
+        $scope.popup_shortmenu(action);
         //$scope.scence.do("select");
     }
    
@@ -551,6 +562,7 @@ function ActionHelper() {
         this.set_note = true;
         this.set_copy = true;
         this.set_delete = true;
+        this.set_edit = false;
     }
     pen.prototype.draw = function (example_context,thumb_context) {
         this.draw_example_full(example_context);
