@@ -721,7 +721,7 @@ var Text = function (scence) {
     this.context = scence.context;
     this.context_top = scence.context_top;
     this.input = null;
-    this.fontName = "Arial";
+    this.fontName = "Georgia";//"Arial";
     this.fontSize = 32;
     this.start_pos = { x: 0, y: 0 };
     this.fillColor = "rgb(0, 0, 0)";
@@ -801,13 +801,19 @@ var Text = function (scence) {
     this.drawOne = function (con, points, strokeColor, fillColor, lineWidth,opacity) {
        // con = this.context;
         con.save();
-        con.clearRect(this.clientRect.left, this.clientRect.top, this.clientRect.right - this.clientRect.left, this.clientRect.bottom - this.clientRect.top);
-        con.globalAlpha = opacity/100;
+        
+        con.globalAlpha = this.opacity/100;
         con.strokeStyle = this.strokeColor;
-        con.fillStyle = this.fillColor;
+        con.fillStyle = this.strokeColor;//this.fillColor;
         con.lineWidth = this.lineWidth;
         //con.textAlign = this.alignment;
         con.font = this.font();
+        var w = parseInt(con.measureText(this.message).width);
+        if (w > this.clientRect.right - this.clientRect.left) {
+            this.clientRect.right = this.clientRect.left + w;
+        }
+        con.clearRect(this.clientRect.left, this.clientRect.top, this.clientRect.right - this.clientRect.left, this.clientRect.bottom - this.clientRect.top);
+        //con.strokeText(this.message, this.clientRect.left, this.clientRect.bottom);
         con.fillText(this.message, this.clientRect.left, this.clientRect.bottom);
         con.restore();
         

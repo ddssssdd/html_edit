@@ -5,12 +5,14 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
     $scope.scence = new Scence("#mainBody");
     $scope.helper = new ActionHelper();
     $scope.settings = {};
+    $scope.fonts = ['Courier', 'Arial', 'Impact', 'Tahoma', 'Verdana','Georgia'];
     var example_canvas = document.getElementById("example_canvas");
     $scope.helper.example_context = example_canvas.getContext("2d");
 
 
     $scope.execute = function (command) {
-        $scope.command = $scope.scence.do(command);
+        $scope.scence.do(command);
+        console.log("Execute command:" + command);
     }
 
     $scope.scence.addEvent("create", function (event) {
@@ -25,7 +27,9 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         $scope.helper.setCommand($scope.command);
         $scope.settings = $scope.helper[$scope.command.classname];
         $scope.helper.draw($scope.command);
-        //console.log("edit=" + $scope.settings.set_edit + ",inspector=" + $scope.settings.set_inspector);
+        //console.log($scope.settings);
+        //console.log($scope.command.strokeColor);
+        //console.log($scope.command.classname == 'pen' ? $scope.command.strokeColor : 'rgba(0,0,0,0)');
     }
     
     $scope.ispopuping = false;
@@ -36,6 +40,10 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
     });
     $scope.scence.addEvent("add_command", function (event) {
         //console.log(event.target);
+    });
+    $scope.scence.addEvent("mousedown", function (event) {
+        //console.log(event.target);
+        angular.element("div.popup").hide();
     });
     $scope.command = $scope.scence.command;
     $scope.mainmenu = { selected: 'toolbar' };
@@ -87,6 +95,7 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         angular.element("div.color-win").hide();
         angular.element("div.line-start-win").hide();
         angular.element("div.line-end-win").hide();
+        angular.element("div.font-win").hide();
         event.stopPropagation();
         var popup= angular.element(event.target).closest("div[popup]");
         var top = angular.element(event.target).offset().top - 185;
@@ -111,6 +120,7 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         angular.element("div.color-win").hide();
         angular.element("div.line-start-win").hide();
         angular.element("div.line-end-win").hide();
+        angular.element("div.font-win").hide();
         event.stopPropagation();
         var popup = angular.element(event.target).closest("div[popup]");
         var top = angular.element(event.target).offset().top - 125;
@@ -120,6 +130,23 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         win.css("top", top);
         win.show();
 
+    }
+    $scope.openFonts = function (event) {
+        angular.element("div.color-win").hide();
+        angular.element("div.line-start-win").hide();
+        angular.element("div.line-end-win").hide();
+        angular.element("div.font-win").hide();
+        event.stopPropagation();
+        var popup = angular.element(event.target).closest("div[popup]");
+        var top = angular.element(event.target).offset().top - 125;
+        var left = popup.offset().left + popup.width();
+        var win = angular.element("div.font-win");
+        win.css("left", left);
+        win.css("top", top);
+        win.show();
+    }
+    $scope.setCommandFont = function (f) {
+        $scope.command.fontName = f;
     }
     $scope.changFontSize = function (v) {
         $scope.command.fontSize += v;
@@ -360,14 +387,21 @@ app.directive("command", function () {
                     return;
                 }
                 angular.element("div[popup]").hide();
-                scope.execute(element.attr("command"));
-                //scope.execute(attrs.command);
+                
                 if (attrs.once) {
                     angular.element(event.target).closest("div[popup]").hide();
                 } else {
                     angular.element(event.target).closest("ul").find("[command]").removeClass("selected");
                     angular.element(event.target).closest("li").addClass("selected");
                 }
+                scope.execute(element.attr("command"));
+                if (attrs.background) {
+                    angular.element(event.target).closest("li").css("background", scope.command.strokeColor);
+                }
+                if (element.attr("command")=="reset") {
+                    angular.element("div.toolbar ul").find("[command]").removeClass("selected");
+                }
+                
             })
         }
     }

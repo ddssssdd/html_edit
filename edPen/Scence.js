@@ -200,6 +200,7 @@ var Scence = function (divName, settings) {
             instance.debugger.outputInfo(type, offset);
         }
         instance.command[type](offset);
+        instance.fire(type, { target: offset});
         //instance.refresh();
     }
     this.log = function (msg) {
@@ -214,6 +215,7 @@ var Scence = function (divName, settings) {
     this.reDraw = function (reset) {
         this.context.clearRect(0, 0, this.context.canvas.width, this.context.canvas.height);
         this.context_top.clearRect(0, 0, this.context_top.canvas.width, this.context_top.canvas.height);
+        this.context_select.clearRect(0, 0, this.context_select.canvas.width, this.context_select.canvas.height);
         for (var i = 0; i < this.commandList.length; i++) {
             if (reset)
                 this.commandList[i].selected = false;
