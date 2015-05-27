@@ -449,8 +449,9 @@ var Pen = function (scence) {
         con.moveTo(points[0].x, points[0].y);
         for (var i = 1; i < points.length; i++) {
             con.lineTo(points[i].x, points[i].y);
-            con.stroke();
+            
         }
+        con.stroke();
         con.closePath();
         con.restore();
 
@@ -907,18 +908,18 @@ var Brush = function (scence) {
         con.strokeStyle = strokeColor;
         con.lineWidth = lineWidth;
         con.fillStyle = fillColor;
-        con.globalAlpha = this.opacity/100;
+        con.globalAlpha = opacity/100;
         //con.globalCompositeOperation = "source-over";//"lighter";
         con.lineCap = "round";
-        
+        con.beginPath();
         for (var i = 1; i < points.length; i++) {
-            con.beginPath();
+            
             con.moveTo(points[i-1].x, points[i-1].y);
             con.lineTo(points[i].x, points[i].y);
-            con.stroke();
-            con.closePath();
+            
         }
-        
+        con.stroke();
+        con.closePath();
         con.restore();
 
     }
@@ -936,7 +937,7 @@ var Erase = function (scence) {
     this.isgroup = true;
     this.strokeColor = "rgb(0, 0, 0)";    
     this.lineWidth = 1;
-    this.r = 20;
+    this.r = 30;
     this.start_pos = { x: 0, y: 0 };
     this.drawAll = function (con) {
         for (var j = 0; j < this.groups.length; j++) {
@@ -953,7 +954,8 @@ var Erase = function (scence) {
             //con.strokeRect(p.x - this.r / 2, p.y - this.r / 2, this.r, this.r);
             con.strokeStyle = "black";
             con.beginPath();
-            con.arc(p.x - this.r / 2, p.y - this.r / 2, this.r, 0, Math.PI * 2, false);
+            //con.arc(p.x - this.r / 2, p.y - this.r / 2, this.r, 0, Math.PI * 2, false);
+            con.arc(p.x , p.y , this.r, 0, Math.PI * 2, false);
             con.closePath();
             con.stroke();
             this.context.clearRect(p.x - this.r / 2, p.y - this.r / 2, this.r, this.r);
