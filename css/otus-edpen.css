@@ -1,10 +1,15 @@
 /* CSS Document */
+
+.edpen-wrap{margin:0px 60px 60px;background:#fff;-moz-box-sizing:border-box;box-sizing:border-box;box-shadow:0px 0px 15px rgba(0,0,0,0.5);border-bottom-left-radius:6px;border-bottom-right-radius:6px; position:relative;}
 .center-bar{}
 .center-bar .edpen li{ display:block;width:33px;height:33px; text-indent:-9999px;margin:6px; cursor:pointer;border-radius:3px;}
 .center-bar .edpen .toolbar{ background:url(../images/edpen/toolbar.png) center center no-repeat;}
-.center-bar .edpen .help{ background:url(../images/edpen/help.png) center center no-repeat;width:}
+.center-bar .edpen .help{ background:url(../images/edpen/help.png) center center no-repeat;}
 .center-bar .edpen .search{ background:url(../images/edpen/search.png) center center no-repeat;}
 .center-bar .edpen .history{ background:url(../images/edpen/history.png) center center no-repeat; position:relative;}
+.center-bar .edpen.old .history{background:none;color:#fff;text-indent:0px;width:inherit;height:inherit;line-height:33px; position:relative;font-size:17px;}
+.center-bar .edpen.old .add{background:none;color:#fff;text-indent:0px;width:inherit;height:inherit;line-height:33px; position:relative;font-size:17px;}
+.center-bar .edpen.old .brightness{ background:url(../images/edpen/brightness.png) no-repeat center center;position:relative}
 .center-bar .edpen .export{ background:url(../images/edpen/export.png) center center no-repeat;}
 .center-bar .edpen .grid{ background:url(../images/edpen/grid.png) center center no-repeat;}
 .center-bar .edpen .remove{ background:url(../images/edpen/clear.png) center center no-repeat;}
@@ -12,6 +17,8 @@
 .center-bar .edpen .help:hover{ background:url(../images/edpen/help-hover.png) center center no-repeat #c3c6ed;}
 .center-bar .edpen .search:hover{ background:url(../images/edpen/search-hover.png) center center no-repeat #c3c6ed;}
 .center-bar .edpen .history:hover{ background:url(../images/edpen/history-hover.png) center center no-repeat #c3c6ed;}
+.center-bar .edpen.old .history:hover{ background:none;}
+
 .center-bar .edpen .export:hover{ background:url(../images/edpen/export-hover.png) center center no-repeat #c3c6ed;}
 .center-bar .edpen .grid:hover{ background:url(../images/edpen/grid-hover.png) center center no-repeat #c3c6ed;}
 .center-bar .edpen .clear:hover{ background:url(../images/edpen/clear-hover.png) center center no-repeat #c3c6ed;}
@@ -146,6 +153,22 @@
 .sub-tooltip .tooltip-body.graph ul li:hover{background:#ebedfc!important;}
 .sub-tooltip .tooltip-body.graph ul li.selected{background:#7a7da8!important;}
 
+.sub-tooltip .tooltip-body.font-family-list ul li{width:260px!important;padding-right:40px!important;}
+.sub-tooltip .tooltip-body.font-family-list ul li:last-child{border:0px;}
+.sub-tooltip .tooltip-body.font-family-list ul li.selected{ background:url(../themes/t00/images/check-ico.png) 235px center no-repeat!important;color:#444!important;}
+.sub-tooltip .tooltip-body.font-family-list ul li.selected:hover{ background:url(../images/check-ico-hover.png) 235px center no-repeat #575a86!important;color:#fff!important;}
+
+.sub-tooltip .tooltip-body li.brightness:hover{background:none!important;}
+.sub-tooltip .tooltip-body li.brightness:after{content:""; display:table; clear:both;}
+.sub-tooltip .tooltip-body li.brightness div{float:left;height:46px;margin:0px 3px;}
+.sub-tooltip .tooltip-body li.brightness div.low{ background:url(../images/edpen/brightness-low.png) no-repeat center center;width:26px; height:46px; }
+.sub-tooltip .tooltip-body li.brightness div.high{ background:url(../images/edpen/brightness-high.png) no-repeat center center;width:26px; height:46px; }
+.sub-tooltip .tooltip-body .brightness input[type='range'] {-webkit-appearance: none;border-radius:0px;background:url(../images/edpen/range-line.png);height:30px;vertical-align:middle;outline:none;width:160px;padding:0px;border:0px;}
+.sub-tooltip .tooltip-body .brightness input[type='range']::-moz-range-track {-moz-appearance: none;border-radius: 5px;box-shadow: inset 0 0 5px #333;height:30px; }
+
+.sub-tooltip .tooltip-body .brightness input[type='range']::-webkit-slider-thumb {-webkit-appearance:button!important;background:url(../images/range-ico.png) no-repeat;width:31px;height:33px; display:block;}
+.sub-tooltip .tooltip-body .brightness input[type='range']::-moz-range-thumb {-moz-appearance: none;border-radius: 20px;background-color: #FFF;box-shadow:inset 0 0 10px rgba(000,000,000,0.5);border: 1px solid #999;height: 20px;width: 20px;}
+
 
 
 .nav-tooltip{ position:absolute;}
@@ -265,13 +288,13 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bedaff', endC
 
 .annotationsTooltip{position:absolute;left:-144px;top:32px; text-indent:0px!important;}
 .annotationsTooltip .arrow{z-index:100; position:relative;}
-.annotationsTooltip .annotationsBody{box-shadow:0px 0px 3px rgba(0,0,0,0.3);width:320px;border-radius:8px;height:360px;overflow:hidden; position:relative;z-index:90;background:#fff;}
-.annotationsTooltip .annotationsBody header{background:#fff;border-bottom:1px solid #eee;text-align:center;font:20px/45px SourceSansProSemibold, Arial, Helvetica, sans-serif;}
+.annotationsTooltip .annotationsBody{box-shadow:0px 0px 6px rgba(0,0,0,0.6);width:320px;border-radius:8px;height:360px;overflow:hidden; position:relative;z-index:90;background:#fff;}
+.annotationsTooltip .annotationsBody header{background:#fff;color:#333;border-bottom:1px solid #eee;text-align:center;font:20px/45px SourceSansProSemibold, Arial, Helvetica, sans-serif;}
 .annotationsTooltip .annotationsBody footer{ position:absolute;bottom:0px;background:#fff;border-top:1px solid #eee;text-align:center;font:15px/45px SourceSansProRegular, Arial, Helvetica, sans-serif;width:100%;}
 .annotationsTooltip .annotationsBody footer a{background:none!important;width:inherit!important;height:inherit!important; text-indent:0px!important; display:inherit!important;margin:0px!important;color:#6666cc; text-decoration:none;}
 .annotationsTooltip .annotationsBody footer a:hover{color:#09F;}
 .annotationsTooltip .annotationsBody .body{height:269px;}
-.annotationsTooltip .annotationsBody .body .pageTitle{padding:5px 8px;text-align:left;font:bold 14px Arial, Helvetica, sans-serif;-moz-box-sizing:border-box;box-sizing:border-box;}
+.annotationsTooltip .annotationsBody .body .pageTitle{padding:5px 8px;text-align:left;font:bold 14px Arial, Helvetica, sans-serif;-moz-box-sizing:border-box;box-sizing:border-box;color:#333;}
 .annotationsTooltip .annotationsBody .body .list{height:243px; overflow:hidden;}
 .annotationsTooltip .annotationsBody .body .list ul li{float:none!important;margin:0px 7px; position:relative;width:310px; display:inherit!important;height:inherit!important;}
 .annotationsTooltip .annotationsBody .body .list ul li.total{ text-align:center; text-indent:0px;color:#000; line-height:42px;}

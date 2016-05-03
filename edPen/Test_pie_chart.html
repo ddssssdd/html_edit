@@ -15,16 +15,22 @@
     <div id="wrapCanvas" style="width:450px;height:300px;float:left;position:relative;border:1px solid;">
         
     </div>
-    <div id="wrapCanvas2" style="width:300px;height:300px;float:left;position:relative;border:1px solid;">
+    <div id="wrapCanvas2" style="width:300px;height:300px;float:left;position:relative;border:1px solid;">=
 
     </div>
     <div id="wrapCanvas3" style="width:300px;height:450px;float:left;position:relative;border:1px solid;">
 
     </div>
     <script>
-        var data = [2, 2, 2, 1, 4, 4, 10, 2, 2, 2, 1, 4, 4, 10, 2, 2,21,22,12,44,21];
+        var data = [4, 51, 2, 1];
         var labels = ["This is one", "this is two", "this is thuree","this is forth","5","6","7"];
-        new PieChart(data, labels, "wrapCanvas", { not_sort: true });
+        new PieChart([4, 51, 2, 1],
+            ["This is one", "this is two", "this is thuree", "this is forth", "5", "6", "7"],
+            "wrapCanvas",
+            {
+                not_sort: true, func: 'test1',
+                data: [{ name: 'michael' }, [3, 2, 3, 23], { dir: 'aabb' }]
+            });
 
         new PieChart(data, labels, "wrapCanvas2");
         new PieChart(data, labels, "wrapCanvas3", { not_sort: true });
@@ -41,15 +47,23 @@
     </div>
     <script>
         var data = [
-            { data: 3, percent: 20, label: "this is first line" },
-            { data: 20, percent: 30, label: "this is second line" },
-            { data: 3, percent: 50, label: "this is third line" }];
+            { data: 3, percent: 20, label: "this is first line",func:'test1',items:[2,323,,23,23,3,23,32,2] },
+            { data: 20, percent: 30, label: "this is second line",func:'test2' },
+            { data: 5, percent: 50, label: "this is third line" }];
         new PieChart(data, 100, "wrapCanvas4");
 
 
         new PieChart(data, 100, "wrapCanvas5");
         new PieChart(data, 100, "wrapCanvas6");
-
+        function test1(data,c) {
+            //alert(data);
+            console.log(data);
+            console.log(c);
+        }
+        function test2(data,c) {
+            console.log(data);
+            console.log(c);
+        }
     </script>
 
 </body>

@@ -951,19 +951,42 @@ var Erase = function (scence) {
             return;
         if (this.creating) {//creating
             var p = points[points.length - 1];
-            //con.strokeRect(p.x - this.r / 2, p.y - this.r / 2, this.r, this.r);
+            
+            /*
             con.strokeStyle = "black";
             con.beginPath();
             //con.arc(p.x - this.r / 2, p.y - this.r / 2, this.r, 0, Math.PI * 2, false);
-            con.arc(p.x , p.y , this.r, 0, Math.PI * 2, false);
+            // con.arc(p.x , p.y , this.r, 0, Math.PI * 2, false);
+            con.strokeRect(p.x - this.r / 2, p.y - this.r / 2, this.r, this.r);
             con.closePath();
             con.stroke();
+            */
+            con.strokeStyle = "black";
+            con.lineWidth = 0.5;
+            con.strokeRect(p.x - this.r / 2, p.y - this.r / 2, this.r, this.r);
             this.context.clearRect(p.x - this.r / 2, p.y - this.r / 2, this.r, this.r);
         } else {
             for (var i = 0; i < points.length; i++) {
                 var p = points[i];
                 con.clearRect(p.x - this.r / 2, p.y - this.r / 2, this.r, this.r);
 
+            }
+        }
+        
+    }
+    this.mousemove = function (e) {
+        if (this.creating) {
+            this.points.push({ x: e.offsetX, y: e.offsetY });
+            this.Draw();
+        } else {
+            
+            if (this.context_top) {
+                this.context_top.clearRect(0, 0, this.context_top.canvas.width, this.context_top.canvas.height);
+                var p = { x: e.offsetX, y: e.offsetY };
+                this.context_top.strokeStyle = "black";
+                this.context_top.lineWidth = 0.5;
+                this.context_top.strokeRect(p.x - this.r / 2, p.y - this.r / 2, this.r, this.r);
+                //this.context.clearRect(p.x - this.r / 2, p.y - this.r / 2, this.r, this.r);
             }
         }
         

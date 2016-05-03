@@ -2,7 +2,7 @@
 
 
 app.controller("UICtrl", function ($scope, MainMenuService) {
-    $scope.scence = new Scence("#mainBody");
+    $scope.scence = new Scence("#edpenWrap");
     $scope.helper = new ActionHelper();
     $scope.settings = {};
     $scope.fonts = ['Courier', 'Arial', 'Impact', 'Tahoma', 'Verdana','Georgia'];
@@ -273,6 +273,10 @@ app.controller("UICtrl", function ($scope, MainMenuService) {
         });
         return results;
 
+    }
+
+    $scope.save = function (event) {
+        console.log(event);
     }
 
     //for moving

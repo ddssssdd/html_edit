@@ -87,14 +87,14 @@
         <div class="right-bar">
             <ul>
                 <li>
-                    <button class="btn btn-dark">Save</button>
+                    <button class="btn btn-dark" ng-click="save($event);">Save</button>
                 </li>
             </ul>
         </div>
 
     </header>
 
-    <div class="help-wrap" popup>
+    <!--div class="help-wrap" popup>
         <div class="help-body">
             <ul>
                 <li><span>Move Toolbar</span></li>
@@ -125,302 +125,285 @@
 
             </ul>
         </div>
-    </div>
+    </div-->
 
-    <div class="main-body bgWrite edpen-body" id="mainBody" mouse-event>
-        <div class="toolbar" style="z-index:100;" >
-            <ul style="background:white;">
-                <li class="move" moving target="div.toolbar"><span>Move</span></li>
-                <!--li class="highlight" longpress window="div.text-win" command="highlight"><span>Highlight-text</span></li -->
-                <!--li class="underline"><span>Underline-text</span></li>
-            <li class="strikethru"><span>Strikethru-text</span></li>
-            <li class="squiggly"><span>Squiggly-text</span></li-->
-                <li class="free-text" command="text"><span>Free Text</span></li>
-                <!--li class="note"><span>Note</span></!li -->
-                <li class="pencil" command="pen" background="true" style="background:{{command.classname=='pen'?command.strokeColor:'rgba(0,0,0,0)'}};"><span>Pencil</span></li>
-                <li class="paintbrush" command="brush" background="true" style="background:{{command.classname=='brush'?command.strokeColor:'rgba(0,0,0,0)'}};"><span>Paintbrush</span></li>
-                <li class="rect" command="rect" longpress window="div.sharp-win"><span>Square</span></li>
-                <!--li class="circle"><span>circle</span></li>
-            <li class="line"><span>line</span></li>
-            <li class="polygon"><span>polygon</span></li>
-            <li class="polyline"><span>polyline</span></li-->
-                <li class="color" style="background:{{command.fillColor}};" ng-click="openSetting($event);"><span>Color</span></li>
-                <li class="image" command="upload"><span>Image</span></li>
-                <!--li class="voicereord"><span>Voice Record</span></li -->
-                <li class="erase" command="erase"><span>Erase</span></li>
-                <li class="select" command="select"><span>Select</span></li>
-                <li class="undo" command="undo"><span>Undo</span></li>
-                <li class="redo" command="redo"><span>Redo</span></li>
-            </ul>
-        </div>
-
-
-
-        <div class="nav-tooltip text-win" style="top:73px;left:80px;z-index:100;" popup>
-            <div class="arrow"></div>
-            <div class="body text-style">
-                <ul tool-change target="div.text-win">
-                    <li><span>highlight</span></li>
-                    <li><span>underline</span></li>
-                    <li><span>strikethru</span></li>
-                    <li><span>squiggly</span></li>
+    <div class="main-body bgGrey edpen-body" id="mainBody" mouse-event style="padding-bottom:0px;">
+        <div class="edpen-wrap" id="edpenWrap">
+            <div class="toolbar" style="z-index:100;">
+                <ul style="background:white;">
+                    <li class="move" moving target="div.toolbar"><span>Move</span></li>
+                    <!--li class="highlight" longpress window="div.text-win" command="highlight"><span>Highlight-text</span></li -->
+                    <!--li class="underline"><span>Underline-text</span></li>
+                <li class="strikethru"><span>Strikethru-text</span></li>
+                <li class="squiggly"><span>Squiggly-text</span></li-->
+                    <li class="free-text" command="text"><span>Free Text</span></li>
+                    <!--li class="note"><span>Note</span></!li -->
+                    <li class="pencil" command="pen" background="true" style="background:{{command.classname=='pen'?command.strokeColor:'rgba(0,0,0,0)'}};"><span>Pencil</span></li>
+                    <li class="paintbrush" command="brush" background="true" style="background:{{command.classname=='brush'?command.strokeColor:'rgba(0,0,0,0)'}};"><span>Paintbrush</span></li>
+                    <li class="rect" command="rect" longpress window="div.sharp-win"><span>Square</span></li>
+                    <!--li class="circle"><span>circle</span></li>
+                <li class="line"><span>line</span></li>
+                <li class="polygon"><span>polygon</span></li>
+                <li class="polyline"><span>polyline</span></li-->
+                    <li class="color" style="background:{{command.fillColor}};" ng-click="openSetting($event);"><span>Color</span></li>
+                    <li class="image" command="upload"><span>Image</span></li>
+                    <!--li class="voicereord"><span>Voice Record</span></li -->
+                    <li class="erase" command="erase"><span>Erase</span></li>
+                    <li class="select" command="select"><span>Select</span></li>
+                    <li class="undo" command="undo"><span>Undo</span></li>
+                    <li class="redo" command="redo"><span>Redo</span></li>
                 </ul>
             </div>
-        </div>
-        <div class="nav-tooltip sharp-win" style="top:330px;left:80px;z-index:100;" popup>
-            <div class="arrow"></div>
-            <div class="body Shape">
-                <ul tool-change target="div.sharp-win">
-                    <li><span>rect</span></li>
-                    <li><span>circle</span></li>
-                    <li><span>line</span></li>
-                    <li><span>polygon</span></li>
-                    <li><span>polyline</span></li>
-                </ul>
+
+
+
+            <div class="nav-tooltip text-win" style="top:73px;left:80px;z-index:100;" popup>
+                <div class="arrow"></div>
+                <div class="body text-style">
+                    <ul tool-change target="div.text-win">
+                        <li><span>highlight</span></li>
+                        <li><span>underline</span></li>
+                        <li><span>strikethru</span></li>
+                        <li><span>squiggly</span></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-
-        <div class="tooltip arrow-left setting-win" style="width:417px;left:70px;top:180px;" popup>
-            <div class="arrow-position" style="margin-top:200px;">
-                <div class="arrow"><span></span></div>
+            <div class="nav-tooltip sharp-win" style="top:330px;left:80px;z-index:100;" popup>
+                <div class="arrow"></div>
+                <div class="body Shape">
+                    <ul tool-change target="div.sharp-win">
+                        <li><span>rect</span></li>
+                        <li><span>circle</span></li>
+                        <li><span>line</span></li>
+                        <li><span>polygon</span></li>
+                        <li><span>polyline</span></li>
+                    </ul>
+                </div>
             </div>
-            <div class="tooltip-body">
-                <header>
-                    <div class="tooltip-title" ng-bind="command.classname"></div>
-                </header>
-                <div class="body ScrollBAR" style="width:400px;">
-                    <div class="edpen-option">
-                        <ul>
-                            <li class="show-area">
-                            
-                            <canvas  id="example_canvas" width="360" height="100" />
-                            
-                            </li>
-                            <li ng-click="openColor($event,'strokeColor');" ng-show="settings.set_color">
-                                <div class="label">Color</div>
-                                <div class="value color"><span style="background:{{command.strokeColor}};"></span></div>
-                            </li>
-                            <li ng-click="openColor($event,'fillColor');" ng-show="settings.set_fill">
-                                <div class="label">Fill Color</div>
-                                <div class="value color"><span style="background:{{command.fillColor}};"></span></div>
-                            </li>
-                            <li ng-show="settings.set_opactiy">
-                                <div class="label">Opacity</div>
-                                <div class="value rangeBody">
-                                    <input type="range" max="100" min="0" step="1" ng-model="command.opacity" />
-                                    <label>{{command.opacity+"%"}}</label>
-                                </div>
-                            </li>
-                            <li ng-show="settings.set_thinkness">
-                                <div class="label">Thickness</div>
-                                <div class="value rangeBody">
-                                    <input type="range" max="40" min="1" step="1" ng-model="command.lineWidth" />
-                                    <label>{{command.lineWidth}} px</label>
-                                </div>
-                            </li>
-                            <li ng-show="settings.set_font" ng-click="openFonts($event);">
-                                <div class="label">Font</div>
-                                <div class="value" ng-bind="command.fontName"></div>
-                            </li>
-                            <li ng-show="settings.set_size">
-                                <div class="label">Size</div>
-                                <div class="value">
-                                    <div class="adjustmentBtn">
-                                        <ul>
-                                            <li><a href="javascript:void(0);" ng-click="changFontSize(-1);">reduceBtn</a></li>
-                                            <li><a href="javascript:void(0);" ng-click="changFontSize(1);">increaseBtn</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="sizeNum">{{command.fontSize}}pt</div>
-                                </div>
-                            </li>
-                            <li ng-show="settings.set_alignment">
-                                <div class="label">Alignment</div>
-                                <div class="value">
-                                    <div class="locationBtn">
-                                        <ul>
-                                            <li class="{{command.alignment=='left'?'':'select'}}" ng-click="command.alignment='left';"><a href="javascript:void(0);">alignLeft</a></li>
-                                            <li class="{{command.alignment=='center'?'':'select'}}" ng-click="command.alignment='center';"><a href="javascript:void(0);">alignCenter</a></li>
-                                            <li class="{{command.alignment=='right'?'':'select'}}" ng-click="command.alignment='right';"><a href="javascript:void(0);">alignRight</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                            <li ng-show="settings.set_lineStart" ng-click="openLineSetting($event,'line-start-win');">
-                                <div class="label">Line Start</div>
-                                <div class="value">
-                                    <canvas class="graph-wrap" line-setting="{{command.lineStart}}" style="width:36px;height:36px;" 
-                                            fill-color="command.fillColor" stroke-color="command.strokeColor" line-start="command.lineStart"
-                                            line-degree="0"
-                                            >
-                                        </canvas>
-                                </div>
-                            </li>
-                            <li ng-show="settings.set_lineEnd" ng-click="openLineSetting($event,'line-end-win');">
-                                <div class="label">Line End</div>
-                                <div class="value">
-                                    <canvas class="graph-wrap" line-setting="{{command.lineEnd}}" style="width:36px;height:36px;" 
-                                            fill-color="command.fillColor" stroke-color="command.strokeColor" line-end="command.lineEnd"
-                                            line-degree="180"
-                                            >
+            <div class="tooltip arrow-left setting-win" style="width:417px;left:70px;top:180px;" popup>
+                <div class="arrow-position" style="margin-top:200px;">
+                    <div class="arrow"><span></span></div>
+                </div>
+                <div class="tooltip-body">
+                    <header>
+                        <div class="tooltip-title" ng-bind="command.classname"></div>
+                    </header>
+                    <div class="body ScrollBAR" style="width:400px;">
+                        <div class="edpen-option">
+                            <ul>
+                                <li class="show-area">
 
-                                    </canvas>
-                                </div>
-                            </li>
-                        </ul>
+                                    <canvas id="example_canvas" width="360" height="100" />
+
+                                </li>
+                                <li ng-click="openColor($event,'strokeColor');" ng-show="settings.set_color">
+                                    <div class="label">Color</div>
+                                    <div class="value color"><span style="background:{{command.strokeColor}};"></span></div>
+                                </li>
+                                <li ng-click="openColor($event,'fillColor');" ng-show="settings.set_fill">
+                                    <div class="label">Fill Color</div>
+                                    <div class="value color"><span style="background:{{command.fillColor}};"></span></div>
+                                </li>
+                                <li ng-show="settings.set_opactiy">
+                                    <div class="label">Opacity</div>
+                                    <div class="value rangeBody">
+                                        <input type="range" max="100" min="0" step="1" ng-model="command.opacity" />
+                                        <label>{{command.opacity+"%"}}</label>
+                                    </div>
+                                </li>
+                                <li ng-show="settings.set_thinkness">
+                                    <div class="label">Thickness</div>
+                                    <div class="value rangeBody">
+                                        <input type="range" max="40" min="1" step="1" ng-model="command.lineWidth" />
+                                        <label>{{command.lineWidth}} px</label>
+                                    </div>
+                                </li>
+                                <li ng-show="settings.set_font" ng-click="openFonts($event);">
+                                    <div class="label">Font</div>
+                                    <div class="value" ng-bind="command.fontName"></div>
+                                </li>
+                                <li ng-show="settings.set_size">
+                                    <div class="label">Size</div>
+                                    <div class="value">
+                                        <div class="adjustmentBtn">
+                                            <ul>
+                                                <li><a href="javascript:void(0);" ng-click="changFontSize(-1);">reduceBtn</a></li>
+                                                <li><a href="javascript:void(0);" ng-click="changFontSize(1);">increaseBtn</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="sizeNum">{{command.fontSize}}pt</div>
+                                    </div>
+                                </li>
+                                <li ng-show="settings.set_alignment">
+                                    <div class="label">Alignment</div>
+                                    <div class="value">
+                                        <div class="locationBtn">
+                                            <ul>
+                                                <li class="{{command.alignment=='left'?'':'select'}}" ng-click="command.alignment='left';"><a href="javascript:void(0);">alignLeft</a></li>
+                                                <li class="{{command.alignment=='center'?'':'select'}}" ng-click="command.alignment='center';"><a href="javascript:void(0);">alignCenter</a></li>
+                                                <li class="{{command.alignment=='right'?'':'select'}}" ng-click="command.alignment='right';"><a href="javascript:void(0);">alignRight</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li ng-show="settings.set_lineStart" ng-click="openLineSetting($event,'line-start-win');">
+                                    <div class="label">Line Start</div>
+                                    <div class="value">
+                                        <canvas class="graph-wrap" line-setting="{{command.lineStart}}" style="width:36px;height:36px;"
+                                                fill-color="command.fillColor" stroke-color="command.strokeColor" line-start="command.lineStart"
+                                                line-degree="0"></canvas>
+                                    </div>
+                                </li>
+                                <li ng-show="settings.set_lineEnd" ng-click="openLineSetting($event,'line-end-win');">
+                                    <div class="label">Line End</div>
+                                    <div class="value">
+                                        <canvas class="graph-wrap" line-setting="{{command.lineEnd}}" style="width:36px;height:36px;"
+                                                fill-color="command.fillColor" stroke-color="command.strokeColor" line-end="command.lineEnd"
+                                                line-degree="180"></canvas>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-
-        <div class="sub-tooltip arrow-left color-win" style="left:500px;top:180px;" popup>
-            <div class="arrow-position" style="margin-top:150px;">
-                <div class="arrow"><span></span></div>
-            </div>
-            <div class="tooltip-body color" setup-color>
-                <ul>
-                    <li><span></span></li>
-                    <li><span></span></li>
-                    <li><span></span></li>
-                    <li><span></span></li>
-                    <li><span></span></li>
-                    <li><span></span></li>
-                </ul>
-                <ul>
-                    <li class="selected"><span></span></li>
-                    <li><span></span></li>
-                    <li><span></span></li>
-                    <li><span></span></li>
-                    <li><span></span></li>
-                    <li><span></span></li>
-                </ul>
-                <ul>
-                    <li><span></span></li>
-                    <li><span></span></li>
-                    <li><span></span></li>
-                    <li><span></span></li>
-                    <li><span></span></li>
-                    <li><span></span></li>
-                </ul>
-            </div>
-        </div>
-       
-        <div class="sub-tooltip arrow-left line-start-win" style="left:500px;top:180px;" popup>
-            <div class="arrow-position" style="margin-top:80px;">
-                <div class="arrow"><span></span></div>
-            </div>
-            <div class="tooltip-body graph">
-                <ul>
-                    <li ng-repeat="item in [1,2,3,4,5]" class="{{command.lineStart==item?'selected':''}}">
-                        <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor" line-degree="0"></canvas>
-                    </li>
-                    
-                </ul>
-                <ul>
-                    <li ng-repeat="item in [6,7,8,9,10]" class="{{command.lineStart==item?'selected':''}}">
-                        <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor" line-degree="0"></canvas>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="sub-tooltip arrow-left line-end-win" style="left:500px;top:180px;" popup>
-            <div class="arrow-position" style="margin-top:80px;">
-                <div class="arrow"><span></span></div>
-            </div>
-            <div class="tooltip-body graph">
-                <ul>
-                    <li ng-repeat="item in [1,2,3,4,5]" class="{{command.lineEnd==item?'selected':''}}">
-                        <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor" line-degree="180"></canvas>
-                    </li>
-
-                </ul>
-                <ul>
-                    <li ng-repeat="item in [6,7,8,9,10]" class="{{command.lineEnd==item?'selected':''}}">
-                        <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor" line-degree="180"></canvas>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="shortcutMenu" popup style="display:none;z-index:100;" shortmenu>
-            <div class="list">
-                <ul>
-
-                    <li ng-click="openSetting($event,true);"><a href="javascript:void(0);">Inspector</a></li>
-                    <li ng-click="noteCurrent($event);" note><a href="javascript:void(0);">Note</a></li>
-                    <li ng-click="editCurrent($event);" edit><a href="javascript:void(0);">Edit</a></li>
-                    <li ng-click="copyCurrent($event);" ><a href="javascript:void(0);">Copy</a></li>
-                    <li class="deleteBtn" ng-click="deleteCurrent();"><a href="javascript:void(0);">eraserBtn</a></li>
-                    <li class="clear"></li>
-                </ul>
-            </div>
-            <div class="arrow"><img src="images/edpen/menuTooltip/arrow-2.png" width="18" /></div>
-        </div>
-        <div class="shortcutMenu" style="display:none;z-index:100;" popup shortmenuall>
-            <div class="list">
-                <ul>
-                    <li ng-click="pasteCommand($event)"><a href="javascript:void(0);">Paste</a></li>
-                    
-                    
-                    <li class="textBtn" ng-click="executeCommand($event,'text')"><a href="javascript:void(0);">textBtn</a></li>
-                    <li class="brushBtn" ng-click="executeCommand($event,'brush')"><a href="javascript:void(0);">brushBtn</a></li>
-                    <!--<li class="SignatureBtn"><a href="#">SignatureBtn</a></li>-->
-                    <!--<li class="StampsBtn"><a href="#">StampsBtn</a></li>-->
-                    <li class="ImportImageBtn" ng-click="executeCommand($event,'upload')"><a href="javascript:void(0);">ImportImageBtn</a></li>
-                    <li class="eraserBtn" ng-click="executeCommand($event,'erase')"><a href="javascript:void(0);">eraserBtn</a></li>
-                    <!--<li class="deleteBtn" ><a href="#">eraserBtn</a></li>-->
-                    <li class="clear"></li>
-                </ul>
-            </div>
-            <div class="arrow"><img src="images/edpen/menuTooltip/arrow-2.png" width="18" /></div>
-        </div>
-
-
-
-
-
-        <div class="noteTooltip left" style="left:1200px;top:100px; " popup>
-            <div class="body">
-                <header>
-                    <div class="title">Text</div>
-                    <div class="deleteBtn" ng-click="command.note='';"><a href="javascript:void(0);">Add</a></div>
-                </header>
-                <div class="noteBody">
-                    <textarea cols="45" rows="5" ng-model="command.note"></textarea>
+            <div class="sub-tooltip arrow-left color-win" style="left:500px;top:180px;" popup>
+                <div class="arrow-position" style="margin-top:150px;">
+                    <div class="arrow"><span></span></div>
+                </div>
+                <div class="tooltip-body color" setup-color>
+                    <ul>
+                        <li><span></span></li>
+                        <li><span></span></li>
+                        <li><span></span></li>
+                        <li><span></span></li>
+                        <li><span></span></li>
+                        <li><span></span></li>
+                    </ul>
+                    <ul>
+                        <li class="selected"><span></span></li>
+                        <li><span></span></li>
+                        <li><span></span></li>
+                        <li><span></span></li>
+                        <li><span></span></li>
+                        <li><span></span></li>
+                    </ul>
+                    <ul>
+                        <li><span></span></li>
+                        <li><span></span></li>
+                        <li><span></span></li>
+                        <li><span></span></li>
+                        <li><span></span></li>
+                        <li><span></span></li>
+                    </ul>
                 </div>
             </div>
-            <div class="arrow"></div>
-            <div class="clear"></div>
-        </div>
+            <div class="sub-tooltip arrow-left line-start-win" style="left:500px;top:180px;" popup>
+                <div class="arrow-position" style="margin-top:80px;">
+                    <div class="arrow"><span></span></div>
+                </div>
+                <div class="tooltip-body graph">
+                    <ul>
+                        <li ng-repeat="item in [1,2,3,4,5]" class="{{command.lineStart==item?'selected':''}}">
+                            <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor" line-degree="0"></canvas>
+                        </li>
 
-
-        <div class="noteTooltip right" style="left:1200px;top:500px; " popup>
-            <div class="arrow"></div>
-            <div class="body">
-                <header>
-                    <div class="title">Text</div>
-                    <div class="deleteBtn"><a href="javascript:void(0);">Add</a></div>
-                </header>
-                <div class="noteBody">
-                    <textarea name="textarea" id="textarea" cols="45" rows="5"></textarea>
+                    </ul>
+                    <ul>
+                        <li ng-repeat="item in [6,7,8,9,10]" class="{{command.lineStart==item?'selected':''}}">
+                            <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor" line-degree="0"></canvas>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="clear"></div>
-        </div>
-        <div class="sub-tooltip arrow-left font-win" style="left:500px;top:180px;" popup>
-            <div class="arrow-position" style="margin-top:80px;">
-                <div class="arrow"><span></span></div>
-            </div>
-            <div class="tooltip-body font-family-list">
-                <ul>
-                    <li style="font-family:'{{f}}'" ng-bind="f" ng-repeat="f in fonts" class="{{command.fontName==f?'selected':''}}" ng-click="setCommandFont(f);"></li>
-                </ul>
-            </div>
-        </div>
+            <div class="sub-tooltip arrow-left line-end-win" style="left:500px;top:180px;" popup>
+                <div class="arrow-position" style="margin-top:80px;">
+                    <div class="arrow"><span></span></div>
+                </div>
+                <div class="tooltip-body graph">
+                    <ul>
+                        <li ng-repeat="item in [1,2,3,4,5]" class="{{command.lineEnd==item?'selected':''}}">
+                            <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor" line-degree="180"></canvas>
+                        </li>
 
-    </div>
+                    </ul>
+                    <ul>
+                        <li ng-repeat="item in [6,7,8,9,10]" class="{{command.lineEnd==item?'selected':''}}">
+                            <canvas line-setting="{{item}}" style="width:48px;height:48px;" fill-color="command.fillColor" stroke-color="command.strokeColor" line-degree="180"></canvas>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="shortcutMenu" popup style="display:none;z-index:100;" shortmenu>
+                <div class="list">
+                    <ul>
+
+                        <li ng-click="openSetting($event,true);"><a href="javascript:void(0);">Inspector</a></li>
+                        <li ng-click="noteCurrent($event);" note><a href="javascript:void(0);">Note</a></li>
+                        <li ng-click="editCurrent($event);" edit><a href="javascript:void(0);">Edit</a></li>
+                        <li ng-click="copyCurrent($event);"><a href="javascript:void(0);">Copy</a></li>
+                        <li class="deleteBtn" ng-click="deleteCurrent();"><a href="javascript:void(0);">eraserBtn</a></li>
+                        <li class="clear"></li>
+                    </ul>
+                </div>
+                <div class="arrow"><img src="images/edpen/menuTooltip/arrow-2.png" width="18" /></div>
+            </div>
+            <div class="shortcutMenu" style="display:none;z-index:100;" popup shortmenuall>
+                <div class="list">
+                    <ul>
+                        <li ng-click="pasteCommand($event)"><a href="javascript:void(0);">Paste</a></li>
+
+
+                        <li class="textBtn" ng-click="executeCommand($event,'text')"><a href="javascript:void(0);">textBtn</a></li>
+                        <li class="brushBtn" ng-click="executeCommand($event,'brush')"><a href="javascript:void(0);">brushBtn</a></li>
+                        <!--<li class="SignatureBtn"><a href="#">SignatureBtn</a></li>-->
+                        <!--<li class="StampsBtn"><a href="#">StampsBtn</a></li>-->
+                        <li class="ImportImageBtn" ng-click="executeCommand($event,'upload')"><a href="javascript:void(0);">ImportImageBtn</a></li>
+                        <li class="eraserBtn" ng-click="executeCommand($event,'erase')"><a href="javascript:void(0);">eraserBtn</a></li>
+                        <!--<li class="deleteBtn" ><a href="#">eraserBtn</a></li>-->
+                        <li class="clear"></li>
+                    </ul>
+                </div>
+                <div class="arrow"><img src="images/edpen/menuTooltip/arrow-2.png" width="18" /></div>
+            </div>
+            <div class="noteTooltip left" style="left:100px;top:100px; " popup>
+                <div class="body">
+                    <header>
+                        <div class="title">Text</div>
+                        <div class="deleteBtn" ng-click="command.note='';"><a href="javascript:void(0);">Add</a></div>
+                    </header>
+                    <div class="noteBody">
+                        <textarea cols="45" rows="5" ng-model="command.note"></textarea>
+                    </div>
+                </div>
+                <div class="arrow"></div>
+                <div class="clear"></div>
+            </div>
+            <div class="noteTooltip right" style="left:10px;top:500px; " popup>
+                <div class="arrow"></div>
+                <div class="body">
+                    <header>
+                        <div class="title">Text</div>
+                        <div class="deleteBtn"><a href="javascript:void(0);">Add</a></div>
+                    </header>
+                    <div class="noteBody">
+                        <textarea name="textarea" id="textarea" cols="45" rows="5"></textarea>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="sub-tooltip arrow-left font-win" style="left:50px;top:180px;" popup>
+                <div class="arrow-position" style="margin-top:80px;">
+                    <div class="arrow"><span></span></div>
+                </div>
+                <div class="tooltip-body font-family-list">
+                    <ul>
+                        <li style="font-family:'{{f}}'" ng-bind="f" ng-repeat="f in fonts" class="{{command.fontName==f?'selected':''}}" ng-click="setCommandFont(f);"></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
         <script src="js/otus-navBarHeight.js" type="text/javascript"></script>
         <script src="js/otus-universal.js" type="text/javascript"></script>
         <script src="js/otus-slideBar.js" type="text/javascript"></script>

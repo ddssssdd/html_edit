@@ -37,7 +37,9 @@ var Bar = function (data, label, index) {
     this.isSelected = false;
     this.isDrawNumber = true;
     this.textBarPos = { x: 0, y: 0 };
+    this.callback = null;
     this.color = "rgba(255,255,255,1)";
+    this.original = null;
     this.autoDraw = function () {
         this.draw(this.context, this.begin, this.end, this.color, this.isDrawNumber);
     }
@@ -167,6 +169,16 @@ var ClearData = function (data, labels, centerX, centerY, settings) {
         var bar = new Bar(value, label, i);
         bar.center.x = centerX;
         bar.center.y = centerY;
+        
+        if (settings.func) {
+            bar.callback = settings.func;
+        }
+        
+        if (settings.data && settings.data instanceof Array) {
+            bar.original = { index: i, item: (settings.data.length>i?settings.data[i]:0) };
+        } else {
+            bar.original = i;
+        }
         if (settings.bar && settings.bar.fontSize) {
             bar.fontSize = settings.bar.fontSize || 16;
         }
@@ -235,6 +247,10 @@ var ClearData2 = function (data, centerX, centerY, settings) {
         }
         if (bar.data < min) {
             min = bar.data;
+        }
+        bar.original = data[i];
+        if (data[i].func) {
+            bar.callback = data[i].func;
         }
     }
     for (var i = 0; i < items.length; i++) {
@@ -422,6 +438,48 @@ function PieChart(data, labels, id, settings) {
         }
 
 
+    });
+    canvas.addEventListener("click", function (event) {
+        //console.log(event);
+        var offsetx = (event.offsetX == undefined ? event.layerX : event.offsetX) - center.x;
+        var offsety = (event.offsetY == undefined ? event.layerY : event.offsetY) - center.y;
+        var angel = Math.atan(Math.abs(offsety / offsetx));
+        if (offsetx > 0) {
+            if (offsety > 0) {
+                //4 = 
+            } else {
+                //1
+                angel = 2 * Math.PI - angel;
+            }
+        } else {
+            if (offsety > 0) {
+                //3
+                angel = Math.PI - angel;
+            } else {
+                //2
+                angel = Math.PI + angel;
+            }
+        }
+
+        var hasTarget = false;        
+        for (var i = 0; i < items.length; i++) {
+            var bar = items[i];
+            bar.isSelected = false;
+            
+            if (bar.feel(angel, offsetx + center.x, offsety + center.y)) {
+            
+                bar.isSelected = true;
+                hasTarget = true;
+            
+                //alert(bar.display);
+                if (bar.callback) {
+                    var func = eval(bar.callback);
+                    func(bar.original,bar.color);
+                }
+                break;
+            }
+        }
+        
     });
     canvas.addEventListener("mouseout", function (event) {
         for (var i = 0; i < items.length; i++) {

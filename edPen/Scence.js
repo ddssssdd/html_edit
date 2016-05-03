@@ -88,8 +88,8 @@ var Scence = function (divName, settings) {
     var options = settings || { width: 300, height: 300 }
     this.div = $(divName);
 
-    this.width = this.div.width() -20 || options.width;
-    this.height = this.div.height() - 20 || options.height;
+    this.width = this.div.width()-2 || options.width;
+    this.height = this.div.height()-8  || options.height;
     $("<canvas id='canvas_debug' style='position:absolute;z-index:3;'></canvas>").appendTo(this.div);
     $("<canvas id='canvas_select' style='position:absolute;z-index:2;'></canvas>").appendTo(this.div);
     $("<canvas id='canvas_top' style='position:absolute;z-index:1;'></canvas>").appendTo(this.div);
@@ -116,10 +116,11 @@ var Scence = function (divName, settings) {
     this.context_select = this.canvas_select.getContext("2d");
     this.useOncePos = { offsetX: 0, offsetY: 0, using: false };
     if (this.debug) {
+        /*
         $(this.canvas_debug).css("border", "1px solid");
         $(this.canvas_select).css("border", "1px solid");
         $(this.canvas_top).css("border", "1px solid");
-        $(this.canvas).css("border", "1px solid");
+        $(this.canvas).css("border", "1px solid");*/
         this.debugger = new Debugger(this.context_debug);
     }
     var instance = this;
